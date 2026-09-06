@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, Brackets, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, CloudUpload, Cpu, Crosshair, Download, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gauge, Gavel, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, MapPin, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Pill, Printer, Puzzle, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, SquareTerminal, Store, Tag, Tractor, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Utensils, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BellRing, BookOpen, BotMessageSquare, Box, Boxes, Brackets, BriefcaseMedical, Building2, ChartColumn, ChartColumnBig, ChartNoAxesCombined, ChartScatter, Check, ChevronDown, ChevronRight, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, CloudUpload, CodeXml, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileText, Fingerprint, Frown, Gauge, Gavel, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, ListOrdered, LockKeyhole, MapPin, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquareTerminal, Star, Store, TabletSmartphone, Tag, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, UsersRound, Utensils, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -2506,6 +2506,803 @@ function AnalyticsBusinessIntelligence() {
   </Shell>;
 }
 
+const cpakFeatures: [string, string, LucideIcon][] = [
+  ['Smart Packaging', 'Embedded digital identity within physical materials.', Archive],
+  ['Consumer Engagement', 'Direct-to-consumer relationships built on trust.', Users],
+  ['Digital Experiences', 'Rich multimedia content delivered instantly.', PanelsTopLeft],
+  ['Brand Protection', 'Secure authentication to fight counterfeiting.', ShieldCheck],
+];
+const cpakProblems: [string, string, LucideIcon][] = [
+  ['Static packaging has limited value', 'Information is fixed at printing and quickly becomes obsolete.', TriangleAlert],
+  ['No direct customer interaction', 'Brands lose touch with the user once the product leaves the shelf.', Ban],
+  ['Limited consumer insights', 'Zero data on where, when, and how products are engaged with.', EyeOff],
+];
+const cpakAdvantage = ['Dynamic content updates after printing', 'Real-time scan geolocation data', 'Post-purchase loyalty triggers', 'Interactive digital warranty claims'];
+const cpakSteps: [string, string][] = [
+  ['Generate Secure QR', 'Unique encrypted codes for every unit.'],
+  ['Print on Packaging', 'High-speed industrial printing integration.'],
+  ['Consumer Scan', 'App-free interaction via smartphone.'],
+  ['Authentication', 'Instant verification of product origin.'],
+  ['Digital Warranty', 'Automatic registration and claim tracking.'],
+  ['Loyalty & Rewards', 'Incentivize repeat purchases instantly.'],
+  ['Analytics', 'Visualize engagement patterns in real-time.'],
+];
+const cpakAdvanced: [string, string, LucideIcon][] = [
+  ['Secure QR Codes', 'Tamper-proof, serialized codes generated with enterprise-grade encryption for total security.', QrCode],
+  ['Dynamic Product Pages', 'Update landing pages, marketing content, and product data without reprinting packaging materials.', LayoutTemplate],
+  ['Digital Information', 'Replace bulky paper manuals with rich digital documentation, assembly videos, and ingredients.', BookOpen],
+  ['Campaign Management', 'Run geography-based promotions and seasonal marketing campaigns through a central interface.', Megaphone],
+  ['Consumer Engagement', 'Direct feedback loops, surveys, and social sharing integrated directly into the scan experience.', Pointer],
+  ['Analytics Dashboard', 'Granular data on scan frequency, location heatmaps, and user conversion rates across your supply chain.', ChartNoAxesCombined],
+];
+const cpakBenefits: [string, string, LucideIcon][] = [
+  ['Better Customer Experience', 'Instant access to help and information.', Smile],
+  ['Stronger Brand Engagement', 'Higher emotional connection with the brand.', CircleStar],
+  ['More Consumer Insights', 'First-party data for better decision making.', ChartNoAxesCombined],
+  ['Higher Product Trust', 'Transparency in sourcing and quality.', Shield],
+  ['Marketing Opportunities', 'Unlock upsell and cross-sell channels.', MousePointerClick],
+  ['Increased Repeat Purchases', 'Direct subscription and re-order triggers.', RefreshCw],
+];
+
+function ConnectedPackaging() {
+  return <Shell>
+    <section className="cpak-hero" aria-labelledby="cpak-hero-title">
+      <div className="container-tight cpak-hero-inner">
+        <div className="fade-up">
+          <h1 id="cpak-hero-title" className="cpak-h1">Transform Every Package into a <span>Connected Digital Experience</span></h1>
+          <p className="cpak-hero-copy">Turn every product package into a smart digital touchpoint using secure QR codes. Deliver authentication, product information, digital content, warranties, loyalty programs and consumer engagement through a single scan.</p>
+          <div className="cpak-hero-actions">
+            <Link href="/contact-us" data-testid="button-cpak-start-project" className="cpak-btn cpak-btn-primary">Start Your Project</Link>
+            <Link href="/contact-us" data-testid="button-cpak-view-demo" className="cpak-btn cpak-btn-ghost">View Demo</Link>
+          </div>
+        </div>
+        <div className="cpak-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/connected-packaging-hero-full.png`} alt="Connected packaging: a smartphone scanning a QR code on a shipping box unlocks product authentication, product information, digital warranty and loyalty rewards, with real-time engagement data shown on a TracelyTag analytics dashboard" />
+        </div>
+      </div>
+    </section>
+
+    <section className="cpak-features" aria-label="Connected packaging capabilities">
+      <div className="container-tight cpak-feature-grid">
+        {cpakFeatures.map(([title, copy, Icon]) => <article key={title} className="cpak-feature-card">
+          <Icon size={26} className="text-[#0e46b0]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="cpak-why" aria-labelledby="cpak-why-title">
+      <div className="container-tight cpak-why-inner">
+        <div>
+          <h2 id="cpak-why-title" className="cpak-why-title">Why Connected Packaging?</h2>
+          <p className="cpak-why-copy">Traditional packaging acts as a silent container. TracelyTag activates your packaging, turning it into a powerful communication channel that solves critical enterprise blind spots.</p>
+          <div className="cpak-why-list">
+            {cpakProblems.map(([title, copy, Icon]) => <div key={title} className="cpak-why-item">
+              <Icon size={20} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="cpak-panel">
+          <h2>The Digital Advantage</h2>
+          <ul className="cpak-panel-list">
+            {cpakAdvantage.map(item => <li key={item}><CircleCheck size={20} strokeWidth={2} />{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="cpak-steps" aria-labelledby="cpak-steps-title">
+      <div className="container-tight cpak-steps-inner">
+        <h2 id="cpak-steps-title">How Connected Packaging Works</h2>
+        <p className="cpak-steps-sub">A seamless journey from manufacturing to customer loyalty.</p>
+        <ol className="cpak-step-grid">
+          {cpakSteps.map(([title, copy], index) => <li key={title} className="cpak-step">
+            <span className="cpak-step-num">{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="cpak-advanced" aria-labelledby="cpak-advanced-title">
+      <div className="container-tight cpak-advanced-inner">
+        <h2 id="cpak-advanced-title">Advanced Features</h2>
+        <div className="cpak-advanced-grid">
+          {cpakAdvanced.map(([title, copy, Icon]) => <article key={title} className="cpak-advanced-card">
+            <span className="cpak-advanced-icon"><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cpak-benefits" aria-labelledby="cpak-benefits-title">
+      <div className="container-tight cpak-benefits-inner">
+        <h2 id="cpak-benefits-title">Business Benefits</h2>
+        <p className="cpak-benefits-sub">Measurable impact on brand value and customer lifetime value through digital packaging activation.</p>
+        <div className="cpak-benefit-grid">
+          {cpakBenefits.map(([title, copy, Icon]) => <article key={title} className="cpak-benefit-card">
+            <span className="cpak-benefit-icon"><Icon size={20} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cpak-dash" aria-labelledby="cpak-dash-title">
+      <div className="container-tight">
+        <div className="cpak-dash-card">
+          <h2 id="cpak-dash-title">Unified Engagement Intelligence</h2>
+          <p>Our centralized dashboard provides real-time visibility into every scan. Monitor global performance, analyze conversion funnels, and gain geographic insights into where your customers are interacting with your brand.</p>
+          <div className="cpak-dash-art">
+            <img src={`${root}solution-crops/connected-packaging-dashboard.png`} alt="Connected Packaging Intelligence dashboard: QR scan analytics with 1.2M total scans up 15% this month, 950K unique scans and 2m 15s average time; consumer engagement at an 85% interaction rate with 45% video views, 30% form submits and 10% survey completion; campaign performance funnel for the Sustainability Initiative from 1M awareness to 650K consideration and 250K action at a 25% conversion rate; product authentication status over the last 7 days at 92% verified, 5% counterfeit and 3% unknown across 250,000 items; geographic insights with North America the top region at 40%; and a customer journey flow from scan QR to product info, sustainability story, newsletter sign-up and purchase with drop-off rates" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="cpak-cta" aria-labelledby="cpak-cta-title">
+      <div className="container-tight cpak-cta-inner">
+        <h2 id="cpak-cta-title">Ready to Transform Your Packaging?</h2>
+        <p>Join leading enterprises activating their products. Schedule a personalized consultation with our experts today.</p>
+        <div className="cpak-cta-actions">
+          <Link href="/contact-us" data-testid="button-cpak-book-demo" className="cpak-btn cpak-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-cpak-contact-sales" className="cpak-btn cpak-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const antiFeatures: [string, string, LucideIcon][] = [
+  ['Prevent Counterfeiting', 'Block illegal market entries and unauthorized manufacturing.', Ban],
+  ['Brand Protection', 'Safeguard your global reputation and intellectual property assets.', Shield],
+  ['Instant Verification', 'Enable immediate authentication at any point in the supply chain.', QrCode],
+  ['Consumer Trust', 'Increase loyalty by proving authenticity directly to customers.', Smile],
+];
+const antiRisks: [string, string, LucideIcon][] = [
+  ['Revenue Loss', 'Billions are lost annually to grey market and illicit trade diversions.', TrendingDown],
+  ['Consumer Safety', 'Fake pharma, food, and parts pose significant health and safety risks.', TriangleAlert],
+  ['Regulatory Risk', 'Non-compliance with traceability laws leads to massive legal penalties.', Gavel],
+  ['Reputation Damage', 'Brand equity is eroded when customers receive substandard fakes.', SquareActivity],
+];
+const antiStats: [string, string, string][] = [
+  ['3.3%', 'Global trade involving counterfeit goods.', 'blue'],
+  ['85%', "Consumers won't return to a brand after buying a fake.", 'blue'],
+  ['$1.2T', 'Total estimated cost of the counterfeit market.', 'red'],
+  ['Global', 'Reach of illicit supply chains across borders.', 'navy'],
+];
+const antiWorkflow: [string, string][] = [
+  ['Secure QR', 'Encrypted ID generation with secure hashing.'],
+  ['Serialization', 'Unique identifiers assigned to every unit.'],
+  ['Packaging', 'Labels integrated during the manufacturing line.'],
+  ['Consumer Scan', 'Smartphone scanning via web or native app.'],
+  ['Intelligence', 'Real-time alerts for suspicious scan locations.'],
+];
+const antiIndustrial: [string, string, LucideIcon][] = [
+  ['Secure QR Identity', 'High-security QR codes that are resistant to replication and cloning through advanced cryptographic pairing.', BadgeCheck],
+  ['Mass Serialization', 'Generate millions of unique IDs per second with zero collisions, fully compliant with international EPCIS standards.', ListOrdered],
+  ['Mobile Verification', 'Zero-friction web-based scanner for consumers. No app download required for instant authenticity checks.', Smartphone],
+  ['Verification Engine', 'A high-availability cloud engine that validates billions of scans globally with sub-millisecond response times.', Waypoints],
+  ['Scan Analytics', 'Deep insights into geographical scan hotspots, suspicious patterns, and counterfeit breakout locations.', ChartNoAxesCombined],
+  ['GS1 Ready', 'Full compatibility with GS1 Digital Link and other industry-specific serialization standards for global interop.', ScanBarcode],
+];
+const antiOutcomes: [string, string, LucideIcon][] = [
+  ['Reduce Counterfeiting', 'Measurably decrease the prevalence of fake products in your key markets by up to 90%.', TrendingUp],
+  ['Secure Supply Chain', 'Identify and block infiltration points where unauthorized goods enter your legitimate channels.', LockKeyhole],
+  ['Consumer Confidence', 'Build deep brand trust by providing customers with absolute certainty about their purchase.', Heart],
+  ['Actionable Insights', 'Turn every scan into a data point for brand protection strategy and market intelligence.', Zap],
+  ['Enterprise Security', 'Military-grade encryption and SOC2 compliant infrastructure for your mission-critical data.', ShieldCheck],
+  ['Brand Reputation', 'Maintain the premium perception of your brand by ensuring only genuine goods represent your name.', Star],
+];
+const antiMonitorPoints = ['Real-time heatmap of global scan activity', 'Automated alerts for suspicious high-volume scanning', 'Integration with law enforcement databases'];
+
+function AntiCounterfeiting() {
+  return <Shell>
+    <section className="anti-hero" aria-labelledby="anti-hero-title">
+      <div className="container-tight anti-hero-inner">
+        <div className="fade-up">
+          <p className="anti-pill"><Shield size={14} strokeWidth={2} />ENTERPRISE AUTHENTICATION</p>
+          <h1 id="anti-hero-title" className="anti-h1">Anti-Counterfeiting</h1>
+          <p className="anti-hero-copy">Protect your brand from counterfeit products with secure product identities, QR-based verification, serialization, and end-to-end traceability. Enable consumers and supply chain partners to instantly verify product authenticity.</p>
+          <div className="anti-hero-actions">
+            <Link href="/contact-us" data-testid="button-anti-book-demo-hero" className="anti-btn anti-btn-primary">Book a Demo <ArrowRight size={16} /></Link>
+            <Link href="/contact-us" data-testid="button-anti-talk-expert" className="anti-btn anti-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="anti-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/anti-counterfeiting-hero-full.png`} alt="Anti-counterfeiting workflow: a shopper scans the secure QR code on a genuine TracelyTag product to verify authenticity through the secure verification engine and brand protection shield, with real-time data analytics flagging a counterfeit package on the adjacent shelf" />
+        </div>
+      </div>
+    </section>
+
+    <section className="anti-features" aria-label="Anti-counterfeiting outcomes">
+      <div className="container-tight anti-feature-grid">
+        {antiFeatures.map(([title, copy, Icon]) => <article key={title} className="anti-feature-card">
+          <span className="anti-feature-icon"><Icon size={20} strokeWidth={2} /></span>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="anti-crisis" aria-labelledby="anti-crisis-title">
+      <div className="container-tight anti-crisis-inner">
+        <div>
+          <h2 id="anti-crisis-title" className="anti-crisis-title">The Global Counterfeit Crisis</h2>
+          <p className="anti-crisis-copy">Illicit trade is a sophisticated, global operation. TracelyTag provides the defense mechanism required to combat modern counterfeiters.</p>
+          <div className="anti-risk-grid">
+            {antiRisks.map(([title, copy, Icon]) => <div key={title} className="anti-risk">
+              <p className="anti-risk-head"><Icon size={18} strokeWidth={2} />{title}</p>
+              <p className="anti-risk-copy">{copy}</p>
+            </div>)}
+          </div>
+        </div>
+        <div className="anti-stat-grid">
+          {antiStats.map(([value, copy, tone]) => <div key={value} className="anti-stat">
+            <p className={`anti-stat-value is-${tone}`}>{value}</p>
+            <p className="anti-stat-copy">{copy}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="anti-flow" aria-labelledby="anti-flow-title">
+      <div className="container-tight anti-flow-inner">
+        <h2 id="anti-flow-title">The Verification Workflow</h2>
+        <p className="anti-flow-sub">From secure identity generation to real-time consumer verification, our end-to-end system secures every touchpoint.</p>
+        <ol className="anti-flow-grid">
+          {antiWorkflow.map(([title, copy], index) => <li key={title} className="anti-flow-step">
+            <span className="anti-flow-num">{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="anti-industrial" aria-labelledby="anti-industrial-title">
+      <div className="container-tight anti-industrial-inner">
+        <div className="anti-industrial-head">
+          <div>
+            <h2 id="anti-industrial-title">Industrial-Grade Features</h2>
+            <p>A robust toolkit designed to integrate seamlessly with global ERPs and high-speed production lines.</p>
+          </div>
+          <Link href="/platform" data-testid="link-anti-view-all-capabilities" className="anti-view-all">View All Capabilities <ChevronRight size={16} /></Link>
+        </div>
+        <div className="anti-industrial-grid">
+          {antiIndustrial.map(([title, copy, Icon]) => <article key={title} className="anti-industrial-card">
+            <Icon size={26} className="text-[#0e46b0]" strokeWidth={2} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="anti-outcomes" aria-labelledby="anti-outcomes-title">
+      <div className="container-tight anti-outcomes-inner">
+        <h2 id="anti-outcomes-title">Unmatched Business Outcomes</h2>
+        <p className="anti-outcomes-sub">Realize immediate ROI through revenue protection and enhanced consumer confidence.</p>
+        <div className="anti-outcome-grid">
+          {antiOutcomes.map(([title, copy, Icon]) => <article key={title} className="anti-outcome">
+            <span className="anti-outcome-icon"><Icon size={18} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="anti-monitor" aria-labelledby="anti-monitor-title">
+      <div className="container-tight anti-monitor-inner">
+        <div>
+          <p className="anti-monitor-pill"><ChartNoAxesCombined size={14} strokeWidth={2.2} />LIVE MONITORING</p>
+          <h2 id="anti-monitor-title">Counterfeit Intelligence Dashboard</h2>
+          <p className="anti-monitor-copy">The Central Fortress command center provides a global view of your product's lifecycle. Monitor scans in real-time, identify geographical anomalies, and deploy rapid enforcement actions when counterfeits are detected.</p>
+          <div className="anti-monitor-list">
+            {antiMonitorPoints.map(point => <p key={point} className="anti-monitor-item"><CircleCheck size={20} strokeWidth={2} />{point}</p>)}
+          </div>
+        </div>
+        <div className="anti-monitor-art">
+          <img src={`${root}solution-crops/anti-counterfeiting-dashboard.png`} alt="FORTRESS Anti-Counterfeiting Intelligence dashboard: 247 high-priority suspicious alerts including fake pharma blisters in Asia, counterfeit electronics in Europe, illicit apparel in South America and unauthorized components in North America; a global risk heatmap flagging Shanghai high activity, Dubai emerging hub and Mexico City moderate risk; verification activity totalling 45.2M verifications up 12% with 42.1M successful and 3.1M failed; and recent events covering a counterfeit shipment seized in Port of Hamburg, a new fake product listing on a major e-commerce platform, law enforcement action in Shenzhen, China, and high volume of failed scans reported in Southeast Asia" />
+        </div>
+      </div>
+    </section>
+
+    <section className="anti-cta" aria-labelledby="anti-cta-title">
+      <div className="container-tight anti-cta-inner">
+        <h2 id="anti-cta-title">Ready to Stop Counterfeit Products?</h2>
+        <p>Join the world's leading brands in securing their supply chain with TracelyTag Industrial Systems.</p>
+        <div className="anti-cta-actions">
+          <Link href="/contact-us" data-testid="button-anti-book-demo" className="anti-btn anti-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-anti-contact-sales" className="anti-btn anti-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const apsFeatures: [string, string, LucideIcon][] = [
+  ['Garment Authentication', 'Instant verification at any point in the supply chain or retail floor.', ShieldCheck],
+  ['Digital Product Passport', 'Comprehensive lifecycle data and sustainability proof for every item.', IdCard],
+  ['Supply Chain Visibility', 'Real-time tracking from textile manufacturing to final delivery.', Eye],
+  ['Connected Experience', 'Direct post-purchase engagement and personalized brand loyalty.', UsersRound],
+];
+const apsChallenges: [string, string, LucideIcon][] = [
+  ['Counterfeit fashion products', 'Billions lost annually to high-quality clones damaging brand equity.', TriangleAlert],
+  ['Limited supply chain visibility', 'Fragmented data across global manufacturing partners and logistics providers.', EyeOff],
+  ['Sustainability expectations', 'Growing regulatory and consumer demand for circularity and traceability.', Leaf],
+];
+const apsWhy: [string, LucideIcon][] = [
+  ['Garment Authentication', BadgeCheck],
+  ['Connected Packaging', QrCode],
+  ['Digital Passport', ClipboardCheck],
+  ['Consumer Engagement', ChartNoAxesCombined],
+  ['Supply Chain Visibility', Waypoints],
+  ['Business Intelligence', ChartColumnBig],
+];
+const apsJourney = ['Manufacturing', 'Fabric Label Printing', 'Garment Production', 'Warehouse', 'Retail Store', 'Customer Scan', 'Digital Product Experience'];
+const apsPlatformItems: [string, string][] = [
+  ['Production Status', 'blue'],
+  ['Authentication Requests', 'red'],
+  ['Garment Tracking', 'brown'],
+  ['Retail Verification', 'gray'],
+  ['Consumer Engagement', 'blue'],
+];
+const apsBenefits: [string, string, LucideIcon][] = [
+  ['Protect Brand Reputation', "Defend your brand's integrity and value by ensuring only genuine products reach your customers.", BadgeCheck],
+  ['Eliminate Counterfeit Products', 'Implement uncopiable digital identities that make counterfeiting garments economically impossible.', Ban],
+  ['Increase Consumer Trust', 'Provide absolute transparency and proof of authenticity to build deep, lasting customer relationships.', Handshake],
+  ['Improve Supply Chain Visibility', 'Gain granular insights into product movement, stock levels, and potential bottlenecks globally.', ScanSearch],
+  ['Deliver Connected Experiences', 'Turn every physical garment into a digital portal for storytelling, circularity, and loyalty programs.', TabletSmartphone],
+  ['Generate Product Intelligence', 'Access real-time data on how, where, and when your products are being interacted with by consumers.', ChartScatter],
+];
+
+function ApparelClothing() {
+  return <Shell>
+    <section className="aps-hero" aria-labelledby="aps-hero-title">
+      <div className="container-tight aps-hero-inner">
+        <div className="fade-up">
+          <p className="aps-pill"><CircleCheck size={14} strokeWidth={2} />ENTERPRISE APPAREL SOLUTION</p>
+          <h1 id="aps-hero-title" className="aps-h1">Protect Every Garment with <span>Digital Product Identity</span></h1>
+          <p className="aps-hero-copy">Help apparel brands authenticate products, eliminate counterfeit garments, enable digital product passports, improve supply chain visibility and create connected customer experiences through secure QR-powered digital identities.</p>
+          <div className="aps-hero-actions">
+            <Link href="/contact-us" data-testid="button-aps-book-demo-hero" className="aps-btn aps-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-aps-talk-expert" className="aps-btn aps-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="aps-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/apparel-clothing-hero-full.png`} alt="Apparel digital product identity network: garment manufacturing and robotic production lines feeding a TracelyTag analytics dashboard, QR label printing and inspection, warehouse storage, delivery trucks and a retail store where a shopper scans a garment tag with a smartphone" />
+        </div>
+      </div>
+    </section>
+
+    <section className="aps-features" aria-label="Apparel solution capabilities">
+      <div className="container-tight aps-feature-grid">
+        {apsFeatures.map(([title, copy, Icon]) => <article key={title} className="aps-feature-card">
+          <Icon size={26} className="text-[#0e46b0]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="aps-challenges" aria-labelledby="aps-challenges-title">
+      <div className="container-tight aps-challenges-inner">
+        <div>
+          <h2 id="aps-challenges-title" className="aps-challenges-title">Apparel Industry Challenges</h2>
+          <div className="aps-challenge-list">
+            {apsChallenges.map(([title, copy, Icon]) => <div key={title} className="aps-challenge">
+              <span className="aps-challenge-icon"><Icon size={18} strokeWidth={2} /></span>
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="aps-panel">
+          <h2>Why Apparel Brands Choose TracelyTag</h2>
+          <ul className="aps-panel-list">
+            {apsWhy.map(([label, Icon]) => <li key={label}><Icon size={18} strokeWidth={2} />{label}</li>)}
+          </ul>
+          <p className="aps-panel-quote">"TracelyTag has redefined our approach to brand protection, turning every label into a secure communication channel."</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="aps-journey" aria-labelledby="aps-journey-title">
+      <div className="container-tight aps-journey-inner">
+        <h2 id="aps-journey-title">End-to-End Garment Journey</h2>
+        <p className="aps-journey-sub">Trace every fiber from creation to closet</p>
+        <ol className="aps-journey-grid">
+          {apsJourney.map((label, index) => <li key={label} className="aps-journey-step">
+            <span className={`aps-journey-num${index === apsJourney.length - 1 ? ' is-last' : ''}`}>{index + 1}</span>
+            <p>{label}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="aps-platform" aria-labelledby="aps-platform-title">
+      <div className="container-tight">
+        <div className="aps-platform-card">
+          <div>
+            <h2 id="aps-platform-title">Enterprise Intelligence Platform</h2>
+            <ul className="aps-platform-list">
+              {apsPlatformItems.map(([label, tone]) => <li key={label}><span className={`aps-dot is-${tone}`} />{label}</li>)}
+            </ul>
+          </div>
+          <div className="aps-platform-art">
+            <img src={`${root}solution-crops/apparel-clothing-dashboard.png`} alt="Apparel Enterprise Solutions premium dashboard: production status bars for garment batches 01 to 05 with a Start Verification action; a world map of authentication requests showing successful scans and alert scans; garment tracking from factories through to retail stores; and retail verification, consumer engagement and business analytics charts with 80% growth and 20% market intelligence" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="aps-benefits" aria-labelledby="aps-benefits-title">
+      <div className="container-tight aps-benefits-inner">
+        <h2 id="aps-benefits-title">Business Benefits</h2>
+        <p className="aps-benefits-sub">Quantifiable impact for global fashion enterprises</p>
+        <div className="aps-benefit-grid">
+          {apsBenefits.map(([title, copy, Icon]) => <article key={title} className="aps-benefit-card">
+            <Icon size={26} className="text-[#0e46b0]" strokeWidth={2} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="aps-cta" aria-labelledby="aps-cta-title">
+      <div className="container-tight">
+        <div className="aps-cta-card">
+          <h2 id="aps-cta-title">Ready to Digitize Every Garment?</h2>
+          <p>Join the world's leading apparel brands in creating a more secure, transparent, and connected fashion future.</p>
+          <div className="aps-cta-actions">
+            <Link href="/contact-us" data-testid="button-aps-book-demo" className="aps-btn aps-cta-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-aps-contact-sales" className="aps-btn aps-cta-ghost">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const dwarFeatures: [string, string, LucideIcon][] = [
+  ['Instant Registration', 'One-click activation directly from the product packaging.', PencilLine],
+  ['Digital Warranty', 'Secure, immutable digital certificates stored on the cloud.', Award],
+  ['Faster Claims', 'Streamlined submission and approval workflows for users.', Gauge],
+  ['Customer Experience', 'Unified portal for all warranty and service history needs.', Smile],
+];
+const dwarProblems: [string, string, LucideIcon][] = [
+  ['Paper warranty cards are easily lost', 'Customers struggle to maintain physical proof of purchase over years.', TriangleAlert],
+  ['Manual registration is inefficient', 'Lengthy forms lead to low registration rates and dirty customer data.', Ban],
+  ['Slow warranty claims', 'Manual verification processes cause delays and customer frustration.', Gauge],
+];
+const dwarModern = ['One Scan Registration', 'Digital Certificate', 'Online Claim Submission', 'Service History', 'Customer Notifications', 'Warranty Analytics'];
+const dwarSteps: [string, string][] = [
+  ['Generate QR', 'Secure encrypted QR generation.'],
+  ['Print on Product', 'Industrial grade printing integration.'],
+  ['Consumer Scan', 'App-free mobile interaction.'],
+  ['Registration', 'Instant user data capture.'],
+  ['Digital Certificate', 'Automatic proof of ownership.'],
+  ['Claim Submission', 'Digital ticket generation.'],
+  ['Approval & Service', 'Automated verification flow.'],
+];
+const dwarAdvanced: [string, string, LucideIcon][] = [
+  ['Digital Registration', 'Simplified mobile-first registration process that captures high-quality customer data in seconds.', Pointer],
+  ['Warranty Certificate', 'Automated generation of secure, PDF-based digital warranty certificates with unique hash verification.', FileCheck],
+  ['Claim Management', 'Centralized ticketing system for processing, verifying, and managing warranty claims efficiently.', ClipboardList],
+  ['Customer Notifications', 'Automated SMS and Email triggers for warranty expiry, claim updates, and renewal offers.', BellRing],
+  ['Service History', 'Transparent log of all repairs, replacements, and maintenance events linked to the digital ID.', History],
+  ['Warranty Analytics', 'Deep insights into product failure rates, claim trends, and customer demographics.', ChartScatter],
+];
+const dwarBenefits: [string, string, LucideIcon][] = [
+  ['Better Customer Experience', 'Remove friction from the after-sales journey to build brand loyalty.', Smile],
+  ['Faster Claim Processing', 'Reduce manual verification time by up to 70% with automated validation.', Gauge],
+  ['Reduced Fraud', 'Eliminate fake claims with unforgeable digital identities for every product.', ShieldUser],
+  ['Lower Support Costs', 'Deflect common warranty queries to automated self-service portals.', PiggyBank],
+  ['Higher Product Registration', 'Experience registration rates of 50%+ compared to industry standard 5%.', PencilLine],
+  ['Better Warranty Insights', 'Identify manufacturing defects earlier with real-time field data.', ChartNoAxesCombined],
+];
+
+function DigitalWarranty() {
+  return <Shell>
+    <section className="dwar-hero" aria-labelledby="dwar-hero-title">
+      <div className="container-tight dwar-hero-inner">
+        <div className="fade-up">
+          <p className="dwar-pill"><BadgeCheck size={14} strokeWidth={2} />ENTERPRISE SOLUTION</p>
+          <h1 id="dwar-hero-title" className="dwar-h1">Simplify Warranty Registration with <span>One Secure Scan</span></h1>
+          <p className="dwar-hero-copy">Replace paper warranty cards with secure digital warranties. Enable instant product registration, faster claim processing, improved customer experience and complete warranty lifecycle management through secure QR-based authentication.</p>
+          <div className="dwar-hero-actions">
+            <Link href="/contact-us" data-testid="button-dwar-book-demo-hero" className="dwar-btn dwar-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-dwar-explore-platform" className="dwar-btn dwar-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="dwar-hero-art fade-up delay-1">
+          <img src={`${root}about-hero-diagram.png`} alt="TracelyTag warranty ecosystem: secure QR code generation and industrial printing in a smart manufacturing plant, product authentication checkpoints, a centralized enterprise analytics dashboard, global track and trace logistics, and consumer engagement via mobile scans" />
+        </div>
+      </div>
+    </section>
+
+    <section className="dwar-features" aria-label="Digital warranty capabilities">
+      <div className="container-tight dwar-feature-grid">
+        {dwarFeatures.map(([title, copy, Icon]) => <article key={title} className="dwar-feature-card">
+          <Icon size={24} className="text-[#0e3f9e]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="dwar-challenge" aria-labelledby="dwar-challenge-title">
+      <div className="container-tight dwar-challenge-inner">
+        <div>
+          <h2 id="dwar-challenge-title" className="dwar-challenge-title">The Challenge with Legacy Systems</h2>
+          <p className="dwar-challenge-copy">Traditional paper-based systems are inefficient and prone to errors. TracelyTag digitizes your warranty process, solving critical pain points for both brands and consumers.</p>
+          <div className="dwar-problem-list">
+            {dwarProblems.map(([title, copy, Icon]) => <div key={title} className="dwar-problem">
+              <Icon size={18} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="dwar-panel">
+          <h2>Modern Warranty Experience</h2>
+          <ul className="dwar-panel-list">
+            {dwarModern.map(item => <li key={item}><CircleCheck size={18} strokeWidth={2} />{item}</li>)}
+          </ul>
+          <p className="dwar-panel-note">Powered by TracelyTag's secure industrial authentication engine for 100% data integrity.</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="dwar-works" aria-labelledby="dwar-works-title">
+      <div className="container-tight dwar-works-inner">
+        <h2 id="dwar-works-title">How Digital Warranty Works</h2>
+        <p className="dwar-works-sub">A seamless end-to-end lifecycle from manufacturing to after-sales service.</p>
+        <ol className="dwar-step-grid">
+          {dwarSteps.map(([title, copy], index) => <li key={title} className="dwar-step">
+            <span className="dwar-step-num">{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="dwar-advanced" aria-labelledby="dwar-advanced-title">
+      <div className="container-tight dwar-advanced-inner">
+        <div className="dwar-advanced-head">
+          <div>
+            <h2 id="dwar-advanced-title">Advanced Features</h2>
+            <p>Tools designed for large-scale industrial warranty management.</p>
+          </div>
+          <Link href="/platform" data-testid="link-dwar-view-documentation" className="dwar-doc-link">View Documentation <ArrowRight size={16} /></Link>
+        </div>
+        <div className="dwar-advanced-grid">
+          {dwarAdvanced.map(([title, copy, Icon]) => <article key={title} className="dwar-advanced-card">
+            <span className="dwar-advanced-icon"><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="dwar-benefits" aria-labelledby="dwar-benefits-title">
+      <div className="container-tight dwar-benefits-inner">
+        <h2 id="dwar-benefits-title">Strategic Business Benefits</h2>
+        <p className="dwar-benefits-sub">Quantifiable impact on your bottom line and operations.</p>
+        <div className="dwar-benefit-grid">
+          {dwarBenefits.map(([title, copy, Icon]) => <article key={title} className="dwar-benefit-card">
+            <span className="dwar-benefit-icon"><Icon size={18} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="dwar-control" aria-labelledby="dwar-control-title">
+      <div className="container-tight">
+        <div className="dwar-control-card">
+          <h2 id="dwar-control-title">Powerful Control Center</h2>
+          <p>Command and control your entire warranty infrastructure from a single pane of glass. Monitor registrations, claims, and product performance in real-time.</p>
+          <div className="dwar-control-art">
+            <img src={`${root}about-dashboard-monitor.png`} alt="TracelyTag control centre dashboard on a desktop monitor: connected products at 12.5M total global count, authentication activity with a 99.8% scan success rate and 4,500 real-time scans per minute, supply chain visibility with 92% on-time shipment tracking, consumer engagement interaction trends, business intelligence showing +15% ROI year over year and an 88/100 efficiency score, and platform health with 99.99% system uptime and secure status" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="dwar-cta" aria-labelledby="dwar-cta-title">
+      <div className="container-tight dwar-cta-inner">
+        <h2 id="dwar-cta-title">Ready to Modernize Your Warranty Experience?</h2>
+        <p>Join leading industrial brands using TracelyTag to digitize their after-sales operations and secure their global supply chains.</p>
+        <div className="dwar-cta-actions">
+          <Link href="/contact-us" data-testid="button-dwar-book-demo" className="dwar-btn dwar-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-dwar-contact-sales" className="dwar-btn dwar-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const ppaPillars: [string, LucideIcon][] = [
+  ['Secure Digital Identity', Fingerprint],
+  ['Instant Verification', Gauge],
+  ['Consumer Trust', Heart],
+  ['Brand Protection', Shield],
+];
+const ppaRisks: [string, string, LucideIcon][] = [
+  ['Revenue Loss', 'Untracked counterfeit sales directly impact your bottom line and market share.', TrendingDown],
+  ['Brand Damage', 'Low-quality replicas tarnish brand prestige and consumer perception.', Frown],
+  ['Supply Chain Risk', 'Unauthorized leaks and grey market activities disrupt distribution channels.', TriangleAlert],
+  ['Liability Exposure', 'Safety risks from fakes can lead to legal challenges and regulatory fines.', Gavel],
+];
+const ppaWorkflow: [string, string, LucideIcon][] = [
+  ['Generate QR', 'Unique encrypted codes for each item.', QrCode],
+  ['Print on Product', 'Seamless integration into packaging lines.', Printer],
+  ['Consumer Scan', 'No app required, works via mobile browser.', ScanLine],
+  ['Verification Engine', 'Cloud-based cryptographic check.', CodeXml],
+  ['Result', 'Real-time "Authentic" or "Suspicious" alert.', CircleCheck],
+  ['Analytics', 'Data captured on dashboard instantly.', ChartNoAxesCombined],
+];
+const ppaFeatures: [string, string, LucideIcon][] = [
+  ['Secure QR Generation', 'High-density secure identifiers that are impossible to duplicate or reverse-engineer, using proprietary cryptographic layers.', LockKeyhole],
+  ['Unique Product Identity', 'Serialize every individual unit with its own digital twin for granular end-to-end tracking and lifecycle management.', Database],
+  ['Mobile Verification', 'Branded web experience that connects consumers directly with your official brand story without requiring third-party apps.', Smartphone],
+  ['Verification Engine', 'Global low-latency API infrastructure capable of handling millions of concurrent scans with sub-second response times.', Waypoints],
+  ['Authentication Analytics', 'Geospatial heatmaps showing where your products are being verified globally, helping identify suspicious patterns.', ChartColumnBig],
+  ['GS1 Ready Support', 'Full compliance with international standards for digital link and supply chain data exchange (EPCIS/GS1).', Box],
+];
+const ppaValue: [string, string][] = [
+  ['Protect Revenue', 'Recover lost sales by shutting down illicit distribution channels and grey market activities.'],
+  ['Consumer Trust', 'Prove authenticity instantly at the point of sale to build lasting brand loyalty and preference.'],
+  ['Reduce Fakes', 'De-incentivize counterfeiters with robust, uncopiable technology that makes fakes easy to spot.'],
+  ['Real-Time Insights', 'See scan data as it happens anywhere in the world, enabling agile supply chain responses.'],
+  ['Global Scalability', 'Deploy across millions of units without performance degradation, supported by industrial SLAs.'],
+  ['Enterprise Security', 'SOC2 compliant data handling and cryptographic key management for mission-critical reliability.'],
+];
+
+function PremiumProductAuthentication() {
+  return <Shell>
+    <section className="ppa-hero" aria-labelledby="ppa-hero-title">
+      <div className="container-tight ppa-hero-inner">
+        <div className="fade-up">
+          <p className="ppa-pill"><BadgeCheck size={14} strokeWidth={2.2} />ENTERPRISE GRADE SECURITY</p>
+          <h1 id="ppa-hero-title" className="ppa-h1">Product Authentication</h1>
+          <p className="ppa-hero-copy">Protect every product with a secure digital identity that enables instant authentication, strengthens consumer trust, and helps combat counterfeit products across the supply chain.</p>
+          <div className="ppa-hero-actions">
+            <Link href="/contact-us" data-testid="button-ppa-book-demo-hero" className="ppa-btn ppa-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-ppa-talk-expert" className="ppa-btn ppa-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="ppa-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/anti-counterfeiting-hero-full.png`} alt="Product authentication in practice: a shopper scans the secure QR code on a genuine TracelyTag product to verify it through the cloud verification engine and brand protection shield, while real-time analytics flag a counterfeit package on the adjacent shelf" />
+        </div>
+      </div>
+    </section>
+
+    <section className="ppa-pillars" aria-label="Product authentication pillars">
+      <div className="container-tight ppa-pillar-grid">
+        {ppaPillars.map(([label, Icon]) => <div key={label} className="ppa-pillar">
+          <span className="ppa-pillar-icon"><Icon size={20} strokeWidth={2} /></span>
+          <p>{label}</p>
+        </div>)}
+      </div>
+    </section>
+
+    <section className="ppa-challenge" aria-labelledby="ppa-challenge-title">
+      <div className="container-tight ppa-challenge-inner">
+        <h2 id="ppa-challenge-title" className="ppa-challenge-title">The Counterfeit Challenge</h2>
+        <p className="ppa-challenge-copy">Counterfeiting costs global brands billions annually. Traditional security measures are no longer enough to protect your reputation and revenue.</p>
+        <div className="ppa-challenge-body">
+          <div className="ppa-challenge-art">
+            <img src={`${root}solution-crops/product-authentication-counterfeit-map.png`} alt="Isometric world map of a compromised supply chain: goods move from manufacturing through logistics, warehouse, distributor and Retailer A, while red alerts mark broken trust, financial loss, unauthorized branch shipments and counterfeit goods entering the channel" />
+          </div>
+          <div className="ppa-risk-grid">
+            {ppaRisks.map(([title, copy, Icon]) => <div key={title} className="ppa-risk">
+              <span className="ppa-risk-icon"><Icon size={18} strokeWidth={2} /></span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="ppa-flow" aria-labelledby="ppa-flow-title">
+      <div className="container-tight ppa-flow-inner">
+        <p className="ppa-eyebrow">WORKFLOW</p>
+        <h2 id="ppa-flow-title">How Authentication Works</h2>
+        <ol className="ppa-flow-grid">
+          {ppaWorkflow.map(([title, copy, Icon], index) => <li key={title} className="ppa-flow-step">
+            <span className="ppa-flow-num">{index + 1}</span>
+            <span className="ppa-flow-icon"><Icon size={26} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="ppa-features" aria-labelledby="ppa-features-title">
+      <div className="container-tight ppa-features-inner">
+        <h2 id="ppa-features-title" className="ppa-section-label">Advanced Features</h2>
+        <div className="ppa-feature-grid">
+          {ppaFeatures.map(([title, copy, Icon]) => <article key={title} className="ppa-feature-card">
+            <span className="ppa-feature-icon"><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="ppa-value" aria-labelledby="ppa-value-title">
+      <div className="container-tight ppa-value-inner">
+        <div className="ppa-value-head">
+          <div>
+            <h2 id="ppa-value-title" className="ppa-section-label">Enterprise Value</h2>
+            <p className="ppa-value-copy">Beyond security, Product Authentication unlocks new levels of operational efficiency and consumer insights across your global value chain.</p>
+          </div>
+          <Link href="/contact-us" data-testid="button-ppa-roi-calculator" className="ppa-btn ppa-btn-primary ppa-roi">View ROI Calculator</Link>
+        </div>
+        <div className="ppa-value-grid">
+          {ppaValue.map(([title, copy]) => <article key={title} className="ppa-value-card">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="ppa-intel" aria-labelledby="ppa-intel-title">
+      <div className="container-tight ppa-intel-inner">
+        <h2 id="ppa-intel-title" className="ppa-section-label">Enterprise Authentication Intelligence</h2>
+        <p className="ppa-intel-copy">Monitor scan activity, detect anomalies, and manage product lifecycles through a single, powerful administrative interface designed for scale.</p>
+        <div className="ppa-intel-art">
+          <img src={`${root}solution-crops/anti-counterfeiting-dashboard.png`} alt="Authentication intelligence dashboard: 247 high-priority suspicious alerts across Asia, Europe, South America and North America; a global risk heatmap flagging Shanghai, Dubai and Mexico City; verification activity of 45.2M scans up 12% with 42.1M successful and 3.1M failed; and a recent events feed covering seizures, fake listings and law-enforcement action" />
+        </div>
+      </div>
+    </section>
+
+    <section className="ppa-cta" aria-labelledby="ppa-cta-title">
+      <div className="container-tight">
+        <div className="ppa-cta-card">
+          <h2 id="ppa-cta-title">Ready to Protect Every Product?</h2>
+          <p>Join the world's most trusted brands using TracelyTag to secure their global supply chains and empower their consumers.</p>
+          <div className="ppa-cta-actions">
+            <Link href="/contact-us" data-testid="button-ppa-book-demo" className="ppa-btn ppa-cta-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-ppa-contact-sales" className="ppa-btn ppa-cta-ghost">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -2513,7 +3310,7 @@ function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
-    <Route path="/solutions" component={Solutions} /><Route path="/solutions/analytics-business-intelligence" component={AnalyticsBusinessIntelligence} /><Route path="/solutions/:slug" component={SolutionPage} />
+    <Route path="/solutions" component={Solutions} /><Route path="/solutions/analytics-business-intelligence" component={AnalyticsBusinessIntelligence} /><Route path="/solutions/connected-packaging" component={ConnectedPackaging} /><Route path="/solutions/anti-counterfeiting" component={AntiCounterfeiting} /><Route path="/solutions/apparel-clothing" component={ApparelClothing} /><Route path="/solutions/digital-warranty" component={DigitalWarranty} /><Route path="/solutions/premium-product-authentication" component={PremiumProductAuthentication} /><Route path="/solutions/:slug" component={SolutionPage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/food-beverage" component={FoodBeverage} /><Route path="/industries/pharmaceuticals" component={Pharmaceuticals} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
