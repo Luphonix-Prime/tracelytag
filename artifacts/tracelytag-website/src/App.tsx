@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -157,24 +157,501 @@ const genericMap: Record<string, {title:string; image:string; eyebrow:string}> =
   'track-and-trace': { title:'Track & Trace Solution', image:'about-hero-diagram.png', eyebrow:'SOLUTIONS' },
 };
 
-const solutionScreenshotMap: Record<string, { file: string; alt: string }> = {
-  'analytics-business-intelligence': { file: 'Analytics & Business Intelligence Solution Page.png', alt: 'Analytics and Business Intelligence solution page' },
-  'analytics-dashboard': { file: 'Analytics Dashboard Solution Page.png', alt: 'Analytics Dashboard solution page' },
-  'analytics-dashboard-insights': { file: 'Analytics Dashboard Solution Page (1).png', alt: 'Analytics Dashboard business insights solution page' },
-  'anti-counterfeiting': { file: 'Anti-Counterfeiting Solution Page.png', alt: 'Anti-Counterfeiting solution page' },
-  'apparel-clothing': { file: 'Apparel & Clothing Industry Solution Page.png', alt: 'Apparel and Clothing industry solution page' },
-  'connected-packaging': { file: 'Connected Packaging Solution Page.png', alt: 'Connected Packaging solution page' },
-  'consumer-engagement': { file: 'Consumer Engagement Solution Page.png', alt: 'Consumer Engagement solution page' },
-  'customer-data-platform': { file: 'Customer Data Platform Solution Page.png', alt: 'Customer Data Platform solution page' },
-  'digital-warranty': { file: 'Digital Warranty Solution - Restored Style.png', alt: 'Digital Warranty solution page' },
-  'premium-product-authentication': { file: 'Premium Product Authentication Solution v2.png', alt: 'Premium Product Authentication solution page' },
-  'product-authentication': { file: 'Refined Product Authentication Solution.png', alt: 'Product Authentication solution page' },
-  'qr-code-generation-serialization': { file: 'QR Code Generation & Serialization Solution Page.png', alt: 'QR Code Generation and Serialization solution page' },
-  'marketing-automation': { file: 'Refined Marketing Automation Solution Page.png', alt: 'Marketing Automation solution page' },
-  'supply-chain-visibility': { file: 'Supply Chain Visibility Solution Page.png', alt: 'Supply Chain Visibility solution page' },
-  'track-and-trace': { file: 'Track & Trace Solution Page.png', alt: 'Track and Trace solution page' },
-  'verification-engine': { file: 'Verification Engine Solution Page.png', alt: 'Verification Engine solution page' },
+type SolutionFeature = [string, string, LucideIcon];
+type SolutionData = {
+  eyebrow: string;
+  title: string;
+  copy: string;
+  heroImage: string;
+  heroAlt: string;
+  highlights: SolutionFeature[];
+  challengeEyebrow: string;
+  challengeTitle: string;
+  challengeCopy: string;
+  challengeItems: string[];
+  panelTitle: string;
+  panelItems: string[];
+  journeyTitle: string;
+  journeySteps: string[];
+  capabilityTitle: string;
+  capabilityCopy: string;
+  capabilities: SolutionFeature[];
+  dashboardTitle: string;
+  dashboardCopy: string;
+  dashboardImage: string;
+  dashboardBullets: string[];
+  benefits: [string, string][];
+  ctaTitle: string;
+  ctaCopy: string;
 };
+
+const solutionBase: Pick<SolutionData, 'heroImage' | 'heroAlt' | 'highlights' | 'challengeItems' | 'panelItems' | 'journeySteps' | 'capabilities' | 'dashboardImage' | 'dashboardBullets'> = {
+  heroImage: 'about-hero-diagram.png',
+  heroAlt: 'Connected product intelligence platform',
+  highlights: [
+    ['Secure Digital Identity', 'Give every product a verifiable identity from the moment it is created.', ShieldCheck],
+    ['Real-Time Visibility', 'Turn every scan and movement into a clear operational signal.', Network],
+    ['Actionable Intelligence', 'Connect product events to decisions your teams can act on.', BarChart3],
+    ['Enterprise Ready', 'Scale trusted product experiences across markets, channels, and teams.', Globe2],
+  ] as SolutionFeature[],
+  challengeItems: ['Disconnected product data', 'Limited operational visibility', 'Counterfeit and trust risks', 'Slow, manual workflows'],
+  panelItems: ['Product Authentication', 'Supply Chain Visibility', 'Connected Experiences', 'Business Intelligence', 'Secure Serialization', 'Enterprise Integrations'],
+  journeySteps: ['Create', 'Identify', 'Move', 'Verify', 'Engage', 'Measure'],
+  capabilities: [
+    ['Digital Product Identity', 'Create a secure, persistent identity that travels with every product.', QrCode],
+    ['Workflow Automation', 'Replace manual checkpoints with connected, repeatable workflows.', Sparkles],
+    ['Supply Chain Intelligence', 'See the full product journey across locations and partners.', Truck],
+    ['Consumer Trust', 'Give customers useful, transparent product experiences.', Users],
+    ['Secure Data Capture', 'Capture verified events from production through the final scan.', ScanLine],
+    ['Enterprise Reporting', 'Turn product activity into insight for every business team.', BarChart3],
+  ] as SolutionFeature[],
+  dashboardImage: 'about-dashboard-monitor.png',
+  dashboardBullets: ['Live product activity across every market', 'Verification and exception monitoring', 'Operational trends your team can act on'],
+};
+
+const solutionPageData: Record<string, SolutionData> = {
+  'analytics-business-intelligence': {
+    ...solutionBase,
+    eyebrow: 'ANALYTICS & BUSINESS INTELLIGENCE',
+    title: 'Turn Product Data into Actionable Business Intelligence',
+    copy: 'Transform connected product data into the insights your teams need to make faster, smarter decisions across operations, supply chain, and customer experience.',
+    challengeEyebrow: 'WHY MODERN ANALYTICS MATTERS',
+    challengeTitle: 'Move from product signals to confident decisions.',
+    challengeCopy: 'TracelyTag brings identity, movement, and engagement data together so leaders can understand what is happening across the product journey.',
+    panelTitle: 'Enterprise Analytics Platform',
+    journeyTitle: 'The Intelligence Pipeline',
+    capabilityTitle: 'Advanced Platform Features',
+    capabilityCopy: 'A connected analytics foundation that makes every product event useful.',
+    dashboardTitle: 'The TracelyTag Executive Dashboard',
+    dashboardCopy: 'Give every team a shared, real-time view of product performance and business health.',
+    benefits: [['Better Decision Making', 'Replace assumptions with verified product intelligence.'], ['Operational Visibility', 'See issues early and respond before they become costly.'], ['Higher Efficiency', 'Focus teams on the actions that move the business forward.'], ['Improved Forecasting', 'Use real product signals to plan with confidence.'], ['Business Growth', 'Find opportunities hidden inside your product ecosystem.'], ['Actionable Insights', 'Make intelligence useful for every role.']],
+    ctaTitle: 'Ready to Turn Product Data into Business Intelligence?',
+    ctaCopy: 'Build a clearer view of your products, operations, and customers with TracelyTag.',
+  },
+  'analytics-dashboard': {
+    ...solutionBase,
+    eyebrow: 'ANALYTICS DASHBOARD',
+    title: 'See Your Product Ecosystem in Real Time',
+    copy: 'Bring product, supply chain, and verification activity into one intuitive dashboard built for clear decisions and confident action.',
+    challengeEyebrow: 'ONE VIEW OF YOUR OPERATION',
+    challengeTitle: 'Stop searching for the signal.',
+    challengeCopy: 'Your teams should not need to reconcile disconnected reports to understand how products are moving. TracelyTag makes the important signals visible at a glance.',
+    panelTitle: 'A Dashboard Built for Action',
+    journeyTitle: 'From Product Event to Business Insight',
+    capabilityTitle: 'Dashboard Capabilities',
+    capabilityCopy: 'A focused workspace for monitoring the health of your product network.',
+    dashboardTitle: 'Your Product Intelligence Dashboard',
+    dashboardCopy: 'Monitor activity, spot exceptions, and share a trusted source of truth with every stakeholder.',
+    benefits: [['Faster Decisions', 'Give leaders the context they need without waiting for a report.'], ['Shared Visibility', 'Align operations, commercial, and executive teams around one view.'], ['Exception Management', 'Surface unusual activity before it impacts customers.'], ['Clear Reporting', 'Turn complex product data into easy-to-understand trends.'], ['Team Efficiency', 'Reduce manual analysis and repetitive data gathering.'], ['Confident Action', 'Move from what happened to what to do next.']],
+    ctaTitle: 'Ready to See Your Product Ecosystem Clearly?',
+    ctaCopy: 'Give your teams the live intelligence they need to move with confidence.',
+  },
+  'analytics-dashboard-insights': {
+    ...solutionBase,
+    eyebrow: 'ANALYTICS DASHBOARD INSIGHTS',
+    title: 'Find the Insights Hidden in Every Product Interaction',
+    copy: 'Understand how products move, how customers engage, and where your operation can improve with connected analytics and intelligent reporting.',
+    challengeEyebrow: 'FROM DATA TO DIRECTION',
+    challengeTitle: 'Make every signal count.',
+    challengeCopy: 'TracelyTag organizes verified product events into patterns your teams can use to improve performance, reduce risk, and grow trust.',
+    panelTitle: 'Insights for Every Team',
+    journeyTitle: 'The Product Insight Journey',
+    capabilityTitle: 'Insight-Driven Capabilities',
+    capabilityCopy: 'Move beyond dashboards with context that helps your teams choose the next best action.',
+    dashboardTitle: 'A Clearer View of What Matters',
+    dashboardCopy: 'Give stakeholders the right level of detail, from executive summaries to operational investigation.',
+    benefits: [['Identify Trends', 'Understand what is changing across your product network.'], ['Prioritize Action', 'Focus attention on the exceptions with the greatest impact.'], ['Improve Performance', 'Use evidence to refine workflows and partner operations.'], ['Protect Trust', 'Spot suspicious activity and respond with context.'], ['Learn from Engagement', 'Connect customer interactions to product performance.'], ['Scale Intelligence', 'Make useful insight available across the enterprise.']],
+    ctaTitle: 'Ready to Turn Product Interactions into Insights?',
+    ctaCopy: 'Connect your data and make smarter product decisions with TracelyTag.',
+  },
+  'anti-counterfeiting': {
+    ...solutionBase,
+    eyebrow: 'ANTI-COUNTERFEITING',
+    title: 'Protect Your Products. Preserve Your Trust.',
+    copy: 'Secure every product with a verifiable digital identity that helps brands detect counterfeits, protect customers, and defend the value of their products.',
+    heroImage: 'why-hero-diagram.png',
+    challengeEyebrow: 'THE COUNTERFEIT CHALLENGE',
+    challengeTitle: 'Make authenticity easy to prove.',
+    challengeCopy: 'Counterfeit products damage revenue, reputation, and customer confidence. TracelyTag gives every participant a simple way to verify what is real.',
+    panelTitle: 'Why Brands Choose TracelyTag',
+    journeyTitle: 'The Verification Lifecycle',
+    capabilityTitle: 'Integrated Brand Protection',
+    capabilityCopy: 'Layer identity, verification, and intelligence across every channel where products move.',
+    dashboardTitle: 'Monitor Authenticity at Scale',
+    dashboardCopy: 'See verification activity, investigate unusual patterns, and protect your brand with a live view of the network.',
+    benefits: [['Protect Brand Equity', 'Give customers a reliable reason to trust your products.'], ['Detect Counterfeits', 'Identify suspicious verification activity and emerging risk.'], ['Improve Customer Trust', 'Make authenticity proof fast and accessible.'], ['Strengthen Channels', 'Extend protection across distribution and retail.'], ['Support Investigations', 'Use verified product data to act with confidence.'], ['Measure Protection', 'Understand where and how your products are verified.']],
+    ctaTitle: 'Ready to Protect Your Products?',
+    ctaCopy: 'Make every product verifiable and every customer interaction more trustworthy.',
+  },
+  'apparel-clothing': {
+    ...solutionBase,
+    eyebrow: 'APPAREL & CLOTHING',
+    title: 'Protect Every Garment with Digital Product Identity',
+    copy: 'Help apparel brands authenticate products, share product stories, improve supply chain visibility, and create connected customer experiences.',
+    heroImage: 'about-hero-diagram.png',
+    challengeEyebrow: 'APPAREL INDUSTRY CHALLENGES',
+    challengeTitle: 'Make every garment part of a trusted journey.',
+    challengeCopy: 'From materials to resale, TracelyTag connects the information customers and brands need to understand a garment’s journey.',
+    panelTitle: 'Why Apparel Brands Choose TracelyTag',
+    journeyTitle: 'The End-to-End Garment Journey',
+    capabilityTitle: 'Intelligence Across the Product Lifecycle',
+    capabilityCopy: 'Create a durable digital thread from material sourcing to the customer’s closet.',
+    dashboardTitle: 'See Every Garment in Context',
+    dashboardCopy: 'Connect production, distribution, authentication, and engagement data in one product view.',
+    benefits: [['Protect Brand Reputation', 'Make every item easy to authenticate.'], ['Support Transparency', 'Share trusted product history and sustainability information.'], ['Improve Visibility', 'Track garments from source to sale.'], ['Build Loyalty', 'Create useful post-purchase experiences.'], ['Enable Circularity', 'Keep product information available through resale and reuse.'], ['Generate Intelligence', 'Learn from how products move and engage.']],
+    ctaTitle: 'Ready to Digitize Every Garment?',
+    ctaCopy: 'Build trusted, connected apparel experiences with TracelyTag.',
+  },
+  'connected-packaging': {
+    ...solutionBase,
+    eyebrow: 'CONNECTED PACKAGING',
+    title: 'Turn Packaging into a Connected Product Experience',
+    copy: 'Transform every package into a trusted digital touchpoint for authentication, product information, engagement, and measurable business insight.',
+    heroImage: 'about-hero-diagram.png',
+    challengeEyebrow: 'THE CONNECTED PACKAGING OPPORTUNITY',
+    challengeTitle: 'Packaging can do more than protect a product.',
+    challengeCopy: 'Give every pack a secure identity and create a direct, useful relationship between your product and the people who choose it.',
+    panelTitle: 'A Connected Package, End to End',
+    journeyTitle: 'From Pack to Product Experience',
+    capabilityTitle: 'Connected Packaging Capabilities',
+    capabilityCopy: 'Build a flexible digital layer around packaging without disrupting the physical product.',
+    dashboardTitle: 'Measure Every Product Interaction',
+    dashboardCopy: 'Understand where packages are verified, what information is used, and how customers engage.',
+    benefits: [['Strengthen Authenticity', 'Give customers confidence at the point of purchase.'], ['Share Product Information', 'Make important product details easy to access.'], ['Improve Engagement', 'Create direct, relevant experiences after purchase.'], ['Support Operations', 'Connect package-level events to supply chain workflows.'], ['Learn from Scans', 'Turn interactions into useful product intelligence.'], ['Extend Brand Value', 'Keep the relationship going beyond the shelf.']],
+    ctaTitle: 'Ready to Connect Your Packaging?',
+    ctaCopy: 'Create more trusted and measurable product experiences with TracelyTag.',
+  },
+  'consumer-engagement': {
+    ...solutionBase,
+    eyebrow: 'CONSUMER ENGAGEMENT',
+    title: 'Build Stronger Relationships with Every Product',
+    copy: 'Turn verified product interactions into relevant, trusted experiences that connect brands with customers long after purchase.',
+    heroImage: 'about-dashboard-monitor.png',
+    challengeEyebrow: 'THE MODERN CUSTOMER RELATIONSHIP',
+    challengeTitle: 'Earn attention with a useful product experience.',
+    challengeCopy: 'A secure product identity creates a trusted moment for customers to learn, verify, register, and engage with your brand.',
+    panelTitle: 'Connected Experiences That Convert',
+    journeyTitle: 'The Customer Engagement Journey',
+    capabilityTitle: 'Experiences Built on Product Trust',
+    capabilityCopy: 'Use the product itself as a direct, measurable channel for meaningful engagement.',
+    dashboardTitle: 'Understand Customer Product Interactions',
+    dashboardCopy: 'Connect verification and engagement signals to see what customers need and where they respond.',
+    benefits: [['Build Trust', 'Lead with a verified, transparent product experience.'], ['Increase Engagement', 'Give customers a clear reason to interact.'], ['Grow Loyalty', 'Create relationships that continue after purchase.'], ['Learn Directly', 'Capture useful first-party product interactions.'], ['Protect the Experience', 'Ensure customers reach trusted product information.'], ['Measure Impact', 'Connect engagement activity to product performance.']],
+    ctaTitle: 'Ready to Create More Connected Customers?',
+    ctaCopy: 'Turn every product into a trusted, useful relationship with your brand.',
+  },
+  'customer-data-platform': {
+    ...solutionBase,
+    eyebrow: 'CUSTOMER DATA PLATFORM',
+    title: 'Connect Product Data to Customer Intelligence',
+    copy: 'Unify verified product interactions and customer signals to build a clearer, more useful understanding of the people who use your products.',
+    heroImage: 'about-dashboard-monitor.png',
+    challengeEyebrow: 'A BETTER CUSTOMER DATA FOUNDATION',
+    challengeTitle: 'Bring the product relationship into focus.',
+    challengeCopy: 'TracelyTag connects product identity with customer engagement so teams can build intelligence on trusted first-party signals.',
+    panelTitle: 'Customer Intelligence, Connected',
+    journeyTitle: 'The Customer Data Journey',
+    capabilityTitle: 'A Smarter Customer Data Layer',
+    capabilityCopy: 'Create a more complete customer view without losing the context of the product relationship.',
+    dashboardTitle: 'See Customers Through the Product Lens',
+    dashboardCopy: 'Combine product events and engagement signals into a clearer view of customer behavior and value.',
+    benefits: [['Trusted First-Party Data', 'Build intelligence from verified product interactions.'], ['Clearer Customer Views', 'Connect people, products, and experiences.'], ['Better Personalization', 'Make engagement more relevant and useful.'], ['Improved Retention', 'Use product moments to deepen customer relationships.'], ['Cross-Team Alignment', 'Make customer intelligence useful beyond marketing.'], ['Measurable Growth', 'Understand the outcomes of connected engagement.']],
+    ctaTitle: 'Ready to Connect Product and Customer Data?',
+    ctaCopy: 'Build customer intelligence on a foundation of trusted product interactions.',
+  },
+  'digital-warranty': {
+    ...solutionBase,
+    eyebrow: 'DIGITAL WARRANTY',
+    title: 'Make Every Warranty Simple, Secure, and Connected',
+    copy: 'Replace paper processes with a digital warranty experience that protects products, supports customers, and gives service teams better intelligence.',
+    heroImage: 'why-dashboard-monitor.png',
+    challengeEyebrow: 'THE WARRANTY EXPERIENCE',
+    challengeTitle: 'A better product relationship after purchase.',
+    challengeCopy: 'Connect warranty coverage to a verified product identity so customers and service teams can move faster with less friction.',
+    panelTitle: 'A Warranty Platform Built for Trust',
+    journeyTitle: 'The Digital Warranty Journey',
+    capabilityTitle: 'Warranty Intelligence for Every Team',
+    capabilityCopy: 'Make registration, coverage, service, and insight part of one connected experience.',
+    dashboardTitle: 'See Product Coverage and Service Activity',
+    dashboardCopy: 'Give teams a live view of registrations, claims, coverage, and product lifecycle signals.',
+    benefits: [['Simplify Registration', 'Make activation quick and easy for customers.'], ['Reduce Service Friction', 'Give support teams verified product context.'], ['Protect Coverage', 'Tie warranty rights to a trusted product identity.'], ['Improve Retention', 'Turn service moments into stronger relationships.'], ['Reduce Administration', 'Replace manual records with connected workflows.'], ['Learn from Service', 'Use warranty data to improve products and operations.']],
+    ctaTitle: 'Ready to Modernize Your Warranty Experience?',
+    ctaCopy: 'Connect products, customers, and service teams with a digital warranty workflow.',
+  },
+  'premium-product-authentication': {
+    ...solutionBase,
+    eyebrow: 'PREMIUM PRODUCT AUTHENTICATION',
+    title: 'Premium Product Authentication',
+    copy: 'Protect high-value products with secure digital identity and a verification experience designed to preserve trust at every touchpoint.',
+    heroImage: 'why-hero-diagram.png',
+    challengeEyebrow: 'AUTHENTICITY FOR PREMIUM PRODUCTS',
+    challengeTitle: 'Make every valuable product provably real.',
+    challengeCopy: 'Premium products deserve an authentication experience as considered as the product itself—from production to collector, customer, and resale.',
+    panelTitle: 'Confidence at Every Touchpoint',
+    journeyTitle: 'The Premium Product Journey',
+    capabilityTitle: 'Authentication Built for Premium Brands',
+    capabilityCopy: 'Combine product identity, verification, and intelligence to protect value across the lifecycle.',
+    dashboardTitle: 'A Clear View of Product Authenticity',
+    dashboardCopy: 'Monitor where products are verified and investigate patterns that may put brand value at risk.',
+    benefits: [['Protect Exclusivity', 'Preserve the trust and scarcity that premium products command.'], ['Reduce Counterfeits', 'Make authentication accessible without compromising the experience.'], ['Support Resale', 'Carry trusted product identity into secondary markets.'], ['Strengthen Loyalty', 'Create a premium relationship beyond the transaction.'], ['Protect Brand Value', 'Use intelligence to understand authenticity risk.'], ['Deliver Confidence', 'Give every customer a simple answer: it is real.']],
+    ctaTitle: 'Ready to Protect Every Premium Product?',
+    ctaCopy: 'Build an authentication experience worthy of your brand.',
+  },
+  'product-authentication': {
+    ...solutionBase,
+    eyebrow: 'PRODUCT AUTHENTICATION',
+    title: 'Give Every Product a Trusted Digital Identity',
+    copy: 'Authenticate products instantly with a secure, scalable verification layer that protects brands and helps customers buy with confidence.',
+    heroImage: 'why-hero-diagram.png',
+    challengeEyebrow: 'THE AUTHENTICATION LAYER',
+    challengeTitle: 'Turn product identity into customer confidence.',
+    challengeCopy: 'TracelyTag makes it simple to create, manage, and verify a secure digital identity for every product you make.',
+    panelTitle: 'Authentication Across the Lifecycle',
+    journeyTitle: 'The Product Authentication Journey',
+    capabilityTitle: 'A Complete Authentication Platform',
+    capabilityCopy: 'Protect products from creation through customer verification with one connected identity layer.',
+    dashboardTitle: 'Product Authentication Intelligence',
+    dashboardCopy: 'Monitor verification activity and product identity health across your full network.',
+    benefits: [['Prove Authenticity', 'Give customers a fast, reliable verification experience.'], ['Protect Brand Trust', 'Reduce the risk and cost of counterfeit products.'], ['Improve Visibility', 'Understand when and where products are verified.'], ['Support Partners', 'Give every channel a trusted way to verify.'], ['Scale Securely', 'Authenticate products across markets and product lines.'], ['Act on Signals', 'Use verification data to improve protection.']],
+    ctaTitle: 'Ready to Authenticate Every Product?',
+    ctaCopy: 'Build a trusted product identity layer with TracelyTag.',
+  },
+  'qr-code-generation-serialization': {
+    ...solutionBase,
+    eyebrow: 'QR CODE GENERATION & SERIALIZATION',
+    title: 'Generate Secure Product Identities at Scale',
+    copy: 'Create unique, secure QR-powered identities for every product and connect serialization to the workflows that keep your operation moving.',
+    heroImage: 'hardware-hero-diagram.png',
+    challengeEyebrow: 'SERIALIZATION WITHOUT COMPLEXITY',
+    challengeTitle: 'Every product starts with a secure identity.',
+    challengeCopy: 'Generate identifiers at the speed of production, manage them across product lines, and connect every code to the intelligence layer.',
+    panelTitle: 'Secure Generation for Every Workflow',
+    journeyTitle: 'The Serialization Lifecycle',
+    capabilityTitle: 'Enterprise QR and Serialization',
+    capabilityCopy: 'A flexible foundation for generating, assigning, managing, and verifying product identities.',
+    dashboardTitle: 'Monitor Serialization in Real Time',
+    dashboardCopy: 'See code generation, assignment, production activity, and verification signals in one view.',
+    benefits: [['Generate at Scale', 'Create unique product identities for every production run.'], ['Reduce Errors', 'Connect codes to controlled, repeatable workflows.'], ['Improve Traceability', 'Carry identity from production through verification.'], ['Secure Products', 'Use a digital identity layer built for trust.'], ['Support GS1 Readiness', 'Build a strong foundation for product data standards.'], ['Measure Production', 'See how identity flows through the operation.']],
+    ctaTitle: 'Ready to Build Secure Product Identities?',
+    ctaCopy: 'Connect serialization and product intelligence from the first code.',
+  },
+  'marketing-automation': {
+    ...solutionBase,
+    eyebrow: 'MARKETING AUTOMATION',
+    title: 'Turn Product Interactions into Marketing Momentum',
+    copy: 'Use trusted product interactions to create timely, relevant customer journeys that keep your brand connected beyond the point of purchase.',
+    heroImage: 'about-dashboard-monitor.png',
+    challengeEyebrow: 'MARKETING BEYOND THE SHELF',
+    challengeTitle: 'Make the product your most useful channel.',
+    challengeCopy: 'A product interaction is a high-intent moment. TracelyTag helps you respond with experiences that are relevant, measurable, and trusted.',
+    panelTitle: 'Automation Built on Product Context',
+    journeyTitle: 'The Connected Marketing Journey',
+    capabilityTitle: 'Product-Led Marketing Automation',
+    capabilityCopy: 'Connect verified product moments to campaigns, journeys, and the customer data your teams already use.',
+    dashboardTitle: 'Measure Product-Led Engagement',
+    dashboardCopy: 'See which products, messages, and experiences are creating meaningful customer action.',
+    benefits: [['Reach Customers Directly', 'Build a trusted, first-party relationship after purchase.'], ['Improve Relevance', 'Use product context to make every message more useful.'], ['Automate Journeys', 'Create repeatable experiences without manual follow-up.'], ['Grow Loyalty', 'Turn product interactions into lasting brand relationships.'], ['Protect the Channel', 'Keep customers inside a trusted product experience.'], ['Measure Outcomes', 'Connect engagement to real product and business signals.']],
+    ctaTitle: 'Ready to Put Product Interactions to Work?',
+    ctaCopy: 'Create marketing experiences customers want to come back to.',
+  },
+  'supply-chain-visibility': {
+    ...solutionBase,
+    eyebrow: 'SUPPLY CHAIN VISIBILITY',
+    title: 'See Every Product Movement with Confidence',
+    copy: 'Connect production, distribution, and partner events to create real-time visibility across the complete product journey.',
+    heroImage: 'hardware-hero-diagram.png',
+    challengeEyebrow: 'THE VISIBILITY GAP',
+    challengeTitle: 'Know where products are—and what happened next.',
+    challengeCopy: 'TracelyTag turns disconnected supply chain events into a shared, trusted view that helps teams respond faster and operate with confidence.',
+    panelTitle: 'Visibility Across Every Node',
+    journeyTitle: 'The Connected Supply Chain',
+    capabilityTitle: 'Supply Chain Intelligence',
+    capabilityCopy: 'Connect the physical movement of products to the operational decisions that keep business moving.',
+    dashboardTitle: 'Real-Time Supply Chain Monitoring',
+    dashboardCopy: 'See product movement, exceptions, and partner activity across the network from one intelligent view.',
+    benefits: [['Improve Visibility', 'Know what is moving through every stage of the network.'], ['Find Exceptions', 'Identify delays and unusual activity earlier.'], ['Reduce Risk', 'Use trusted events to respond before issues spread.'], ['Align Partners', 'Share a common view across the ecosystem.'], ['Improve Operations', 'Replace manual reconciliation with connected data.'], ['Build Resilience', 'Make better decisions when conditions change.']],
+    ctaTitle: 'Ready to See Your Supply Chain Clearly?',
+    ctaCopy: 'Connect every product movement to a more resilient operation.',
+  },
+  'track-and-trace': {
+    ...solutionBase,
+    eyebrow: 'TRACK & TRACE',
+    title: 'Follow Every Product from Source to Consumer',
+    copy: 'Create a complete, verifiable product journey that helps teams improve operations, protect customers, and build trust across every channel.',
+    heroImage: 'about-hero-diagram.png',
+    challengeEyebrow: 'END-TO-END TRACEABILITY',
+    challengeTitle: 'Every movement should tell you something.',
+    challengeCopy: 'Connect events across production, logistics, retail, and customer interaction to understand the journey of every product.',
+    panelTitle: 'The Complete Product Journey',
+    journeyTitle: 'From Source to Consumer',
+    capabilityTitle: 'Traceability That Creates Value',
+    capabilityCopy: 'Make traceability useful for operations, compliance, brand protection, and customer trust.',
+    dashboardTitle: 'The Product Journey in One View',
+    dashboardCopy: 'Investigate product history, monitor movement, and share trusted traceability data across the enterprise.',
+    benefits: [['Complete Product History', 'Build a durable record of every important event.'], ['Faster Investigations', 'Find the context you need when an issue occurs.'], ['Stronger Compliance', 'Support transparent, accountable product workflows.'], ['Better Operations', 'Use movement data to improve the network.'], ['Customer Confidence', 'Make product history easier to trust.'], ['Actionable Intelligence', 'Turn traceability into business value.']],
+    ctaTitle: 'Ready to Trace Every Product?',
+    ctaCopy: 'Build a complete product journey with TracelyTag.',
+  },
+  'verification-engine': {
+    ...solutionBase,
+    eyebrow: 'VERIFICATION ENGINE',
+    title: 'Make Product Verification Instant and Intelligent',
+    copy: 'Give every stakeholder a fast, secure way to verify products while turning verification events into intelligence for your business.',
+    heroImage: 'why-dashboard-monitor.png',
+    challengeEyebrow: 'VERIFICATION AT THE MOMENT OF TRUTH',
+    challengeTitle: 'A verification answer your teams can trust.',
+    challengeCopy: 'The TracelyTag verification engine checks product identity, captures context, and helps your teams act on what each event means.',
+    panelTitle: 'One Engine. Every Verification.',
+    journeyTitle: 'The Verification Flow',
+    capabilityTitle: 'Verification Engine Capabilities',
+    capabilityCopy: 'Combine secure identity, flexible workflows, and real-time intelligence in every verification.',
+    dashboardTitle: 'See Verification Activity as It Happens',
+    dashboardCopy: 'Monitor verification patterns, investigate exceptions, and understand product trust across the network.',
+    benefits: [['Instant Answers', 'Verify products quickly at any point in the journey.'], ['Secure Decisions', 'Use trusted identity data to reduce uncertainty.'], ['Flexible Workflows', 'Support teams, partners, and customers with one engine.'], ['Risk Detection', 'Find unusual patterns that need attention.'], ['Better Experiences', 'Make verification simple for the person holding the product.'], ['Live Intelligence', 'Turn each verification into a useful signal.']],
+    ctaTitle: 'Ready to Make Verification Smarter?',
+    ctaCopy: 'Build trusted product verification into every customer and operational journey.',
+  },
+};
+
+function SolutionJourney({ steps }: { steps: string[] }) {
+  const [activeStep, setActiveStep] = useState(0);
+  return <div className="solution-journey">
+    <div className="solution-stepper" role="tablist" aria-label="Product journey stages">
+      {steps.map((step, index) => <button key={step} type="button" role="tab" aria-selected={activeStep === index} aria-controls={`journey-panel-${index}`} className={`solution-step ${activeStep === index ? 'active' : ''}`} onClick={() => setActiveStep(index)}>
+        <span className="solution-step-number">{String(index + 1).padStart(2, '0')}</span>
+        <span>{step}</span>
+      </button>)}
+    </div>
+    <div className="solution-journey-panel" id={`journey-panel-${activeStep}`} role="tabpanel">
+      <p className="eyebrow">STAGE {String(activeStep + 1).padStart(2, '0')}</p>
+      <h3 className="display mt-2 text-[22px] font-bold text-[#172536]">{steps[activeStep]}</h3>
+      <p className="mt-2 max-w-[440px] text-[11px] leading-5 text-[#667487]">Capture a verified event at the {steps[activeStep].toLowerCase()} stage and connect it to the next decision in your product journey.</p>
+    </div>
+  </div>;
+}
+
+function BenefitsExplorer({ benefits }: { benefits: [string, string][] }) {
+  const [activeBenefit, setActiveBenefit] = useState(0);
+  const [activeTitle, activeCopy] = benefits[activeBenefit];
+  return <div className="solution-benefits">
+    <div className="solution-benefit-list" role="tablist" aria-label="Business benefits">
+      {benefits.map(([title], index) => <button key={title} type="button" role="tab" aria-selected={activeBenefit === index} className={`solution-benefit-tab ${activeBenefit === index ? 'active' : ''}`} onClick={() => setActiveBenefit(index)}>
+        <span>{String(index + 1).padStart(2, '0')}</span>{title}
+      </button>)}
+    </div>
+    <div className="solution-benefit-detail" role="tabpanel">
+      <p className="eyebrow">SELECTED OUTCOME</p>
+      <h3 className="display mt-3 text-[26px] font-bold text-[#172536]">{activeTitle}</h3>
+      <p className="mt-3 text-[12px] leading-6 text-[#687382]">{activeCopy}</p>
+      <a href="#contact-form" className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.12em] text-[#0753a4]">Discuss this outcome <ArrowRight size={13} /></a>
+    </div>
+  </div>;
+}
+
+function SolutionPage() {
+  const { slug = 'analytics-business-intelligence' } = useParams<{ slug: string }>();
+  const data = solutionPageData[slug] || solutionPageData['analytics-business-intelligence'];
+  useEffect(() => {
+    document.title = `${data.title} | TracelyTag`;
+    return () => { document.title = 'TracelyTag'; };
+  }, [data.title]);
+  return <Shell>
+    <section className="solution-hero" aria-labelledby="solution-title">
+      <div className="container-tight solution-hero-inner">
+        <div className="solution-hero-copy fade-up">
+          <p className="eyebrow mb-5">{data.eyebrow}</p>
+          <h1 id="solution-title" className="display max-w-[560px] text-[40px] font-extrabold leading-[.98] text-[#172536] md:text-[62px]">{data.title}</h1>
+          <p className="mt-6 max-w-[510px] text-[13px] leading-6 text-[#596575]">{data.copy}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href="/contact-us">Book a Demo</Button>
+            <a href="#solution-capabilities" className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-[#cfd9e5] bg-white px-5 py-3 text-[11px] font-bold text-[#17365f] transition hover:border-[#0a51a5]">Explore Solution <ArrowRight size={13} /></a>
+          </div>
+        </div>
+        <div className="solution-hero-art fade-up delay-1">
+          <div className="solution-art-grid" aria-hidden="true" />
+          <img src={`${root}${data.heroImage}`} alt={data.heroAlt} />
+          <span className="solution-art-label solution-art-label-one">SECURE IDENTITY</span>
+          <span className="solution-art-label solution-art-label-two">LIVE INTELLIGENCE</span>
+        </div>
+      </div>
+    </section>
+
+    <section className="container-tight solution-highlights" aria-label="Solution highlights">
+      {data.highlights.map(([title, text, Icon], index) => <article key={title} className={`card-line solution-highlight-card fade-up delay-${Math.min(index + 1, 3)}`}>
+        <span className="solution-icon"><Icon size={17} strokeWidth={1.7} /></span>
+        <h2>{title}</h2>
+        <p>{text}</p>
+      </article>)}
+    </section>
+
+    <section className="solution-challenge">
+      <div className="container-tight grid items-start gap-10 py-16 md:grid-cols-[.95fr_1.05fr] md:py-20">
+        <div>
+          <p className="eyebrow mb-4">{data.challengeEyebrow}</p>
+          <h2 className="display max-w-[520px] text-[31px] font-bold text-[#172536] md:text-[37px]">{data.challengeTitle}</h2>
+          <p className="mt-4 max-w-[500px] text-[12px] leading-6 text-[#657180]">{data.challengeCopy}</p>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            {data.challengeItems.map(item => <p key={item} className="text-[11px] text-[#526174]"><Check size={13} className="mr-2 inline text-[#0753a4]" />{item}</p>)}
+          </div>
+        </div>
+        <div className="solution-panel">
+          <p className="eyebrow !text-[#8fddf3]">TRACELYTAG PLATFORM</p>
+          <h2 className="display mt-3 text-[27px] font-bold">{data.panelTitle}</h2>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">{data.panelItems.map(item => <p key={item} className="border-b border-white/20 pb-2 text-[10px] text-white/85"><Check size={12} className="mr-2 inline text-[#8fddf3]" />{item}</p>)}</div>
+          <Link href="/contact-us" className="mt-7 inline-flex items-center gap-2 rounded bg-white px-4 py-2.5 text-[10px] font-bold text-[#064aa0]">See How It Works <ArrowRight size={13} /></Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="container-tight py-16 md:py-20" aria-labelledby="journey-title">
+      <div className="text-center">
+        <p className="eyebrow mb-3">END-TO-END VISIBILITY</p>
+        <h2 id="journey-title" className="display text-[28px] font-bold text-[#172536] md:text-[34px]">{data.journeyTitle}</h2>
+        <p className="mx-auto mt-3 max-w-[500px] text-[11px] leading-5 text-[#687382]">A connected view of the moments that shape every product journey.</p>
+      </div>
+      <div className="mt-10"><SolutionJourney steps={data.journeySteps} /></div>
+    </section>
+
+    <section id="solution-capabilities" className="solution-capabilities" aria-labelledby="capability-title">
+      <div className="container-tight py-16 md:py-20">
+        <div className="mx-auto max-w-[560px] text-center">
+          <p className="eyebrow mb-3">CONNECTED PRODUCT INTELLIGENCE</p>
+          <h2 id="capability-title" className="display text-[29px] font-bold text-[#172536] md:text-[35px]">{data.capabilityTitle}</h2>
+          <p className="mt-3 text-[11px] leading-5 text-[#687382]">{data.capabilityCopy}</p>
+        </div>
+        <div className="mt-9 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {data.capabilities.map(([title, text, Icon], index) => <article key={title} className="card-line rounded border bg-white p-5">
+            <span className="grid size-8 place-items-center rounded-md bg-[#edf5ff] text-[#0753a4]"><Icon size={16} strokeWidth={1.7} /></span>
+            <p className="mt-5 text-[9px] font-bold uppercase tracking-[.12em] text-[#7b8794]">0{index + 1}</p>
+            <h3 className="mt-2 text-[12px] font-bold text-[#20324b]">{title}</h3>
+            <p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{text}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="container-tight solution-dashboard" aria-labelledby="dashboard-title">
+      <div className="solution-dashboard-copy">
+        <p className="eyebrow mb-4">REAL-TIME INTELLIGENCE</p>
+        <h2 id="dashboard-title" className="display text-[30px] font-bold text-[#172536] md:text-[37px]">{data.dashboardTitle}</h2>
+        <p className="mt-4 text-[12px] leading-6 text-[#687382]">{data.dashboardCopy}</p>
+        <div className="mt-6 space-y-3">{data.dashboardBullets.map(item => <p key={item} className="text-[11px] text-[#526174]"><Check size={13} className="mr-2 inline text-[#0753a4]" />{item}</p>)}</div>
+        <Link href="/contact-us" className="mt-7 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.12em] text-[#0753a4]">Talk to our team <ArrowRight size={13} /></Link>
+      </div>
+      <div className="solution-dashboard-image soft-panel"><img src={`${root}${data.dashboardImage}`} alt={`${data.dashboardTitle} showing product intelligence`} /></div>
+    </section>
+
+    <section className="container-tight py-16 md:py-20" aria-labelledby="benefits-title">
+      <div className="text-center">
+        <p className="eyebrow mb-3">TANGIBLE BUSINESS BENEFITS</p>
+        <h2 id="benefits-title" className="display text-[28px] font-bold text-[#172536] md:text-[34px]">Measurable outcomes across the enterprise.</h2>
+      </div>
+      <div className="mt-9"><BenefitsExplorer benefits={data.benefits} /></div>
+    </section>
+
+    <CTA title={data.ctaTitle} copy={data.ctaCopy} />
+  </Shell>;
+}
 
 type IndustryData = {
   eyebrow: string;
@@ -321,12 +798,6 @@ function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   return <Shell><Hero eyebrow={data.eyebrow} title={data.title} copy="The unified product intelligence platform that helps manufacturers and brands create secure, transparent, and intelligent products." image={data.image} alt={data.title} /><FeatureCards items={aboutFeatures} /><MonitorSection image={data.image.includes('dashboard') ? data.image : 'about-dashboard-monitor.png'} title="The Intelligence Layer" /><BlueBand title="Connected Product Intelligence" items={['Product Authentication','Track & Trace','Supply Chain Visibility','Consumer Engagement']} /><CTA title="Ready to Build Connected Products?" copy="Join the global leaders creating trusted, intelligent products with TracelyTag." /></Shell>;
 }
 
-function SolutionReferencePage() {
-  const { slug = 'analytics-business-intelligence' } = useParams<{ slug: string }>();
-  const solution = solutionScreenshotMap[slug] || solutionScreenshotMap['analytics-business-intelligence'];
-  return <main className="min-h-screen overflow-x-hidden bg-white"><img src={`${root}solution/${encodeURI(solution.file)}`} alt={solution.alt} className="block h-auto w-full" /></main>;
-}
-
 function Platform() { return <Shell><Hero eyebrow="THE TRACELYTAG PLATFORM" title="One Platform. Complete Product Intelligence." copy="Build, authenticate, track, and connect every product across its entire lifecycle." image="about-hero-diagram.png" alt="TracelyTag product intelligence platform" /><FeatureCards items={aboutFeatures} /><BlueBand title="The Intelligence Layer" items={['Product Digitalization','Product Authentication','Case & Pallet Aggregation','Mobile Verification']} /><CTA title="Ready to Build Connected Products?" copy="Join the global leaders creating trusted, intelligent products with TracelyTag." /></Shell>; }
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
@@ -335,7 +806,7 @@ function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
-    <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionReferencePage} />
+    <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
