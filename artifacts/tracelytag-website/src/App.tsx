@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, Brackets, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, CloudUpload, Cpu, Crosshair, Download, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gavel, Globe, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, MapPin, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Pill, Printer, Puzzle, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, Tractor, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Utensils, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, Brackets, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, CloudUpload, Cpu, Crosshair, Download, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gauge, Gavel, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, MapPin, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Pill, Printer, Puzzle, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, SquareTerminal, Store, Tag, Tractor, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Utensils, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -2348,6 +2348,164 @@ function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
 }
 
 function Platform() { return <Shell><Hero eyebrow="THE TRACELYTAG PLATFORM" title="One Platform. Complete Product Intelligence." copy="Build, authenticate, track, and connect every product across its entire lifecycle." image="about-hero-diagram.png" alt="TracelyTag product intelligence platform" /><FeatureCards items={aboutFeatures} /><BlueBand title="The Intelligence Layer" items={['Product Digitalization','Product Authentication','Case & Pallet Aggregation','Mobile Verification']} /><CTA title="Ready to Build Connected Products?" copy="Join the global leaders creating trusted, intelligent products with TracelyTag." /></Shell>; }
+const abiFeatures: [string, string, LucideIcon][] = [
+  ['Business Intelligence', 'Centralized data engine for all your enterprise reporting needs.', ChartNoAxesCombined],
+  ['Real-Time Analytics', 'Live streaming of authentication and scan data as it happens globally.', Gauge],
+  ['Performance Insights', 'Deep dive into product lifecycles and supply chain health metrics.', ScanSearch],
+  ['Decision Intelligence', 'Automated pattern recognition for predictive executive decisions.', Grip],
+];
+const abiChallenges: [string, string][] = [
+  ['Data scattered across systems', 'Eliminate siloes by unifying all product event data into a single source of truth.'],
+  ['Limited business visibility', 'Gain a 360-degree view of your product journey from manufacture to consumer.'],
+  ['Slow reporting', 'Replace week-long manual report generation with instant, real-time dashboards.'],
+  ['Difficult decision making', 'Stop relying on gut feeling and start making data-driven strategic choices.'],
+  ['Manual reporting', 'Automate high-stake industrial compliance and performance reports.'],
+  ['Missed growth opportunities', 'Identify market trends and consumer demand shifts before they pass.'],
+];
+const abiPlatformItems = ['Executive dashboards', 'Live KPI monitoring', 'Product intelligence', 'Consumer insights', 'Supply chain analytics', 'Business reporting'];
+const abiPipeline: [string, string][] = [
+  ['Product Event', 'Scans, authentications, or movements.'],
+  ['Data Collection', 'Instant ingestion from global nodes.'],
+  ['Data Processing', 'Cleaning and normalizing datasets.'],
+  ['Analytics Engine', 'Applying industrial logic and AI.'],
+  ['Business Insights', 'Visualizing trends and patterns.'],
+  ['Decision Making', 'Actioning derived intelligence.'],
+  ['Business Growth', 'Scalable enterprise expansion.'],
+];
+const abiAdvanced: [string, string, LucideIcon][] = [
+  ['Executive Dashboards', 'Tailored views for C-level leadership focused on high-level ROI and global health.', Grid2x2Plus],
+  ['Custom Reports', 'Builder tool for specific operational reports and regulatory compliance filings.', FileText],
+  ['Product Analytics', 'Monitor performance by SKU, batch, or individual unit across the entire lifespan.', Archive],
+  ['Consumer Analytics', 'Understand engagement patterns, geographic trends, and retention metrics.', Users],
+  ['Supply Chain Analytics', 'Optimize logistics with data on transit times, dwell durations, and routing.', Network],
+  ['Business Intelligence', 'Predictive modeling and scenario planning for future-proofing operations.', SquareTerminal],
+];
+const abiBenefits: [string, string][] = [
+  ['Better Decision Making', 'Reduce uncertainty with hard data that supports strategic enterprise pivots.'],
+  ['Operational Visibility', 'Monitor every stage of the product lifecycle in real-time without manual intervention.'],
+  ['Higher Efficiency', 'Identify bottlenecks instantly and streamline workflows for better resource allocation.'],
+  ['Improved Forecasting', 'Use historical scan data to predict demand surges and supply requirements.'],
+  ['Business Growth', 'Drive revenue through better market understanding and optimized logistics.'],
+  ['Actionable Insights', 'Move beyond data points to clear directives that impact the bottom line.'],
+];
+
+function AnalyticsBusinessIntelligence() {
+  return <Shell>
+    <section className="abi-hero" aria-labelledby="abi-hero-title">
+      <div className="container-tight abi-hero-inner">
+        <div className="fade-up">
+          <p className="abi-pill"><ChartNoAxesCombined size={14} strokeWidth={2.2} />BUSINESS INTELLIGENCE</p>
+          <h1 id="abi-hero-title" className="abi-h1">Turn Product Data into Actionable Business Intelligence</h1>
+          <p className="abi-hero-copy">Transform every product scan, authentication and supply chain event into meaningful business insights. Monitor product performance, customer engagement, supply chain visibility and operational KPIs from one intelligent analytics platform.</p>
+          <div className="abi-hero-actions">
+            <Link href="/contact-us" data-testid="button-abi-book-demo-hero" className="abi-btn abi-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-abi-explore-platform" className="abi-btn abi-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="abi-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/analytics-bi-hero-full.png`} alt="TracelyTag analytics and business intelligence: supply chain events, QR scans and product authentications feeding a central TracelyTag engine that powers real-time insights, predictive analytics, 98.5% operational efficiency KPI, growth trends, regional sales and performance metrics" />
+        </div>
+      </div>
+    </section>
+
+    <section className="abi-features" aria-label="Analytics platform capabilities">
+      <div className="container-tight abi-feature-grid">
+        {abiFeatures.map(([title, copy, Icon]) => <article key={title} className="abi-feature-card">
+          <Icon size={26} className="text-[#1152d6]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="abi-why" aria-labelledby="abi-why-title">
+      <div className="container-tight abi-why-inner">
+        <div>
+          <h2 id="abi-why-title" className="abi-why-title">Why Modern Analytics Matters</h2>
+          <p className="abi-why-copy">Manual data processing and fragmented visibility are no longer sustainable for modern industrial supply chains.</p>
+          <div className="abi-why-list">
+            {abiChallenges.map(([title, copy]) => <div key={title} className="abi-why-item">
+              <TriangleAlert size={18} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="abi-panel">
+          <h2>Enterprise Analytics Platform</h2>
+          <ul className="abi-panel-list">
+            {abiPlatformItems.map(item => <li key={item}><CircleCheck size={20} strokeWidth={2} />{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="abi-pipeline" aria-labelledby="abi-pipeline-title">
+      <div className="container-tight abi-pipeline-inner">
+        <h2 id="abi-pipeline-title">The Intelligence Pipeline</h2>
+        <p className="abi-pipeline-sub">From raw event to strategic business growth</p>
+        <ol className="abi-pipeline-grid">
+          {abiPipeline.map(([title, copy], index) => <li key={title} className="abi-step">
+            <span className="abi-step-num">{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="abi-advanced" aria-labelledby="abi-advanced-title">
+      <div className="container-tight abi-advanced-inner">
+        <h2 id="abi-advanced-title">Advanced Platform Features</h2>
+        <div className="abi-advanced-grid">
+          {abiAdvanced.map(([title, copy, Icon]) => <article key={title} className="abi-advanced-card">
+            <Icon size={24} className="text-[#1152d6]" strokeWidth={2} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="abi-benefits" aria-labelledby="abi-benefits-title">
+      <div className="container-tight abi-benefits-inner">
+        <h2 id="abi-benefits-title">Business Benefits</h2>
+        <div className="abi-benefit-grid">
+          {abiBenefits.map(([title, copy]) => <article key={title} className="abi-benefit-card">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="abi-dash" aria-labelledby="abi-dash-title">
+      <div className="container-tight">
+        <div className="abi-dash-card">
+          <h2 id="abi-dash-title">The TracelyTag Executive Dashboard</h2>
+          <p>Unified intelligence at a glance. Manage KPIs, scan activity, and authentication health from a centralized command center.</p>
+          <div className="abi-dash-art">
+            <img src={`${root}solution-crops/analytics-bi-dashboard.png`} alt="Vantage Analytics &amp; Business Intelligence Executive Dashboard: executive KPIs with $2.45 Billion total revenue up 15% YoY, 92% efficiency score and steady rise growth trajectory; QR scan analytics with geographic activity heatmap, top locations New York 3.48 million, London 1.2 million and Tokyo 1.2 million, 1.2 million total scans; authentication trends of success versus failed attempts over the last 30 days at 96% success rate; consumer analytics demographics by age group and loyal, occasional and new behavior split; supply chain metrics logistics and fulfillment overview at 96% orders on-time; and business reports including Q3 Financial Summary, Market Analysis Report and Operational Efficiency Review" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="abi-cta" aria-labelledby="abi-cta-title">
+      <div className="container-tight abi-cta-inner">
+        <h2 id="abi-cta-title">Ready to Turn Product Data into Business Intelligence?</h2>
+        <p>Join leading global enterprises using TracelyTag to drive decisions with industrial-grade data integrity.</p>
+        <div className="abi-cta-actions">
+          <Link href="/contact-us" data-testid="button-abi-book-demo" className="abi-btn abi-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-abi-contact-sales" className="abi-btn abi-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -2355,7 +2513,7 @@ function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
-    <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
+    <Route path="/solutions" component={Solutions} /><Route path="/solutions/analytics-business-intelligence" component={AnalyticsBusinessIntelligence} /><Route path="/solutions/:slug" component={SolutionPage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/food-beverage" component={FoodBeverage} /><Route path="/industries/pharmaceuticals" component={Pharmaceuticals} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
