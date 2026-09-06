@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, BriefcaseMedical, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, Crosshair, DropletOff, Eye, EyeOff, Factory, FileText, Gavel, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Radar, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, Crosshair, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gavel, Globe, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -130,7 +130,149 @@ const homeProofItems: Array<[string, LucideIcon]> = [['Product Authentication',S
 const homeJourneyItems: Array<[string, string, LucideIcon]> = [['Authorize','Verify every product with a secure digital identity.',ShieldCheck],['Prove','Protect your brand and authenticate your products.',LockKeyhole],['Trace','Follow every product across the global supply chain.',Network],['Engage','Create connected experiences for every customer.',Users]];
 const homeIntegrityItems: Array<[string, LucideIcon]> = [['Secure Generation',QrCode],['Serialization',Network],['Aggregation',Boxes],['Workflow Engine',Sparkles]];
 
-function About() { return <Shell><Hero eyebrow="ABOUT TRACELYTAG" title="Building Trust Through Connected Products" copy="The unified product intelligence platform that helps manufacturers and brands create secure, transparent, and intelligent products." image="about-hero-diagram.png" alt="Connected products and global traceability diagram" /><FeatureCards items={aboutFeatures} /><section className="bg-[#f1f3f6] py-16"><div className="container-tight grid gap-10 md:grid-cols-2"><div><p className="eyebrow mb-4">WHO WE ARE</p><h2 className="display text-[34px] font-bold text-[#172536]">A new standard for product trust.</h2><p className="mt-4 text-[12px] leading-6 text-[#657180]">We help manufacturers and brands build a stronger connection between products, people, and performance.</p></div><BlueBand title="Our Mission" items={['Product Intelligence','Connected Product Trust','Supply Chain Visibility','Proven Technology']}/></div></section><MonitorSection image="about-dashboard-monitor.png" title="What We Deliver" /><CTA title="Ready to Build Connected Products?" copy="Join the global leaders creating trusted, intelligent products with TracelyTag." /></Shell>; }
+const aboutHighlights: [string, string, LucideIcon][] = [
+  ['Enterprise Platform', 'Centralized management for millions of unique product identities across global facilities.', Building2],
+  ['Trusted Technology', 'Proprietary authentication protocols that make counterfeiting virtually impossible.', Shield],
+  ['Global Standards', 'Full compliance with international traceability and GS1 identification standards.', Globe],
+  ['Scalable Solutions', 'Modular architecture designed to grow with your production volume and complexity.', SlidersVertical],
+];
+const aboutStats = ['12.5M+ Daily Authenticated Items', '99.9% Platform Uptime Guarantee', 'Global Enterprise Infrastructure'];
+const aboutMission: [string, string, LucideIcon][] = [
+  ['Protect Brands', 'Warding off global counterfeiting threats with unbreakable digital seals.', Shield],
+  ['Build Consumer Trust', 'Empowering buyers with instant transparency through mobile scans.', Users],
+  ['Digitize Products', 'Turning physical inventory into actionable digital assets.', QrCode],
+  ['Global Traceability', 'Ensuring full lineage from raw materials to final retail delivery.', RouteIcon],
+  ['Supply Chain Visibility', 'Real-time mapping of global movement and warehouse flow.', Eye],
+  ['Business Intelligence', 'Deriving data-driven insights to\nimprove operational efficiency.', ChartNoAxesCombined],
+];
+const aboutDeliver: [string, string, LucideIcon][] = [
+  ['Product Authentication', 'Instant, tamper-proof verification of product authenticity at any point in the lifecycle.', ClipboardCheck],
+  ['Anti-Counterfeiting', 'Multi-layered digital security features that actively detect and flag fraudulent activities.', SmartphoneCharging],
+  ['Track & Trace', 'End-to-end visibility of movement, from factory floor to global distribution centers.', Crosshair],
+  ['Connected Products', 'Bridging the gap between physical items and digital twins for real-time status updates.', Network],
+  ['Consumer Engagement', 'Personalized post-purchase experiences and loyalty programs via simple mobile interaction.', UserCheck],
+  ['Enterprise Analytics', 'Deep-dive reporting on scan rates, geographic distribution, and supply chain health.', ChartColumn],
+];
+const aboutWhy: [string, string, LucideIcon][] = [
+  ['Enterprise Platform', 'Built for high-volume serialization and complex multi-site deployments.', Waypoints],
+  ['Scalable Architecture', 'Cloud-native infrastructure that processes billions of events with millisecond latency.', Network],
+  ['Secure Digital Identity', 'Each product is assigned an immutable, non-replicable digital fingerprint.', Fingerprint],
+  ['Global Standards', 'Compliant with FDA, EMA, and GS1 regulatory and industry requirements.', Gavel],
+  ['Operational Visibility', 'Identify bottlenecks and gray market diversions before they impact your bottom line.', ChartNoAxesCombined],
+  ['Future-Ready Technology', 'Continuously evolving to support NFC, RFID, and advanced AI-driven verification.', Rocket],
+];
+const aboutLayerItems = ['Business Intelligence Tracking', 'Live Pulse Scan Monitoring', 'Global Shipment Alerts'];
+
+function About() {
+  return <Shell>
+    <section className="abt-hero" aria-labelledby="abt-hero-title">
+      <div className="container-tight abt-hero-inner">
+        <div className="fade-up">
+          <p className="abt-pill"><BadgeCheck size={13} strokeWidth={2.1} />About TracelyTag</p>
+          <h1 id="abt-hero-title" className="abt-h1">Building Trust Through Connected Products</h1>
+          <p className="abt-hero-copy">TracelyTag is the leading enterprise platform for manufacturers, bridging the gap between physical products and digital intelligence to ensure global supply chain integrity and consumer transparency.</p>
+          <div className="abt-hero-actions">
+            <Link href="/contact-us" data-testid="button-about-book-demo" className="abt-btn abt-btn-primary">Book a Demo <ArrowRight size={15} /></Link>
+            <Link href="/contact-us" data-testid="button-about-contact-us" className="abt-btn abt-btn-ghost">Contact Us</Link>
+          </div>
+        </div>
+        <div className="abt-hero-art fade-up delay-1">
+          <img src={`${root}about-hero-diagram.png`} alt="TracelyTag connected ecosystem: smart manufacturing plant, secure QR code generation, product authentication checkpoints, centralized enterprise analytics dashboard, global track and trace, and consumer engagement via mobile scans" />
+        </div>
+      </div>
+    </section>
+
+    <section className="abt-features" aria-label="TracelyTag platform highlights">
+      <div className="container-tight abt-feature-grid">
+        {aboutHighlights.map(([title, copy, Icon]) => <article key={title} className="card-line abt-feature-card">
+          <Icon size={22} className="text-[#0a3d8f]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="abt-who" aria-labelledby="abt-who-title">
+      <div className="container-tight abt-who-inner">
+        <div>
+          <h2 id="abt-who-title">Who We Are</h2>
+          <p>At TracelyTag, we believe that every physical product tells a story. Since our inception, we have been dedicated to giving products a digital voice. We transform standard manufacturing outputs into "Connected Digital Products" through secure, unique identifiers.</p>
+          <p>Our platform serves as the single source of truth for manufacturers, retailers, and consumers alike. By integrating advanced serialization with cloud-based analytics, we provide the visibility needed to optimize operations and the security needed to protect brand equity.</p>
+          <div className="abt-stats">
+            {aboutStats.map(stat => <p key={stat} className="abt-stat"><CircleCheck size={20} strokeWidth={2} />{stat}</p>)}
+          </div>
+        </div>
+        <div className="abt-mission">
+          <h2>Our Mission</h2>
+          <div className="abt-mission-grid">
+            {aboutMission.map(([title, copy, Icon]) => <div key={title} className="abt-mission-item">
+              <Icon size={22} strokeWidth={1.9} />
+              <h3>{title}</h3>
+              <p style={{ whiteSpace: 'pre-line' }}>{copy}</p>
+            </div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="abt-deliver" aria-labelledby="abt-deliver-title">
+      <div className="container-tight abt-deliver-inner">
+        <h2 id="abt-deliver-title">What We Deliver</h2>
+        <p className="abt-deliver-sub">Comprehensive solutions tailored to the rigorous demands of industrial-scale manufacturing.</p>
+        <div className="abt-deliver-grid">
+          {aboutDeliver.map(([title, copy, Icon]) => <article key={title} className="card-line abt-deliver-card">
+            <span className="abt-deliver-icon"><Icon size={21} strokeWidth={1.9} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="abt-why" aria-labelledby="abt-why-title">
+      <div className="container-tight abt-why-inner">
+        <h2 id="abt-why-title">Why Manufacturers Choose TracelyTag</h2>
+        <div className="abt-why-grid">
+          {aboutWhy.map(([title, copy, Icon]) => <article key={title} className="abt-why-item">
+            <Icon size={24} strokeWidth={1.9} />
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="abt-layer" aria-labelledby="abt-layer-title">
+      <div className="container-tight abt-layer-inner">
+        <div>
+          <h2 id="abt-layer-title">The Intelligence Layer</h2>
+          <p>Our centralized Enterprise Analytics Dashboard provides a real-time pulse of your entire global operations. From monitoring Connected Products and Authentication Activity to tracking Supply Chain Visibility and Platform Health, every metric is at your fingertips.</p>
+          <div className="abt-layer-list">
+            {aboutLayerItems.map(item => <p key={item} className="abt-layer-item"><span className="abt-layer-bullet" />{item}</p>)}
+          </div>
+        </div>
+        <div className="abt-layer-art">
+          <img src={`${root}about-dashboard-monitor.png`} alt="TracelyTag Enterprise Analytics Dashboard showing connected products at 12.5M total global count, authentication activity with live pulse, supply chain visibility, consumer engagement, business intelligence and platform health" />
+        </div>
+      </div>
+    </section>
+
+    <section className="abt-cta" aria-labelledby="abt-cta-title">
+      <div className="container-tight abt-cta-inner">
+        <div className="abt-cta-card">
+          <h2 id="abt-cta-title">Ready to Build Connected Products?</h2>
+          <p>Join the global leaders securing their supply chain with TracelyTag's industrial intelligence platform.</p>
+          <div className="abt-cta-actions">
+            <Link href="/contact-us" data-testid="button-about-cta-demo" className="abt-cta-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-about-cta-sales" className="abt-cta-secondary">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
 
 function Why() { return <Shell><Hero eyebrow="THE TRACELYTAG DIFFERENCE" title="Why Leading Manufacturers Choose TracelyTag" copy="The product intelligence platform built for the complexity of modern manufacturing, supply chains, and consumer engagement." image="why-hero-diagram.png" alt="Why TracelyTag connected ecosystem diagram" /><FeatureCards items={[['Enterprise Platform','A complete operating system for connected products.',Network],['Scalable Infrastructure','Built to grow with your products, markets, and teams.',Boxes],['Global Digital Identity','A trusted digital identity for every product.',Globe2],['Actionable Intelligence','Insights that help you make better decisions, faster.',BarChart3]]} /><BlueBand title="Built For Modern Manufacturers" items={['Enterprise Platform','Global Infrastructure','Real-Time Data','Secure by Design']} /><section className="container-tight py-16 text-center"><p className="eyebrow mb-4">THE TRACELYTAG DIFFERENCE</p><h2 className="display mx-auto max-w-[500px] text-[34px] font-bold text-[#172536]">Six pillars of enterprise authentication</h2><div className="mt-8 grid gap-4 md:grid-cols-3">{[['Product Platform','A complete platform for your connected product ecosystem.'],['Authentication','Secure every product with a trusted digital identity.'],['Track & Trace','Follow every product, from source to consumer.'],['Connected Products','Create meaningful product experiences.'],['Advanced Analytics','Turn product data into business intelligence.'],['Enterprise Integrations','Connect your existing systems with ease.']].map(([t,c]) => <div key={t} className="card-line rounded border bg-white p-5 text-left"><ShieldCheck size={17} className="mb-5 text-[#0753a4]" /><h3 className="text-[12px] font-bold">{t}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{c}</p></div>)}</div></section><MonitorSection image="why-dashboard-monitor.png" title="Real-Time Operational Intelligence" /><CTA title="Ready to Transform Your Product Ecosystem?" copy="Build trusted, connected products with TracelyTag." /></Shell>; }
 
