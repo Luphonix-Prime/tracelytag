@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "TracelyTag Website"
+description = "A responsive recreation of the TracelyTag enterprise traceability website, using the supplied reference screens and assets with functional navigation across platform, solution, industry, and company pages."
+version = "1.0.0"
+id = "artifacts/tracelytag-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22724
+
+[services.development]
+run = "pnpm --filter @workspace/tracelytag-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tracelytag-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tracelytag-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22724"
+BASE_PATH = "/"
