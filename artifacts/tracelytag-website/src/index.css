@@ -527,3 +527,95 @@
   .cosm-lifecycle-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cosm-panel-grid { grid-template-columns: 1fr; gap: 1.1rem; }
 }
+
+/* ── FMCG & Consumer Goods industry page ───────────────────────────── */
+.fmcg-hero { background: #f7f8fa; }
+.fmcg-hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(3.5rem, 7vw, 6.5rem); }
+.fmcg-pill { display: inline-block; border-radius: 999px; background: #e4edfa; color: #1a6fdb; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: .45rem .85rem; }
+.fmcg-h1 { margin-top: 1.7rem; max-width: 460px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(30px, 3.3vw, 42px); font-weight: 800; letter-spacing: -.045em; line-height: 1.14; }
+.fmcg-hero-copy { margin-top: 1.7rem; max-width: 500px; color: #5b6470; font-size: 14px; line-height: 1.75; }
+.fmcg-hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2.1rem; }
+.fmcg-btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; padding: .85rem 1.6rem; font-size: 13px; font-weight: 700; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.fmcg-btn-primary { background: #0a3d8f; color: #fff; }
+.fmcg-btn-primary:hover { background: #08316f; }
+.fmcg-btn-ghost { border: 1px solid #dde3ea; background: #fff; color: #2c3540; }
+.fmcg-btn-ghost:hover { border-color: #0a3d8f; color: #0a3d8f; }
+.fmcg-hero-art { border-radius: 12px; background: #fff; padding: .9rem; box-shadow: 0 14px 38px rgb(24 60 110 / .08); }
+.fmcg-hero-art img { display: block; width: 100%; height: auto; border-radius: 8px; }
+
+.fmcg-features { background: #f7f8fa; }
+.fmcg-feature-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.4rem; padding-bottom: clamp(2.75rem, 5vw, 4rem); }
+.fmcg-feature-card { border: 1px solid #e2e7ee; border-radius: 8px; background: #fff; padding: 1.6rem 1.4rem; }
+.fmcg-feature-card h3 { margin-top: 1.5rem; color: #17181b; font-size: 15px; font-weight: 700; }
+.fmcg-feature-card p { margin-top: .75rem; color: #5f6874; font-size: 13px; line-height: 1.65; }
+
+.fmcg-why { background: #f1f2f4; }
+.fmcg-why-inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.fmcg-why h2 { max-width: 360px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -.04em; line-height: 1.15; }
+.fmcg-why-list { display: grid; gap: 1.5rem; margin-top: 2.4rem; }
+.fmcg-why-item { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: start; gap: 1.1rem; color: #4b5563; font-size: 14px; line-height: 1.6; }
+.fmcg-why-item svg { margin-top: 2px; color: #c62828; }
+.fmcg-panel { border-radius: 10px; background: #0d59d0; padding: clamp(1.75rem, 3vw, 2.6rem); color: #fff; box-shadow: 0 16px 38px rgb(13 89 208 / .2); }
+.fmcg-panel h2 { font-family: var(--app-font-serif); font-size: clamp(18px, 1.85vw, 22px); font-weight: 700; letter-spacing: -.02em; }
+.fmcg-panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.1rem; }
+.fmcg-panel-item { display: flex; align-items: center; gap: .8rem; font-size: 14px; }
+
+.fmcg-journey { background: #f7f8fa; }
+.fmcg-journey-inner { padding-block: clamp(2.75rem, 5vw, 4.5rem); }
+.fmcg-journey-track { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.fmcg-journey-track::before { content: ""; position: absolute; top: 38px; left: 0; right: 0; height: 1px; background: #d8dde5; }
+.fmcg-journey-step { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.fmcg-journey-dot { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: #0a3d8f; color: #fff; font-size: 12px; font-weight: 700; }
+.fmcg-journey-step p { max-width: 132px; text-align: center; color: #1f2530; font-size: 13px; font-weight: 700; line-height: 1.35; }
+
+.fmcg-solutions { background: #f7f8fa; }
+.fmcg-solutions-inner { padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.fmcg-solutions h2 { text-align: center; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(20px, 2.1vw, 25px); font-weight: 700; letter-spacing: -.025em; }
+.fmcg-solutions-sub { margin: 1.1rem auto 0; max-width: 500px; text-align: center; color: #5f6874; font-size: 14px; line-height: 1.65; }
+.fmcg-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; margin-top: 3rem; }
+.fmcg-solution-card { border: 1px solid #e2e7ee; border-radius: 8px; background: #fff; padding: 1.75rem 1.5rem; }
+.fmcg-solution-card h3 { margin-top: 1.7rem; color: #17181b; font-size: 15px; font-weight: 700; }
+.fmcg-solution-card p { margin-top: .8rem; color: #5f6874; font-size: 13px; line-height: 1.7; }
+
+.fmcg-dashboard { background: #f1f2f4; }
+.fmcg-dashboard-inner { padding-block: clamp(3rem, 5vw, 4.5rem); }
+.fmcg-dashboard-art { border-radius: 10px; overflow: hidden; }
+.fmcg-dashboard-art img { display: block; width: 100%; height: auto; }
+.fmcg-dashboard-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.75rem 2.5rem; margin-top: clamp(2.5rem, 5vw, 3.75rem); }
+.fmcg-dashboard-item { text-align: center; }
+.fmcg-dashboard-item h3 { color: #0a4aa0; font-size: 15px; font-weight: 700; }
+.fmcg-dashboard-item p { margin: .8rem auto 0; max-width: 300px; color: #5f6874; font-size: 13px; line-height: 1.7; }
+
+.fmcg-benefits { background: #fff; }
+.fmcg-benefits-inner { padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.fmcg-benefits h2 { text-align: center; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -.04em; }
+.fmcg-benefit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 2.25rem; margin-top: clamp(2.5rem, 5vw, 4rem); }
+.fmcg-benefit { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 1.1rem; }
+.fmcg-benefit svg { margin-top: 1px; color: #0a3d8f; }
+.fmcg-benefit h3 { color: #17181b; font-size: 15px; font-weight: 700; }
+.fmcg-benefit p { margin-top: .7rem; color: #5f6874; font-size: 13px; line-height: 1.7; }
+
+.fmcg-cta { background: #f7f8fa; }
+.fmcg-cta-inner { padding-block: clamp(3.5rem, 7vw, 6rem); text-align: center; }
+.fmcg-cta h2 { margin-inline: auto; max-width: 640px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -.04em; line-height: 1.2; }
+.fmcg-cta p { margin: 1.8rem auto 0; max-width: 560px; color: #5b6470; font-size: 14px; line-height: 1.75; }
+.fmcg-cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .85rem; margin-top: 2.4rem; }
+
+@media (max-width: 1023px) {
+  .fmcg-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fmcg-solution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fmcg-benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fmcg-dashboard-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fmcg-journey-track { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 2.25rem; }
+  .fmcg-journey-track::before { display: none; }
+}
+@media (max-width: 767px) {
+  .fmcg-hero-inner { grid-template-columns: 1fr; padding-block: 3rem; }
+  .fmcg-why-inner { grid-template-columns: 1fr; }
+  .fmcg-feature-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .fmcg-solution-grid { grid-template-columns: 1fr; }
+  .fmcg-benefit-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .fmcg-dashboard-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .fmcg-journey-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fmcg-panel-grid { grid-template-columns: 1fr; gap: 1.1rem; }
+}

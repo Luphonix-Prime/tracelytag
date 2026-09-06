@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, Boxes, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardList, ClipboardPaste, DropletOff, Eye, EyeOff, Factory, FileText, Gavel, Globe2, HandHeart, Handshake, History, IdCard, Info, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Route as RouteIcon, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, TriangleAlert, Truck, Unlink, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, Boxes, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardList, ClipboardPaste, DropletOff, Eye, EyeOff, Factory, FileText, Gavel, Globe2, HandHeart, Handshake, History, IdCard, Info, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Route as RouteIcon, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TriangleAlert, Truck, Unlink, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -1396,6 +1396,160 @@ function CosmeticsBeauty() {
   </Shell>;
 }
 
+const fmcgFeatures: [string, string, LucideIcon][] = [
+  ['Brand Protection', 'Global security for your brand equity and reputation.', ShieldCheck],
+  ['Product Authentication', 'Instant verification for retailers and end consumers.', ScanQrCode],
+  ['Supply Chain Visibility', 'Real-time tracking from factory gate to store shelf.', Eye],
+  ['Consumer Engagement', 'Build direct relationships via smart product packaging.', Tag],
+];
+const fmcgWhyItems: [string, LucideIcon][] = [
+  ['Rampant counterfeit FMCG products leading to brand erosion.', TriangleAlert],
+  ['Severe lack of supply chain visibility beyond the first tier.', DropletOff],
+  ['Inefficient product recalls causing safety risks and legal costs.', History],
+  ['Limited post-purchase engagement with anonymous buyers.', UserRoundX],
+];
+const fmcgPanelItems = ['Secure QR Identity', 'Product Authentication', 'Track & Trace', 'Digital Warranty', 'Consumer Engagement', 'Business Intelligence'];
+const fmcgJourney = ['Manufacturing', 'Packaging', 'Warehouse', 'Distribution', 'Retail', 'Consumer Scan', 'Business Intelligence'];
+const fmcgSolutions: [string, string, LucideIcon][] = [
+  ['Product Authentication', 'Enable instant, mobile-first verification for field agents and consumers globally.', ShieldCheck],
+  ['Anti-Counterfeiting', 'Sophisticated encrypted identity layers that are\nimpossible to duplicate or clone.', Shield],
+  ['Track & Trace', 'Complete serialization allowing every unit to be monitored through the entire supply chain.', RouteIcon],
+  ['Consumer Engagement', 'Turn every product into a digital marketing channel with contextual rewards and info.', Megaphone],
+  ['Analytics', 'Deep insights into product flow, consumption patterns, and geographic scanning trends.', ChartColumn],
+  ['Supply Chain Visibility', 'Granular data on inventory velocity and potential bottlenecks in distribution.', Waypoints],
+];
+const fmcgDashboardItems: [string, string][] = [
+  ['Production Status', 'Monitor real-time serialization batch progress across multiple factories.'],
+  ['Authentication Requests', 'View global heatmaps of product verification scans and suspicious alerts.'],
+  ['Supply Chain Overview', 'End-to-end flow tracking from manufacturing nodes to end distribution points.'],
+  ['Retail Verification', 'Track regional scan volumes at retail partner locations for audit compliance.'],
+  ['Consumer Engagement', 'Analyze interaction rates, loyalty sign-ups, and user demographic data.'],
+  ['Business Analytics', 'Calculate ROI, operational efficiency, and market penetration insights.'],
+];
+const fmcgBenefits: [string, string, LucideIcon][] = [
+  ['Protect Brand Reputation', 'Ensure consumers always receive genuine, high-quality products.', BadgeCheck],
+  ['Reduce Counterfeiting', 'Directly cut revenue leakage to illegal shadow markets.', ShieldCheck],
+  ['Improve Visibility', 'Total transparency into grey market diversion and stock movement.', ScanSearch],
+  ['Increase Consumer Trust', 'Transparent sourcing and authenticity builds long-term loyalty.', Handshake],
+  ['Better Recall Management', 'Precision targeting for batch recalls to minimize waste and panic.', ClipboardPaste],
+  ['Actionable Insights', 'Data-driven decisions based on actual market consumption data.', ChartNoAxesCombined],
+];
+
+function FmcgConsumerGoods() {
+  return <Shell>
+    <section className="fmcg-hero" aria-labelledby="fmcg-hero-title">
+      <div className="container-tight fmcg-hero-inner">
+        <div className="fade-up">
+          <p className="fmcg-pill">FMCG Intelligence</p>
+          <h1 id="fmcg-hero-title" className="fmcg-h1">Secure Every FMCG Product from Factory to Consumer</h1>
+          <p className="fmcg-hero-copy">Help FMCG manufacturers protect brands, eliminate counterfeit products, enable end-to-end traceability and create connected consumer experiences using secure QR-based product identities.</p>
+          <div className="fmcg-hero-actions">
+            <Link href="/contact-us" data-testid="button-fmcg-book-demo-hero" className="fmcg-btn fmcg-btn-primary">Book a Demo</Link>
+            <Link href="/solutions" data-testid="button-fmcg-explore-solutions" className="fmcg-btn fmcg-btn-ghost">Explore FMCG Solutions</Link>
+          </div>
+        </div>
+        <div className="fmcg-hero-art fade-up delay-1">
+          <img src={`${root}industry-crops/fmcg-consumer-goods-hero.png`} alt="FMCG manufacturing line with TIJ and TTO printers, automated warehouse, distribution fleet and retail shelf scanning powered by TracelyTag" />
+        </div>
+      </div>
+    </section>
+
+    <section className="fmcg-features" aria-label="FMCG platform capabilities">
+      <div className="container-tight fmcg-feature-grid">
+        {fmcgFeatures.map(([title, copy, Icon]) => <article key={title} className="card-line fmcg-feature-card">
+          <Icon size={22} className="text-[#0a3d8f]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="fmcg-why" aria-labelledby="fmcg-why-title">
+      <div className="container-tight fmcg-why-inner">
+        <div>
+          <h2 id="fmcg-why-title">Why FMCG Brands Need TracelyTag</h2>
+          <div className="fmcg-why-list">
+            {fmcgWhyItems.map(([label, Icon]) => <p key={label} className="fmcg-why-item">
+              <Icon size={19} strokeWidth={2} />{label}
+            </p>)}
+          </div>
+        </div>
+        <div className="fmcg-panel">
+          <h2>Enterprise FMCG Platform</h2>
+          <div className="fmcg-panel-grid">
+            {fmcgPanelItems.map(item => <p key={item} className="fmcg-panel-item"><CircleCheck size={18} strokeWidth={1.8} className="shrink-0" />{item}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="fmcg-journey" aria-label="FMCG product journey">
+      <div className="container-tight fmcg-journey-inner">
+        <div className="fmcg-journey-track">
+          {fmcgJourney.map((step, index) => <div key={step} className="fmcg-journey-step">
+            <span className="fmcg-journey-dot">{index + 1}</span>
+            <p>{step}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fmcg-solutions" aria-labelledby="fmcg-solutions-title">
+      <div className="container-tight fmcg-solutions-inner">
+        <h2 id="fmcg-solutions-title">Comprehensive Solutions</h2>
+        <p className="fmcg-solutions-sub">Enterprise-grade capabilities designed for the unique challenges of fast-moving consumer goods.</p>
+        <div className="fmcg-solution-grid">
+          {fmcgSolutions.map(([title, copy, Icon]) => <article key={title} className="card-line fmcg-solution-card">
+            <Icon size={24} className="text-[#0a4aa0]" strokeWidth={1.9} />
+            <h3>{title}</h3>
+            <p style={{ whiteSpace: 'pre-line' }}>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fmcg-dashboard" aria-label="FMCG One global operations platform">
+      <div className="container-tight fmcg-dashboard-inner">
+        <div className="fmcg-dashboard-art">
+          <img src={`${root}industry-crops/fmcg-consumer-goods-dashboard.png`} alt="FMCG One Global Operations Platform dashboard showing production status, authentication requests, supply chain overview, retail verification, consumer engagement and business analytics" />
+        </div>
+        <div className="fmcg-dashboard-grid">
+          {fmcgDashboardItems.map(([title, copy]) => <div key={title} className="fmcg-dashboard-item">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fmcg-benefits" aria-labelledby="fmcg-benefits-title">
+      <div className="container-tight fmcg-benefits-inner">
+        <h2 id="fmcg-benefits-title">Tangible Business Benefits</h2>
+        <div className="fmcg-benefit-grid">
+          {fmcgBenefits.map(([title, copy, Icon]) => <article key={title} className="fmcg-benefit">
+            <Icon size={22} strokeWidth={1.9} />
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fmcg-cta" aria-labelledby="fmcg-cta-title">
+      <div className="container-tight fmcg-cta-inner">
+        <h2 id="fmcg-cta-title">Ready to Protect Your FMCG Products?</h2>
+        <p>Join leading global FMCG brands in building the next generation of secure, connected product supply chains.</p>
+        <div className="fmcg-cta-actions">
+          <Link href="/contact-us" data-testid="button-fmcg-book-demo" className="fmcg-btn fmcg-btn-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-fmcg-contact-sales" className="fmcg-btn fmcg-btn-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   const params = useParams<{slug:string}>(); const slug = params.slug || (type === 'platform' ? 'product-digitalization' : type === 'industry' ? 'agriculture-agtech' : 'analytics-business-intelligence');
   const industry = industryItems.find(x => x[1] === slug);
@@ -1412,7 +1566,7 @@ function Router() {
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
-    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
+    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
 }
