@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BarChart3, Boxes, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, ClipboardList, Eye, Factory, Gavel, Globe2, Handshake, LockKeyhole, Menu, Monitor, Network, OctagonAlert, PackageCheck, QrCode, ScanLine, Shield, ShieldCheck, Smartphone, Sparkles, Truck, Users, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, Boxes, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, ClipboardList, ClipboardPaste, DropletOff, Eye, EyeOff, Factory, Gavel, Globe2, Handshake, History, IdCard, Leaf, LockKeyhole, Megaphone, Menu, Monitor, MonitorSmartphone, Network, OctagonAlert, PackageCheck, QrCode, Route as RouteIcon, ScanLine, ScanSearch, Shield, ShieldCheck, Smartphone, Sparkles, SquareCheckBig, TriangleAlert, Truck, UserRoundX, UserSearch, Users, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -938,6 +938,321 @@ function ElectronicsHighTech() {
   </Shell>;
 }
 
+const agricultureFeatures: [string, string, LucideIcon][] = [
+  ['Product Authentication', 'Global security for your brand equity and reputation.', ShieldCheck],
+  ['Anti-Counterfeiting', 'Instant verification for retailers and end consumers.', Shield],
+  ['Farm-to-Field Traceability', 'Real-time tracking from factory gate to store shelf.', Eye],
+  ['Farmer Verification', 'Build direct relationships via smart product packaging.', UserSearch],
+];
+const agricultureChallenges: [string, LucideIcon][] = [
+  ['Counterfeit pesticides', TriangleAlert],
+  ['Fake fertilizers', DropletOff],
+  ['Unverified seed products', History],
+  ['Supply chain visibility', EyeOff],
+  ['Regulatory compliance', Gavel],
+  ['Farmer trust', UserRoundX],
+];
+const agriculturePanelItems = ['Product Authentication', 'Track & Trace', 'Farmer Verification', 'Digital Product Information', 'Supply Chain Visibility', 'Business Intelligence'];
+const agricultureJourney = ['Manufacturing', 'Packaging', 'Distribution', 'Retailer', 'Farmer Scan', 'Product Verification', 'Analytics'];
+const agricultureSolutions: [string, string, LucideIcon][] = [
+  ['Product Authentication', 'Enable instant, mobile-first verification for field agents and farmers globally.', ShieldCheck],
+  ['Anti-Counterfeiting', 'Sophisticated encrypted identity layers that are impossible to duplicate or clone.', Shield],
+  ['Track & Trace', 'Complete serialization allowing every unit to be monitored through the entire supply chain.', RouteIcon],
+  ['Farmer Engagement', 'Turn every product into a digital channel with contextual rewards and information.', Megaphone],
+  ['Supply Chain Visibility', 'Granular data on inventory velocity and potential bottlenecks in distribution.', Waypoints],
+  ['Analytics & Intelligence', 'Deep insights into product flow, consumption patterns, and geographic scanning trends.', ChartColumn],
+];
+const agricultureDashboardItems: [string, string][] = [
+  ['Production Status', 'Monitor real-time serialization batch progress across multiple factories.'],
+  ['Authentication Requests', 'View global heatmaps of product verification scans and suspicious alerts.'],
+  ['Supply Chain Overview', 'End-to-end flow tracking from manufacturing nodes to end distribution points.'],
+  ['Retail Verification', 'Track regional scan volumes at retail partner locations for audit compliance.'],
+  ['Farmer Engagement', 'Analyze interaction rates, loyalty sign-ups, and user demographic data.'],
+  ['Business Analytics', 'Calculate ROI, operational efficiency, and market penetration insights.'],
+];
+const agricultureBenefits: [string, string, LucideIcon][] = [
+  ['Protect Farmers', 'Ensure consumers always receive genuine, high-quality products.', BadgeCheck],
+  ['Prevent Counterfeit Products', 'Directly cut revenue leakage to illegal shadow markets.', ShieldCheck],
+  ['Increase Product Trust', 'Total transparency into grey market diversion and stock movement.', ScanSearch],
+  ['Improve Supply Chain Visibility', 'Transparent sourcing and authenticity builds long-term loyalty.', Handshake],
+  ['Strengthen Brand Reputation', 'Precision targeting for batch recalls to minimize waste and panic.', ClipboardPaste],
+  ['Actionable Business Insights', 'Data-driven decisions based on actual market consumption data.', ChartNoAxesCombined],
+];
+
+function AgricultureAgTech() {
+  return <Shell>
+    <section className="agri-hero" aria-labelledby="agri-hero-title">
+      <div className="container-tight agri-hero-inner">
+        <div className="fade-up">
+          <p className="agri-pill">Agriculture Industry</p>
+          <h1 id="agri-hero-title" className="agri-h1">Protect Agricultural Products with Complete Farm-to-Field Traceability</h1>
+          <p className="agri-hero-copy">Help agricultural manufacturers and agrochemical brands secure products, prevent counterfeiting, enable farm-to-field traceability and provide farmers with trusted product verification through secure QR-powered digital identities.</p>
+          <div className="agri-hero-actions">
+            <Link href="/contact-us" data-testid="button-agriculture-book-demo-hero" className="agri-btn agri-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-agriculture-talk-expert" className="agri-btn agri-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="agri-hero-art fade-up delay-1">
+          <img src={`${root}industry-crops/agriculture-agtech-hero.png`} alt="Agrochemical manufacturing plant, digital warehouse, distribution trucks, agriculture retailer and farmer-in-field traceability network powered by TracelyTag" />
+        </div>
+      </div>
+    </section>
+
+    <section className="agri-features" aria-label="Agriculture platform capabilities">
+      <div className="container-tight agri-feature-grid">
+        {agricultureFeatures.map(([title, copy, Icon]) => <article key={title} className="card-line agri-feature-card">
+          <Icon size={22} className="text-[#0a3d8f]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="agri-challenges" aria-labelledby="agri-challenges-title">
+      <div className="container-tight agri-challenges-inner">
+        <div>
+          <h2 id="agri-challenges-title" className="agri-challenges-title">Agriculture Industry Challenges</h2>
+          <div className="agri-challenge-list">
+            {agricultureChallenges.map(([label, Icon]) => <p key={label} className="agri-challenge">
+              <Icon size={20} strokeWidth={2} />{label}
+            </p>)}
+          </div>
+        </div>
+        <div className="agri-panel">
+          <h2>Why Agriculture Companies Choose TracelyTag</h2>
+          <div className="agri-panel-grid">
+            {agriculturePanelItems.map(item => <p key={item} className="agri-panel-item"><CircleCheck size={18} strokeWidth={1.8} className="shrink-0" />{item}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="agri-journey" aria-label="Agricultural product journey">
+      <div className="container-tight agri-journey-inner">
+        <div className="agri-journey-track">
+          {agricultureJourney.map((step, index) => <div key={step} className="agri-journey-step">
+            <span className="agri-journey-dot">{index + 1}</span>
+            <p>{step}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="agri-solutions" aria-labelledby="agri-solutions-title">
+      <div className="container-tight agri-solutions-inner">
+        <h2 id="agri-solutions-title">Enterprise Solutions for Agriculture</h2>
+        <p className="agri-solutions-sub">Enterprise-grade capabilities designed for the unique challenges of the agricultural supply chain.</p>
+        <div className="agri-solution-grid">
+          {agricultureSolutions.map(([title, copy, Icon]) => <article key={title} className="card-line agri-solution-card">
+            <Icon size={24} className="text-[#0a4aa0]" strokeWidth={1.9} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="agri-dashboard" aria-label="Enterprise agriculture dashboard">
+      <div className="container-tight agri-dashboard-inner">
+        <div className="agri-dashboard-art">
+          <img src={`${root}industry-crops/agriculture-agtech-dashboard.png`} alt="Enterprise Agriculture Dashboard showing global operations: production status, distribution tracking, authentication requests, supply chain analytics, farmer verifications and business intelligence" />
+        </div>
+        <div className="agri-dashboard-grid">
+          {agricultureDashboardItems.map(([title, copy]) => <div key={title} className="agri-dashboard-item">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="agri-benefits" aria-labelledby="agri-benefits-title">
+      <div className="container-tight agri-benefits-inner">
+        <h2 id="agri-benefits-title">Tangible Business Benefits</h2>
+        <div className="agri-benefit-grid">
+          {agricultureBenefits.map(([title, copy, Icon]) => <article key={title} className="agri-benefit">
+            <span className="agri-benefit-icon"><Icon size={22} strokeWidth={1.9} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="agri-cta" aria-labelledby="agri-cta-title">
+      <div className="container-tight agri-cta-inner">
+        <h2 id="agri-cta-title">Ready to Modernize Agricultural Product Traceability?</h2>
+        <p>Join leading global agriculture brands in building the next generation of secure, connected product supply chains.</p>
+        <div className="agri-cta-actions">
+          <Link href="/contact-us" data-testid="button-agriculture-book-demo" className="agri-btn agri-btn-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-agriculture-contact-sales" className="agri-btn agri-btn-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const apparelFeatures: [string, string, LucideIcon][] = [
+  ['Garment Authentication', 'Instant verification at any point in the supply chain or retail floor.', ShieldCheck],
+  ['Digital Product Passport', 'Comprehensive lifecycle data and sustainability proof for every item.', IdCard],
+  ['Supply Chain Visibility', 'Real-time tracking from textile manufacturing to final delivery.', Eye],
+  ['Connected Experience', 'Direct post-purchase engagement and personalized brand loyalty.', Users],
+];
+const apparelChallenges: [string, string, LucideIcon][] = [
+  ['Counterfeit fashion products', 'Billions lost annually to high-quality clones damaging brand equity.', TriangleAlert],
+  ['Limited supply chain visibility', 'Fragmented data across global manufacturing partners and logistics providers.', EyeOff],
+  ['Sustainability expectations', 'Growing regulatory and consumer demand for circularity and traceability.', Leaf],
+];
+const apparelPanelItems: [string, LucideIcon][] = [
+  ['Garment Authentication', BadgeCheck],
+  ['Connected Packaging', QrCode],
+  ['Digital Passport', SquareCheckBig],
+  ['Consumer Engagement', ChartNoAxesCombined],
+  ['Supply Chain Visibility', RouteIcon],
+  ['Business Intelligence', ChartColumn],
+];
+const apparelJourney = ['Manufacturing', 'Fabric Label Printing', 'Garment Production', 'Warehouse', 'Retail Store', 'Customer Scan', 'Digital Product Experience'];
+const apparelPlatformTabs: [string, string][] = [
+  ['Production Status', '#1550c8'],
+  ['Authentication Requests', '#c02026'],
+  ['Garment Tracking', '#7a2a12'],
+  ['Retail Verification', '#5f6b7a'],
+  ['Consumer Engagement', '#1f6feb'],
+];
+const apparelBenefits: [string, string, LucideIcon][] = [
+  ['Protect Brand Reputation', "Defend your brand's integrity and value by ensuring only genuine products reach your customers.", BadgeCheck],
+  ['Eliminate Counterfeit Products', 'Implement uncopiable digital identities that make counterfeiting garments economically impossible.', Ban],
+  ['Increase Consumer Trust', 'Provide absolute transparency and proof of authenticity to build deep, lasting customer relationships.', Handshake],
+  ['Improve Supply Chain Visibility', 'Gain granular insights into product movement, stock levels, and potential bottlenecks globally.', ScanSearch],
+  ['Deliver Connected Experiences', 'Turn every physical garment into a digital portal for storytelling, circularity, and loyalty programs.', MonitorSmartphone],
+  ['Generate Product Intelligence', 'Access real-time data on how, where, and when your products are being interacted with by consumers.', ChartNoAxesCombined],
+];
+
+function ApparelFashion() {
+  const [platformTab, setPlatformTab] = useState(0);
+  return <Shell>
+    <section className="appa-hero" aria-labelledby="appa-hero-title">
+      <div className="container-tight appa-hero-inner">
+        <div className="fade-up">
+          <p className="appa-pill"><ShieldCheck size={13} strokeWidth={2.1} />Enterprise Apparel Solution</p>
+          <h1 id="appa-hero-title" className="appa-h1">Protect Every Garment with <em>Digital Product Identity</em></h1>
+          <p className="appa-hero-copy">Help apparel brands authenticate products, eliminate counterfeit garments, enable digital product passports, improve supply chain visibility and create connected customer experiences through secure QR-powered digital identities.</p>
+          <div className="appa-hero-actions">
+            <Link href="/contact-us" data-testid="button-apparel-book-demo-hero" className="appa-btn appa-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-apparel-talk-expert" className="appa-btn appa-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="appa-hero-art fade-up delay-1">
+          <img src={`${root}industry-crops/apparel-fashion-hero.png`} alt="Garment manufacturing, fabric label printing, warehouse, distribution and retail store traceability network powered by TracelyTag" />
+        </div>
+      </div>
+    </section>
+
+    <section className="appa-features" aria-label="Apparel platform capabilities">
+      <div className="container-tight appa-feature-grid">
+        {apparelFeatures.map(([title, copy, Icon]) => <article key={title} className="card-line appa-feature-card">
+          <Icon size={22} className="text-[#0a3d8f]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="appa-challenges" aria-labelledby="appa-challenges-title">
+      <div className="container-tight appa-challenges-inner">
+        <div>
+          <h2 id="appa-challenges-title" className="appa-challenges-title">Apparel Industry Challenges</h2>
+          <div className="appa-challenge-list">
+            {apparelChallenges.map(([title, copy, Icon]) => <div key={title} className="appa-challenge">
+              <span className="appa-challenge-icon"><Icon size={20} strokeWidth={2} /></span>
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="appa-panel">
+          <h2>Why Apparel Brands Choose TracelyTag</h2>
+          <div className="appa-panel-grid">
+            {apparelPanelItems.map(([item, Icon]) => <p key={item} className="appa-panel-item"><Icon size={18} strokeWidth={1.8} className="shrink-0" />{item}</p>)}
+          </div>
+          <hr className="appa-panel-rule" />
+          <p className="appa-panel-quote">"TracelyTag has redefined our approach to brand protection, turning every label into a secure communication channel."</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="appa-journey" aria-labelledby="appa-journey-title">
+      <div className="container-tight appa-journey-inner">
+        <h2 id="appa-journey-title">End-to-End Garment Journey</h2>
+        <p className="appa-journey-sub">Trace every fiber from creation to closet</p>
+        <div className="appa-journey-track">
+          {apparelJourney.map((step, index) => <div key={step} className={`appa-journey-step ${index === apparelJourney.length - 1 ? 'is-last' : ''}`}>
+            <span className="appa-journey-dot">{index + 1}</span>
+            <p>{step}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="appa-platform" aria-labelledby="appa-platform-title">
+      <div className="container-tight appa-platform-inner">
+        <div className="appa-platform-card">
+          <div>
+            <h2 id="appa-platform-title">Enterprise Intelligence Platform</h2>
+            <div className="appa-platform-tabs" role="tablist" aria-label="Dashboard views">
+              {apparelPlatformTabs.map(([label, color], index) => <button
+                key={label}
+                role="tab"
+                type="button"
+                id={`appa-platform-tab-${index}`}
+                aria-selected={platformTab === index}
+                aria-controls="appa-platform-panel"
+                data-testid={`tab-apparel-${label.toLowerCase().replaceAll(' ', '-')}`}
+                onClick={() => setPlatformTab(index)}
+                className={`appa-platform-tab ${platformTab === index ? 'active' : ''}`}
+              ><span className="appa-platform-dot" style={{ background: color }} />{label}</button>)}
+            </div>
+          </div>
+          <div className="appa-platform-art" id="appa-platform-panel" role="tabpanel" aria-labelledby={`appa-platform-tab-${platformTab}`}>
+            <img src={`${root}industry-crops/apparel-fashion-dashboard.png`} alt={`Apparel Enterprise Solutions premium dashboard showing ${apparelPlatformTabs[platformTab][0].toLowerCase()}, authentication requests, garment tracking and business analytics`} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="appa-benefits" aria-labelledby="appa-benefits-title">
+      <div className="container-tight appa-benefits-inner">
+        <h2 id="appa-benefits-title">Business Benefits</h2>
+        <p className="appa-benefits-sub">Quantifiable impact for global fashion enterprises</p>
+        <div className="appa-benefit-grid">
+          {apparelBenefits.map(([title, copy, Icon]) => <article key={title} className="card-line appa-benefit-card">
+            <span className="appa-benefit-icon"><Icon size={21} strokeWidth={1.9} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="appa-cta" aria-labelledby="appa-cta-title">
+      <div className="container-tight appa-cta-inner">
+        <div className="appa-cta-card">
+          <h2 id="appa-cta-title">Ready to Digitize Every Garment?</h2>
+          <p>Join the world's leading apparel brands in creating a more secure, transparent, and connected fashion future.</p>
+          <div className="appa-cta-actions">
+            <Link href="/contact-us" data-testid="button-apparel-book-demo" className="appa-cta-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-apparel-contact-sales" className="appa-cta-secondary">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   const params = useParams<{slug:string}>(); const slug = params.slug || (type === 'platform' ? 'product-digitalization' : type === 'industry' ? 'agriculture-agtech' : 'analytics-business-intelligence');
   const industry = industryItems.find(x => x[1] === slug);
@@ -954,7 +1269,7 @@ function Router() {
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
-    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
+    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
 }
