@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { ArrowRight, BarChart3, Boxes, Check, ChevronDown, Factory, Globe2, LockKeyhole, Menu, Monitor, Network, PackageCheck, QrCode, ScanLine, ShieldCheck, Sparkles, Truck, Users, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BarChart3, Boxes, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, ClipboardList, Eye, Factory, Gavel, Globe2, Handshake, LockKeyhole, Menu, Monitor, Network, OctagonAlert, PackageCheck, QrCode, ScanLine, Shield, ShieldCheck, Smartphone, Sparkles, Truck, Users, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -798,6 +798,146 @@ function IndustryPage() {
   return <Shell><Hero eyebrow={data.eyebrow} title={data.title} copy={data.copy} image={data.heroImage} alt={`${data.title} traceability diagram`} cta="Book a Demo" /><FeatureCards items={data.featureItems} /><section className="bg-[#f1f3f6] py-16"><div className="container-tight grid items-start gap-10 md:grid-cols-2"><div><p className="eyebrow mb-4">{data.challengeTitle}</p><h2 className="display text-[32px] font-bold text-[#172536]">Build trust across every stage of the product journey.</h2><div className="mt-6 space-y-3 text-[11px] text-[#526174]">{data.challengeItems.map(item => <p key={item}><Check size={13} className="mr-2 inline text-[#0753a4]" />{item}</p>)}</div></div><div className="rounded-[4px] bg-[#064aa0] p-7 text-white shadow-[0_12px_30px_rgba(6,74,160,.18)]"><h2 className="display text-[24px] font-bold">{data.challengePanel}</h2><div className="mt-6 grid gap-3 sm:grid-cols-2">{['Product Authentication','Anti-Counterfeiting','Supply Chain Visibility','Consumer Engagement','Track & Trace','Product Intelligence'].map(item => <p key={item} className="border-b border-white/20 pb-2 text-[10px]"><Check size={12} className="mr-2 inline text-[#80d8f4]" />{item}</p>)}</div><Link href="/contact-us" className="mt-6 inline-flex rounded bg-white px-4 py-2 text-[10px] font-bold text-[#064aa0]">See How TracelyTag Helps</Link></div></div></section><section className="container-tight py-16"><div className="text-center"><p className="eyebrow mb-3">END-TO-END VISIBILITY</p><h2 className="display text-[28px] font-bold text-[#172536]">{data.journeyTitle}</h2><p className="mt-3 text-[11px] text-[#687382]">From the first movement through customer verification and analytics.</p></div><div className="mt-10 grid gap-4 sm:grid-cols-3 md:grid-cols-7">{data.journeySteps.map((step, index) => <div key={step} className="text-center"><div className={`mx-auto grid size-9 place-items-center rounded-full ${index === data.journeySteps.length - 1 ? 'bg-[#064aa0] text-white' : 'bg-[#e6f1ff] text-[#0753a4]'}`}><span className="text-[10px] font-bold">{index + 1}</span></div><p className="mt-3 text-[10px] font-semibold text-[#334761]">{step}</p></div>)}</div></section><section className="bg-[#f1f3f6] py-16"><div className="container-tight"><div className="text-center"><p className="eyebrow mb-3">CONNECTED PRODUCT INTELLIGENCE</p><h2 className="display text-[28px] font-bold text-[#172536]">{data.solutionTitle}</h2><p className="mt-3 text-[11px] text-[#687382]">Connected capabilities for the complete product lifecycle.</p></div><div className="mt-9 grid gap-4 md:grid-cols-3">{data.solutionCards.map(([title, text], index) => <div key={title} className="card-line rounded border bg-white p-5"><span className="grid size-7 place-items-center rounded-md bg-[#edf5ff] text-[10px] font-bold text-[#0753a4]">0{index + 1}</span><h3 className="mt-5 text-[12px] font-bold text-[#20324b]">{title}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{text}</p></div>)}</div></div></section><MonitorSection image="about-dashboard-monitor.png" title="Product Intelligence Dashboard" /><section className="container-tight py-14"><div className="text-center"><p className="eyebrow mb-3">TANGIBLE BUSINESS BENEFITS</p><h2 className="display text-[28px] font-bold text-[#172536]">Measurable outcomes across the enterprise.</h2></div><div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">{data.benefits.map((benefit, index) => <div key={benefit} className="flex gap-3 rounded border bg-white p-5"><span className="grid size-7 shrink-0 place-items-center rounded-full bg-[#edf5ff] text-[10px] font-bold text-[#0753a4]">0{(index % 6) + 1}</span><p className="text-[11px] font-semibold text-[#334761]">{benefit}</p></div>)}</div></section><CTA title={data.ctaTitle} copy="Build trusted, connected products with TracelyTag." /></Shell>;
 }
 
+const electronicsFeatures: [string, string, LucideIcon][] = [
+  ['Product Authentication', 'Instant verification for every unit from chip to shelf.', ShieldCheck],
+  ['Digital Warranty', 'Seamless activation and claim tracking for consumers.', ClipboardList],
+  ['Supply Chain Visibility', 'Real-time tracking of high-value components.', Archive],
+  ['Customer Experience', 'Direct digital engagement channel post-purchase.', Smartphone],
+];
+const electronicsChallenges: [string, string][] = [
+  ['Counterfeit electronic devices', 'Global trade of fake components is rising at an alarming rate.'],
+  ['Warranty fraud', 'Unauthorized claims cost brands billions in annual losses.'],
+  ['Limited supply chain visibility', 'Opaque distribution leads to stockouts and gray market leaks.'],
+];
+const electronicsPanelItems = ['Product Authentication', 'Digital Warranty', 'Track & Trace', 'Consumer Engagement', 'Supply Chain Visibility', 'Business Intelligence'];
+const electronicsJourney = ['Manufacturing', 'QR Code Printing', 'Packaging', 'Warehouse', 'Distribution', 'Retail', 'Consumer Scan', 'Digital Services'];
+const electronicsBenefits: [string, string, LucideIcon][] = [
+  ['Prevent Counterfeit Products', 'Stop fraudulent replicas from entering your market with tamper-proof digital authentication.', Shield],
+  ['Reduce Warranty Fraud', 'Automate validation for every claim, ensuring only genuine products are serviced under warranty.', Gavel],
+  ['Increase Consumer Trust', 'Give buyers the confidence to verify high-value electronics instantly using their smartphones.', Handshake],
+  ['Improve Supply Chain Visibility', 'Eliminate blind spots in your distribution network with end-to-end tracking of every component.', Eye],
+  ['Strengthen Brand Reputation', 'Position your brand as a technology leader committed to security and customer protection.', Award],
+  ['Gain Business Insights', 'Harness real-time data from every scan to optimize production, marketing, and logistics.', ChartNoAxesCombined],
+];
+const electronicsIntelTabs = ['Global Scan Activity', 'Production Analytics', 'Supply Chain Logs'];
+
+function ElectronicsHighTech() {
+  const [intelTab, setIntelTab] = useState(0);
+  return <Shell>
+    <section className="elec-hero" aria-labelledby="elec-hero-title">
+      <div className="container-tight elec-hero-inner">
+        <div className="fade-up">
+          <p className="elec-pill">Electronics Industry</p>
+          <h1 id="elec-hero-title" className="elec-h1">Protect Every Electronic Device with Secure Digital Product Identity</h1>
+          <p className="elec-hero-copy">Help electronics manufacturers authenticate products, prevent counterfeiting, simplify warranty management, improve supply chain visibility and deliver connected customer experiences through secure QR-powered digital identities.</p>
+          <div className="elec-hero-actions">
+            <Link href="/contact-us" data-testid="button-electronics-get-started" className="elec-btn elec-btn-primary">Get Started</Link>
+            <Link href="/platform" data-testid="button-electronics-learn-more" className="elec-btn elec-btn-ghost">Learn More</Link>
+          </div>
+        </div>
+        <div className="elec-hero-art fade-up delay-1">
+          <img src={`${root}industry-crops/electronics-high-tech-hero.png`} alt="Connected electronics manufacturing, warehouse and retail traceability network powered by TracelyTag" />
+        </div>
+      </div>
+    </section>
+
+    <section className="elec-band" aria-label="Electronics platform capabilities">
+      <div className="container-tight elec-feature-grid">
+        {electronicsFeatures.map(([title, copy, Icon]) => <article key={title} className="card-line elec-feature-card">
+          <Icon size={22} className="text-[#0a3d8f]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="elec-challenges" aria-labelledby="elec-challenges-title">
+      <div className="container-tight elec-challenges-inner">
+        <div>
+          <h2 id="elec-challenges-title">Electronics Industry Challenges</h2>
+          <div className="elec-challenge-list">
+            {electronicsChallenges.map(([title, copy]) => <div key={title} className="elec-challenge">
+              <span className="elec-challenge-icon"><OctagonAlert size={18} strokeWidth={2} /></span>
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="elec-panel">
+          <h2>Why Electronics Brands Choose TracelyTag</h2>
+          <div className="elec-panel-grid">
+            {electronicsPanelItems.map(item => <p key={item} className="elec-panel-item"><CircleCheck size={17} strokeWidth={1.8} className="shrink-0" />{item}</p>)}
+          </div>
+          <Link href="/contact-us" data-testid="button-electronics-download-report" className="elec-panel-btn">Download Industry Report</Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="elec-journey" aria-labelledby="elec-journey-title">
+      <div className="container-tight elec-journey-inner">
+        <h2 id="elec-journey-title" className="elec-section-title">The Secure Product Journey</h2>
+        <div className="elec-journey-track">
+          {electronicsJourney.map((step, index) => <div key={step} className="elec-journey-step">
+            <span className="elec-journey-dot">{index + 1}</span>
+            <p>{step}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="elec-benefits" aria-labelledby="elec-benefits-title">
+      <div className="container-tight elec-benefits-inner">
+        <h2 id="elec-benefits-title" className="elec-section-title">Measurable Business Benefits</h2>
+        <div className="elec-benefit-grid">
+          {electronicsBenefits.map(([title, copy, Icon]) => <article key={title} className="card-line elec-benefit-card">
+            <Icon size={24} className="text-[#0a4aa0]" strokeWidth={1.9} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="elec-intel" aria-labelledby="elec-intel-title">
+      <div className="container-tight elec-intel-inner">
+        <div>
+          <h2 id="elec-intel-title">Real-Time Intelligence</h2>
+          <p className="elec-intel-copy">Our centralized command center provides granular visibility into your entire electronics supply chain. Monitor production status, track authentications, and analyze consumer behavior in one powerful interface.</p>
+          <div className="elec-intel-tabs" role="tablist" aria-label="Dashboard views">
+            {electronicsIntelTabs.map((tab, index) => <button
+              key={tab}
+              role="tab"
+              type="button"
+              id={`elec-intel-tab-${index}`}
+              aria-selected={intelTab === index}
+              aria-controls="elec-intel-panel"
+              data-testid={`tab-electronics-${tab.toLowerCase().replaceAll(' ', '-')}`}
+              onClick={() => setIntelTab(index)}
+              className={`elec-intel-tab ${intelTab === index ? 'active' : ''}`}
+            >{tab}</button>)}
+          </div>
+        </div>
+        <div className="elec-intel-art" id="elec-intel-panel" role="tabpanel" aria-labelledby={`elec-intel-tab-${intelTab}`}>
+          <img src={`${root}industry-crops/electronics-dashboard-monitor.png`} alt={`TracelyTag electronics dashboard showing ${electronicsIntelTabs[intelTab].toLowerCase()}, production status, warranty registrations and supply chain visibility`} />
+        </div>
+      </div>
+    </section>
+
+    <section className="elec-cta" aria-labelledby="elec-cta-title">
+      <div className="container-tight elec-cta-inner">
+        <h2 id="elec-cta-title">Ready to Protect Every Electronic Product?</h2>
+        <p>Join the world's leading electronics brands in securing their supply chain and building deeper customer relationships with TracelyTag.</p>
+        <div className="elec-cta-actions">
+          <Link href="/contact-us" data-testid="button-electronics-book-demo" className="elec-btn elec-btn-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-electronics-contact-sales" className="elec-btn elec-btn-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   const params = useParams<{slug:string}>(); const slug = params.slug || (type === 'platform' ? 'product-digitalization' : type === 'industry' ? 'agriculture-agtech' : 'analytics-business-intelligence');
   const industry = industryItems.find(x => x[1] === slug);
@@ -814,7 +954,7 @@ function Router() {
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
-    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/:slug" component={IndustryPage} />
+    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
 }

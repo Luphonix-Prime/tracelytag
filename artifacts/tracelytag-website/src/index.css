@@ -170,3 +170,178 @@
   .solution-benefit-tab { min-height: 48px; padding: .65rem .7rem; font-size: 9px; }
   .solution-benefit-detail { min-height: 220px; padding: 1.5rem; }
 }
+/* ── Electronics & High-Tech industry page ─────────────────────────── */
+.elec-hero { border-bottom: 1px solid #e6eaf0; background: #f7f8fa; }
+.elec-hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(3.5rem, 7vw, 6rem); }
+.elec-pill { display: inline-block; border-radius: 999px; background: #e4edfa; color: #0b4ea2; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: .45rem .8rem; }
+.elec-h1 { margin-top: 1.6rem; max-width: 545px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(30px, 3.3vw, 42px); font-weight: 800; letter-spacing: -.045em; line-height: 1.12; }
+.elec-hero-copy { margin-top: 1.6rem; max-width: 500px; color: #5b6470; font-size: 14px; line-height: 1.75; }
+.elec-hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
+.elec-btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; padding: .85rem 1.6rem; font-size: 13px; font-weight: 600; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.elec-btn-primary { background: #0a3d8f; color: #fff; }
+.elec-btn-primary:hover { background: #08316f; }
+.elec-btn-ghost { border: 1px solid #dde3ea; background: #fff; color: #2c3540; }
+.elec-btn-ghost:hover { border-color: #0a3d8f; color: #0a3d8f; }
+.elec-hero-art { border: 1px solid #e4e8ee; border-radius: 10px; background: #fff; padding: 1rem; box-shadow: 0 10px 30px rgb(24 60 110 / .06); }
+.elec-hero-art img { display: block; width: 100%; height: auto; border-radius: 6px; }
+
+.elec-band { background: #f1f2f4; border-block: 1px solid #e6eaf0; }
+.elec-feature-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.4rem; padding-block: clamp(2.75rem, 5vw, 4.25rem); }
+.elec-feature-card { border: 1px solid #e2e7ee; border-radius: 8px; background: #fff; padding: 1.6rem 1.4rem; }
+.elec-feature-card h3 { margin-top: 1.5rem; color: #17181b; font-size: 15px; font-weight: 700; }
+.elec-feature-card p { margin-top: .75rem; color: #5f6874; font-size: 13px; line-height: 1.65; }
+
+.elec-challenges { background: #f7f8fa; }
+.elec-challenges-inner { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); align-items: start; gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.elec-challenges h2 { max-width: 340px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(26px, 3.2vw, 34px); font-weight: 700; letter-spacing: -.035em; line-height: 1.2; }
+.elec-challenge-list { display: grid; gap: 2rem; margin-top: 2.5rem; }
+.elec-challenge { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 1rem; }
+.elec-challenge-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 8px; background: #fdeaea; color: #d43535; }
+.elec-challenge h3 { color: #23262b; font-size: 14px; font-weight: 600; }
+.elec-challenge p { margin-top: .5rem; color: #626b77; font-size: 13px; line-height: 1.65; }
+.elec-panel { border-radius: 10px; background: #0a4aa0; padding: clamp(1.75rem, 3vw, 2.5rem); color: #fff; box-shadow: 0 16px 38px rgb(10 74 160 / .18); }
+.elec-panel h2 { font-size: 15px; font-weight: 600; }
+.elec-panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1.5rem; margin-top: 2rem; }
+.elec-panel-item { display: flex; align-items: center; gap: .7rem; font-size: 13px; color: #fff; }
+.elec-panel-btn { display: inline-flex; align-items: center; justify-content: center; margin-top: 2.4rem; border-radius: 6px; background: #fff; color: #0a4aa0; font-size: 13px; font-weight: 600; padding: .95rem 1.6rem; transition: background .2s ease; }
+.elec-panel-btn:hover { background: #eef4fd; }
+
+.elec-journey { background: #f1f2f4; border-block: 1px solid #e6eaf0; }
+.elec-journey-inner { padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.elec-section-title { text-align: center; color: #23262b; font-size: 15px; font-weight: 600; }
+.elec-journey-track { position: relative; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); margin-top: 3.25rem; }
+.elec-journey-track::before { content: ""; position: absolute; top: 22px; left: 0; right: 0; height: 1px; background: #c3ccd8; }
+.elec-journey-step { position: relative; display: flex; flex-direction: column; align-items: center; gap: .95rem; }
+.elec-journey-dot { display: grid; width: 44px; height: 44px; place-items: center; border: 2px solid #0a4aa0; border-radius: 50%; background: #fff; color: #0a4aa0; font-size: 14px; font-weight: 700; }
+.elec-journey-step p { max-width: 96px; text-align: center; color: #3a4250; font-size: 12px; line-height: 1.4; }
+
+.elec-benefits { background: #f7f8fa; }
+.elec-benefits-inner { padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.elec-benefit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; margin-top: 3rem; }
+.elec-benefit-card { border: 1px solid #e2e7ee; border-radius: 8px; background: #fff; padding: 1.75rem 1.5rem; }
+.elec-benefit-card h3 { margin-top: 1.6rem; color: #23262b; font-size: 14px; font-weight: 600; }
+.elec-benefit-card p { margin-top: .85rem; color: #5f6874; font-size: 13px; line-height: 1.7; }
+
+.elec-intel { background: #2b2c2e; color: #fff; }
+.elec-intel-inner { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(2.5rem, 6vw, 4.5rem); padding-block: clamp(3.5rem, 7vw, 6rem); }
+.elec-intel h2 { color: #fff; font-size: 15px; font-weight: 600; }
+.elec-intel p.elec-intel-copy { margin-top: 1.75rem; max-width: 380px; color: #d3d6da; font-size: 14px; line-height: 1.8; }
+.elec-intel-tabs { display: grid; gap: .5rem; margin-top: 2.75rem; }
+.elec-intel-tab { position: relative; border-radius: 4px; padding: 1rem 1.25rem; text-align: left; color: #9aa0a8; font-size: 14px; transition: background .2s ease, color .2s ease; }
+.elec-intel-tab:hover { color: #e7e9ec; }
+.elec-intel-tab.active { background: #3a3b3e; color: #fff; }
+.elec-intel-tab.active::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 2px; background: #4a80d6; }
+.elec-intel-art { border: 1px solid #1f3350; border-radius: 8px; overflow: hidden; }
+.elec-intel-art img { display: block; width: 100%; height: auto; }
+
+.elec-cta { background: #f7f8fa; }
+.elec-cta-inner { padding-block: clamp(3.5rem, 7vw, 6rem); text-align: center; }
+.elec-cta h2 { color: #23262b; font-size: 15px; font-weight: 600; }
+.elec-cta p { margin: 1.9rem auto 0; max-width: 620px; color: #5b6470; font-size: 14px; line-height: 1.75; }
+.elec-cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .85rem; margin-top: 2.6rem; }
+
+@media (max-width: 1023px) {
+  .elec-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .elec-benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .elec-journey-track { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 2.25rem; }
+  .elec-journey-track::before { display: none; }
+}
+@media (max-width: 767px) {
+  .elec-hero-inner { grid-template-columns: 1fr; padding-block: 3rem; }
+  .elec-challenges-inner { grid-template-columns: 1fr; }
+  .elec-intel-inner { grid-template-columns: 1fr; }
+  .elec-feature-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .elec-benefit-grid { grid-template-columns: 1fr; }
+  .elec-journey-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .elec-panel-grid { grid-template-columns: 1fr; gap: 1.1rem; }
+}
+
+/* ── Agriculture & AgTech industry page ────────────────────────────── */
+.agri-hero { background: #f7f8fa; }
+.agri-hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(3.5rem, 7vw, 6.5rem); }
+.agri-pill { display: inline-block; border-radius: 999px; background: #e4edfa; color: #0b4ea2; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: .45rem .8rem; }
+.agri-h1 { margin-top: 1.7rem; max-width: 545px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(30px, 3.3vw, 42px); font-weight: 800; letter-spacing: -.045em; line-height: 1.14; }
+.agri-hero-copy { margin-top: 1.7rem; max-width: 505px; color: #5b6470; font-size: 14px; line-height: 1.75; }
+.agri-hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2.1rem; }
+.agri-btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; padding: .85rem 1.6rem; font-size: 13px; font-weight: 700; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.agri-btn-primary { background: #0a3d8f; color: #fff; }
+.agri-btn-primary:hover { background: #08316f; }
+.agri-btn-ghost { border: 1px solid #dde3ea; background: #fff; color: #2c3540; }
+.agri-btn-ghost:hover { border-color: #0a3d8f; color: #0a3d8f; }
+.agri-hero-art { border-radius: 12px; background: #fff; padding: .9rem; box-shadow: 0 14px 38px rgb(24 60 110 / .08); }
+.agri-hero-art img { display: block; width: 100%; height: auto; border-radius: 8px; }
+
+.agri-features { background: #f7f8fa; }
+.agri-feature-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.4rem; padding-bottom: clamp(2.75rem, 5vw, 4rem); }
+.agri-feature-card { border: 1px solid #e2e7ee; border-radius: 8px; background: #fff; padding: 1.6rem 1.4rem; }
+.agri-feature-card h3 { margin-top: 1.5rem; color: #17181b; font-size: 15px; font-weight: 700; }
+.agri-feature-card p { margin-top: .75rem; color: #5f6874; font-size: 13px; line-height: 1.65; }
+
+.agri-challenges { background: #f1f2f4; }
+.agri-challenges-inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.agri-challenges h2 { max-width: 360px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -.04em; line-height: 1.15; }
+.agri-challenge-list { display: grid; gap: 1.55rem; margin-top: 2.4rem; }
+.agri-challenge { display: flex; align-items: center; gap: 1.15rem; color: #4b5563; font-size: 14px; }
+.agri-challenge svg { flex-shrink: 0; color: #c62828; }
+.agri-panel { border-radius: 10px; background: #0a4aa0; padding: clamp(1.75rem, 3vw, 2.6rem); color: #fff; box-shadow: 0 16px 38px rgb(10 74 160 / .18); }
+.agri-panel h2 { font-family: var(--app-font-serif); font-size: clamp(18px, 1.9vw, 23px); font-weight: 700; letter-spacing: -.02em; }
+.agri-panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.1rem; }
+.agri-panel-item { display: flex; align-items: center; gap: .8rem; font-size: 14px; font-weight: 500; }
+
+.agri-journey { background: #f7f8fa; }
+.agri-journey-inner { padding-block: clamp(2.75rem, 5vw, 4.5rem); }
+.agri-journey-track { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.agri-journey-track::before { content: ""; position: absolute; top: 19px; left: 0; right: 0; height: 1px; background: #d3d9e2; }
+.agri-journey-step { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+.agri-journey-dot { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: #0a3d8f; color: #fff; font-size: 13px; font-weight: 700; }
+.agri-journey-step p { max-width: 130px; text-align: center; color: #1f2530; font-size: 13px; font-weight: 700; line-height: 1.35; }
+
+.agri-solutions { background: #f7f8fa; }
+.agri-solutions-inner { padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.agri-solutions h2 { text-align: center; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(20px, 2.1vw, 25px); font-weight: 700; letter-spacing: -.025em; }
+.agri-solutions-sub { margin: 1.1rem auto 0; max-width: 500px; text-align: center; color: #5f6874; font-size: 14px; line-height: 1.65; }
+.agri-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; margin-top: 3rem; }
+.agri-solution-card { border: 1px solid #e2e7ee; border-radius: 8px; background: #fff; padding: 1.75rem 1.5rem; }
+.agri-solution-card h3 { margin-top: 1.7rem; color: #17181b; font-size: 15px; font-weight: 700; }
+.agri-solution-card p { margin-top: .8rem; color: #5f6874; font-size: 13px; line-height: 1.7; }
+
+.agri-dashboard { background: #f7f8fa; }
+.agri-dashboard-inner { padding-block: clamp(1rem, 2vw, 2rem) clamp(3.25rem, 6vw, 5rem); }
+.agri-dashboard-art img { display: block; width: 100%; height: auto; }
+.agri-dashboard-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.75rem 2.5rem; margin-top: clamp(2.5rem, 5vw, 4rem); }
+.agri-dashboard-item h3 { color: #0a4aa0; font-size: 15px; font-weight: 700; }
+.agri-dashboard-item p { margin-top: .8rem; color: #5f6874; font-size: 13px; line-height: 1.7; }
+
+.agri-benefits { background: #f1f2f4; }
+.agri-benefits-inner { padding-block: clamp(3.25rem, 6vw, 5.5rem); }
+.agri-benefits h2 { text-align: center; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -.04em; }
+.agri-benefit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 2.25rem; margin-top: clamp(2.5rem, 5vw, 4rem); }
+.agri-benefit { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 1.1rem; }
+.agri-benefit-icon { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 9px; background: #dfe7f8; color: #0a3d8f; }
+.agri-benefit h3 { color: #17181b; font-size: 15px; font-weight: 700; }
+.agri-benefit p { margin-top: .7rem; color: #5f6874; font-size: 13px; line-height: 1.7; }
+
+.agri-cta { background: linear-gradient(105deg, #eef2fb 0%, #f8f9fc 32%, #f8f9fc 68%, #e9eefa 100%); }
+.agri-cta-inner { padding-block: clamp(3.5rem, 7vw, 6rem); text-align: center; }
+.agri-cta h2 { margin-inline: auto; max-width: 620px; color: #17181b; font-family: var(--app-font-serif); font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -.04em; line-height: 1.2; }
+.agri-cta p { margin: 1.8rem auto 0; max-width: 560px; color: #5b6470; font-size: 14px; line-height: 1.75; }
+.agri-cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .85rem; margin-top: 2.4rem; }
+
+@media (max-width: 1023px) {
+  .agri-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agri-solution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agri-benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agri-dashboard-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agri-journey-track { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 2.25rem; }
+  .agri-journey-track::before { display: none; }
+}
+@media (max-width: 767px) {
+  .agri-hero-inner { grid-template-columns: 1fr; padding-block: 3rem; }
+  .agri-challenges-inner { grid-template-columns: 1fr; }
+  .agri-feature-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .agri-solution-grid { grid-template-columns: 1fr; }
+  .agri-benefit-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .agri-dashboard-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .agri-journey-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agri-panel-grid { grid-template-columns: 1fr; gap: 1.1rem; }
+}

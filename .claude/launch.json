@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tracelytag-website",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "--config", "vite.config.ts", "--port", "5177", "--strictPort"],
+      "cwd": "artifacts/tracelytag-website",
+      "env": { "PORT": "5177", "BASE_PATH": "/" },
+      "port": 5177
+    }
+  ]
+}
