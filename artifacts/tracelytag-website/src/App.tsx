@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, Boxes, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, ClipboardList, ClipboardPaste, DropletOff, Eye, EyeOff, Factory, Gavel, Globe2, Handshake, History, IdCard, Leaf, LockKeyhole, Megaphone, Menu, Monitor, MonitorSmartphone, Network, OctagonAlert, PackageCheck, QrCode, Route as RouteIcon, ScanLine, ScanSearch, Shield, ShieldCheck, Smartphone, Sparkles, SquareCheckBig, TriangleAlert, Truck, UserRoundX, UserSearch, Users, Waypoints, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, Boxes, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardList, ClipboardPaste, DropletOff, Eye, EyeOff, Factory, FileText, Gavel, Globe2, HandHeart, Handshake, History, IdCard, Info, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Route as RouteIcon, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, TriangleAlert, Truck, Unlink, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -1253,6 +1253,149 @@ function ApparelFashion() {
   </Shell>;
 }
 
+const cosmeticsFeatures: [string, LucideIcon][] = [
+  ['Product Authentication', BadgeCheck],
+  ['Brand Protection', Shield],
+  ['Consumer Engagement', HandHeart],
+  ['Product Transparency', Info],
+];
+const cosmeticsChallenges: [string, string, LucideIcon][] = [
+  ['Counterfeit beauty products', 'Infiltration of unauthorized replicas harming brand value.', TriangleAlert],
+  ['Consumer safety concerns', 'Risks from unregulated ingredients in fake products.', ShieldPlus],
+  ['Limited product transparency', 'Opaque ingredient sourcing and sustainability data.', EyeOff],
+  ['Weak post-purchase engagement', 'Lost connection with customers after the initial sale.', Unlink],
+];
+const cosmeticsPanelItems: [string, LucideIcon][] = [
+  ['Product Authentication', ScanQrCode],
+  ['Anti-Counterfeiting', ShieldAlert],
+  ['Consumer Engagement', HandHeart],
+  ['Digital Product Info', FileText],
+  ['Supply Chain Visibility', Archive],
+  ['Business Intelligence', ChartNoAxesCombined],
+];
+const cosmeticsLifecycle: [string, LucideIcon][] = [
+  ['Manufacturing', Factory],
+  ['Packaging', Package],
+  ['QR Printing', Printer],
+  ['Warehouse', Warehouse],
+  ['Distribution', Truck],
+  ['Retail', Store],
+  ['Consumer Scan', ScanQrCode],
+  ['Intelligence', ChartNoAxesCombined],
+];
+const cosmeticsBenefits: [string, string, LucideIcon][] = [
+  ['Protect Brand Reputation', 'Ensure only genuine products reach your customers, maintaining premium brand integrity.', CircleStar],
+  ['Increase Consumer Trust', 'Provide instant verification that builds confidence in product safety and authenticity.', Handshake],
+  ['Prevent Counterfeits', 'Advanced digital signatures make your products virtually impossible to replicate.', SmartphoneCharging],
+  ['Improve Transparency', 'Share detailed ingredient sourcing and ethical manufacturing stories directly on the pack.', Search],
+  ['Strengthen Engagement', 'Turn every physical product into a digital gateway for loyalty programs and personalized content.', MessagesSquare],
+  ['Actionable Insights', 'Understand where and how consumers interact with your products across the global market.', ChartNoAxesCombined],
+];
+
+function CosmeticsBeauty() {
+  return <Shell>
+    <section className="cosm-hero" aria-labelledby="cosm-hero-title">
+      <div className="container-tight cosm-hero-inner">
+        <div className="fade-up">
+          <p className="cosm-pill">Cosmetics &amp; Personal Care</p>
+          <h1 id="cosm-hero-title" className="cosm-h1">Protect Every Beauty Product with Secure Digital Product Identity</h1>
+          <p className="cosm-hero-copy">Help cosmetics and personal care brands authenticate products, prevent counterfeiting, improve product transparency, engage consumers and build lasting brand trust through secure QR-powered digital identities.</p>
+          <div className="cosm-hero-actions">
+            <Link href="/contact-us" data-testid="button-cosmetics-book-demo-hero" className="cosm-btn cosm-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-cosmetics-talk-expert" className="cosm-btn cosm-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="cosm-hero-art fade-up delay-1">
+          <img src={`${root}industry-crops/cosmetics-beauty-hero.png`} alt="Cosmetics manufacturing line, warehouse, distribution and beauty retail store traceability network powered by TracelyTag" />
+        </div>
+      </div>
+    </section>
+
+    <section className="cosm-features" aria-label="Cosmetics platform capabilities">
+      <div className="container-tight cosm-feature-grid">
+        {cosmeticsFeatures.map(([title, Icon]) => <article key={title} className="card-line cosm-feature-card">
+          <Icon size={24} className="text-[#0a3d8f]" strokeWidth={2} />
+          <h3>{title}</h3>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="cosm-challenges" aria-labelledby="cosm-challenges-title">
+      <div className="container-tight cosm-challenges-inner">
+        <div>
+          <h2 id="cosm-challenges-title" className="cosm-challenges-title">Cosmetics &amp; Personal Care Industry Challenges</h2>
+          <span className="cosm-rule" />
+          <div className="cosm-challenge-list">
+            {cosmeticsChallenges.map(([title, copy, Icon]) => <div key={title} className="cosm-challenge">
+              <Icon size={20} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="cosm-panel">
+          <h2>Why Cosmetics Brands Choose TracelyTag</h2>
+          <div className="cosm-panel-grid">
+            {cosmeticsPanelItems.map(([item, Icon]) => <p key={item} className="cosm-panel-item">
+              <span className="cosm-panel-icon"><Icon size={18} strokeWidth={1.9} /></span>{item}
+            </p>)}
+          </div>
+          <hr className="cosm-panel-rule" />
+          <Link href="/platform" data-testid="button-cosmetics-see-platform" className="cosm-panel-btn">See the Platform in Action</Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="cosm-lifecycle" aria-labelledby="cosm-lifecycle-title">
+      <div className="container-tight cosm-lifecycle-inner">
+        <h2 id="cosm-lifecycle-title">End-to-End Cosmetic Product Lifecycle</h2>
+        <div className="cosm-lifecycle-track">
+          {cosmeticsLifecycle.map(([step, Icon]) => <div key={step} className="cosm-lifecycle-step">
+            <span className="cosm-lifecycle-dot"><Icon size={21} strokeWidth={1.9} /></span>
+            <p>{step}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cosm-analytics" aria-labelledby="cosm-analytics-title">
+      <div className="container-tight cosm-analytics-inner">
+        <h2 id="cosm-analytics-title">Real-Time Authentication Analytics</h2>
+        <p className="cosm-analytics-sub">Monitor global scan data, detect counterfeit clusters, and measure consumer engagement in real-time through our enterprise-grade dashboard.</p>
+        <div className="cosm-analytics-art">
+          <img src={`${root}industry-crops/cosmetics-beauty-dashboard.png`} alt="Beauty Insights cosmetics and personal care enterprise platform dashboard showing production status, supply chain visibility, authentication requests, consumer engagement, product performance and business analytics" />
+        </div>
+      </div>
+    </section>
+
+    <section className="cosm-benefits" aria-labelledby="cosm-benefits-title">
+      <div className="container-tight cosm-benefits-inner">
+        <h2 id="cosm-benefits-title">Business Benefits</h2>
+        <span className="cosm-rule" />
+        <div className="cosm-benefit-grid">
+          {cosmeticsBenefits.map(([title, copy, Icon]) => <article key={title} className="card-line cosm-benefit-card">
+            <span className="cosm-benefit-icon"><Icon size={21} strokeWidth={1.9} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cosm-cta" aria-labelledby="cosm-cta-title">
+      <div className="container-tight cosm-cta-inner">
+        <h2 id="cosm-cta-title">Ready to Protect Every Beauty Product?</h2>
+        <div className="cosm-cta-actions">
+          <Link href="/contact-us" data-testid="button-cosmetics-book-demo" className="cosm-btn cosm-btn-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-cosmetics-contact-sales" className="cosm-btn cosm-btn-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   const params = useParams<{slug:string}>(); const slug = params.slug || (type === 'platform' ? 'product-digitalization' : type === 'industry' ? 'agriculture-agtech' : 'analytics-business-intelligence');
   const industry = industryItems.find(x => x[1] === slug);
@@ -1269,7 +1412,7 @@ function Router() {
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
-    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
+    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
 }
