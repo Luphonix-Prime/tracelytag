@@ -6,6 +6,15 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
 import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, Crosshair, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gavel, Globe, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
+import { 
+  Gs1CompliancePage, 
+  DigitalLoyaltyPage, 
+  ProductDigitalizationPage, 
+  AggregationPage, 
+  MobileVerificationPage,
+  ProductAuthenticationPage,
+  SupplyChainIntegrityPage
+} from '@/pages/platform-pages';
 
 const queryClient = new QueryClient();
 const root = '/reference/img/';
@@ -2020,6 +2029,14 @@ function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product 
 function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
+    <Route path="/platform/gs1-standards-compliance"><Gs1CompliancePage Shell={Shell} /></Route>
+    <Route path="/platform/loyalty-programs"><DigitalLoyaltyPage Shell={Shell} /></Route>
+    <Route path="/platform/product-digitalization"><ProductDigitalizationPage Shell={Shell} /></Route>
+    <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
+    <Route path="/platform/case-pallet-aggregation"><AggregationPage Shell={Shell} /></Route>
+    <Route path="/platform/mobile-verification"><MobileVerificationPage Shell={Shell} /></Route>
+    <Route path="/platform/brand-protection"><SupplyChainIntegrityPage Shell={Shell} /></Route>
+    <Route path="/solutions/supply-chain-visibility"><SupplyChainIntegrityPage Shell={Shell} /></Route>
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/food-beverage" component={FoodBeverage} /><Route path="/industries/pharmaceuticals" component={Pharmaceuticals} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
