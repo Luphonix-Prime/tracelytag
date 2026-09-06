@@ -214,7 +214,7 @@ const solutionPageData: Record<string, SolutionData> = {
     ...solutionBase,
     eyebrow: 'ANALYTICS & BUSINESS INTELLIGENCE',
     title: 'Turn Product Data into Actionable Business Intelligence',
-    copy: 'Transform connected product data into the insights your teams need to make faster, smarter decisions across operations, supply chain, and customer experience.',
+    copy: 'Transform every product scan, authentication, and supply chain event into meaningful business insights. Monitor product performance, customer engagement, supply chain visibility, and operational KPIs from one intelligent analytics platform.',
     challengeEyebrow: 'WHY MODERN ANALYTICS MATTERS',
     challengeTitle: 'Move from product signals to confident decisions.',
     challengeCopy: 'TracelyTag brings identity, movement, and engagement data together so leaders can understand what is happening across the product journey.',
@@ -231,8 +231,8 @@ const solutionPageData: Record<string, SolutionData> = {
   'analytics-dashboard': {
     ...solutionBase,
     eyebrow: 'ANALYTICS DASHBOARD',
-    title: 'See Your Product Ecosystem in Real Time',
-    copy: 'Bring product, supply chain, and verification activity into one intuitive dashboard built for clear decisions and confident action.',
+    title: 'Transform Product Data into Actionable Business Insights',
+    copy: 'Monitor authentication, product movement, customer engagement, supply chain performance, and operational KPIs from one intelligent analytics platform.',
     challengeEyebrow: 'ONE VIEW OF YOUR OPERATION',
     challengeTitle: 'Stop searching for the signal.',
     challengeCopy: 'Your teams should not need to reconcile disconnected reports to understand how products are moving. TracelyTag makes the important signals visible at a glance.',
@@ -249,8 +249,8 @@ const solutionPageData: Record<string, SolutionData> = {
   'analytics-dashboard-insights': {
     ...solutionBase,
     eyebrow: 'ANALYTICS DASHBOARD INSIGHTS',
-    title: 'Find the Insights Hidden in Every Product Interaction',
-    copy: 'Understand how products move, how customers engage, and where your operation can improve with connected analytics and intelligent reporting.',
+    title: 'Transform Product Data into Actionable Business Insights',
+    copy: 'Monitor authentication, product movement, customer engagement, supply chain performance, and operational KPIs from one intelligent analytics platform.',
     challengeEyebrow: 'FROM DATA TO DIRECTION',
     challengeTitle: 'Make every signal count.',
     challengeCopy: 'TracelyTag organizes verified product events into patterns your teams can use to improve performance, reduce risk, and grow trust.',
@@ -266,9 +266,9 @@ const solutionPageData: Record<string, SolutionData> = {
   },
   'anti-counterfeiting': {
     ...solutionBase,
-    eyebrow: 'ANTI-COUNTERFEITING',
-    title: 'Protect Your Products. Preserve Your Trust.',
-    copy: 'Secure every product with a verifiable digital identity that helps brands detect counterfeits, protect customers, and defend the value of their products.',
+    eyebrow: 'ANTI-COUNTERFEITING SOLUTION',
+    title: 'Anti-Counterfeiting',
+    copy: 'Protect your products with secure product identities, QR-based verification, serialization, and end-to-end traceability. Enable consumers and supply chain partners to instantly verify product authenticity.',
     heroImage: 'why-hero-diagram.png',
     challengeEyebrow: 'THE COUNTERFEIT CHALLENGE',
     challengeTitle: 'Make authenticity easy to prove.',
@@ -551,6 +551,7 @@ function BenefitsExplorer({ benefits }: { benefits: [string, string][] }) {
 function SolutionPage() {
   const { slug = 'analytics-business-intelligence' } = useParams<{ slug: string }>();
   const data = solutionPageData[slug] || solutionPageData['analytics-business-intelligence'];
+  const heroImage = `solution-crops/${slug}-hero.png`;
   useEffect(() => {
     document.title = `${data.title} | TracelyTag`;
     return () => { document.title = 'TracelyTag'; };
@@ -560,7 +561,7 @@ function SolutionPage() {
       <div className="container-tight solution-hero-inner">
         <div className="solution-hero-copy fade-up">
           <p className="eyebrow mb-5">{data.eyebrow}</p>
-          <h1 id="solution-title" className="display max-w-[560px] text-[40px] font-extrabold leading-[.98] text-[#172536] md:text-[62px]">{data.title}</h1>
+          <h1 id="solution-title" className="display max-w-[560px] text-[40px] font-extrabold leading-[1.02] text-[#172536] md:text-[48px]">{data.title}</h1>
           <p className="mt-6 max-w-[510px] text-[13px] leading-6 text-[#596575]">{data.copy}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href="/contact-us">Book a Demo</Button>
@@ -569,7 +570,7 @@ function SolutionPage() {
         </div>
         <div className="solution-hero-art fade-up delay-1">
           <div className="solution-art-grid" aria-hidden="true" />
-          <img src={`${root}${data.heroImage}`} alt={data.heroAlt} />
+          <img src={`${root}${heroImage}`} alt={data.heroAlt} />
           <span className="solution-art-label solution-art-label-one">SECURE IDENTITY</span>
           <span className="solution-art-label solution-art-label-two">LIVE INTELLIGENCE</span>
         </div>
@@ -646,7 +647,13 @@ function SolutionPage() {
         <p className="eyebrow mb-3">TANGIBLE BUSINESS BENEFITS</p>
         <h2 id="benefits-title" className="display text-[28px] font-bold text-[#172536] md:text-[34px]">Measurable outcomes across the enterprise.</h2>
       </div>
-      <div className="mt-9"><BenefitsExplorer benefits={data.benefits} /></div>
+      <div className="mt-9 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {data.benefits.map(([title, copy], index) => <article key={title} className="card-line rounded border bg-white p-5">
+          <span className="grid size-8 place-items-center rounded-md bg-[#edf5ff] text-[10px] font-bold text-[#0753a4]">{String(index + 1).padStart(2, '0')}</span>
+          <h3 className="mt-5 text-[12px] font-bold text-[#20324b]">{title}</h3>
+          <p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{copy}</p>
+        </article>)}
+      </div>
     </section>
 
     <CTA title={data.ctaTitle} copy={data.ctaCopy} />

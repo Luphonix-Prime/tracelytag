@@ -152,7 +152,7 @@
   .nav-link.active:after { bottom: -7px; }
   .mega-menu { position: static; transform: none !important; opacity: 1; pointer-events: auto; box-shadow: none; border: 0; border-top: 1px solid hsl(var(--border)); border-radius: 0; width: 100%; }
   .solution-hero-inner { grid-template-columns: 1fr; gap: 2rem; min-height: 0; padding-block: 3.75rem 3.25rem; }
-  .solution-hero-art { min-height: 220px; order: -1; }
+  .solution-hero-art { min-height: 220px; order: 0; }
   .solution-hero-art img { max-height: 230px; }
   .solution-art-label { font-size: 7px; padding: .45rem .55rem; }
   .solution-art-label-one { top: 7%; left: 0; }
