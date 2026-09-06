@@ -1,0 +1,10 @@
+{
+  "buildCommand": "pnpm --filter @workspace/tracelytag-website build",
+  "outputDirectory": "artifacts/tracelytag-website/dist/public",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
