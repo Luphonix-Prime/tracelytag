@@ -20,13 +20,21 @@ const platformItems = [
 ] as const;
 const solutionItems = [
   ['Analytics & Business Intelligence', 'analytics-business-intelligence'],
+  ['Analytics Dashboard', 'analytics-dashboard'],
+  ['Analytics Dashboard Insights', 'analytics-dashboard-insights'],
   ['Anti-Counterfeiting Solution', 'anti-counterfeiting'],
+  ['Apparel & Clothing Industry', 'apparel-clothing'],
   ['Connected Packaging Solution', 'connected-packaging'],
   ['Consumer Engagement Solution', 'consumer-engagement'],
+  ['Customer Data Platform', 'customer-data-platform'],
   ['Digital Warranty Solution', 'digital-warranty'],
+  ['Premium Product Authentication', 'premium-product-authentication'],
   ['Product Authentication Solution', 'product-authentication'],
+  ['QR Code Generation & Serialization', 'qr-code-generation-serialization'],
+  ['Marketing Automation', 'marketing-automation'],
   ['Supply Chain Visibility Solution', 'supply-chain-visibility'],
   ['Track & Trace Solution', 'track-and-trace'],
+  ['Verification Engine', 'verification-engine'],
 ] as const;
 const industryItems = [
   ['Agriculture & AgTech', 'agriculture-agtech', Factory],
@@ -147,6 +155,25 @@ const genericMap: Record<string, {title:string; image:string; eyebrow:string}> =
   'product-authentication-solution': { title:'Product Authentication Solution', image:'why-hero-diagram.png', eyebrow:'SOLUTIONS' },
   'supply-chain-visibility': { title:'Supply Chain Visibility Solution', image:'hardware-hero-diagram.png', eyebrow:'SOLUTIONS' },
   'track-and-trace': { title:'Track & Trace Solution', image:'about-hero-diagram.png', eyebrow:'SOLUTIONS' },
+};
+
+const solutionScreenshotMap: Record<string, { file: string; alt: string }> = {
+  'analytics-business-intelligence': { file: 'Analytics & Business Intelligence Solution Page.png', alt: 'Analytics and Business Intelligence solution page' },
+  'analytics-dashboard': { file: 'Analytics Dashboard Solution Page.png', alt: 'Analytics Dashboard solution page' },
+  'analytics-dashboard-insights': { file: 'Analytics Dashboard Solution Page (1).png', alt: 'Analytics Dashboard business insights solution page' },
+  'anti-counterfeiting': { file: 'Anti-Counterfeiting Solution Page.png', alt: 'Anti-Counterfeiting solution page' },
+  'apparel-clothing': { file: 'Apparel & Clothing Industry Solution Page.png', alt: 'Apparel and Clothing industry solution page' },
+  'connected-packaging': { file: 'Connected Packaging Solution Page.png', alt: 'Connected Packaging solution page' },
+  'consumer-engagement': { file: 'Consumer Engagement Solution Page.png', alt: 'Consumer Engagement solution page' },
+  'customer-data-platform': { file: 'Customer Data Platform Solution Page.png', alt: 'Customer Data Platform solution page' },
+  'digital-warranty': { file: 'Digital Warranty Solution - Restored Style.png', alt: 'Digital Warranty solution page' },
+  'premium-product-authentication': { file: 'Premium Product Authentication Solution v2.png', alt: 'Premium Product Authentication solution page' },
+  'product-authentication': { file: 'Refined Product Authentication Solution.png', alt: 'Product Authentication solution page' },
+  'qr-code-generation-serialization': { file: 'QR Code Generation & Serialization Solution Page.png', alt: 'QR Code Generation and Serialization solution page' },
+  'marketing-automation': { file: 'Refined Marketing Automation Solution Page.png', alt: 'Marketing Automation solution page' },
+  'supply-chain-visibility': { file: 'Supply Chain Visibility Solution Page.png', alt: 'Supply Chain Visibility solution page' },
+  'track-and-trace': { file: 'Track & Trace Solution Page.png', alt: 'Track and Trace solution page' },
+  'verification-engine': { file: 'Verification Engine Solution Page.png', alt: 'Verification Engine solution page' },
 };
 
 type IndustryData = {
@@ -294,6 +321,12 @@ function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   return <Shell><Hero eyebrow={data.eyebrow} title={data.title} copy="The unified product intelligence platform that helps manufacturers and brands create secure, transparent, and intelligent products." image={data.image} alt={data.title} /><FeatureCards items={aboutFeatures} /><MonitorSection image={data.image.includes('dashboard') ? data.image : 'about-dashboard-monitor.png'} title="The Intelligence Layer" /><BlueBand title="Connected Product Intelligence" items={['Product Authentication','Track & Trace','Supply Chain Visibility','Consumer Engagement']} /><CTA title="Ready to Build Connected Products?" copy="Join the global leaders creating trusted, intelligent products with TracelyTag." /></Shell>;
 }
 
+function SolutionReferencePage() {
+  const { slug = 'analytics-business-intelligence' } = useParams<{ slug: string }>();
+  const solution = solutionScreenshotMap[slug] || solutionScreenshotMap['analytics-business-intelligence'];
+  return <main className="min-h-screen overflow-x-hidden bg-white"><img src={`${root}solution/${encodeURI(solution.file)}`} alt={solution.alt} className="block h-auto w-full" /></main>;
+}
+
 function Platform() { return <Shell><Hero eyebrow="THE TRACELYTAG PLATFORM" title="One Platform. Complete Product Intelligence." copy="Build, authenticate, track, and connect every product across its entire lifecycle." image="about-hero-diagram.png" alt="TracelyTag product intelligence platform" /><FeatureCards items={aboutFeatures} /><BlueBand title="The Intelligence Layer" items={['Product Digitalization','Product Authentication','Case & Pallet Aggregation','Mobile Verification']} /><CTA title="Ready to Build Connected Products?" copy="Join the global leaders creating trusted, intelligent products with TracelyTag." /></Shell>; }
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
@@ -302,7 +335,7 @@ function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
-    <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug"><GenericPage type="solution" /></Route>
+    <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionReferencePage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
