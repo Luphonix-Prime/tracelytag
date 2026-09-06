@@ -149,6 +149,144 @@ const genericMap: Record<string, {title:string; image:string; eyebrow:string}> =
   'track-and-trace': { title:'Track & Trace Solution', image:'about-hero-diagram.png', eyebrow:'SOLUTIONS' },
 };
 
+type IndustryData = {
+  eyebrow: string;
+  title: string;
+  copy: string;
+  heroImage: string;
+  featureItems: [string, string, LucideIcon][];
+  challengeTitle: string;
+  challengeItems: string[];
+  challengePanel: string;
+  journeyTitle: string;
+  journeySteps: string[];
+  solutionTitle: string;
+  solutionCards: [string, string][];
+  benefits: string[];
+  ctaTitle: string;
+};
+
+const industryData: Record<string, IndustryData> = {
+  'agriculture-agtech': {
+    eyebrow: 'AGRICULTURE INDUSTRY',
+    title: 'Protect Agricultural Products with Complete Farm-to-Field Traceability',
+    copy: 'Help agricultural manufacturers and agrochemical brands secure products, prevent counterfeiting, enable farm-to-field traceability and provide farmers with trusted product verification through secure QR-powered digital identities.',
+    heroImage: 'industry-crops/agriculture-agtech-hero.png',
+    featureItems: [['Product Authentication', 'Global security for your brand equity and reputation.', ShieldCheck], ['Anti-Counterfeiting', 'Instant verification for retailers and consumers.', LockKeyhole], ['Farm-to-Field Traceability', 'Real-time tracking from factory gate to store shelf.', Network], ['Farmer Verification', 'Build direct relationships via smart product packaging.', Users]],
+    challengeTitle: 'Agriculture Industry Challenges',
+    challengeItems: ['Counterfeit agricultural products', 'Supply chain visibility', 'Quality and safety risks', 'Regulatory compliance'],
+    challengePanel: 'Why Agriculture Companies Choose TracelyTag',
+    journeyTitle: 'End-to-End Agricultural Product Lifecycle',
+    journeySteps: ['Manufacturing', 'Packaging', 'Distribution', 'Retail', 'Farmer Gate', 'Product Verification', 'Analytics'],
+    solutionTitle: 'Enterprise Solutions for Agriculture',
+    solutionCards: [['Product Authentication', 'Secure products from source to field.'], ['Anti-Counterfeiting', 'Protect brand equity and reputation.'], ['Track & Trace', 'Follow products across every movement.'], ['Farmer Engagement', 'Create trusted farmer relationships.'], ['Supply Chain Visibility', 'Monitor the complete agricultural journey.'], ['Analytics & Intelligence', 'Turn product data into action.']],
+    benefits: ['Product Assurance', 'Prevent Counterfeit Products', 'Protect Product Trust', 'Improve Supply Chain Visibility', 'Strengthen Brand Reputation', 'Actionable Business Insights'],
+    ctaTitle: 'Ready to Modernize Agricultural Product Traceability?',
+  },
+  'apparel-fashion': {
+    eyebrow: 'ENTERPRISE APPAREL SOLUTION',
+    title: 'Protect Every Garment with Digital Product Identity',
+    copy: 'Help apparel brands authenticate products, eliminate counterfeit garments, enable digital product passports, improve supply chain visibility and create connected customer experiences through secure QR-powered digital identities.',
+    heroImage: 'industry-crops/apparel-fashion-hero.png',
+    featureItems: [['Garment Authentication', 'Instant verification at any point in the supply chain or retail floor.', ShieldCheck], ['Digital Product Passport', 'Comprehensive lifecycle data and sustainability proof for every item.', QrCode], ['Supply Chain Visibility', 'Real-time tracking from textile manufacturing to final delivery.', Network], ['Connected Experience', 'Direct post-purchase engagement and personalized brand loyalty.', Users]],
+    challengeTitle: 'Apparel Industry Challenges',
+    challengeItems: ['Counterfeit products', 'Limited supply chain visibility', 'Sustainability expectations', 'Customer trust'],
+    challengePanel: 'Why Apparel Brands Choose TracelyTag',
+    journeyTitle: 'End-to-End Garment Journey',
+    journeySteps: ['Manufacturing', 'Fabric & Processing', 'Garment Production', 'Wholesale', 'Retail Store', 'Customer Scan', 'Digital Product'],
+    solutionTitle: 'Extending Intelligence Across the Product Lifecycle',
+    solutionCards: [['Product Authentication', 'Secure every garment with a digital identity.'], ['Digital Product Passport', 'Make product history and sustainability accessible.'], ['Supply Chain Visibility', 'Track every movement from source to sale.'], ['Connected Experiences', 'Build stronger customer relationships.'], ['Product Storytelling', 'Share the story behind every garment.'], ['Brand Protection', 'Protect your brand from counterfeiting.']],
+    benefits: ['Protect Brand Reputation', 'Eliminate Counterfeit Products', 'Improve Consumer Trust', 'Improve Supply Chain Visibility', 'Deliver Connected Experiences', 'Generate Product Intelligence'],
+    ctaTitle: 'Ready to Digitize Every Garment?',
+  },
+  'cosmetics-beauty': {
+    eyebrow: 'COSMETICS & PERSONAL CARE',
+    title: 'Protect Every Beauty Product with Secure Digital Product Identity',
+    copy: 'Help cosmetics and personal care brands protect product integrity, prevent counterfeiting, create transparent product journeys and build stronger consumer relationships with trusted digital identities.',
+    heroImage: 'industry-crops/cosmetics-beauty-hero.png',
+    featureItems: [['Product Authentication', 'Secure verification for every beauty product.', ShieldCheck], ['Brand Protection', 'Protect your brand from counterfeit products.', LockKeyhole], ['Consumer Engagement', 'Build meaningful post-purchase experiences.', Users], ['Product Transparency', 'Make product information easy to trust.', Globe2]],
+    challengeTitle: 'Cosmetics & Personal Care Industry Challenges',
+    challengeItems: ['Counterfeit beauty products', 'Consumer safety concerns', 'Limited product transparency', 'Product authenticity'],
+    challengePanel: 'Why Cosmetics Brands Choose TracelyTag',
+    journeyTitle: 'End-to-End Cosmetic Product Lifecycle',
+    journeySteps: ['Sourcing', 'Production', 'Packaging', 'Distribution', 'Retail', 'Consumer Scan', 'Analytics'],
+    solutionTitle: 'Real-Time Authentication Analytics',
+    solutionCards: [['Product Authentication', 'Verify products instantly and securely.'], ['Brand Protection', 'Strengthen trust across every channel.'], ['Consumer Engagement', 'Connect with consumers after purchase.'], ['Product Transparency', 'Share trusted product information.'], ['Supply Chain Visibility', 'Track products through the full lifecycle.'], ['Actionable Insights', 'Turn verification data into action.']],
+    benefits: ['Protect Brand Reputation', 'Increase Consumer Trust', 'Prevent Counterfeiting', 'Improve Transparency', 'Strengthen Engagement', 'Actionable Insights'],
+    ctaTitle: 'Ready to Protect Every Beauty Product?',
+  },
+  'electronics-high-tech': {
+    eyebrow: 'ELECTRONICS INDUSTRY',
+    title: 'Protect Every Electronic Device with Secure Digital Product Identity',
+    copy: 'Help electronics and high-tech brands authenticate devices, manage warranties, secure supply chains and create trusted connected customer experiences through digital product identity.',
+    heroImage: 'industry-crops/electronics-high-tech-hero.png',
+    featureItems: [['Product Authentication', 'Instant verification for every device.', ShieldCheck], ['Digital Warranty', 'Connect warranty coverage to every product.', QrCode], ['Supply Chain Visibility', 'Track devices from source to sale.', Network], ['Customer Experience', 'Create connected experiences after purchase.', Users]],
+    challengeTitle: 'Electronics Industry Challenges',
+    challengeItems: ['Counterfeit electronic devices', 'Warranty and service complexity', 'Limited supply chain visibility', 'Customer trust'],
+    challengePanel: 'Why Electronics Brands Choose TracelyTag',
+    journeyTitle: 'The Secure Product Journey',
+    journeySteps: ['Manufacturing', 'Components', 'Assembly', 'Distribution', 'Retail', 'Customer Scan', 'Warranty'],
+    solutionTitle: 'Maximize Business Benefits',
+    solutionCards: [['Product Authentication', 'Prove the identity of every device.'], ['Digital Warranty', 'Simplify warranty and service journeys.'], ['Supply Chain Visibility', 'See every device across the network.'], ['Connected Experiences', 'Create stronger customer relationships.'], ['Product Intelligence', 'Turn product data into decisions.'], ['Brand Protection', 'Protect product and customer trust.']],
+    benefits: ['Prevent Counterfeit Products', 'Deliver Authenticity Proof', 'Increase Customer Trust', 'Improve Supply Chain Visibility', 'Strengthen Brand Reputation', 'Generate Product Intelligence'],
+    ctaTitle: 'Ready to Protect Every Electronic Device?',
+  },
+  'fmcg-consumer-goods': {
+    eyebrow: 'FMCG INDUSTRY',
+    title: 'Secure Every FMCG Product from Factory to Consumer',
+    copy: 'Help FMCG brands secure products, prevent counterfeiting, improve supply chain visibility and create connected consumer experiences through secure QR-powered digital identities.',
+    heroImage: 'industry-crops/fmcg-consumer-goods-hero.png',
+    featureItems: [['Product Authentication', 'Secure every product from factory to consumer.', ShieldCheck], ['Anti-Counterfeiting', 'Protect brand reputation and consumer trust.', LockKeyhole], ['Supply Chain Visibility', 'Track products across the full supply chain.', Network], ['Consumer Engagement', 'Create meaningful connected experiences.', Users]],
+    challengeTitle: 'Why FMCG Brands Need TracelyTag',
+    challengeItems: ['Counterfeit products', 'Lack of supply chain visibility', 'Product recalls and safety risks', 'Difficult consumer engagement'],
+    challengePanel: 'Enterprise FMCG Platform',
+    journeyTitle: 'From Factory to Consumer',
+    journeySteps: ['Manufacturing', 'Packaging', 'Warehouse', 'Distribution', 'Retail', 'Consumer Scan', 'Business Intelligence'],
+    solutionTitle: 'Comprehensive Solutions',
+    solutionCards: [['Product Authentication', 'Verify every product with confidence.'], ['Anti-Counterfeiting', 'Protect brand equity and reputation.'], ['Supply Chain Visibility', 'Monitor products across every channel.'], ['Consumer Engagement', 'Connect directly with consumers.'], ['Analytics', 'Understand your product ecosystem.'], ['Supply Chain Visibility', 'Improve operational intelligence.']],
+    benefits: ['Protect Brand Reputation', 'Reduce Counterfeiting', 'Improve Visibility', 'Increase Consumer Trust', 'Deliver Product Intelligence', 'Strengthen Brand Management'],
+    ctaTitle: 'Ready to Protect Your FMCG Products?',
+  },
+  'food-beverage': {
+    eyebrow: 'INDUSTRY SOLUTIONS: FOOD & BEVERAGE',
+    title: 'Deliver Safe, Traceable Food from Production to Consumer',
+    copy: 'Help food and beverage manufacturers protect brands, ensure food safety, enable end-to-end traceability, simplify product recalls and build consumer trust through secure QR-powered digital identities.',
+    heroImage: 'industry-crops/food-beverage-hero.png',
+    featureItems: [['Food Safety', 'Build confidence through product-level verification.', ShieldCheck], ['Product Traceability', 'Follow food from production to consumer.', Network], ['Authentication', 'Verify product identity at every stage.', LockKeyhole], ['Consumer Trust', 'Create transparent product experiences.', Users]],
+    challengeTitle: 'Overcoming Critical Industry Challenges',
+    challengeItems: ['Food safety and compliance', 'Complex supply chain operations', 'Product recalls', 'Consumer trust'],
+    challengePanel: 'Why Food & Beverage Companies Choose TracelyTag',
+    journeyTitle: 'End-to-End Food Product Journey',
+    journeySteps: ['Production', 'Processing', 'Packaging', 'Distribution', 'Retail', 'Consumer Scan', 'Analytics'],
+    solutionTitle: 'Comprehensive Food & Beverage Solutions',
+    solutionCards: [['Food Safety', 'Protect the integrity of every product.'], ['Product Traceability', 'Trace every product from source to shelf.'], ['Authentication', 'Verify products instantly.'], ['Consumer Engagement', 'Build trust through transparency.'], ['Product Recalls', 'Respond quickly with clear product data.'], ['Supply Chain Visibility', 'See the entire food journey.']],
+    benefits: ['Protect Brand Reputation', 'Ensure Product Authenticity', 'Improve Visibility', 'Increase Consumer Trust', 'Simplify Recall Management', 'Strengthen Food Safety'],
+    ctaTitle: 'Ready to Build a Safer, More Traceable Food Supply Chain?',
+  },
+  'pharmaceuticals': {
+    eyebrow: 'PHARMACEUTICALS INDUSTRY',
+    title: 'Secure Every Medicine with Trusted Product Identity',
+    copy: 'Help pharmaceutical manufacturers secure medicines, prevent counterfeiting, improve supply chain visibility and deliver trusted product verification across every market.',
+    heroImage: 'industry-crops/pharmaceuticals-hero.png',
+    featureItems: [['Product Authentication', 'Verify medicine identity and integrity.', ShieldCheck], ['Anti-Counterfeiting', 'Protect patients and pharmaceutical brands.', LockKeyhole], ['Supply Chain Visibility', 'Track medicines across every movement.', Network], ['Patient Engagement', 'Create trusted, connected experiences.', Users]],
+    challengeTitle: 'Pharmaceutical Industry Challenges',
+    challengeItems: ['Counterfeit medicines', 'Regulatory requirements', 'Complex supply chains', 'Patient safety'],
+    challengePanel: 'Why Pharmaceutical Companies Choose TracelyTag',
+    journeyTitle: 'End-to-End Pharmaceutical Product Journey',
+    journeySteps: ['Manufacturing', 'Packaging', 'Aggregation', 'Distribution', 'Pharmacy', 'Patient Scan', 'Analytics'],
+    solutionTitle: 'Pharmaceutical Product Intelligence',
+    solutionCards: [['Product Authentication', 'Verify every medicine before use.'], ['Anti-Counterfeiting', 'Protect patients from counterfeit products.'], ['Supply Chain Visibility', 'Track medicines from plant to patient.'], ['Patient Engagement', 'Build trust with connected information.'], ['Regulatory Compliance', 'Support serialization and compliance needs.'], ['Analytics', 'Turn product signals into insight.']],
+    benefits: ['Protect Patient Safety', 'Prevent Counterfeit Medicines', 'Improve Compliance', 'Increase Supply Chain Visibility', 'Strengthen Brand Trust', 'Actionable Product Intelligence'],
+    ctaTitle: 'Ready to Secure Your Pharmaceutical Products?',
+  },
+};
+
+function IndustryPage() {
+  const { slug = 'agriculture-agtech' } = useParams<{ slug: string }>();
+  const data = industryData[slug] || industryData['agriculture-agtech'];
+  return <Shell><Hero eyebrow={data.eyebrow} title={data.title} copy={data.copy} image={data.heroImage} alt={`${data.title} traceability diagram`} cta="Book a Demo" /><FeatureCards items={data.featureItems} /><section className="bg-[#f1f3f6] py-16"><div className="container-tight grid items-start gap-10 md:grid-cols-2"><div><p className="eyebrow mb-4">{data.challengeTitle}</p><h2 className="display text-[32px] font-bold text-[#172536]">Build trust across every stage of the product journey.</h2><div className="mt-6 space-y-3 text-[11px] text-[#526174]">{data.challengeItems.map(item => <p key={item}><Check size={13} className="mr-2 inline text-[#0753a4]" />{item}</p>)}</div></div><div className="rounded-[4px] bg-[#064aa0] p-7 text-white shadow-[0_12px_30px_rgba(6,74,160,.18)]"><h2 className="display text-[24px] font-bold">{data.challengePanel}</h2><div className="mt-6 grid gap-3 sm:grid-cols-2">{['Product Authentication','Anti-Counterfeiting','Supply Chain Visibility','Consumer Engagement','Track & Trace','Product Intelligence'].map(item => <p key={item} className="border-b border-white/20 pb-2 text-[10px]"><Check size={12} className="mr-2 inline text-[#80d8f4]" />{item}</p>)}</div><Link href="/contact-us" className="mt-6 inline-flex rounded bg-white px-4 py-2 text-[10px] font-bold text-[#064aa0]">See How TracelyTag Helps</Link></div></div></section><section className="container-tight py-16"><div className="text-center"><p className="eyebrow mb-3">END-TO-END VISIBILITY</p><h2 className="display text-[28px] font-bold text-[#172536]">{data.journeyTitle}</h2><p className="mt-3 text-[11px] text-[#687382]">From the first movement through customer verification and analytics.</p></div><div className="mt-10 grid gap-4 sm:grid-cols-3 md:grid-cols-7">{data.journeySteps.map((step, index) => <div key={step} className="text-center"><div className={`mx-auto grid size-9 place-items-center rounded-full ${index === data.journeySteps.length - 1 ? 'bg-[#064aa0] text-white' : 'bg-[#e6f1ff] text-[#0753a4]'}`}><span className="text-[10px] font-bold">{index + 1}</span></div><p className="mt-3 text-[10px] font-semibold text-[#334761]">{step}</p></div>)}</div></section><section className="bg-[#f1f3f6] py-16"><div className="container-tight"><div className="text-center"><p className="eyebrow mb-3">CONNECTED PRODUCT INTELLIGENCE</p><h2 className="display text-[28px] font-bold text-[#172536]">{data.solutionTitle}</h2><p className="mt-3 text-[11px] text-[#687382]">Connected capabilities for the complete product lifecycle.</p></div><div className="mt-9 grid gap-4 md:grid-cols-3">{data.solutionCards.map(([title, text], index) => <div key={title} className="card-line rounded border bg-white p-5"><span className="grid size-7 place-items-center rounded-md bg-[#edf5ff] text-[10px] font-bold text-[#0753a4]">0{index + 1}</span><h3 className="mt-5 text-[12px] font-bold text-[#20324b]">{title}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{text}</p></div>)}</div></div></section><MonitorSection image="about-dashboard-monitor.png" title="Product Intelligence Dashboard" /><section className="container-tight py-14"><div className="text-center"><p className="eyebrow mb-3">TANGIBLE BUSINESS BENEFITS</p><h2 className="display text-[28px] font-bold text-[#172536]">Measurable outcomes across the enterprise.</h2></div><div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">{data.benefits.map((benefit, index) => <div key={benefit} className="flex gap-3 rounded border bg-white p-5"><span className="grid size-7 shrink-0 place-items-center rounded-full bg-[#edf5ff] text-[10px] font-bold text-[#0753a4]">0{(index % 6) + 1}</span><p className="text-[11px] font-semibold text-[#334761]">{benefit}</p></div>)}</div></section><CTA title={data.ctaTitle} copy="Build trusted, connected products with TracelyTag." /></Shell>;
+}
+
 function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   const params = useParams<{slug:string}>(); const slug = params.slug || (type === 'platform' ? 'product-digitalization' : type === 'industry' ? 'agriculture-agtech' : 'analytics-business-intelligence');
   const industry = industryItems.find(x => x[1] === slug);
@@ -165,7 +303,7 @@ function Router() {
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug"><GenericPage type="solution" /></Route>
-    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/:slug"><GenericPage type="industry" /></Route>
+    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
 }
