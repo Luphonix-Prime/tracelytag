@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, Crosshair, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gavel, Globe, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, Brackets, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, CloudUpload, Cpu, Crosshair, Download, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gavel, Globe, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, MapPin, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Pill, Printer, Puzzle, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, Tractor, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Utensils, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -115,8 +115,209 @@ function BlueBand({ title, items }: { title: string; items: string[] }) {
   return <section className="bg-[#06479d] text-white"><div className="container-tight grid gap-7 py-8 md:grid-cols-[.8fr_1.2fr] md:items-center"><h2 className="display text-[22px] font-bold">{title}</h2><div className="grid gap-3 sm:grid-cols-2">{items.map(item => <div key={item} className="flex items-center gap-2 border-b border-white/20 pb-2 text-[11px]"><Check size={14} className="text-[#80d8f4]" />{item}</div>)}</div></div></section>;
 }
 
+const homeProofStrip: [string, LucideIcon][] = [
+  ['Product Authentication', ShieldCheck],
+  ['Anti-Counterfeiting', Shield],
+  ['Track & Trace', RouteIcon],
+  ['GS1 Ready', ScanQrCode],
+];
+const homeIntegrityCards: [string, string, LucideIcon][] = [
+  ['Authenticate', 'Instant mobile verification for field agents using proprietary encrypted identifiers.', ScanQrCode],
+  ['Prevent', 'Real-time alerts for duplicate scans and unauthorized location access globally.', History],
+  ['Trace', 'Granular visibility from the production line to the final retail shelf.', Waypoints],
+  ['Engage', 'Turn every scan into a marketing touchpoint with dynamic loyalty integration.', Users],
+];
+const homeDashTabs = ['Supply Chain Map', 'Production Logs', 'Risk Analysis'];
+const homeDashRows: [string, string, string, 'transit' | 'produced', string][] = [
+  ['#TRX-88219-A', 'Shanghai, CN', 'In Transit', 'transit', '100.0%'],
+  ['#TRX-88220-B', 'Stuttgart, DE', 'Produced', 'produced', '99.85%'],
+];
+const homeSectors: [string, LucideIcon][] = [
+  ['FMCG', ShoppingBasket],
+  ['Pharma', Pill],
+  ['Agri', Tractor],
+  ['Apparel', Shirt],
+  ['F&B', Utensils],
+  ['Cosmetics', Sparkles],
+  ['Electronics', Cpu],
+];
+const homeTrustPoints = ['SOC 2 Type II Certified Infrastructure', '99.99% Global API Uptime SLA', 'Seamless ERP & SAP Integration'];
+const homeTrustCards: [string, string, LucideIcon][] = [
+  ['Secure Generation', 'Proprietary entropy-based ID generation making counterfeiting statistically impossible.', QrCode],
+  ['Serialization', 'Unique unit-level identification allowing for surgical recalls and precise stock management.', Brackets],
+  ['Aggregation', 'Hierarchical parent-child relationship tracking from individual item to case to pallet.', Archive],
+  ['Verification Engine', 'Cloud-native processing handling 50,000+ verification requests per second globally.', SlidersVertical],
+];
+
 function Home() {
-  return <Shell><Hero eyebrow="ENTERPRISE READY" title="Secure the Future of Your Supply Chain" copy="Protect brand integrity with TracelyTag's advanced serialization platform. Bridging physical manufacturing and digital cloud verification at global scale." image="about-hero-diagram.png" alt="TracelyTag supply chain intelligence platform" cta="Get Started" /><section className="border-b border-[#dfe5eb] bg-white"><div className="container-tight grid grid-cols-2 gap-y-5 py-7 md:grid-cols-4">{homeProofItems.map(([label, Icon]) => <div key={label} className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.12em] text-[#566477]"><span className="grid size-7 place-items-center rounded-md border border-[#d6e1ef] bg-[#f4f8fc] text-[#0753a4]"><Icon size={14} strokeWidth={1.7} /></span>{label}</div>)}</div></section><section className="bg-[#f1f3f6] py-14"><div className="container-tight"><div className="mx-auto max-w-[560px] text-center"><p className="eyebrow mb-4">PRODUCT INTELLIGENCE</p><h2 className="display text-[28px] font-bold text-[#172536] md:text-[34px]">Deploy intelligence across every node of your global distribution network with medical-grade precision.</h2></div><div className="mt-9 grid gap-4 md:grid-cols-4">{homeJourneyItems.map(([title, text, Icon]) => <div key={title} className="card-line rounded-[4px] border bg-white p-5"><Icon size={17} className="mb-7 text-[#0753a4]" strokeWidth={1.6} /><h3 className="text-[12px] font-bold text-[#20324b]">{title}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{text}</p></div>)}</div></div></section><MonitorSection image="about-dashboard-monitor.png" title="Dashboard Intelligence" /><section className="container-tight py-14"><div className="text-center"><p className="eyebrow mb-3">SECTOR-WIDE EMPOWERMENT</p><h2 className="display text-[29px] font-bold text-[#172536]">Connect every part of your product journey.</h2></div><div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-4">{['Pharmaceuticals','Food & Beverage','Apparel & Fashion','Electronics'].map((label, i) => <div key={label} className="card-line rounded border bg-white p-5 text-center"><span className="mx-auto grid size-8 place-items-center rounded-full bg-[#edf5ff] text-[10px] font-bold text-[#0753a4]">0{i + 1}</span><h3 className="mt-4 text-[11px] font-bold text-[#20324b]">{label}</h3></div>)}</div></section><section className="bg-[#f1f3f6] py-14"><div className="container-tight grid gap-10 md:grid-cols-[.85fr_1.15fr]"><div><p className="eyebrow mb-4">WHY THE INDUSTRY TRUSTS TRACELYTAG</p><h2 className="display text-[32px] font-bold text-[#172536]">A platform built for product integrity.</h2><p className="mt-4 text-[12px] leading-6 text-[#657180]">Secure the complete product journey with traceability, authentication, and connected product intelligence.</p></div><div className="grid gap-3 sm:grid-cols-2">{homeIntegrityItems.map(([label, Icon]) => <div key={label} className="card-line rounded border bg-white p-5"><Icon size={17} className="mb-5 text-[#0753a4]" /><h3 className="text-[12px] font-bold text-[#20324b]">{label}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">Enterprise-ready product intelligence for every workflow.</p></div>)}</div></div></section><CTA title="Ready to Secure Your Brand's Integrity?" copy="Join the global leaders creating trusted, intelligent products with TracelyTag." /></Shell>;
+  const [dashTab, setDashTab] = useState(0);
+  return <Shell>
+    <section className="hm-hero" aria-labelledby="hm-hero-title">
+      <div className="container-tight hm-hero-inner">
+        <div className="fade-up">
+          <p className="hm-pill"><span className="hm-pill-dot" />Enterprise Ready</p>
+          <h1 id="hm-hero-title" className="hm-h1">Secure the Future of Your Supply Chain</h1>
+          <p className="hm-hero-copy">Protect brand integrity with TracelyTag's advanced serialization platform. Bridging physical manufacturing and digital cloud verification at global scale.</p>
+          <div className="hm-hero-actions">
+            <Link href="/contact-us" data-testid="button-home-get-started" className="hm-btn hm-btn-primary">Get Started</Link>
+            <Link href="/platform" data-testid="button-home-explore-platform" className="hm-btn hm-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="hm-hero-art fade-up delay-1">
+          <img src={`${root}about-hero-diagram.png`} alt="TracelyTag connected ecosystem: smart manufacturing plant, secure QR code generation, product authentication checkpoints, centralized enterprise analytics dashboard, global track and trace, and consumer engagement via mobile scans" />
+        </div>
+      </div>
+    </section>
+
+    <section className="hm-proof" aria-label="Platform credentials">
+      <div className="container-tight hm-proof-grid">
+        {homeProofStrip.map(([label, Icon]) => <p key={label} className="hm-proof-item">
+          <span className="hm-proof-icon"><Icon size={18} strokeWidth={1.9} /></span>{label}
+        </p>)}
+      </div>
+    </section>
+
+    <section className="hm-integrity" aria-labelledby="hm-integrity-title">
+      <div className="container-tight hm-integrity-inner">
+        <p className="hm-eyebrow">Industrial Integrity</p>
+        <h2 id="hm-integrity-title">Deploy intelligence across every node of your global distribution network with medical-grade precision.</h2>
+        <div className="hm-integrity-grid">
+          {homeIntegrityCards.map(([title, copy, Icon]) => <article key={title} className="card-line hm-integrity-card">
+            <span className="hm-integrity-icon"><Icon size={20} strokeWidth={1.9} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="hm-command" aria-labelledby="hm-command-title">
+      <div className="container-tight hm-command-inner">
+        <div className="hm-command-head">
+          <div>
+            <p className="hm-eyebrow">Command Center</p>
+            <h2 id="hm-command-title">Dashboard Intelligence</h2>
+            <p>Command global operations from a single unified interface. Gain actionable insights into supply chain health and brand security threats.</p>
+          </div>
+          <div className="hm-command-actions">
+            <Link href="/contact-us" data-testid="button-home-export-report" className="hm-mini-btn hm-mini-ghost"><Download size={14} />Export Report</Link>
+            <Link href="/contact-us" data-testid="button-home-live-metrics" className="hm-mini-btn hm-mini-primary"><ChartNoAxesCombined size={14} />Live Metrics</Link>
+          </div>
+        </div>
+
+        <div className="hm-dash">
+          <div className="hm-dash-bar">
+            <span className="hm-dash-dots">
+              <span style={{ background: '#ef8079' }} /><span style={{ background: '#e8a13f' }} /><span style={{ background: '#4fc07a' }} />
+            </span>
+            <div className="hm-dash-tabs" role="tablist" aria-label="Dashboard views">
+              {homeDashTabs.map((tab, index) => <button
+                key={tab}
+                role="tab"
+                type="button"
+                aria-selected={dashTab === index}
+                data-testid={`tab-home-${tab.toLowerCase().replaceAll(' ', '-')}`}
+                onClick={() => setDashTab(index)}
+                className={`hm-dash-tab ${dashTab === index ? 'active' : ''}`}
+              >{tab}</button>)}
+            </div>
+            <span className="hm-dash-avatars">
+              <span className="hm-dash-avatar">JD</span><span className="hm-dash-avatar">AS</span>
+            </span>
+          </div>
+          <div className="hm-dash-body">
+            <div className="hm-dash-side">
+              <div className="hm-stat">
+                <p className="hm-stat-label">Global Scans</p>
+                <p className="hm-stat-row"><span className="hm-stat-value">1,284,092</span><span className="hm-stat-delta">+12%</span></p>
+              </div>
+              <div className="hm-stat">
+                <p className="hm-stat-label">Active Alerts</p>
+                <p className="hm-stat-row"><span className="hm-stat-value is-alert">14</span><span className="hm-stat-chip">CRITICAL</span></p>
+              </div>
+              <div className="hm-stat">
+                <p className="hm-stat-label">System Load</p>
+                <p className="hm-stat-bar"><span /></p>
+                <p className="hm-stat-note">45k Requests/sec</p>
+              </div>
+            </div>
+            <div className="hm-dash-main">
+              <div className="hm-dash-map">
+                <span className="hm-dash-map-label">Global Nodes Visualization</span>
+                <span className="hm-map-node n1" /><span className="hm-map-node n2" /><span className="hm-map-node n3" />
+                <div className="hm-dash-legend">
+                  <p className="hm-legend-item"><span className="hm-legend-dot" style={{ background: '#12358c' }} />Warehouse Hub</p>
+                  <p className="hm-legend-item"><span className="hm-legend-dot" style={{ background: '#16a34a' }} />Factory Origin</p>
+                </div>
+              </div>
+              <table className="hm-dash-table">
+                <thead><tr><th>Batch ID</th><th>Origin</th><th>Status</th><th>Integrity</th></tr></thead>
+                <tbody>
+                  {homeDashRows.map(([batch, origin, status, tone, integrity]) => <tr key={batch}>
+                    <td className="hm-batch">{batch}</td>
+                    <td>{origin}</td>
+                    <td><span className={`hm-tag hm-tag-${tone}`}>{status.toUpperCase()}</span></td>
+                    <td><span className="hm-integrity-value">{integrity}</span></td>
+                  </tr>)}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="hm-sectors" aria-labelledby="hm-sectors-title">
+      <div className="container-tight hm-sectors-inner">
+        <div className="hm-sectors-head">
+          <div>
+            <h2 id="hm-sectors-title">Sectors We Empower</h2>
+            <p>Enterprise-grade traceability for high-compliance global markets.</p>
+          </div>
+          <Link href="/solutions" data-testid="link-home-view-all-solutions" className="hm-sectors-link">View All Solutions <ArrowRight size={14} /></Link>
+        </div>
+        <div className="hm-sector-grid">
+          {homeSectors.map(([label, Icon]) => <div key={label} className="card-line hm-sector-card">
+            <Icon size={22} strokeWidth={1.8} />
+            <span>{label}</span>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="hm-trust" aria-labelledby="hm-trust-title">
+      <div className="container-tight hm-trust-inner">
+        <div>
+          <h2 id="hm-trust-title">Why the Industry Trusts TracelyTag</h2>
+          <p className="hm-trust-copy">Built for the complexity of global manufacturing with security protocols that exceed industrial standards.</p>
+          <div className="hm-trust-list">
+            {homeTrustPoints.map(point => <p key={point} className="hm-trust-item"><CircleCheck size={18} strokeWidth={1.9} />{point}</p>)}
+          </div>
+          <Link href="/platform" data-testid="link-home-technical-documentation" className="hm-trust-link">Technical Documentation <ArrowRight size={14} /></Link>
+        </div>
+        <div className="hm-trust-grid">
+          {homeTrustCards.map(([title, copy, Icon]) => <article key={title} className="card-line hm-trust-card">
+            <Icon size={24} className="text-[#0f56c2]" strokeWidth={1.9} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="hm-cta" aria-labelledby="hm-cta-title">
+      <div className="container-tight hm-cta-inner">
+        <div className="hm-cta-card">
+          <h2 id="hm-cta-title">Ready to Secure Your Brand Integrity?</h2>
+          <p>Join hundreds of global enterprises leveraging TracelyTag to eliminate counterfeiting and master supply chain transparency.</p>
+          <div className="hm-cta-actions">
+            <Link href="/contact-us" data-testid="button-home-technical-demo" className="hm-cta-primary">Book a Technical Demo</Link>
+            <Link href="/contact-us" data-testid="button-home-contact-sales" className="hm-cta-secondary">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
 }
 
 function MonitorSection({ image, title }: { image: string; title: string }) {
@@ -126,9 +327,6 @@ function MonitorSection({ image, title }: { image: string; title: string }) {
 function CTA({ title, copy }: { title: string; copy: string }) { return <section className="container-tight"><div className="rounded-[4px] bg-[#064aa0] px-7 py-10 text-center text-white shadow-[0_12px_30px_rgba(6,74,160,.18)]"><h2 className="display text-[25px] font-bold">{title}</h2><p className="mx-auto mt-3 max-w-[520px] text-[11px] leading-5 text-white/75">{copy}</p><div className="mt-6 flex justify-center gap-3"><Button href="/contact-us">Book a Demo</Button><Button href="/contact-us" secondary>Contact Sales</Button></div></div></section>; }
 
 const aboutFeatures: [string,string,typeof Factory][] = [['Product Authentication','Secure, transparent product verification from source to shelf.',ShieldCheck],['Anti-Counterfeiting','Protect your brand and your customers with a trusted digital identity.',LockKeyhole],['Track & Trace','End-to-end visibility across every movement in your supply chain.',Truck],['Connected Products','Bring every product interaction into one intelligent platform.',Network]];
-const homeProofItems: Array<[string, LucideIcon]> = [['Product Authentication',ShieldCheck],['Anti-Counterfeiting',LockKeyhole],['Track & Trace',Network],['GS1 Ready',QrCode]];
-const homeJourneyItems: Array<[string, string, LucideIcon]> = [['Authorize','Verify every product with a secure digital identity.',ShieldCheck],['Prove','Protect your brand and authenticate your products.',LockKeyhole],['Trace','Follow every product across the global supply chain.',Network],['Engage','Create connected experiences for every customer.',Users]];
-const homeIntegrityItems: Array<[string, LucideIcon]> = [['Secure Generation',QrCode],['Serialization',Network],['Aggregation',Boxes],['Workflow Engine',Sparkles]];
 
 const aboutHighlights: [string, string, LucideIcon][] = [
   ['Enterprise Platform', 'Centralized management for millions of unique product identities across global facilities.', Building2],
@@ -274,7 +472,146 @@ function About() {
   </Shell>;
 }
 
-function Why() { return <Shell><Hero eyebrow="THE TRACELYTAG DIFFERENCE" title="Why Leading Manufacturers Choose TracelyTag" copy="The product intelligence platform built for the complexity of modern manufacturing, supply chains, and consumer engagement." image="why-hero-diagram.png" alt="Why TracelyTag connected ecosystem diagram" /><FeatureCards items={[['Enterprise Platform','A complete operating system for connected products.',Network],['Scalable Infrastructure','Built to grow with your products, markets, and teams.',Boxes],['Global Digital Identity','A trusted digital identity for every product.',Globe2],['Actionable Intelligence','Insights that help you make better decisions, faster.',BarChart3]]} /><BlueBand title="Built For Modern Manufacturers" items={['Enterprise Platform','Global Infrastructure','Real-Time Data','Secure by Design']} /><section className="container-tight py-16 text-center"><p className="eyebrow mb-4">THE TRACELYTAG DIFFERENCE</p><h2 className="display mx-auto max-w-[500px] text-[34px] font-bold text-[#172536]">Six pillars of enterprise authentication</h2><div className="mt-8 grid gap-4 md:grid-cols-3">{[['Product Platform','A complete platform for your connected product ecosystem.'],['Authentication','Secure every product with a trusted digital identity.'],['Track & Trace','Follow every product, from source to consumer.'],['Connected Products','Create meaningful product experiences.'],['Advanced Analytics','Turn product data into business intelligence.'],['Enterprise Integrations','Connect your existing systems with ease.']].map(([t,c]) => <div key={t} className="card-line rounded border bg-white p-5 text-left"><ShieldCheck size={17} className="mb-5 text-[#0753a4]" /><h3 className="text-[12px] font-bold">{t}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{c}</p></div>)}</div></section><MonitorSection image="why-dashboard-monitor.png" title="Real-Time Operational Intelligence" /><CTA title="Ready to Transform Your Product Ecosystem?" copy="Build trusted, connected products with TracelyTag." /></Shell>; }
+const whyFeatures: [string, string, LucideIcon][] = [
+  ['Enterprise Platform', 'Centralized command for your entire product lifecycle.', Waypoints],
+  ['Modular Architecture', 'Flexible components tailored to industrial requirements.', Puzzle],
+  ['Secure Digital Identity', 'Unforgeable cryptographic authentication for every unit.', Fingerprint],
+  ['Scalable Infrastructure', 'Built to handle billions of scans with zero latency.', Network],
+];
+const whyDifference: [string, string][] = [
+  ['Unified Platform', 'Eliminate data silos by integrating authentication, tracking, and engagement into a single source of truth across all manufacturing facilities.'],
+  ['End-to-End Visibility', "Gain granular visibility from the factory floor to the consumer's hand, enabling real-time responses to supply chain disruptions."],
+  ['Industrial Scalability', 'Our infrastructure is designed for high-speed production environments where millisecond precision and massive throughput are non-negotiable.'],
+];
+const whyBuiltItems = ['Enterprise Architecture', 'Flexible Deployment', 'Legacy ERP Integration', 'Global Compliance Ready'];
+const whyPillars: [string, string, LucideIcon][] = [
+  ['Unified Platform', 'A singular API-first environment that bridges the gap between physical labels and digital cloud ledgers.', CloudUpload],
+  ['Authentication', 'Instant, foolproof verification of product authenticity via mobile or industrial scanners.', ShieldCheck],
+  ['Track & Trace', 'Real-time GPS and milestone tracking throughout the entire logistics journey.', MapPin],
+  ['Connected Products', 'Turn every item into a direct communication channel with your end consumers.', QrCode],
+  ['Advanced Analytics', 'Predictive modeling and scan-heatmaps to optimize distribution and inventory.', ChartNoAxesCombined],
+  ['Enterprise Integrations', 'Seamless connectivity with SAP, Oracle, and proprietary manufacturing execution systems.', SlidersVertical],
+];
+const whyRtoiItems = ['ROI Monitoring', 'Node Network Mapping', 'Predictive Latency Alerts'];
+const whyValue: [string, string][] = [
+  ['Lower Operational Costs', 'Reduce product loss and streamline recall processes with precision tracking.'],
+  ['Better Brand Protection', 'Eliminate counterfeits and gray-market diversions with uncopyable tags.'],
+  ['Improved Supply Chain Visibility', 'Track inventory at the unit level, minimizing stock-outs and excess production.'],
+  ['Higher Consumer Trust', 'Empower customers to verify authenticity, building long-term brand loyalty.'],
+  ['Business Intelligence', 'Convert scan data into actionable insights for marketing and logistics teams.'],
+  ['Future-Ready Platform', 'Modular design ensures compatibility with upcoming IoT and AI industrial standards.'],
+];
+
+function Why() {
+  return <Shell>
+    <section className="why2-hero" aria-labelledby="why2-hero-title">
+      <div className="container-tight why2-hero-inner">
+        <div className="fade-up">
+          <h1 id="why2-hero-title" className="why2-h1">Why Leading Manufacturers Choose TracelyTag</h1>
+          <p className="why2-hero-copy">Our enterprise platform orchestrates secure digital identities and real-time intelligence across the global supply chain, transforming products into intelligent data assets.</p>
+          <div className="why2-hero-actions">
+            <Link href="/contact-us" data-testid="button-why-book-demo-hero" className="why2-btn why2-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-why-talk-expert" className="why2-btn why2-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="why2-hero-art fade-up delay-1">
+          <img src={`${root}why-hero-full.png`} alt="Why TracelyTag: smart manufacturing facility, secure product authentication checkpoints, global track and trace logistics, consumer engagement via mobile scans, and unified modular infrastructure around a centralized enterprise platform" />
+        </div>
+      </div>
+    </section>
+
+    <section className="why2-features" aria-label="TracelyTag platform strengths">
+      <div className="container-tight why2-feature-grid">
+        {whyFeatures.map(([title, copy, Icon]) => <article key={title} className="card-line why2-feature-card">
+          <Icon size={24} className="text-[#0a3d8f]" strokeWidth={1.9} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="why2-difference" aria-labelledby="why2-difference-title">
+      <div className="container-tight why2-difference-inner">
+        <h2 id="why2-difference-title">The TracelyTag Difference</h2>
+        <span className="why2-rule" />
+        <div className="why2-difference-grid">
+          {whyDifference.map(([title, copy]) => <article key={title} className="why2-difference-item">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="why2-built-wrap" aria-labelledby="why2-built-title">
+      <div className="container-tight why2-built-inner">
+        <div className="why2-built">
+          <div>
+            <h2 id="why2-built-title">Built for Modern Manufacturers</h2>
+            <p>Deploying sophisticated tracking doesn't have to be complex. TracelyTag provides the infrastructure while you focus on production excellence.</p>
+          </div>
+          <div className="why2-built-grid">
+            {whyBuiltItems.map(item => <p key={item} className="why2-built-item"><CircleCheck size={20} strokeWidth={1.8} />{item}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="why2-pillars" aria-labelledby="why2-pillars-title">
+      <div className="container-tight why2-pillars-inner">
+        <h2 id="why2-pillars-title">Six Pillars of Enterprise Authentication</h2>
+        <div className="why2-pillar-grid">
+          {whyPillars.map(([title, copy, Icon]) => <article key={title} className="card-line why2-pillar-card">
+            <Icon size={26} className="text-[#0a3d8f]" strokeWidth={1.9} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="why2-rtoi" aria-labelledby="why2-rtoi-title">
+      <div className="container-tight why2-rtoi-inner">
+        <div>
+          <h2 id="why2-rtoi-title">Real-Time Operational Intelligence</h2>
+          <p className="why2-rtoi-copy">Monitor global shipment health, authentication success rates, and consumer engagement trends through our high-fidelity dashboard.</p>
+          <div className="why2-rtoi-list">
+            {whyRtoiItems.map(item => <p key={item} className="why2-rtoi-item"><span className="why2-rtoi-bullet" />{item}</p>)}
+          </div>
+        </div>
+        <div className="why2-rtoi-art">
+          <img src={`${root}why-dashboard-full.png`} alt="Why TracelyTag Platform Overview dashboard: 15,891 connected nodes, operational system status, 204 active gateways, 45,218 shipments in transit at 98.1% on-time, 8.9/10 ROI score, 22.4% efficiency gains, 99.82% scan success, 1.42M global scans, 854k authentications, 212k loyalty enrolled, 99.998% uptime and 18ms API response time" />
+        </div>
+      </div>
+    </section>
+
+    <section className="why2-value" aria-labelledby="why2-value-title">
+      <div className="container-tight why2-value-inner">
+        <h2 id="why2-value-title">Strategic Business Value</h2>
+        <p className="why2-value-sub">Driving efficiency and trust through technological precision.</p>
+        <div className="why2-value-grid">
+          {whyValue.map(([title, copy]) => <article key={title} className="card-line why2-value-card">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="why2-cta" aria-labelledby="why2-cta-title">
+      <div className="container-tight why2-cta-inner">
+        <div className="why2-cta-card">
+          <h2 id="why2-cta-title">Ready to Transform Your Product Ecosystem?</h2>
+          <p>Join the world's most advanced manufacturers in securing their supply chains with TracelyTag's industrial-grade intelligence platform.</p>
+          <div className="why2-cta-actions">
+            <Link href="/contact-us" data-testid="button-why-book-demo" className="why2-btn why2-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-why-contact-sales" className="why2-btn why2-btn-ghost">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
 
 function Hardware() { return <Shell><Hero eyebrow="CONNECTED PRODUCTION" title="Connect Your Production Line with Intelligent Hardware Integration" copy="Seamlessly integrate printers, scanners, cameras, PLCs, and sensors into one connected production ecosystem. Achieve real-time visibility, operational precision, and complete product traceability." image="hardware-hero-diagram.png" alt="Connected production line hardware integration" cta="Get Started" /><FeatureCards items={[['Industrial Automation','Connect your hardware to your digital product platform.',Factory],['Production Line Integration','Bring every line into one connected view.',Network],['Real-Time Verification','Verify product identity at the point of production.',ScanLine],['Enterprise Hardware','Scale production insight across your operations.',Boxes]]} /><BlueBand title="Production Line Integration Suite" items={['Connect Equipment','Manage Production Lines','Real-Time Monitoring','Capture Data']} /><section className="container-tight py-16"><div className="text-center"><p className="eyebrow mb-3">END-TO-END VISIBILITY</p><h2 className="display text-[32px] font-bold">Hardware Workflow</h2><p className="mt-3 text-[11px] text-[#687382]">From the first product movement through final verification.</p></div><div className="mt-10 grid gap-3 md:grid-cols-6">{['Production Start','Raw Material','Production','Quality Control','Pack & Label','Aggregation'].map((x,i) => <div key={x} className="relative text-center"><div className="mx-auto grid size-9 place-items-center rounded-full bg-[#e6f1ff] text-[#0753a4]"><span className="text-[11px] font-bold">{i+1}</span></div><p className="mt-3 text-[10px] font-semibold text-[#334761]">{x}</p></div>)}</div></section><MonitorSection image="hardware-dashboard-monitor.png" title="Control at Your Fingertips" /><CTA title="Ready to Connect Your Production Line?" copy="Connect your production line to a complete product intelligence platform." /></Shell>; }
 
