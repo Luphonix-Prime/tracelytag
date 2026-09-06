@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, Boxes, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardList, ClipboardPaste, DropletOff, Eye, EyeOff, Factory, FileText, Gavel, Globe2, HandHeart, Handshake, History, IdCard, Info, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Route as RouteIcon, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TriangleAlert, Truck, Unlink, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, BriefcaseMedical, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, Crosshair, DropletOff, Eye, EyeOff, Factory, FileText, Gavel, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Radar, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -1550,6 +1550,320 @@ function FmcgConsumerGoods() {
   </Shell>;
 }
 
+// The Food & Beverage reference mockup ships with both image slots unrendered
+// (blank placeholders), so these stand in with the FMCG artwork -- the closest
+// sector match. Swap in food-specific assets here once they exist.
+const foodBeverageHeroImage: string | null = 'industry-crops/fmcg-consumer-goods-hero.png';
+const foodBeverageDashboardImage: string | null = 'industry-crops/fmcg-consumer-goods-dashboard.png';
+
+const foodBeverageFeatures: [string, LucideIcon][] = [
+  ['Food Safety', ShieldPlus],
+  ['Product Traceability', ChartColumn],
+  ['Authentication', ShieldCheck],
+  ['Consumer Trust', Handshake],
+];
+const foodBeverageChallenges: [string, string, LucideIcon, string][] = [
+  ['Food safety risks', 'Preventing contamination and ensuring compliance with stringent health standards across the supply chain.', TriangleAlert, '#c62828'],
+  ['Product recalls', 'Streamlining the identification and removal of compromised batches to minimize brand damage and public risk.', History, '#c62828'],
+  ['Counterfeit food products', 'Combatting the global rise in fraudulent ingredients and finished goods that threaten consumer health.', ShieldAlert, '#c62828'],
+  ['Batch traceability', 'Managing granular data for millions of items to ensure complete lineage from farm to fork.', LayoutPanelTop, '#0f56c2'],
+  ['Regulatory compliance', 'Automating the reporting requirements for global trade and local food safety authorities.', ClipboardCheck, '#0f56c2'],
+  ['Consumer transparency', 'Meeting the demand for radical honesty regarding sourcing, sustainability, and ingredients.', Eye, '#0f56c2'],
+];
+const foodBeveragePanelItems = ['Food Traceability', 'Product Authentication', 'Batch Tracking', 'Consumer Transparency', 'Recall Management', 'Business Intelligence'];
+const foodBeverageLifecycle: [string, LucideIcon][] = [
+  ['1. Production', Factory],
+  ['2. Packaging', Archive],
+  ['3. Batch Coding', ScanQrCode],
+  ['4. Warehouse', Warehouse],
+  ['5. Distribution', Truck],
+  ['6. Retail', Store],
+  ['7. Consumer Scan', Smartphone],
+  ['8. BI', ChartNoAxesCombined],
+];
+const foodBeverageSolutions: [string, string, LucideIcon][] = [
+  ['Food Authentication', 'Preventing food fraud with secure digital signatures for every product unit.', Shield],
+  ['Batch Traceability', 'Cloud-native ledger of batch movements from sourcing to end-consumer.', Radar],
+  ['Recall Management', 'Precision target recalls with automated notification systems across the network.', Undo2],
+  ['Consumer Engagement', 'Direct-to-consumer communication channel through standard mobile scanning.', Users],
+  ['Supply Chain Visibility', 'Real-time monitoring of distribution routes and warehouse conditions.', ScanEye],
+  ['Analytics & BI', 'Transform scan data into market insights and operational efficiency reports.', TrendingUp],
+];
+const foodBeverageBenefits: [string, string][] = [
+  ['Improve Food Safety', 'Strict monitoring of safety metrics across the entire production line.'],
+  ['Accelerate Product Recalls', 'Reduce recall response times from days to minutes with granular data.'],
+  ['Increase Consumer Trust', 'Differentiate your brand through verifiable transparency and authenticity.'],
+  ['Strengthen Brand Reputation', 'Protect market share by effectively combatting counterfeit operations.'],
+  ['Enhance Supply Chain Visibility', 'Gain total clarity on product location and status at any global node.'],
+  ['Gain Actionable Insights', 'Leverage predictive analytics to optimize inventory and logistics.'],
+];
+
+function FoodBeverage() {
+  return <Shell>
+    <section className="fbev-hero" aria-labelledby="fbev-hero-title">
+      <div className="container-tight fbev-hero-inner">
+        <div className="fade-up">
+          <p className="fbev-pill">Industry Solutions: Food &amp; Beverage</p>
+          <h1 id="fbev-hero-title" className="fbev-h1">Deliver Safe, Traceable Food from Production to Consumer</h1>
+          <p className="fbev-hero-copy">Help food and beverage manufacturers protect brands, ensure food safety, enable end-to-end traceability, simplify product recalls and build consumer trust through secure QR-powered digital identities.</p>
+          <div className="fbev-hero-actions">
+            <Link href="/contact-us" data-testid="button-food-book-demo-hero" className="fbev-btn fbev-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-food-talk-expert" className="fbev-btn fbev-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        {foodBeverageHeroImage
+          ? <div className="fbev-hero-art fade-up delay-1"><img src={`${root}${foodBeverageHeroImage}`} alt="TracelyTag consumer-goods traceability network: production line, automated warehouse, distribution fleet and retail shelf scanning" /></div>
+          : <div className="fbev-art-empty fade-up delay-1" aria-hidden="true" />}
+      </div>
+    </section>
+
+    <section className="fbev-features" aria-label="Food and beverage platform capabilities">
+      <div className="container-tight fbev-feature-grid">
+        {foodBeverageFeatures.map(([title, Icon]) => <article key={title} className="card-line fbev-feature-card">
+          <span className="fbev-feature-icon"><Icon size={20} strokeWidth={2} /></span>
+          <h3>{title}</h3>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="fbev-challenges" aria-labelledby="fbev-challenges-title">
+      <div className="container-tight fbev-challenges-inner">
+        <h2 id="fbev-challenges-title">Overcoming Critical Industry Challenges</h2>
+        <p className="fbev-challenges-sub">Modernizing food supply chains to mitigate risk and increase operational efficiency.</p>
+        <div className="fbev-challenge-grid">
+          {foodBeverageChallenges.map(([title, copy, Icon, color]) => <article key={title} className="card-line fbev-challenge-card">
+            <Icon size={22} strokeWidth={2} style={{ color }} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fbev-panel-wrap" aria-labelledby="fbev-panel-title">
+      <div className="container-tight fbev-panel-inner">
+        <div className="fbev-panel">
+          <div>
+            <h2 id="fbev-panel-title">Why Food &amp; Beverage Brands Choose TracelyTag</h2>
+            <p>We provide the industrial-grade infrastructure needed to secure complex supply chains and transform physical products into digital assets.</p>
+            <Link href="/contact-us" data-testid="button-food-download-whitepaper" className="fbev-panel-btn">Download Whitepaper</Link>
+          </div>
+          <div className="fbev-panel-grid">
+            {foodBeveragePanelItems.map(item => <p key={item} className="fbev-panel-item"><CircleCheck size={18} strokeWidth={1.8} className="shrink-0" />{item}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="fbev-lifecycle" aria-labelledby="fbev-lifecycle-title">
+      <div className="container-tight fbev-lifecycle-inner">
+        <h2 id="fbev-lifecycle-title">End-to-End Operational Lifecycle</h2>
+        <div className="fbev-lifecycle-track">
+          {foodBeverageLifecycle.map(([step, Icon]) => <div key={step} className="fbev-lifecycle-step">
+            <span className="fbev-lifecycle-dot"><Icon size={22} strokeWidth={1.9} /></span>
+            <p>{step}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fbev-solutions" aria-labelledby="fbev-solutions-title">
+      <div className="container-tight fbev-solutions-inner">
+        <h2 id="fbev-solutions-title">Comprehensive Enterprise Solutions</h2>
+        <div className="fbev-solution-grid">
+          {foodBeverageSolutions.map(([title, copy, Icon]) => <article key={title} className="card-line fbev-solution-card">
+            <span className="fbev-solution-icon"><Icon size={21} strokeWidth={1.9} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fbev-benefits" aria-labelledby="fbev-benefits-title">
+      <div className="container-tight fbev-benefits-inner">
+        <h2 id="fbev-benefits-title">Actionable Business Benefits</h2>
+        <div className="fbev-benefit-grid">
+          {foodBeverageBenefits.map(([title, copy]) => <article key={title} className="fbev-benefit">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="fbev-command" aria-labelledby="fbev-command-title">
+      <div className="container-tight fbev-command-inner">
+        <h2 id="fbev-command-title">Command Your Global Supply Chain</h2>
+        <p className="fbev-command-sub">The TracelyTag Enterprise Dashboard provides a unified view of your food production and distribution network.</p>
+        {foodBeverageDashboardImage
+          ? <div className="fbev-command-art"><img src={`${root}${foodBeverageDashboardImage}`} alt="TracelyTag Enterprise Dashboard showing production status, authentication requests, supply chain overview, retail verification, consumer engagement and business analytics" /></div>
+          : <div className="fbev-command-empty" aria-hidden="true" />}
+      </div>
+    </section>
+
+    <section className="fbev-cta" aria-labelledby="fbev-cta-title">
+      <div className="container-tight fbev-cta-inner">
+        <div className="fbev-cta-card">
+          <h2 id="fbev-cta-title">Ready to Build a Smarter Food Supply Chain?</h2>
+          <p>Join leading food and beverage manufacturers using TracelyTag to secure their global footprint and win consumer hearts.</p>
+          <div className="fbev-cta-actions">
+            <Link href="/contact-us" data-testid="button-food-book-demo" className="fbev-btn fbev-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-food-contact-sales" className="fbev-btn fbev-btn-outline">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const pharmaFeatures: [string, string, LucideIcon][] = [
+  ['Drug Authentication', 'Real-time validation of pharmaceutical products at every touchpoint.', ShieldCheck],
+  ['Serialization', 'Unique identifier management for unit-level tracking and compliance.', ScanQrCode],
+  ['Regulatory Compliance', 'Automated reporting for DSCSA, EU FMD, and global mandates.', Gavel],
+  ['Supply Chain Visibility', "Full transparency from manufacturing to the patient's hand.", Eye],
+];
+const pharmaChallenges: [string, string][] = [
+  ['Counterfeit medicines', 'Combating the global rise of substandard and falsified drugs entering markets.'],
+  ['Regulatory compliance', 'Meeting stringent global standards (DSCSA, FMD) with zero margin for error.'],
+  ['Product recalls', 'Managing complex recall logistics efficiently to maintain patient safety.'],
+  ['Serialization requirements', 'Implementing high-speed unit-level marking without impacting production uptime.'],
+];
+const pharmaPanelItems = ['Drug Authentication', 'Serialization', 'Aggregation', 'GS1 Compliance', 'Track & Trace', 'Business Intelligence'];
+const pharmaJourney = ['Medicine Manufacturing', 'Serialization', 'Packaging', 'Aggregation', 'Warehouse', 'Distribution', 'Pharmacy', 'Patient Verification'];
+const pharmaSolutions: [string, string, LucideIcon][] = [
+  ['Drug Authentication', 'Instant, foolproof verification of medicine authenticity through encrypted digital signatures.', BriefcaseMedical],
+  ['Serialization', 'High-volume serial number management system capable of processing billions of unique identifiers.', Hash],
+  ['Aggregation', 'Parent-child relationship tracking from individual doses to cases and shipping pallets.', Layers],
+  ['Track & Trace', 'Complete lineage tracking across every node in the pharmaceutical distribution network.', RouteIcon],
+  ['GS1 Compliance', 'Seamless integration with EPCIS standards ensuring full interoperability with global regulators.', ClipboardCheck],
+  ['Analytics', 'Real-time business intelligence dashboard for production monitoring and risk mitigation.', ChartNoAxesCombined],
+];
+const pharmaOutcomes: [string, string, LucideIcon][] = [
+  ['Improve Patient Safety', 'Ensure patients receive genuine, high-quality medication.', Heart],
+  ['Meet Regulatory Requirements', 'Stay compliant with global health authority mandates.', ShieldUser],
+  ['Prevent Counterfeit Medicines', 'Lock out gray market and falsified products effectively.', Ban],
+  ['Accelerate Product Recalls', 'Execute targeted recalls in minutes instead of weeks.', BotMessageSquare],
+  ['Increase Visibility', 'Identify bottlenecks and leakage in the supply chain.', Crosshair],
+  ['Strengthen Brand Trust', 'Build consumer confidence through transparency.', Handshake],
+];
+
+function Pharmaceuticals() {
+  return <Shell>
+    <section className="phar-hero" aria-labelledby="phar-hero-title">
+      <div className="container-tight phar-hero-inner">
+        <div className="fade-up">
+          <p className="phar-pill"><BadgeCheck size={13} strokeWidth={2.1} />Enterprise Pharma Solutions</p>
+          <h1 id="phar-hero-title" className="phar-h1">Protect Every Medicine with End-to-End Pharmaceutical Traceability</h1>
+          <p className="phar-hero-copy">Help pharmaceutical manufacturers secure medicines, prevent counterfeit drugs, enable serialization, comply with global regulations and achieve complete supply chain visibility using TracelyTag's enterprise platform.</p>
+          <div className="phar-hero-actions">
+            <Link href="/contact-us" data-testid="button-pharma-book-demo-hero" className="phar-btn phar-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-pharma-talk-expert" className="phar-btn phar-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="phar-hero-art fade-up delay-1">
+          <img src={`${root}industry-crops/pharmaceuticals-hero.png`} alt="Pharmaceutical manufacturing, coding and serialization, inspection, aggregation, digital warehouse, distribution, pharmacy and patient verification network powered by TracelyTag" />
+        </div>
+      </div>
+    </section>
+
+    <section className="phar-features" aria-label="Pharmaceutical platform capabilities">
+      <div className="container-tight phar-feature-grid">
+        {pharmaFeatures.map(([title, copy, Icon]) => <article key={title} className="card-line phar-feature-card">
+          <Icon size={22} className="text-[#0f56c2]" strokeWidth={2} />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="phar-challenges" aria-labelledby="phar-challenges-title">
+      <div className="container-tight phar-challenges-inner">
+        <div>
+          <h2 id="phar-challenges-title">Pharmaceutical Industry Challenges</h2>
+          <div className="phar-challenge-list">
+            {pharmaChallenges.map(([title, copy]) => <div key={title} className="phar-challenge">
+              <span className="phar-challenge-dot" />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="phar-panel">
+          <h2>Why Pharmaceutical Companies Choose TracelyTag</h2>
+          <div className="phar-panel-grid">
+            {pharmaPanelItems.map(item => <p key={item} className="phar-panel-item"><CircleCheck size={18} strokeWidth={1.8} className="shrink-0" />{item}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="phar-journey" aria-label="Pharmaceutical product journey">
+      <div className="container-tight phar-journey-inner">
+        <div className="phar-journey-track">
+          {pharmaJourney.map((step, index) => <div key={step} className="phar-journey-step">
+            <span className="phar-journey-dot">{index + 1}</span>
+            <p>{step}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="phar-solutions" aria-labelledby="phar-solutions-title">
+      <div className="container-tight phar-solutions-inner">
+        <h2 id="phar-solutions-title">Enterprise Solutions for Pharmaceuticals</h2>
+        <p className="phar-solutions-sub">Scalable technology designed specifically for the unique demands of global medicine manufacturing and distribution.</p>
+        <div className="phar-solution-grid">
+          {pharmaSolutions.map(([title, copy, Icon]) => <article key={title} className="card-line phar-solution-card">
+            <Icon size={26} className="text-[#0f56c2]" strokeWidth={1.9} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="phar-excellence" aria-labelledby="phar-excellence-title">
+      <div className="container-tight phar-excellence-inner">
+        <div className="phar-outcome-grid">
+          {pharmaOutcomes.map(([title, copy, Icon]) => <article key={title} className="card-line phar-outcome-card">
+            <Icon size={22} className="text-[#0f56c2]" strokeWidth={1.9} />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+        <div>
+          <h2 id="phar-excellence-title">Drive Industrial Excellence in Pharma</h2>
+          <p className="phar-excellence-copy">Our platform isn't just about compliance; it's about digital transformation. By integrating serialization into your core manufacturing process, you unlock data that drives operational efficiency and patient outcomes.</p>
+          <Link href="/contact-us" data-testid="button-pharma-download-brief" className="phar-btn phar-btn-primary mt-8">Download Solutions Brief</Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="phar-dashboard" aria-labelledby="phar-dashboard-title">
+      <div className="container-tight phar-dashboard-inner">
+        <h2 id="phar-dashboard-title">Enterprise Visibility Dashboard</h2>
+        <p className="phar-dashboard-sub">Real-time control over global pharmaceutical serialization and authentication events.</p>
+        <div className="phar-dashboard-art">
+          <img src={`${root}industry-crops/pharmaceuticals-dashboard.png`} alt="PharmaSecure Dashboard global operations: serialization status 99.98% active with 1,245,892 total serials today, auth requests 1.2M global at 98.2% success, production batches 42 current, aggregation status verified, distribution tracking 840 shipments, and compliance analytics healthy" />
+        </div>
+      </div>
+    </section>
+
+    <section className="phar-cta" aria-labelledby="phar-cta-title">
+      <div className="container-tight phar-cta-inner">
+        <h2 id="phar-cta-title">Ready to Modernize Pharmaceutical Traceability?</h2>
+        <div className="phar-cta-actions">
+          <Link href="/contact-us" data-testid="button-pharma-book-demo" className="phar-btn phar-btn-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-pharma-contact-sales" className="phar-btn phar-btn-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function GenericPage({ type }: { type: 'platform'|'solution'|'industry' }) {
   const params = useParams<{slug:string}>(); const slug = params.slug || (type === 'platform' ? 'product-digitalization' : type === 'industry' ? 'agriculture-agtech' : 'analytics-business-intelligence');
   const industry = industryItems.find(x => x[1] === slug);
@@ -1566,7 +1880,7 @@ function Router() {
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/:slug" component={SolutionPage} />
-    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
+    <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/food-beverage" component={FoodBeverage} /><Route path="/industries/pharmaceuticals" component={Pharmaceuticals} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
 }
