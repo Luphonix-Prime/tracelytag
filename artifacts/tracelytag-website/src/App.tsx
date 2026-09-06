@@ -824,7 +824,7 @@ const industryData: Record<string, IndustryData> = {
     eyebrow: 'AGRICULTURE INDUSTRY',
     title: 'Protect Agricultural Products with Complete Farm-to-Field Traceability',
     copy: 'Help agricultural manufacturers and agrochemical brands secure products, prevent counterfeiting, enable farm-to-field traceability and provide farmers with trusted product verification through secure QR-powered digital identities.',
-    heroImage: 'industry-crops/agriculture-agtech-hero.png',
+    heroImage: 'industry-heroimgs/agriculture.jpeg',
     featureItems: [['Product Authentication', 'Global security for your brand equity and reputation.', ShieldCheck], ['Anti-Counterfeiting', 'Instant verification for retailers and consumers.', LockKeyhole], ['Farm-to-Field Traceability', 'Real-time tracking from factory gate to store shelf.', Network], ['Farmer Verification', 'Build direct relationships via smart product packaging.', Users]],
     challengeTitle: 'Agriculture Industry Challenges',
     challengeItems: ['Counterfeit agricultural products', 'Supply chain visibility', 'Quality and safety risks', 'Regulatory compliance'],
@@ -840,7 +840,7 @@ const industryData: Record<string, IndustryData> = {
     eyebrow: 'ENTERPRISE APPAREL SOLUTION',
     title: 'Protect Every Garment with Digital Product Identity',
     copy: 'Help apparel brands authenticate products, eliminate counterfeit garments, enable digital product passports, improve supply chain visibility and create connected customer experiences through secure QR-powered digital identities.',
-    heroImage: 'industry-crops/apparel-fashion-hero.png',
+    heroImage: 'industry-heroimgs/cloth.jpeg',
     featureItems: [['Garment Authentication', 'Instant verification at any point in the supply chain or retail floor.', ShieldCheck], ['Digital Product Passport', 'Comprehensive lifecycle data and sustainability proof for every item.', QrCode], ['Supply Chain Visibility', 'Real-time tracking from textile manufacturing to final delivery.', Network], ['Connected Experience', 'Direct post-purchase engagement and personalized brand loyalty.', Users]],
     challengeTitle: 'Apparel Industry Challenges',
     challengeItems: ['Counterfeit products', 'Limited supply chain visibility', 'Sustainability expectations', 'Customer trust'],
@@ -856,7 +856,7 @@ const industryData: Record<string, IndustryData> = {
     eyebrow: 'COSMETICS & PERSONAL CARE',
     title: 'Protect Every Beauty Product with Secure Digital Product Identity',
     copy: 'Help cosmetics and personal care brands protect product integrity, prevent counterfeiting, create transparent product journeys and build stronger consumer relationships with trusted digital identities.',
-    heroImage: 'industry-crops/cosmetics-beauty-hero.png',
+    heroImage: 'industry-heroimgs/cosmetic.jpeg',
     featureItems: [['Product Authentication', 'Secure verification for every beauty product.', ShieldCheck], ['Brand Protection', 'Protect your brand from counterfeit products.', LockKeyhole], ['Consumer Engagement', 'Build meaningful post-purchase experiences.', Users], ['Product Transparency', 'Make product information easy to trust.', Globe2]],
     challengeTitle: 'Cosmetics & Personal Care Industry Challenges',
     challengeItems: ['Counterfeit beauty products', 'Consumer safety concerns', 'Limited product transparency', 'Product authenticity'],
@@ -872,7 +872,7 @@ const industryData: Record<string, IndustryData> = {
     eyebrow: 'ELECTRONICS INDUSTRY',
     title: 'Protect Every Electronic Device with Secure Digital Product Identity',
     copy: 'Help electronics and high-tech brands authenticate devices, manage warranties, secure supply chains and create trusted connected customer experiences through digital product identity.',
-    heroImage: 'industry-crops/electronics-high-tech-hero.png',
+    heroImage: 'industry-heroimgs/electronics.jpeg',
     featureItems: [['Product Authentication', 'Instant verification for every device.', ShieldCheck], ['Digital Warranty', 'Connect warranty coverage to every product.', QrCode], ['Supply Chain Visibility', 'Track devices from source to sale.', Network], ['Customer Experience', 'Create connected experiences after purchase.', Users]],
     challengeTitle: 'Electronics Industry Challenges',
     challengeItems: ['Counterfeit electronic devices', 'Warranty and service complexity', 'Limited supply chain visibility', 'Customer trust'],
@@ -888,7 +888,7 @@ const industryData: Record<string, IndustryData> = {
     eyebrow: 'FMCG INDUSTRY',
     title: 'Secure Every FMCG Product from Factory to Consumer',
     copy: 'Help FMCG brands secure products, prevent counterfeiting, improve supply chain visibility and create connected consumer experiences through secure QR-powered digital identities.',
-    heroImage: 'industry-crops/fmcg-consumer-goods-hero.png',
+    heroImage: 'industry-heroimgs/fmcg.jpeg',
     featureItems: [['Product Authentication', 'Secure every product from factory to consumer.', ShieldCheck], ['Anti-Counterfeiting', 'Protect brand reputation and consumer trust.', LockKeyhole], ['Supply Chain Visibility', 'Track products across the full supply chain.', Network], ['Consumer Engagement', 'Create meaningful connected experiences.', Users]],
     challengeTitle: 'Why FMCG Brands Need TracelyTag',
     challengeItems: ['Counterfeit products', 'Lack of supply chain visibility', 'Product recalls and safety risks', 'Difficult consumer engagement'],
@@ -904,7 +904,7 @@ const industryData: Record<string, IndustryData> = {
     eyebrow: 'INDUSTRY SOLUTIONS: FOOD & BEVERAGE',
     title: 'Deliver Safe, Traceable Food from Production to Consumer',
     copy: 'Help food and beverage manufacturers protect brands, ensure food safety, enable end-to-end traceability, simplify product recalls and build consumer trust through secure QR-powered digital identities.',
-    heroImage: 'industry-crops/food-beverage-hero.png',
+    heroImage: 'industry-heroimgs/food.jpeg',
     featureItems: [['Food Safety', 'Build confidence through product-level verification.', ShieldCheck], ['Product Traceability', 'Follow food from production to consumer.', Network], ['Authentication', 'Verify product identity at every stage.', LockKeyhole], ['Consumer Trust', 'Create transparent product experiences.', Users]],
     challengeTitle: 'Overcoming Critical Industry Challenges',
     challengeItems: ['Food safety and compliance', 'Complex supply chain operations', 'Product recalls', 'Consumer trust'],
@@ -920,7 +920,7 @@ const industryData: Record<string, IndustryData> = {
     eyebrow: 'PHARMACEUTICALS INDUSTRY',
     title: 'Secure Every Medicine with Trusted Product Identity',
     copy: 'Help pharmaceutical manufacturers secure medicines, prevent counterfeiting, improve supply chain visibility and deliver trusted product verification across every market.',
-    heroImage: 'industry-crops/pharmaceuticals-hero.png',
+    heroImage: 'industry-heroimgs/pharma.jpeg',
     featureItems: [['Product Authentication', 'Verify medicine identity and integrity.', ShieldCheck], ['Anti-Counterfeiting', 'Protect patients and pharmaceutical brands.', LockKeyhole], ['Supply Chain Visibility', 'Track medicines across every movement.', Network], ['Patient Engagement', 'Create trusted, connected experiences.', Users]],
     challengeTitle: 'Pharmaceutical Industry Challenges',
     challengeItems: ['Counterfeit medicines', 'Regulatory requirements', 'Complex supply chains', 'Patient safety'],
@@ -978,7 +978,7 @@ function ElectronicsHighTech() {
           </div>
         </div>
         <div className="elec-hero-art fade-up delay-1">
-          <img src={`${root}industry-crops/electronics-high-tech-hero.png`} alt="Connected electronics manufacturing, warehouse and retail traceability network powered by TracelyTag" />
+          <img src={`${root}industry-heroimgs/electronics.jpeg`} alt="Connected electronics manufacturing, warehouse and retail traceability network powered by TracelyTag" />
         </div>
       </div>
     </section>
@@ -1135,7 +1135,7 @@ function AgricultureAgTech() {
           </div>
         </div>
         <div className="agri-hero-art fade-up delay-1">
-          <img src={`${root}industry-crops/agriculture-agtech-hero.png`} alt="Agrochemical manufacturing plant, digital warehouse, distribution trucks, agriculture retailer and farmer-in-field traceability network powered by TracelyTag" />
+          <img src={`${root}industry-heroimgs/agriculture.jpeg`} alt="Agrochemical manufacturing plant, digital warehouse, distribution trucks, agriculture retailer and farmer-in-field traceability network powered by TracelyTag" />
         </div>
       </div>
     </section>
@@ -1287,7 +1287,7 @@ function ApparelFashion() {
           </div>
         </div>
         <div className="appa-hero-art fade-up delay-1">
-          <img src={`${root}industry-crops/apparel-fashion-hero.png`} alt="Garment manufacturing, fabric label printing, warehouse, distribution and retail store traceability network powered by TracelyTag" />
+          <img src={`${root}industry-heroimgs/cloth.jpeg`} alt="Garment manufacturing, fabric label printing, warehouse, distribution and retail store traceability network powered by TracelyTag" />
         </div>
       </div>
     </section>
@@ -1448,7 +1448,7 @@ function CosmeticsBeauty() {
           </div>
         </div>
         <div className="cosm-hero-art fade-up delay-1">
-          <img src={`${root}industry-crops/cosmetics-beauty-hero.png`} alt="Cosmetics manufacturing line, warehouse, distribution and beauty retail store traceability network powered by TracelyTag" />
+          <img src={`${root}industry-heroimgs/cosmetic.jpeg`} alt="Cosmetics manufacturing line, warehouse, distribution and beauty retail store traceability network powered by TracelyTag" />
         </div>
       </div>
     </section>
@@ -1591,7 +1591,7 @@ function FmcgConsumerGoods() {
           </div>
         </div>
         <div className="fmcg-hero-art fade-up delay-1">
-          <img src={`${root}industry-crops/fmcg-consumer-goods-hero.png`} alt="FMCG manufacturing line with TIJ and TTO printers, automated warehouse, distribution fleet and retail shelf scanning powered by TracelyTag" />
+          <img src={`${root}industry-heroimgs/fmcg.jpeg`} alt="FMCG manufacturing line with TIJ and TTO printers, automated warehouse, distribution fleet and retail shelf scanning powered by TracelyTag" />
         </div>
       </div>
     </section>
@@ -1692,10 +1692,7 @@ function FmcgConsumerGoods() {
   </Shell>;
 }
 
-// The Food & Beverage reference mockup ships with both image slots unrendered
-// (blank placeholders), so these stand in with the FMCG artwork -- the closest
-// sector match. Swap in food-specific assets here once they exist.
-const foodBeverageHeroImage: string | null = 'industry-crops/fmcg-consumer-goods-hero.png';
+const foodBeverageHeroImage: string | null = 'industry-heroimgs/food.jpeg';
 const foodBeverageDashboardImage: string | null = 'industry-crops/fmcg-consumer-goods-dashboard.png';
 
 const foodBeverageFeatures: [string, LucideIcon][] = [
@@ -1904,7 +1901,7 @@ function Pharmaceuticals() {
           </div>
         </div>
         <div className="phar-hero-art fade-up delay-1">
-          <img src={`${root}industry-crops/pharmaceuticals-hero.png`} alt="Pharmaceutical manufacturing, coding and serialization, inspection, aggregation, digital warehouse, distribution, pharmacy and patient verification network powered by TracelyTag" />
+          <img src={`${root}industry-heroimgs/pharma.jpeg`} alt="Pharmaceutical manufacturing, coding and serialization, inspection, aggregation, digital warehouse, distribution, pharmacy and patient verification network powered by TracelyTag" />
         </div>
       </div>
     </section>
