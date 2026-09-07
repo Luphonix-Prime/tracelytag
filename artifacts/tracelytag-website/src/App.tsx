@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
 import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, Crosshair, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gavel, Globe, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
+import { TextHoverEffect, FooterBackgroundGradient } from '@/components/ui/text-hover-effect';
 import { 
   Gs1CompliancePage, 
   DigitalLoyaltyPage, 
@@ -96,8 +97,14 @@ function Header() {
 }
 
 function Footer() {
-  return <footer className="mt-20 border-t border-[#dce3ec] bg-[#f4f6f9] text-[#526071]">
-    <div className="container-tight py-12">
+  return <footer className="relative mt-20 overflow-hidden border-t border-[#dce3ec] bg-[#f4f6f9] py-12 text-[#526071]">
+    <FooterBackgroundGradient />
+    
+    <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30 md:opacity-40 px-4 md:px-8 max-w-full overflow-hidden">
+      <TextHoverEffect text="TRACELYTAG" />
+    </div>
+
+    <div className="container-tight relative z-10">
       <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="space-y-4">
           <Brand />
@@ -141,7 +148,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="mt-12 pt-6 border-t border-[#e1e7f0] flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[11px] text-[#717d8d]">
+      <div className="mt-14 pt-6 border-t border-[#e1e7f0] flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[11px] text-[#717d8d]">
         <p>© 2026 TracelyTag / Industrial Integrity Systems. All rights reserved.</p>
         <div className="flex flex-wrap items-center gap-6">
           <span className="cursor-pointer hover:text-[#15345e]">Privacy Policy</span>
