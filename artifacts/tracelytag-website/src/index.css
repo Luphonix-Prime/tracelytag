@@ -94,8 +94,8 @@
 }
 
 .site-header { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.94); backdrop-filter: blur(18px); border-bottom: 1px solid hsl(var(--border)); }
-.brand-mark { width: 28px; height: 28px; border: 2px solid hsl(var(--primary)); border-radius: 7px; display: grid; place-items: center; position: relative; transform: rotate(-30deg); }
-.brand-mark:after { content:""; width: 10px; height: 10px; border: 2px solid hsl(var(--accent)); border-radius: 2px; }
+.brand-logo { height: 32px; width: 32px; object-fit: contain; }
+.brand-mark { width: 32px; height: 32px; display: inline-block; object-fit: contain; }
 .nav-link { position: relative; color: hsl(var(--muted-foreground)); transition: color .2s ease; }
 .nav-link:hover, .nav-link.active { color: hsl(var(--primary)); }
 .nav-link.active:after { content:""; position:absolute; height:2px; background:hsl(var(--primary)); left:0; right:0; bottom:-20px; }

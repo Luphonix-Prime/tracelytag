@@ -56,7 +56,7 @@ const industryItems = [
 ] as const;
 
 function Brand() {
-  return <Link href="/" data-testid="link-brand" className="flex items-center gap-2.5 shrink-0"><span className="brand-mark"><span /></span><span className="display text-[18px] font-extrabold tracking-[-.06em] text-[#123a78]">TracelyTag</span></Link>;
+  return <Link href="/" data-testid="link-brand" className="flex items-center gap-2.5 shrink-0"><img src="/tracelytag-logo.png" alt="TracelyTag Logo" className="h-8 w-8 object-contain shrink-0" /><span className="display text-[19px] font-extrabold tracking-[-.05em] text-[#123a78]">TracelyTag</span></Link>;
 }
 
 function Dropdown({ label, children, active }: { label: string; children: ReactNode; active?: boolean }) {
@@ -96,12 +96,59 @@ function Header() {
 }
 
 function Footer() {
-  return <footer className="mt-20 border-t border-[#dfe5eb] bg-[#f0f1f4]">
-    <div className="container-tight grid gap-10 py-10 md:grid-cols-[1.35fr_1fr_1fr_1fr]">
-      <div><Brand /><p className="mt-4 max-w-[260px] text-[11px] leading-5 text-[#606c79]">Building the secure infrastructure for the next generation of digital manufacturing and product authenticity.</p><p className="mt-7 text-[10px] text-[#7a8490]">© 2024 Industrial Integrity Systems. All rights reserved.</p></div>
-      <div><p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#15345e]">Resources</p><div className="space-y-3 text-[11px] text-[#68717d]"><Link href="/about-us" data-testid="footer-link-about">About Us</Link><Link href="/platform" data-testid="footer-link-platform">Platform</Link><Link href="/contact-us" data-testid="footer-link-contact">Contact Us</Link></div></div>
-      <div><p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#15345e]">Industries</p><div className="space-y-3 text-[11px] text-[#68717d]"><Link href="/industries" data-testid="footer-link-industries">Industries</Link><Link href="/solutions" data-testid="footer-link-solutions">Solutions</Link><Link href="/hardware-integration" data-testid="footer-link-hardware">Hardware Integration</Link></div></div>
-      <div><p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#15345e]">Legal</p><div className="space-y-3 text-[11px] text-[#68717d]"><span>Legal Compliance</span><span>Privacy Policy</span><span>Terms Status</span></div></div>
+  return <footer className="mt-20 border-t border-[#dce3ec] bg-[#f4f6f9] text-[#526071]">
+    <div className="container-tight py-12">
+      <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="space-y-4">
+          <Brand />
+          <p className="max-w-[280px] text-[12px] leading-relaxed text-[#606e7e]">Building the secure infrastructure for the next generation of digital manufacturing, serialization, and product authenticity.</p>
+          <div className="pt-1 flex items-center gap-4 text-[11px] text-[#064aa0] font-semibold">
+            <span className="flex items-center gap-1.5"><ShieldCheck size={14} /> GS1 Ready</span>
+            <span className="flex items-center gap-1.5"><LockKeyhole size={14} /> ISO 27001</span>
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#15345e]">Platform</p>
+          <div className="flex flex-col gap-2.5 text-[12px]">
+            <Link href="/platform/product-digitalization" data-testid="footer-link-digitalization" className="transition-colors hover:text-[#064aa0]">Product Digitalization</Link>
+            <Link href="/platform/product-authentication" data-testid="footer-link-authentication" className="transition-colors hover:text-[#064aa0]">Product Authentication</Link>
+            <Link href="/platform/case-pallet-aggregation" data-testid="footer-link-aggregation" className="transition-colors hover:text-[#064aa0]">Case & Pallet Aggregation</Link>
+            <Link href="/platform/gs1-standards-compliance" data-testid="footer-link-gs1" className="transition-colors hover:text-[#064aa0]">GS1 Compliance</Link>
+            <Link href="/platform/mobile-verification" data-testid="footer-link-mobile" className="transition-colors hover:text-[#064aa0]">Mobile Verification</Link>
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#15345e]">Solutions</p>
+          <div className="flex flex-col gap-2.5 text-[12px]">
+            <Link href="/solutions" data-testid="footer-link-solutions" className="transition-colors hover:text-[#064aa0]">All Solutions</Link>
+            <Link href="/hardware-integration" data-testid="footer-link-hardware" className="transition-colors hover:text-[#064aa0]">Hardware Integration</Link>
+            <Link href="/industries" data-testid="footer-link-industries" className="transition-colors hover:text-[#064aa0]">Industries Overview</Link>
+            <Link href="/industries/pharmaceuticals" data-testid="footer-link-pharma" className="transition-colors hover:text-[#064aa0]">Pharmaceuticals</Link>
+            <Link href="/industries/food-beverage" data-testid="footer-link-food" className="transition-colors hover:text-[#064aa0]">Food & Beverage</Link>
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#15345e]">Company</p>
+          <div className="flex flex-col gap-2.5 text-[12px]">
+            <Link href="/about-us" data-testid="footer-link-about" className="transition-colors hover:text-[#064aa0]">About Us</Link>
+            <Link href="/why-tracelytag" data-testid="footer-link-why" className="transition-colors hover:text-[#064aa0]">Why TracelyTag</Link>
+            <Link href="/contact-us" data-testid="footer-link-contact" className="transition-colors hover:text-[#064aa0]">Contact Us</Link>
+            <Link href="/login" data-testid="footer-link-login" className="transition-colors hover:text-[#064aa0]">Client Portal Login</Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-12 pt-6 border-t border-[#e1e7f0] flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[11px] text-[#717d8d]">
+        <p>© 2026 TracelyTag / Industrial Integrity Systems. All rights reserved.</p>
+        <div className="flex flex-wrap items-center gap-6">
+          <span className="cursor-pointer hover:text-[#15345e]">Privacy Policy</span>
+          <span className="cursor-pointer hover:text-[#15345e]">Terms of Service</span>
+          <span className="cursor-pointer hover:text-[#15345e]">Security & Compliance</span>
+        </div>
+      </div>
     </div>
   </footer>;
 }
