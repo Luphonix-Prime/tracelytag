@@ -29,22 +29,22 @@ const platformItems = [
   ['Mobile Verification', '/platform/mobile-verification', ScanLine],
 ] as const;
 const solutionItems = [
-  ['Analytics & Business Intelligence', 'analytics-business-intelligence'],
-  ['Analytics Dashboard', 'analytics-dashboard'],
-  ['Analytics Dashboard Insights', 'analytics-dashboard-insights'],
-  ['Anti-Counterfeiting Solution', 'anti-counterfeiting'],
-  ['Apparel & Clothing Industry', 'apparel-clothing'],
-  ['Connected Packaging Solution', 'connected-packaging'],
-  ['Consumer Engagement Solution', 'consumer-engagement'],
-  ['Customer Data Platform', 'customer-data-platform'],
-  ['Digital Warranty Solution', 'digital-warranty'],
-  ['Premium Product Authentication', 'premium-product-authentication'],
-  ['Product Authentication Solution', 'product-authentication'],
-  ['QR Code Generation & Serialization', 'qr-code-generation-serialization'],
-  ['Marketing Automation', 'marketing-automation'],
-  ['Supply Chain Visibility Solution', 'supply-chain-visibility'],
-  ['Track & Trace Solution', 'track-and-trace'],
-  ['Verification Engine', 'verification-engine'],
+  ['Analytics & Business Intelligence', 'analytics-business-intelligence', BarChart3],
+  ['Analytics Dashboard', 'analytics-dashboard', LayoutPanelTop],
+  ['Analytics Dashboard Insights', 'analytics-dashboard-insights', TrendingUp],
+  ['Anti-Counterfeiting Solution', 'anti-counterfeiting', ShieldAlert],
+  ['Apparel & Clothing Industry', 'apparel-clothing', Sparkles],
+  ['Connected Packaging Solution', 'connected-packaging', Package],
+  ['Consumer Engagement Solution', 'consumer-engagement', Users],
+  ['Customer Data Platform', 'customer-data-platform', Network],
+  ['Digital Warranty Solution', 'digital-warranty', Award],
+  ['Premium Product Authentication', 'premium-product-authentication', BadgeCheck],
+  ['Product Authentication Solution', 'product-authentication', ShieldCheck],
+  ['QR Code Generation & Serialization', 'qr-code-generation-serialization', QrCode],
+  ['Marketing Automation', 'marketing-automation', Megaphone],
+  ['Supply Chain Visibility Solution', 'supply-chain-visibility', Truck],
+  ['Track & Trace Solution', 'track-and-trace', RouteIcon],
+  ['Verification Engine', 'verification-engine', ScanSearch],
 ] as const;
 const industryItems = [
   ['Agriculture & AgTech', 'agriculture-agtech', Factory],
@@ -154,16 +154,17 @@ function Header() {
           onClose={handleClose}
           align="center"
         >
-          <div className="grid w-[510px] grid-cols-2 gap-1 p-1">
-            {solutionItems.map(([name, slug]) => (
+          <div className="grid w-[540px] grid-cols-2 gap-1 p-1">
+            {solutionItems.map(([name, slug, Icon]) => (
               <Link 
                 key={slug} 
                 href={`/solutions/${slug}`} 
                 onClick={handleClose}
                 data-testid={`link-solution-${slug}`} 
-                className="menu-item rounded-lg px-3 py-2.5 text-[12px] font-semibold text-[#15345e] hover:bg-[#edf5ff] transition-colors"
+                className="menu-item flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-[#edf5ff] transition-colors"
               >
-                {name}
+                <span className="text-[#0753a4] shrink-0"><Icon size={16} strokeWidth={1.7} /></span>
+                <span className="text-[12px] font-semibold text-[#15345e]">{name}</span>
               </Link>
             ))}
           </div>
