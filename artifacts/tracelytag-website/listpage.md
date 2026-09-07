@@ -2,7 +2,7 @@
 
 Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS block appended to `src/index.css`. All copy is transcribed verbatim from the source mockup in `public/reference/img/` — nothing shortened or reworded. Images were extracted from the mockups at 2× into `public/reference/img/*-crops/` unless noted.
 
-**16 pages total.**
+**20 pages total.**
 
 ## Core
 
@@ -28,12 +28,20 @@ Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS
 
 | Route | Component | CSS prefix | Images (`solution-crops/`) |
 | --- | --- | --- | --- |
-| `/solutions/analytics-business-intelligence` | `AnalyticsBusinessIntelligence` | `.abi-` | `analytics-bi-hero-full.png`, `analytics-bi-dashboard.png` |
+| `/solutions/analytics-business-intelligence` | `AnalyticsBusinessIntelligence` + `AnalyticsMergedSections` | `.abi-`, `.abi2-` | `analytics-bi-hero-full.png`, `analytics-bi-dashboard.png`, `analytics-dashboard-hero-full.png`, `analytics-insights-hero-full.png`, `analytics-enterprise-monitor.png`, `analytics-boardroom-suite.png` |
 | `/solutions/anti-counterfeiting` | `AntiCounterfeiting` | `.anti-` | `anti-counterfeiting-hero-full.png`, `anti-counterfeiting-dashboard.png` |
 | `/solutions/apparel-clothing` | `ApparelClothing` | `.aps-` | `apparel-clothing-hero-full.png`, `apparel-clothing-dashboard.png` |
 | `/solutions/connected-packaging` | `ConnectedPackaging` | `.cpak-` | `connected-packaging-hero-full.png`, `connected-packaging-dashboard.png` |
+| `/solutions/customer-data-platform` | `CustomerDataPlatform` | `.cdp-` | `cdp-hero-full.png`, `cdp-workspace.png`, `consumer-engagement-hero-full.png`, `consumer-engagement-dashboard.png` (all new) |
 | `/solutions/digital-warranty` | `DigitalWarranty` | `.dwar-` | see note below |
 | `/solutions/premium-product-authentication` | `PremiumProductAuthentication` | `.ppa-` | `product-authentication-counterfeit-map.png` (new) + see note below |
+| `/solutions/supply-chain-visibility` | `SupplyChainVisibility` | `.scv-` | `supply-chain-visibility-hero-full.png`, `supply-chain-visibility-dashboard.png` |
+| `/solutions/track-and-trace` | `TrackAndTrace` | `.tnt-` | `track-and-trace-hero-full.png`, `track-and-trace-dashboard.png` |
+| `/solutions/verification-engine` | `VerificationEngine` | `.vfe-` | `verification-engine-hero-full.png`, `verification-engine-dashboard.png` |
+
+**Analytics merge note:** this page merges three mockups — Analytics & Business Intelligence Solution Page (the original build, unchanged) plus Analytics Dashboard Solution Page and Analytics Dashboard Solution Page (1), appended as `AnalyticsMergedSections` before the closing CTA. The two dashboard mockups share section titles but carry different body copy, so both variants are rendered rather than deduplicated: 4+4 capability cards, both Enterprise Analytics checklists, both Intelligence Workflow subtitles, Advanced Analytics Capabilities *and* Advanced Features (6 cards each), and both Strategic Business Impact treatments (6-item grid + bento). `/solutions/analytics-dashboard` and `/solutions/analytics-dashboard-insights` were removed from `solutionItems` and `solutionPageData` and now redirect here. Two strings say "TraceLogic" rather than TracelyTag — kept verbatim as the mockups have them.
+
+**Customer Data Platform merge note:** this page merges two mockups — Customer Data Platform Solution Page and Consumer Engagement Solution Page — with no content dropped from either. The CDP hero leads; the Consumer Engagement hero follows as a second banner, and the two sets of sections interleave (silos + Why Consumer Engagement, data lifecycle + How Consumer Engagement Works, core capabilities + advanced features, workspace/outcomes + quantifiable benefits + engagement dashboard), closing with both CTAs. `/solutions/consumer-engagement` was removed from `solutionItems` and `solutionPageData` and now 301-style redirects to this page via a `<Redirect>` route.
 
 **Digital Warranty image note:** its mockup has no artwork — both image slots render as empty placeholder rectangles in the source PNG, and the pre-existing `digital-warranty-hero.png` crop is that blank placeholder. The two slots reuse existing repo assets instead: `about-hero-diagram.png` (hero) and `about-dashboard-monitor.png` (Powerful Control Center).
 

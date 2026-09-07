@@ -3,8 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BellRing, BookOpen, BotMessageSquare, Box, Boxes, Brackets, BriefcaseMedical, Building2, ChartColumn, ChartColumnBig, ChartNoAxesCombined, ChartScatter, Check, ChevronDown, ChevronRight, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, CloudUpload, CodeXml, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileText, Fingerprint, Frown, Gauge, Gavel, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, ListOrdered, LockKeyhole, MapPin, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquareTerminal, Star, Store, TabletSmartphone, Tag, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, UsersRound, Utensils, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
+import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
+import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, CloudDownload, CloudUpload, CodeXml, Cog, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, ListOrdered, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, WandSparkles, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient();
@@ -20,12 +20,9 @@ const platformItems = [
 ] as const;
 const solutionItems = [
   ['Analytics & Business Intelligence', 'analytics-business-intelligence'],
-  ['Analytics Dashboard', 'analytics-dashboard'],
-  ['Analytics Dashboard Insights', 'analytics-dashboard-insights'],
   ['Anti-Counterfeiting Solution', 'anti-counterfeiting'],
   ['Apparel & Clothing Industry', 'apparel-clothing'],
   ['Connected Packaging Solution', 'connected-packaging'],
-  ['Consumer Engagement Solution', 'consumer-engagement'],
   ['Customer Data Platform', 'customer-data-platform'],
   ['Digital Warranty Solution', 'digital-warranty'],
   ['Premium Product Authentication', 'premium-product-authentication'],
@@ -629,7 +626,6 @@ const genericMap: Record<string, {title:string; image:string; eyebrow:string}> =
   'analytics-business-intelligence': { title:'Analytics & Business Intelligence', image:'why-dashboard-monitor.png', eyebrow:'SOLUTIONS' },
   'anti-counterfeiting': { title:'Anti-Counterfeiting Solution', image:'why-hero-diagram.png', eyebrow:'SOLUTIONS' },
   'connected-packaging': { title:'Connected Packaging Solution', image:'about-hero-diagram.png', eyebrow:'SOLUTIONS' },
-  'consumer-engagement': { title:'Consumer Engagement Solution', image:'about-dashboard-monitor.png', eyebrow:'SOLUTIONS' },
   'digital-warranty': { title:'Digital Warranty Solution', image:'why-dashboard-monitor.png', eyebrow:'SOLUTIONS' },
   'product-authentication-solution': { title:'Product Authentication Solution', image:'why-hero-diagram.png', eyebrow:'SOLUTIONS' },
   'supply-chain-visibility': { title:'Supply Chain Visibility Solution', image:'hardware-hero-diagram.png', eyebrow:'SOLUTIONS' },
@@ -707,42 +703,6 @@ const solutionPageData: Record<string, SolutionData> = {
     ctaTitle: 'Ready to Turn Product Data into Business Intelligence?',
     ctaCopy: 'Build a clearer view of your products, operations, and customers with TracelyTag.',
   },
-  'analytics-dashboard': {
-    ...solutionBase,
-    eyebrow: 'ANALYTICS DASHBOARD',
-    title: 'Transform Product Data into Actionable Business Insights',
-    copy: 'Monitor authentication, product movement, customer engagement, supply chain performance, and operational KPIs from one intelligent analytics platform.',
-    challengeEyebrow: 'ONE VIEW OF YOUR OPERATION',
-    challengeTitle: 'Stop searching for the signal.',
-    challengeCopy: 'Your teams should not need to reconcile disconnected reports to understand how products are moving. TracelyTag makes the important signals visible at a glance.',
-    panelTitle: 'A Dashboard Built for Action',
-    journeyTitle: 'From Product Event to Business Insight',
-    capabilityTitle: 'Dashboard Capabilities',
-    capabilityCopy: 'A focused workspace for monitoring the health of your product network.',
-    dashboardTitle: 'Your Product Intelligence Dashboard',
-    dashboardCopy: 'Monitor activity, spot exceptions, and share a trusted source of truth with every stakeholder.',
-    benefits: [['Faster Decisions', 'Give leaders the context they need without waiting for a report.'], ['Shared Visibility', 'Align operations, commercial, and executive teams around one view.'], ['Exception Management', 'Surface unusual activity before it impacts customers.'], ['Clear Reporting', 'Turn complex product data into easy-to-understand trends.'], ['Team Efficiency', 'Reduce manual analysis and repetitive data gathering.'], ['Confident Action', 'Move from what happened to what to do next.']],
-    ctaTitle: 'Ready to See Your Product Ecosystem Clearly?',
-    ctaCopy: 'Give your teams the live intelligence they need to move with confidence.',
-  },
-  'analytics-dashboard-insights': {
-    ...solutionBase,
-    eyebrow: 'ANALYTICS DASHBOARD INSIGHTS',
-    title: 'Transform Product Data into Actionable Business Insights',
-    copy: 'Monitor authentication, product movement, customer engagement, supply chain performance, and operational KPIs from one intelligent analytics platform.',
-    challengeEyebrow: 'FROM DATA TO DIRECTION',
-    challengeTitle: 'Make every signal count.',
-    challengeCopy: 'TracelyTag organizes verified product events into patterns your teams can use to improve performance, reduce risk, and grow trust.',
-    panelTitle: 'Insights for Every Team',
-    journeyTitle: 'The Product Insight Journey',
-    capabilityTitle: 'Insight-Driven Capabilities',
-    capabilityCopy: 'Move beyond dashboards with context that helps your teams choose the next best action.',
-    dashboardTitle: 'A Clearer View of What Matters',
-    dashboardCopy: 'Give stakeholders the right level of detail, from executive summaries to operational investigation.',
-    benefits: [['Identify Trends', 'Understand what is changing across your product network.'], ['Prioritize Action', 'Focus attention on the exceptions with the greatest impact.'], ['Improve Performance', 'Use evidence to refine workflows and partner operations.'], ['Protect Trust', 'Spot suspicious activity and respond with context.'], ['Learn from Engagement', 'Connect customer interactions to product performance.'], ['Scale Intelligence', 'Make useful insight available across the enterprise.']],
-    ctaTitle: 'Ready to Turn Product Interactions into Insights?',
-    ctaCopy: 'Connect your data and make smarter product decisions with TracelyTag.',
-  },
   'anti-counterfeiting': {
     ...solutionBase,
     eyebrow: 'ANTI-COUNTERFEITING SOLUTION',
@@ -799,25 +759,6 @@ const solutionPageData: Record<string, SolutionData> = {
     benefits: [['Strengthen Authenticity', 'Give customers confidence at the point of purchase.'], ['Share Product Information', 'Make important product details easy to access.'], ['Improve Engagement', 'Create direct, relevant experiences after purchase.'], ['Support Operations', 'Connect package-level events to supply chain workflows.'], ['Learn from Scans', 'Turn interactions into useful product intelligence.'], ['Extend Brand Value', 'Keep the relationship going beyond the shelf.']],
     ctaTitle: 'Ready to Connect Your Packaging?',
     ctaCopy: 'Create more trusted and measurable product experiences with TracelyTag.',
-  },
-  'consumer-engagement': {
-    ...solutionBase,
-    eyebrow: 'CONSUMER ENGAGEMENT',
-    title: 'Build Stronger Relationships with Every Product',
-    copy: 'Turn verified product interactions into relevant, trusted experiences that connect brands with customers long after purchase.',
-    heroImage: 'about-dashboard-monitor.png',
-    challengeEyebrow: 'THE MODERN CUSTOMER RELATIONSHIP',
-    challengeTitle: 'Earn attention with a useful product experience.',
-    challengeCopy: 'A secure product identity creates a trusted moment for customers to learn, verify, register, and engage with your brand.',
-    panelTitle: 'Connected Experiences That Convert',
-    journeyTitle: 'The Customer Engagement Journey',
-    capabilityTitle: 'Experiences Built on Product Trust',
-    capabilityCopy: 'Use the product itself as a direct, measurable channel for meaningful engagement.',
-    dashboardTitle: 'Understand Customer Product Interactions',
-    dashboardCopy: 'Connect verification and engagement signals to see what customers need and where they respond.',
-    benefits: [['Build Trust', 'Lead with a verified, transparent product experience.'], ['Increase Engagement', 'Give customers a clear reason to interact.'], ['Grow Loyalty', 'Create relationships that continue after purchase.'], ['Learn Directly', 'Capture useful first-party product interactions.'], ['Protect the Experience', 'Ensure customers reach trusted product information.'], ['Measure Impact', 'Connect engagement activity to product performance.']],
-    ctaTitle: 'Ready to Create More Connected Customers?',
-    ctaCopy: 'Turn every product into a trusted, useful relationship with your brand.',
   },
   'customer-data-platform': {
     ...solutionBase,
@@ -2389,6 +2330,229 @@ const abiBenefits: [string, string][] = [
   ['Actionable Insights', 'Move beyond data points to clear directives that impact the bottom line.'],
 ];
 
+const abi2CardsA: [string, string, LucideIcon][] = [
+  ['Executive Dashboards', 'High-level visibility into global operations for C-suite decision makers.', Grid2x2Plus],
+  ['Business Intelligence', 'Advanced data modeling to uncover hidden trends in product movement.', ChartNoAxesCombined],
+  ['Operational KPIs', 'Real-time performance metrics for manufacturing and distribution lines.', Gauge],
+  ['Data-Driven Decisions', 'Leverage historical data to predict future supply chain requirements.', Grip],
+];
+const abi2CardsB: [string, string, LucideIcon][] = [
+  ['Executive Dashboards', 'High-level strategic visibility for leadership and key stakeholders.', Grid2x2Plus],
+  ['Business Intelligence', 'Advanced data processing to uncover hidden market opportunities.', ChartNoAxesCombined],
+  ['Operational KPIs', 'Real-time performance tracking across all industrial touchpoints.', Gauge],
+  ['Data-Driven Decisions', 'Replace intuition with empirical evidence from global scan logs.', ScanSearch],
+];
+const abi2EnterpriseA = ['Executive reporting', 'Authentication analytics', 'Supply chain analytics', 'Consumer insights', 'Operational KPIs', 'Custom dashboards'];
+const abi2EnterpriseB = ['Executive reporting & strategic summaries', 'Authentication & security analytics', 'Supply chain flow & logistics bottlenecks', 'Consumer insights & interaction heatmaps', 'Real-time operational KPI monitoring', 'Custom dashboard builder & automated exports'];
+const abi2Workflow: [string, string][] = [
+  ['Data Collection', 'Multi-point scans'],
+  ['Data Processing', 'Cloud verification'],
+  ['Business Analytics', 'Trend identification'],
+  ['Executive Dashboard', 'Visual KPIs'],
+  ['Decision Making', 'Strategic actions'],
+  ['Business Growth', 'Optimized results'],
+];
+const abi2CapabilitiesA: [string, string, LucideIcon][] = [
+  ['Executive Dashboard', "A bird's-eye view of your entire operation, aggregating data from multiple production facilities into one interface.", ChartNoAxesCombined],
+  ['Custom Reports', 'Build and schedule automated reports tailored to specific department needs, from logistics to marketing.', FileText],
+  ['KPI Monitoring', 'Set thresholds for critical metrics and receive instant alerts when performance deviates from your baseline.', BellRing],
+  ['Authentication Analytics', 'Track verification attempts globally to identify counterfeit hotspots and product diversion in real-time.', ShieldCheck],
+  ['Supply Chain Analytics', 'Analyze dwell times, route efficiency, and partner performance to eliminate bottlenecks in distribution.', Network],
+  ['Consumer Insights', 'Understand how, where, and when consumers interact with your product tags to optimize engagement strategies.', Users],
+];
+const abi2CapabilitiesB: [string, string, LucideIcon][] = [
+  ['Executive Dashboard', "A bird's-eye view of your entire operational landscape, optimized for rapid comprehension and strategic action.", ChartNoAxesCombined],
+  ['Custom Reports', 'Build and schedule automated reports tailored to specific department needs, from logistics to marketing.', FileText],
+  ['KPI Monitoring', 'Set threshold alerts for critical metrics and receive instant notifications when performance deviates from targets.', BellRing],
+  ['Authentication Analytics', 'Trace every verification attempt globally to identify potential counterfeit hotspots and unauthorized trade.', ShieldCheck],
+  ['Supply Chain Analytics', 'End-to-end visibility of product movement, dwell times, and transit efficiency across the global network.', Truck],
+  ['Consumer Insights', 'Understand how, where, and when consumers interact with your products to refine engagement strategies.', UsersRound],
+];
+const abi2ImpactA: [string, string, LucideIcon][] = [
+  ['Better Decisions', 'Move beyond guesswork with hard data that supports complex enterprise decision-making processes.', BrainCog],
+  ['Operational Visibility', 'Eliminate blind spots in your global supply chain with comprehensive transparency from factory to shelf.', Eye],
+  ['Business Intelligence', 'Leverage predictive models to forecast demand and optimize inventory levels across multiple regions.', ScanSearch],
+  ['Higher Efficiency', 'Identify and automate repetitive reporting tasks, freeing up your team for high-value strategic work.', Zap],
+  ['Improved Performance', 'Continuous monitoring allows for rapid iteration and performance tuning of industrial processes.', TrendingUp],
+  ['Growth Insights', 'Discover new market opportunities based on real consumer interaction data and geographic trends.', Waypoints],
+];
+const abi2Integrated: [string, string, LucideIcon][] = [
+  ['Executive KPIs', 'Instant access to revenue metrics and performance summaries.', ChartPie],
+  ['Global Supply Chain Metrics', 'Track inventory dwell time and transit efficiency across continents.', Map],
+];
+
+function AnalyticsMergedSections() {
+  return <>
+    <section className="abi2-hero" aria-labelledby="abi2-hero-title">
+      <div className="container-tight abi2-hero-inner">
+        <div className="fade-up">
+          <p className="abi2-pill"><ChartColumnBig size={13} strokeWidth={2.2} />ENTERPRISE INTELLIGENCE</p>
+          <h2 id="abi2-hero-title" className="abi2-h1">Transform Product Data into <span>Actionable</span> Business Insights</h2>
+          <p className="abi2-hero-copy">Monitor authentication, product movement, consumer engagement, supply chain performance and operational KPIs from one enterprise analytics dashboard.</p>
+          <div className="abi2-hero-actions">
+            <Link href="/contact-us" data-testid="button-abi2-book-demo-hero" className="abi2-btn abi2-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-abi2-view-platform" className="abi2-btn abi2-btn-ghost">View Platform</Link>
+          </div>
+        </div>
+        <div className="abi2-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/analytics-dashboard-hero-full.png`} alt="Isometric enterprise analytics scene: robotic production lines and global freight feeding dashboards, KPI panels, global yield, efficiency score and real-time alerts tiles, with a Real-time Data Stream badge reading 99.98% Accuracy" />
+          <img src={`${root}solution-crops/analytics-insights-hero-full.png`} alt="TracelyTag Analytics and BI Solution: robotic assembly lines and global nodes converging on a central processing core that fans data out to reporting dashboards, charts and product health panels" />
+        </div>
+      </div>
+    </section>
+
+    <section className="abi2-cards" aria-label="Enterprise intelligence capabilities">
+      <div className="container-tight abi2-cards-inner">
+        <div className="abi2-card-grid">
+          {abi2CardsA.map(([title, copy, Icon]) => <article key={`a-${title}`} className="abi2-card">
+            <Icon size={22} strokeWidth={2} className="text-[#1152d6]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+        <div className="abi2-card-grid">
+          {abi2CardsB.map(([title, copy, Icon]) => <article key={`b-${title}`} className="abi2-card">
+            <Icon size={22} strokeWidth={2} className="text-[#1152d6]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="abi2-enterprise" aria-labelledby="abi2-enterprise-title">
+      <div className="container-tight abi2-enterprise-inner">
+        <div>
+          <h2 id="abi2-enterprise-title">Enterprise Analytics</h2>
+          <p className="abi2-enterprise-copy">Scale your business with a robust analytical engine designed for global manufacturers. Every touchpoint in your supply chain becomes a data point for growth.</p>
+          <ul className="abi2-check-grid">
+            {abi2EnterpriseA.map(item => <li key={item}><CircleCheck size={18} strokeWidth={2} />{item}</li>)}
+          </ul>
+          <ul className="abi2-check-list">
+            {abi2EnterpriseB.map(item => <li key={item}><CircleCheck size={18} strokeWidth={2} />{item}</li>)}
+          </ul>
+          <Link href="/contact-us" data-testid="button-abi2-solution-brief" className="abi2-btn abi2-brief">Download Solution Brief</Link>
+        </div>
+        <div className="abi2-enterprise-art">
+          <img src={`${root}solution-crops/analytics-enterprise-monitor.png`} alt="Analytics and Business Intelligence workspace on a desktop monitor: executive KPIs with $12.5M revenue, 94.5% efficiency and 14.1% growth; authentication analytics verification trends at a 98.2% success rate with method breakdown; consumer analytics engagement heatmap and interaction rates; supply chain metrics inventory levels and shipping status; operational performance uptime 99.99% at 1,280 transactions per second; and a business reports queue" />
+        </div>
+      </div>
+    </section>
+
+    <section className="abi2-workflow" aria-labelledby="abi2-workflow-title">
+      <div className="container-tight abi2-workflow-inner">
+        <h2 id="abi2-workflow-title">The Intelligence Workflow</h2>
+        <p className="abi2-workflow-sub">From raw data points to strategic business growth.</p>
+        <p className="abi2-workflow-sub">From raw physical scans to strategic boardroom decisions, TraceLogic orchestrates the entire data lifecycle.</p>
+        <ol className="abi2-workflow-grid">
+          {abi2Workflow.map(([title, sub], index) => <li key={title} className="abi2-workflow-step">
+            <span className="abi2-workflow-num">{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{sub}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="abi2-caps" aria-labelledby="abi2-caps-title">
+      <div className="container-tight abi2-caps-inner">
+        <h2 id="abi2-caps-title" className="abi2-h2 is-center">Advanced Analytics Capabilities</h2>
+        <p className="abi2-center-sub">Purpose-built features for industrial scale intelligence.</p>
+        <div className="abi2-cap-grid">
+          {abi2CapabilitiesA.map(([title, copy, Icon]) => <article key={`a-${title}`} className="abi2-cap-card">
+            <span className="abi2-cap-tile"><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="abi2-caps-b" aria-labelledby="abi2-caps-b-title">
+      <div className="container-tight abi2-caps-inner">
+        <h2 id="abi2-caps-b-title" className="abi2-h2">Advanced Features</h2>
+        <div className="abi2-cap-grid">
+          {abi2CapabilitiesB.map(([title, copy, Icon]) => <article key={`b-${title}`} className="abi2-cap-card is-plain">
+            <Icon size={22} strokeWidth={2} className="text-[#1152d6]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="abi2-impact" aria-labelledby="abi2-impact-title">
+      <div className="container-tight abi2-impact-inner">
+        <h2 id="abi2-impact-title" className="abi2-h2">Strategic Business Impact</h2>
+        <div className="abi2-impact-grid">
+          {abi2ImpactA.map(([title, copy, Icon]) => <div key={title} className="abi2-impact-item">
+            <Icon size={20} strokeWidth={2} />
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+        <div className="abi2-bento">
+          <article className="abi2-bento-lead">
+            <h3>Better Decisions</h3>
+            <p>Leverage real-time data to drive high-stakes strategic choices with absolute confidence.</p>
+          </article>
+          <article className="abi2-bento-card">
+            <h3>Operational Visibility</h3>
+            <p>Uncover inefficiencies in your supply chain that were previously invisible to standard ERP systems.</p>
+          </article>
+          <article className="abi2-bento-card">
+            <h3>Business Intelligence</h3>
+            <p>Convert petabytes of scan data into meaningful narratives about your global market presence.</p>
+          </article>
+          <article className="abi2-bento-wide">
+            <div>
+              <h3>Higher Efficiency &amp; Growth Insights</h3>
+              <p>Identify growth vectors through consumer engagement patterns and optimize operational throughput with precision data.</p>
+            </div>
+            <span className="abi2-bento-icon"><TrendingUp size={22} strokeWidth={2} /></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section className="abi2-integrated" aria-labelledby="abi2-integrated-title">
+      <div className="container-tight abi2-integrated-inner">
+        <div className="abi2-integrated-art">
+          <img src={`${root}solution-crops/analytics-boardroom-suite.png`} alt="Browser window titled tracelogic-enterprise-analytics.v2 showing the Enterprise BI and Analytics Suite on a boardroom display: authentication analytics verification trends and success rates, executive KPIs of $45.2B revenue, 94.5% efficiency index and +8.5% global growth, consumer analytics engagement heatmap and interaction rates, supply chain metrics, operational performance, and a custom reporting queue" />
+        </div>
+        <div>
+          <h2 id="abi2-integrated-title" className="abi2-h2">Integrated Analytical Power</h2>
+          <p className="abi2-integrated-copy">The TraceLogic Analytics suite consolidates multiple data streams into a single, cohesive source of truth.</p>
+          <div className="abi2-integrated-list">
+            {abi2Integrated.map(([title, copy, Icon]) => <div key={title} className="abi2-integrated-item">
+              <span className="abi2-integrated-icon"><Icon size={18} strokeWidth={2} /></span>
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="abi2-unlock" aria-labelledby="abi2-unlock-title">
+      <div className="container-tight">
+        <div className="abi2-unlock-card">
+          <h2 id="abi2-unlock-title">Ready to Unlock Business Intelligence?</h2>
+          <p>Join the world's leading manufacturers using TracelyTag to secure their supply chains and gain a competitive edge through data.</p>
+          <div className="abi2-unlock-actions">
+            <Link href="/contact-us" data-testid="button-abi2-book-demo" className="abi2-btn abi2-unlock-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-abi2-contact-sales" className="abi2-btn abi2-unlock-ghost">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </>;
+}
+
 function AnalyticsBusinessIntelligence() {
   return <Shell>
     <section className="abi-hero" aria-labelledby="abi-hero-title">
@@ -2492,6 +2656,8 @@ function AnalyticsBusinessIntelligence() {
         </div>
       </div>
     </section>
+
+    <AnalyticsMergedSections />
 
     <section className="abi-cta" aria-labelledby="abi-cta-title">
       <div className="container-tight abi-cta-inner">
@@ -3303,6 +3469,828 @@ function PremiumProductAuthentication() {
   </Shell>;
 }
 
+const scvFeatures: [string, string, LucideIcon][] = [
+  ['End-to-End Visibility', 'Complete lifecycle tracking from raw materials to final consumer delivery.', Waypoints],
+  ['Warehouse Tracking', 'Real-time location data for inventory within high-tech industrial facilities.', Archive],
+  ['Logistics Monitoring', 'Global shipment tracking with precise geolocation and arrival prediction.', Truck],
+  ['Supply Chain Intelligence', 'Advanced analytics to optimize flow and reduce operational friction.', ChartNoAxesCombined],
+];
+const scvProblems: [string, string, LucideIcon, string][] = [
+  ['Limited shipment visibility', 'Blind spots in transit leading to reactive logistics management.', CircleAlert, 'is-red'],
+  ['Inventory blind spots', 'Lack of real-time counts across distributed warehouse networks.', Ban, 'is-slate'],
+];
+const scvBullets = [
+  'Delayed deliveries and missed SLAs',
+  'Manual tracking through Excel and emails',
+  'Poor operational visibility for stakeholders',
+  'Slow issue resolution due to data siloes',
+];
+const scvConnected: [string, string][] = [
+  ['Live inventory visibility', 'Automated SKU tracking across all nodes.'],
+  ['Warehouse monitoring', 'Smart racking and dock status tracking.'],
+  ['Shipment tracking', 'GPS-integrated freight monitoring.'],
+  ['Distribution insights', 'Predictive routing and optimization.'],
+  ['Retail visibility', 'In-store stock and shelf availability.'],
+  ['Operational intelligence', 'Executive dashboards for decision making.'],
+];
+const scvFlow: [string, string, LucideIcon][] = [
+  ['Manufacturing', 'Batch Creation', Factory],
+  ['Packaging', 'Unit Tagging', Package],
+  ['Warehouse', 'Stock Mgmt', Warehouse],
+  ['Distribution', 'Freight Flow', Truck],
+  ['Retail', 'Shelf Visibility', Store],
+  ['Consumer', 'Verification', CircleUserRound],
+  ['Analytics', 'Optimization', ChartColumnBig],
+];
+const scvCapabilities: [string, string, LucideIcon][] = [
+  ['Shipment Tracking', 'Real-time global transit status with automated geo-fencing alerts.', RouteIcon],
+  ['Inventory Monitoring', 'Live stock levels with predictive re-ordering triggers.', ScanBarcode],
+];
+const scvCapabilitiesRow: [string, string, LucideIcon][] = [
+  ['Distribution Intelligence', 'Network optimization maps identifying bottlenecks.', Waypoints],
+  ['Retail Visibility', 'Shelf-level insights and automated point-of-sale audits.', ShoppingBasket],
+  ['Supply Chain Analytics', 'BI-integrated reports for C-suite decision making.', ChartNoAxesCombined],
+];
+const scvImpact: [string, string, LucideIcon][] = [
+  ['Complete Product Visibility', 'Eliminate "black holes" in the supply chain with persistent tracking.', BadgeCheck],
+  ['Improved Inventory Accuracy', 'Reduce discrepancies between physical stock and digital records.', ChartLine],
+  ['Faster Deliveries', 'Streamline transit routes and reduce idle time at port or warehouse.', Gauge],
+  ['Reduced Operational Costs', 'Minimize shrinkage and eliminate manual auditing labor.', Banknote],
+  ['Better Decision Making', 'Data-driven forecasts based on real-world movement patterns.', BrainCog],
+  ['Supply Chain Optimization', 'Continuous improvement through granular efficiency analysis.', Cog],
+];
+
+function SupplyChainVisibility() {
+  return <Shell>
+    <section className="scv-hero" aria-labelledby="scv-hero-title">
+      <div className="container-tight scv-hero-inner">
+        <div className="fade-up">
+          <p className="scv-pill"><Eye size={14} strokeWidth={2.2} />SUPPLY CHAIN VISIBILITY</p>
+          <h1 id="scv-hero-title" className="scv-h1">Gain Complete Visibility Across Your Supply Chain</h1>
+          <p className="scv-hero-copy">Monitor products from manufacturing to distribution with end-to-end supply chain visibility. Track inventory movement, warehouse operations, shipments and product locations through one intelligent platform.</p>
+          <div className="scv-hero-actions">
+            <Link href="/contact-us" data-testid="button-scv-book-demo-hero" className="scv-btn scv-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-scv-explore-platform" className="scv-btn scv-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="scv-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/supply-chain-visibility-hero-full.png`} alt="Connected supply chain diagram: manufacturing, high-tech warehouse, distribution centre and retail stores linked by secure data flow lanes to a central TracelyTag control tower, with real-time tracking and end-to-end visibility markers around the loop" />
+        </div>
+      </div>
+    </section>
+
+    <section className="scv-features" aria-label="Supply chain visibility capabilities">
+      <div className="container-tight scv-feature-grid">
+        {scvFeatures.map(([title, copy, Icon]) => <article key={title} className="scv-feature-card">
+          <Icon size={22} strokeWidth={2} className="text-[#1152d6]" />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="scv-why" aria-labelledby="scv-why-title">
+      <div className="container-tight scv-why-inner">
+        <div>
+          <h2 id="scv-why-title" className="scv-why-title">Why Supply Chain Visibility Matters</h2>
+          <div className="scv-problem-list">
+            {scvProblems.map(([title, copy, Icon, tone]) => <div key={title} className={`scv-problem ${tone}`}>
+              <Icon size={18} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+          <ul className="scv-bullets">
+            {scvBullets.map(item => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+        <div className="scv-panel">
+          <h2>Connected Supply Chain</h2>
+          <div className="scv-panel-grid">
+            {scvConnected.map(([title, copy]) => <div key={title}>
+              <CircleCheck size={20} strokeWidth={2} />
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="scv-flow" aria-labelledby="scv-flow-title">
+      <div className="container-tight scv-flow-inner">
+        <h2 id="scv-flow-title">Integrated Supply Chain Flow</h2>
+        <p className="scv-flow-sub">Unified visibility across every stage of your industrial ecosystem.</p>
+        <ol className="scv-flow-grid">
+          {scvFlow.map(([title, sub, Icon], index) => <li key={title} className="scv-flow-step">
+            <span className={`scv-flow-icon${index === scvFlow.length - 1 ? ' is-last' : ''}`}><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{sub}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="scv-caps" aria-labelledby="scv-caps-title">
+      <div className="container-tight scv-caps-inner">
+        <h2 id="scv-caps-title" className="scv-caps-title">Platform Capabilities</h2>
+        <div className="scv-caps-grid">
+          <article className="scv-cap-feature">
+            <Bot size={24} strokeWidth={2} className="text-[#1152d6]" />
+            <h3>Warehouse Visibility</h3>
+            <p>Track assets across multi-story facilities with sub-meter precision using IoT-enabled tagging.</p>
+            <div className="scv-stats">
+              <div className="scv-stat"><span className="scv-stat-value">99.9%</span><span className="scv-stat-label">ACCURACY</span></div>
+              <div className="scv-stat"><span className="scv-stat-value">&lt;1s</span><span className="scv-stat-label">LATENCY</span></div>
+            </div>
+          </article>
+          <div className="scv-cap-side">
+            {scvCapabilities.map(([title, copy, Icon]) => <article key={title} className="scv-cap-card">
+              <Icon size={20} strokeWidth={2} className="text-[#1152d6]" />
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>)}
+          </div>
+          {scvCapabilitiesRow.map(([title, copy, Icon]) => <article key={title} className="scv-cap-card">
+            <Icon size={20} strokeWidth={2} className="text-[#1152d6]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="scv-impact" aria-labelledby="scv-impact-title">
+      <div className="container-tight scv-impact-inner">
+        <h2 id="scv-impact-title">Measurable Business Impact</h2>
+        <p className="scv-impact-sub">Transforming logistics into a strategic competitive advantage.</p>
+        <div className="scv-impact-grid">
+          {scvImpact.map(([title, copy, Icon]) => <div key={title} className="scv-impact-item">
+            <span className="scv-impact-icon"><Icon size={20} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="scv-command" aria-labelledby="scv-command-title">
+      <div className="container-tight">
+        <div className="scv-command-card">
+          <h2 id="scv-command-title">Command Center Control</h2>
+          <p>A unified dashboard designed for industrial scale and precision.</p>
+          <div className="scv-command-art">
+            <img src={`${root}solution-crops/supply-chain-visibility-dashboard.png`} alt="Supply Chain Visibility dashboard on a desktop monitor: warehouse status with 75% loading dock occupancy across four docks, inventory levels for raw materials, WIP and finished goods, shipment tracking from factory to port to retail marked delivered, a global distribution map, supply chain KPIs including 92% efficiency and 99.5% accuracy, and operational analytics for order fulfilment rate and cycle time" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="scv-cta" aria-labelledby="scv-cta-title">
+      <div className="container-tight scv-cta-inner">
+        <h2 id="scv-cta-title">Ready to Gain Complete Supply Chain Visibility?</h2>
+        <p>Join leading industrial enterprises using TracelyTag to secure and monitor their global logistics operations in real-time.</p>
+        <div className="scv-cta-actions">
+          <Link href="/contact-us" data-testid="button-scv-book-demo" className="scv-btn scv-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-scv-contact-sales" className="scv-btn scv-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const cdpPillars: [string, string, LucideIcon][] = [
+  ['Unified Customer Profiles', 'Aggregate identity data across all touchpoints into a single source of truth.', IdCard],
+  ['360° Customer View', 'Understand the complete journey from initial scan to repeat purchase.', Eye],
+  ['First-Party Data', 'Collect clean, consented data directly from product authentications.', ShieldCheck],
+  ['Actionable Insights', 'Turn raw interaction data into targeted segments and marketing triggers.', ChartNoAxesCombined],
+];
+const cdpEngageCards: [string, string, LucideIcon][] = [
+  ['Consumer Engagement', 'Build direct digital bridges between physical products and buyers.', UsersRound],
+  ['Personalized Experiences', 'Dynamic content tailored to consumer behavior and scanning context.', Sparkles],
+  ['Product Registration', 'Streamline warranty and registration workflows with a single tap.', UserRoundCheck],
+  ['Customer Insights', 'Transform scan data into actionable marketing intelligence.', ChartNoAxesCombined],
+];
+const cdpSilos: [string, string][] = [
+  ['Data Fragmentation', 'Customer information scattered across multiple siloed ERP and CRM systems.'],
+  ['Anonymous Interactivity', 'Products are sold, but the identity of the end consumer remains unknown.'],
+  ['Lack of Personalization', 'Generic marketing campaigns that fail to address specific user needs or behaviors.'],
+  ['Poor Intelligence', 'Limited ability to perform high-fidelity audience segmentation and predictive modeling.'],
+];
+const cdpIntelligence: [string, LucideIcon][] = [
+  ['Centralized customer profiles', ArrowRightLeft],
+  ['First-party data collection', BadgeCheck],
+  ['Real-time profile updates', History],
+  ['Audience segmentation', UsersRound],
+  ['Personalized engagement', Pointer],
+];
+const cdpPainPoints = [
+  'Zero direct communication with consumers after purchase.',
+  'Fragmented or non-existent consumer behavioral data.',
+  'Low retention due to generic post-purchase workflows.',
+  'Missed opportunities for cross-selling and up-selling.',
+];
+const cdpConnectedExperience: [string, LucideIcon][] = [
+  ['Personalized Landing Pages', PanelsTopLeft],
+  ['Instant Product Info', Info],
+  ['Feedback Collection', MessageSquareText],
+  ['Promotions & Offers', Tag],
+  ['Product Registration', IdCard],
+  ['Customer Support', Headset],
+];
+const cdpLifecycle: [string, string, LucideIcon][] = [
+  ['Consumer Scan', 'Identity capture starts at the product scan', ScanQrCode],
+  ['Authentication', 'Validation of product and user intent', ShieldCheck],
+  ['Profile Creation', 'Mapping interaction to a unique ID', UserRoundPlus],
+  ['Data Collection', 'Telemetry and behavioral ingestion', Server],
+  ['Segmentation', 'Clustering based on rich attributes', Shapes],
+  ['Personalization', 'Tailored content and offers delivered', WandSparkles],
+  ['Analytics', 'Closing the loop with ROI measurement', ChartColumnBig],
+];
+const cdpEngageSteps = ['Consumer Scan', 'Authentication', 'Personalized Experience', 'Offers & Rewards', 'Analytics Dashboard'];
+const cdpCapabilities: [string, string, LucideIcon][] = [
+  ['Customer Profiles', 'Unified views that combine offline hardware scans with online digital interactions.', User],
+  ['Audience Segmentation', 'Dynamically group customers by location, product type, scan frequency, and behavior.', UsersRound],
+  ['First-Party Collection', 'Compliant data gathering directly from your own physical product ecosystem.', CloudDownload],
+  ['Behavior Tracking', 'Monitor real-time engagement patterns across the entire product lifecycle.', ChartNoAxesCombined],
+  ['Customer Intelligence', 'Predictive modeling to identify high-value users and churn risks automatically.', BrainCog],
+  ['CDP Analytics', 'Comprehensive dashboarding for cross-functional visibility into customer metrics.', ChartColumn],
+];
+const cdpAdvanced: [string, string, LucideIcon][] = [
+  ['Personalized Landing Pages', 'Design and deploy high-converting landing pages tailored to specific product batches or consumer segments.', PanelTop],
+  ['Product Registration', 'Automated registration workflows that sync directly with your CRM and warranty management systems.', SquarePen],
+  ['Feedback Collection', 'Capture voice-of-the-customer data at the point of product usage through interactive surveys and ratings.', MessageSquarePlus],
+  ['Campaign Management', 'Schedule and rotate seasonal campaigns, limited-time offers, and brand stories across your product fleet.', Megaphone],
+  ['Customer Insights', 'Anonymized tracking of consumer location, device usage, and scanning patterns to refine marketing strategies.', Search],
+  ['Engagement Analytics', 'Full-funnel visualization of the scan-to-action journey with real-time conversion monitoring.', ChartNoAxesCombined],
+];
+const cdpOutcomes: [string, string][] = [
+  ['Increase Customer Understanding', 'Gain deep qualitative insights into how your products are used post-sale.'],
+  ['Better Audience Segmentation', 'Improve targeting accuracy with precise, real-world behavioral triggers.'],
+  ['Higher Personalization', 'Deliver hyper-relevant messaging that converts at a significantly higher rate.'],
+  ['Improved Marketing ROI', 'Optimize ad spend by reaching the exact users currently engaging with products.'],
+  ['Better Customer Retention', 'Increase LTV by staying connected and resolving issues before they arise.'],
+  ['Data-Driven Decisions', 'Replace guesswork with hard data collected from billions of interaction points.'],
+];
+const cdpBenefits: [string, string, LucideIcon][] = [
+  ['Higher Customer Engagement', 'Increase interaction rates by 40% through accessible, value-driven digital experiences.', TrendingUp],
+  ['Better Customer Experience', 'Reduce friction for support and info access, boosting brand perception.', Smile],
+  ['Increased Brand Loyalty', 'Nurture long-term advocates through personalized rewards and direct recognition.', Gem],
+  ['Actionable Consumer Insights', 'Gather first-party data to optimize product development and targeting.', Microscope],
+  ['Higher Repeat Purchases', 'Drive recurring revenue with context-aware offers at the perfect lifecycle moment.', ShoppingCart],
+  ['Stronger Brand Relationships', 'Own the narrative by communicating directly with your end-user.', Handshake],
+];
+const cdpDashboardBullets = [
+  'Real-time global heatmaps of consumer activity.',
+  'Deep funnel analytics for scan-to-registration.',
+  'Cohort analysis by demographic and product type.',
+];
+
+function CustomerDataPlatform() {
+  return <Shell>
+    <section className="cdp-hero" aria-labelledby="cdp-hero-title">
+      <div className="container-tight cdp-hero-inner">
+        <div className="fade-up">
+          <p className="cdp-pill"><Database size={13} strokeWidth={2.2} />ENTERPRISE INDUSTRIAL CDP</p>
+          <h1 id="cdp-hero-title" className="cdp-h1">Build a Unified Customer Data Platform</h1>
+          <p className="cdp-hero-copy">Collect, unify and activate customer data from every authenticated product interaction. Build a complete customer profile to power personalized engagement, marketing automation and business intelligence.</p>
+          <div className="cdp-hero-actions">
+            <Link href="/contact-us" data-testid="button-cdp-book-demo-hero" className="cdp-btn cdp-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-cdp-explore-platform-hero" className="cdp-btn cdp-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="cdp-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/cdp-hero-full.png`} alt="Customer Data Platform Solution home screen: packages moving along scanning conveyors with operators capturing scan data, feeding a unified customer profile core that powers customer journey insights, real-time data integration, segmentation and activation, and a global data network" />
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-pillars" aria-label="Customer data platform pillars">
+      <div className="container-tight cdp-pillar-grid">
+        {cdpPillars.map(([title, copy, Icon]) => <article key={title} className="cdp-pillar-card">
+          <Icon size={22} strokeWidth={2} className="text-[#0e3f9e]" />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="cdp-scan" aria-labelledby="cdp-scan-title">
+      <div className="container-tight cdp-scan-inner">
+        <div className="fade-up">
+          <p className="cdp-pill is-soft">ENTERPRISE SOLUTION</p>
+          <h2 id="cdp-scan-title" className="cdp-h1">Turn Every Product Scan into a Consumer Relationship</h2>
+          <p className="cdp-hero-copy">Connect directly with your consumers through every product scan. Deliver personalized experiences, product information, campaigns, rewards, support and valuable engagement insights from a single secure QR code.</p>
+          <div className="cdp-hero-actions">
+            <Link href="/contact-us" data-testid="button-cdp-book-demo-scan" className="cdp-btn cdp-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-cdp-explore-platform-scan" className="cdp-btn cdp-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="cdp-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/consumer-engagement-hero-full.png`} alt="A consumer scans the secure QR code on a TracelyTag product box with a phone, branching out to a personalized product page, an analytics dashboard, offers and promotions, product registration and customer feedback" />
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-engage-cards" aria-label="Consumer engagement capabilities">
+      <div className="container-tight cdp-pillar-grid">
+        {cdpEngageCards.map(([title, copy, Icon]) => <article key={title} className="cdp-pillar-card">
+          <span className="cdp-tile"><Icon size={20} strokeWidth={2} /></span>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="cdp-silos" aria-labelledby="cdp-silos-title">
+      <div className="container-tight cdp-silos-inner">
+        <div>
+          <h2 id="cdp-silos-title" className="cdp-h2">Breaking Down Industrial Data Silos</h2>
+          <div className="cdp-silo-list">
+            {cdpSilos.map(([title, copy]) => <div key={title} className="cdp-silo">
+              <CircleX size={18} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="cdp-panel">
+          <h2>Unified Customer Intelligence</h2>
+          <ul className="cdp-panel-list">
+            {cdpIntelligence.map(([label, Icon]) => <li key={label}><Icon size={18} strokeWidth={2} />{label}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-why" aria-labelledby="cdp-why-title">
+      <div className="container-tight cdp-why-inner">
+        <div>
+          <h2 id="cdp-why-title" className="cdp-h2">Why Consumer Engagement?</h2>
+          <p className="cdp-why-copy">Most brands lose visibility the moment a product leaves the retail shelf. TracelyTag bridges this gap, solving critical enterprise pain points:</p>
+          <ul className="cdp-pain-list">
+            {cdpPainPoints.map(item => <li key={item}><CircleX size={17} strokeWidth={2} />{item}</li>)}
+          </ul>
+        </div>
+        <div className="cdp-experience-card">
+          <h3 className="cdp-experience-title"><Waypoints size={18} strokeWidth={2} />Connected Consumer Experience</h3>
+          <div className="cdp-experience-grid">
+            {cdpConnectedExperience.map(([label, Icon]) => <div key={label}><Icon size={18} strokeWidth={2} /><span>{label}</span></div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-lifecycle" aria-labelledby="cdp-lifecycle-title">
+      <div className="container-tight cdp-lifecycle-inner">
+        <h2 id="cdp-lifecycle-title" className="cdp-h2 is-center">The Customer Data Lifecycle</h2>
+        <p className="cdp-center-sub">See how product interactions translate into rich customer insights through our automated data pipeline.</p>
+        <ol className="cdp-lifecycle-grid">
+          {cdpLifecycle.map(([title, copy, Icon]) => <li key={title} className="cdp-lifecycle-step">
+            <span className="cdp-lifecycle-icon"><Icon size={22} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="cdp-works" aria-labelledby="cdp-works-title">
+      <div className="container-tight cdp-works-inner">
+        <h2 id="cdp-works-title" className="cdp-h2 is-center">How Consumer Engagement Works</h2>
+        <p className="cdp-center-sub">A seamless end-to-end journey from the physical scan to the digital dashboard.</p>
+        <ol className="cdp-works-grid">
+          {cdpEngageSteps.map((label, index) => <li key={label} className="cdp-works-step">
+            <span className="cdp-works-num">{index + 1}</span>
+            <p>{label}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="cdp-caps" aria-labelledby="cdp-caps-title">
+      <div className="container-tight cdp-caps-inner">
+        <h2 id="cdp-caps-title" className="cdp-h2">Powerful Core Capabilities</h2>
+        <p className="cdp-caps-sub">The tools you need to master your customer relationships at scale.</p>
+        <div className="cdp-card-grid">
+          {cdpCapabilities.map(([title, copy, Icon]) => <article key={title} className="cdp-cap-card">
+            <span className="cdp-tile"><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-advanced" aria-labelledby="cdp-advanced-title">
+      <div className="container-tight cdp-advanced-inner">
+        <h2 id="cdp-advanced-title" className="cdp-h2">Advanced Features</h2>
+        <div className="cdp-card-grid">
+          {cdpAdvanced.map(([title, copy, Icon]) => <article key={title} className="cdp-adv-card">
+            <Icon size={22} strokeWidth={2} className="text-[#0e3f9e]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-workspace" aria-labelledby="cdp-workspace-title">
+      <div className="container-tight cdp-workspace-inner">
+        <h2 id="cdp-workspace-title" className="cdp-h2 is-center">Complete Control in One Workspace</h2>
+        <p className="cdp-center-sub">Manage your entire customer database through a clean, industrial-grade interface.</p>
+        <div className="cdp-workspace-art">
+          <img src={`${root}solution-crops/cdp-workspace.png`} alt="Customer Data Platform (CDP) overview for Q3 2023 on a desktop monitor in an office: a customer journey map from awareness to advocacy with 32% drop-offs and 45% conversion, daily active users totalling 158K, a behavioural heatmap by page, feature and time of day, an audience segments overview, and a searchable customer profiles table with segment, LTV and last-active columns" />
+        </div>
+        <div className="cdp-outcome-grid">
+          {cdpOutcomes.map(([title, copy]) => <div key={title} className="cdp-outcome">
+            <span className="cdp-outcome-icon"><CheckCheck size={17} strokeWidth={2.2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-benefits" aria-labelledby="cdp-benefits-title">
+      <div className="container-tight cdp-benefits-inner">
+        <h2 id="cdp-benefits-title" className="cdp-h2 is-center">Quantifiable Business Benefits</h2>
+        <div className="cdp-benefit-grid">
+          {cdpBenefits.map(([title, copy, Icon]) => <div key={title} className="cdp-benefit">
+            <h3><Icon size={18} strokeWidth={2} />{title}</h3>
+            <p>{copy}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-dashboard" aria-labelledby="cdp-dashboard-title">
+      <div className="container-tight cdp-dashboard-inner">
+        <div>
+          <h2 id="cdp-dashboard-title" className="cdp-h2">Consumer Engagement Dashboard</h2>
+          <p className="cdp-dashboard-copy">Visualize the entire customer journey in high definition. Our enterprise dashboard provides real-time visibility into geographic scan patterns, engagement conversion rates, and campaign performance across all product lines.</p>
+          <ul className="cdp-dashboard-bullets">
+            {cdpDashboardBullets.map(item => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+        <div className="cdp-dashboard-art">
+          <img src={`${root}solution-crops/consumer-engagement-dashboard.png`} alt="Consumer Engagement Intelligence dashboard: total consumer scans trending up 1.33%, active users of 5.2K daily, 32.8K weekly and 145K monthly, a 68% high engagement rate gauge, the scan to app to interact to purchase to share customer journey, campaign performance by funnel stage, and a geographic insights world map" />
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-cta-band" aria-labelledby="cdp-cta-band-title">
+      <div className="container-tight cdp-cta-band-inner">
+        <h2 id="cdp-cta-band-title">Ready to Build Stronger Consumer Relationships?</h2>
+        <p>Join leading global brands using TracelyTag to bridge the gap between physical products and digital engagement.</p>
+        <div className="cdp-cta-actions">
+          <Link href="/contact-us" data-testid="button-cdp-book-demo-band" className="cdp-btn cdp-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-cdp-contact-sales-band" className="cdp-btn cdp-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="cdp-cta" aria-labelledby="cdp-cta-title">
+      <div className="container-tight">
+        <div className="cdp-cta-card">
+          <h2 id="cdp-cta-title">Ready to Build a Unified Customer View?</h2>
+          <p>Join hundreds of enterprise brands using TracelyTag to bridge the gap between physical products and digital intelligence.</p>
+          <div className="cdp-cta-actions">
+            <Link href="/contact-us" data-testid="button-cdp-book-demo" className="cdp-btn cdp-cta-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-cdp-contact-sales" className="cdp-btn cdp-cta-ghost">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const tntFeatures: [string, string, LucideIcon][] = [
+  ['End-to-End Visibility', 'Real-time tracking from the factory floor to the final customer scan.', Eye],
+  ['Product Journey', 'Immutable digital trail documenting every touchpoint in the lifecycle.', Shuffle],
+  ['Supply Chain Intelligence', 'Actionable data insights to optimize logistics and reduce waste.', ChartNoAxesCombined],
+  ['Global Traceability', 'Seamless cross-border monitoring for international trade compliance.', Globe],
+];
+const tntChallenges: [string, string, LucideIcon][] = [
+  ['Limited Visibility', 'No real-time location data once products leave the factory.', EyeOff],
+  ['Manual Tracking', 'Error-prone paper logs and siloed spreadsheets.', ClipboardPaste],
+  ['Lost Inventory', 'High shrinkage rates due to poor warehouse monitoring.', Archive],
+  ['Product Recalls', 'Slow and expensive recall processes for unsafe batches.', TriangleAlert],
+];
+const tntImpact: [string, string][] = [
+  ['Supply Chain Inefficiencies', '42% Cost Leakage'],
+  ['Compliance Gaps', 'Critical Risk'],
+];
+const tntWorkflow: [string, string][] = [
+  ['Generate QR', 'Unique ID creation'],
+  ['Serialize', 'Item-level marking'],
+  ['Aggregate', 'Cases & pallets'],
+  ['Warehouse', 'Inbound logging'],
+  ['Distribution', 'Shipment monitor'],
+  ['Retail', 'On-shelf status'],
+  ['Consumer', 'Auth scan'],
+  ['Analytics', 'Data insights'],
+];
+const tntAdvanced: [string, string, LucideIcon][] = [
+  ['Secure Serialization', 'Tamper-proof unique identifiers assigned to each unit at the point of production.', Hash],
+  ['Aggregation', 'Map individual items to boxes and pallets for fast bulk scanning and logistics.', Layers],
+  ['Warehouse Tracking', 'Manage inbound/outbound flow with high-speed automated data capture.', ChartColumnBig],
+  ['Distribution Monitoring', 'Trace product movement through various distribution centers worldwide.', Truck],
+  ['Mobile Verification', 'App-less authentication for consumers to verify product origin in seconds.', Smartphone],
+  ['Analytics Dashboard', 'Unified view of your entire supply chain performance and health.', Grid2x2Plus],
+];
+const tntBenefits: [string, string, LucideIcon][] = [
+  ['Complete Visibility', 'Eliminate blind spots and know exactly where every product is at any given moment.', CircleCheck],
+  ['Faster Product Recalls', 'Isolate problematic batches in minutes instead of weeks, protecting consumers.', Asterisk],
+  ['Better Inventory Control', 'Optimize stock levels and reduce overstock or stockouts across your network.', ClipboardCheck],
+  ['Improved Compliance', 'Meet global regulatory requirements (e.g., DSCSA) with automated reporting.', Gavel],
+  ['Supply Chain Transparency', 'Build brand trust by proving provenance and ethical sourcing to customers.', Handshake],
+  ['Operational Efficiency', 'Reduce manual labor and errors through automated scan-to-cloud workflows.', TrendingUp],
+];
+
+function TrackAndTrace() {
+  return <Shell>
+    <section className="tnt-hero" aria-labelledby="tnt-hero-title">
+      <div className="container-tight tnt-hero-inner">
+        <div className="fade-up">
+          <p className="tnt-pill"><BadgeCheck size={14} strokeWidth={2.2} />ENTERPRISE SOLUTION</p>
+          <h1 id="tnt-hero-title" className="tnt-h1">Track Every Product Across the Supply Chain</h1>
+          <p className="tnt-hero-copy">Gain complete visibility into your products from manufacturing to the end consumer with secure serialization, aggregation, QR-based tracking and real-time supply chain insights.</p>
+          <div className="tnt-hero-actions">
+            <Link href="/contact-us" data-testid="button-tnt-book-demo-hero" className="tnt-btn tnt-btn-primary">Book a Demo <ArrowRight size={16} /></Link>
+            <Link href="/platform" data-testid="button-tnt-explore-platform" className="tnt-btn tnt-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="tnt-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/track-and-trace-hero-full.png`} alt="TracelyTag track and trace map: a manufacturing plant with serialization and QR code printing feeds product aggregation and case packing, then warehouse storage, inventory management and a distribution centre, on to retail stores with on-shelf availability and POS data, logistics and transport and shipment tracking, all reporting into the TracelyTag analytics hub while a consumer scans a code on a phone for mobile verification" />
+        </div>
+      </div>
+    </section>
+
+    <section className="tnt-features" aria-label="Track and trace capabilities">
+      <div className="container-tight tnt-feature-grid">
+        {tntFeatures.map(([title, copy, Icon]) => <article key={title} className="tnt-feature-card">
+          <Icon size={24} strokeWidth={2} className="text-[#0e3f9e]" />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="tnt-challenge" aria-labelledby="tnt-challenge-title">
+      <div className="container-tight tnt-challenge-inner">
+        <div>
+          <h2 id="tnt-challenge-title" className="tnt-h2">The Visibility Challenge</h2>
+          <p className="tnt-challenge-copy">Traditional supply chains often operate in the dark, leading to critical blind spots that affect profitability and brand trust.</p>
+          <div className="tnt-challenge-grid">
+            {tntChallenges.map(([title, copy, Icon]) => <div key={title} className="tnt-challenge-item">
+              <span className="tnt-challenge-icon"><Icon size={18} strokeWidth={2} /></span>
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="tnt-impact-card">
+          <p className="tnt-impact-label"><span className="tnt-impact-dot" />INDUSTRY IMPACT</p>
+          <div className="tnt-impact-list">
+            {tntImpact.map(([label, value], index) => <div key={label} className="tnt-impact-row">
+              <div className="tnt-impact-head">
+                <h3>{label}</h3>
+                <span>{value}</span>
+              </div>
+              <span className="tnt-impact-bar"><span style={{ width: index === 0 ? '42%' : '75%' }} /></span>
+            </div>)}
+          </div>
+          <blockquote className="tnt-quote">"Without granular tracking, companies lose billions in counterfeiting and logistics errors every year."</blockquote>
+          <p className="tnt-quote-source">— Global Logistics Review</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="tnt-works" aria-labelledby="tnt-works-title">
+      <div className="container-tight tnt-works-inner">
+        <h2 id="tnt-works-title" className="tnt-h2 is-center">How Track &amp; Trace Works</h2>
+        <p className="tnt-center-sub">Our seamless workflow connects physical goods with digital intelligence at every stage.</p>
+        <ol className="tnt-works-grid">
+          {tntWorkflow.map(([title, sub], index) => <li key={title} className="tnt-works-step">
+            <span className="tnt-works-num">{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{sub}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="tnt-advanced" aria-labelledby="tnt-advanced-title">
+      <div className="container-tight tnt-advanced-inner">
+        <h2 id="tnt-advanced-title" className="tnt-h2">Advanced Features</h2>
+        <p className="tnt-advanced-sub">Cutting-edge technology for precise tracking.</p>
+        <div className="tnt-advanced-grid">
+          {tntAdvanced.map(([title, copy, Icon]) => <article key={title} className="tnt-advanced-card">
+            <Icon size={22} strokeWidth={2} className="text-[#0e3f9e]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="tnt-benefits" aria-labelledby="tnt-benefits-title">
+      <div className="container-tight tnt-benefits-inner">
+        <h2 id="tnt-benefits-title" className="tnt-h2 is-center">Business Benefits</h2>
+        <p className="tnt-center-sub">Driving ROI through digital transformation.</p>
+        <div className="tnt-benefit-grid">
+          {tntBenefits.map(([title, copy, Icon]) => <div key={title} className="tnt-benefit">
+            <Icon size={20} strokeWidth={2} />
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="tnt-dash" aria-labelledby="tnt-dash-title">
+      <div className="container-tight tnt-dash-inner">
+        <h2 id="tnt-dash-title" className="tnt-h2 is-center">Supply Chain Intelligence</h2>
+        <p className="tnt-center-sub">Gain real-time visibility with our comprehensive Track &amp; Trace dashboard.</p>
+        <div className="tnt-dash-art">
+          <img src={`${root}solution-crops/track-and-trace-dashboard.png`} alt="Track &amp; Trace Intelligence Platform on a desktop monitor: a product journey timeline from manufacturing in Shanghai through in-transit, ocean freight, customs clearance and retail delivery; warehouse status gauges for Shanghai Hub 85% at 1,200 items, Los Angeles DC 60% at 4,500 items, Rotterdam Facility 45% at 2,100 items and Singapore Warehouse 72% at 3,000 items; a global distribution map with 114 active shipments, 185 on time and 29 delayed; an inventory overview of stock by category and stock value; and supply chain analytics with delivery performance, lead time trends, 1,500 total shipments, 14.2 days average transit time and $5.50 cost per unit" />
+        </div>
+      </div>
+    </section>
+
+    <section className="tnt-cta" aria-labelledby="tnt-cta-title">
+      <div className="container-tight tnt-cta-inner">
+        <h2 id="tnt-cta-title">Ready to Track Every Product?</h2>
+        <p>Join global leaders using TracelyTag to secure their supply chain and protect their brand.</p>
+        <div className="tnt-cta-actions">
+          <Link href="/contact-us" data-testid="button-tnt-book-demo" className="tnt-btn tnt-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-tnt-contact-sales" className="tnt-btn tnt-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
+const vfePills: [string, LucideIcon][] = [
+  ['Instant Verification', ShieldCheck],
+  ['Secure Authentication', ShieldPlus],
+  ['Real-Time Validation', RefreshCw],
+  ['Enterprise Security', ShieldEllipsis],
+];
+const vfeReasons: [string, string, LucideIcon][] = [
+  ['Counterfeit products', 'Prevent revenue loss from fake goods entering your supply chain.', CircleAlert],
+  ['Fake QR codes', 'Defend against sophisticated duplication and phishing attempts.', QrCode],
+  ['Consumer uncertainty', 'Build trust by giving customers immediate proof of authenticity.', CircleQuestionMark],
+  ['Manual verification', 'Replace slow, error-prone manual processes with automation.', UserRoundCog],
+  ['Weak product security', 'Bolster perimeter defenses at the individual unit level.', LockKeyholeOpen],
+  ['Brand reputation risks', 'Minimize long-term damage from counterfeit quality issues.', ShieldAlert],
+];
+const vfePanelItems = ['Instant verification', 'Secure QR validation', 'Authentication logic', 'Product identity lookup', 'Verification history', 'Enterprise-grade security'];
+const vfeLifecycle: [string, LucideIcon][] = [
+  ['Consumer Scan', Smartphone],
+  ['QR Validation', ScanQrCode],
+  ['Product Identity', Database],
+  ['Verification Engine', Cpu],
+  ['Result Render', ClipboardCheck],
+  ['Business Intelligence', ChartNoAxesCombined],
+];
+const vfeAdvanced: [string, string, LucideIcon][] = [
+  ['QR Validation', 'Enterprise-grade validation to detect cloned or manipulated QR structures instantly.', QrCode],
+  ['Authentication Engine', 'Proprietary logic mapping scans to unique product DNA for high-fidelity confirmation.', Cog],
+  ['Product Identity Lookup', 'Sub-millisecond access to global product registry for real-time authentication.', SearchCheck],
+  ['Verification History', 'Comprehensive immutable logs of every verification attempt across the globe.', FileClock],
+  ['Fraud Detection Support', 'AI-assisted detection of geographic anomalies and repeat-scan fraud patterns.', ShieldAlert],
+  ['Verification Analytics', 'Actionable dashboards detailing authentication rates and regional risk scores.', ChartColumnBig],
+];
+const vfeBenefits: [string, string, LucideIcon][] = [
+  ['Protect Brand Trust', 'Maintain high standards by ensuring only genuine products reach consumers.', BadgeCheck],
+  ['Verify Every Product', 'Scalable architecture capable of handling billions of unique identifiers.', Barcode],
+  ['Improve Consumer Confidence', 'Differentiate your brand with a visible commitment to security.', ThumbsUp],
+  ['Reduce Counterfeit Risk', 'Active defense mechanisms that make counterfeiting unprofitable.', Shield],
+  ['Enterprise Security', 'End-to-end encryption for all data transit and verification requests.', LockKeyhole],
+  ['Better Business Insights', 'Convert scan data into geographic and behavioral market intelligence.', ScanSearch],
+];
+
+function VerificationEngine() {
+  return <Shell>
+    <section className="vfe-hero" aria-labelledby="vfe-hero-title">
+      <div className="container-tight vfe-hero-inner">
+        <div className="fade-up">
+          <h1 id="vfe-hero-title" className="vfe-h1">Verify Every Product with a <span>Secure Verification Engine</span></h1>
+          <p className="vfe-hero-copy">Instantly verify product authenticity using TracelyTag's enterprise verification engine. Authenticate every scan, validate secure product identities and provide trusted verification results for consumers, partners and supply chain stakeholders.</p>
+          <div className="vfe-hero-actions">
+            <Link href="/contact-us" data-testid="button-vfe-book-demo-hero" className="vfe-btn vfe-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-vfe-view-platform" className="vfe-btn vfe-btn-ghost">View Platform</Link>
+          </div>
+        </div>
+        <div className="vfe-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/verification-engine-hero-full.png`} alt="TracelyTag Verification Engine diagram: a secure QR code and mobile scan feed a cloud verification engine backed by a product authenticity database with data encryption, real-time verification and a traceability chain, returning a Genuine Product result on a phone while a suspicious product raises a tampered or counterfeit alert" />
+        </div>
+      </div>
+    </section>
+
+    <section className="vfe-pills" aria-label="Verification engine highlights">
+      <div className="container-tight vfe-pill-grid">
+        {vfePills.map(([label, Icon]) => <div key={label} className="vfe-pill-card">
+          <Icon size={20} strokeWidth={2} />
+          <p>{label}</p>
+        </div>)}
+      </div>
+    </section>
+
+    <section className="vfe-why" aria-labelledby="vfe-why-title">
+      <div className="container-tight vfe-why-inner">
+        <div>
+          <h2 id="vfe-why-title" className="vfe-h2">Why Verification Matters</h2>
+          <div className="vfe-reason-grid">
+            {vfeReasons.map(([title, copy, Icon]) => <div key={title} className="vfe-reason">
+              <Icon size={18} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="vfe-panel">
+          <h2>Enterprise Verification Engine</h2>
+          <ul className="vfe-panel-list">
+            {vfePanelItems.map(item => <li key={item}><CircleCheck size={19} strokeWidth={2} />{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="vfe-lifecycle" aria-labelledby="vfe-lifecycle-title">
+      <div className="container-tight vfe-lifecycle-inner">
+        <h2 id="vfe-lifecycle-title" className="vfe-h2 is-center">The Verification Lifecycle</h2>
+        <ol className="vfe-lifecycle-grid">
+          {vfeLifecycle.map(([label, Icon], index) => <li key={label} className="vfe-lifecycle-step">
+            <span className={`vfe-lifecycle-icon${index === 3 ? ' is-active' : ''}`}><Icon size={26} strokeWidth={2} /></span>
+            <h3>{label}</h3>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="vfe-advanced" aria-labelledby="vfe-advanced-title">
+      <div className="container-tight vfe-advanced-inner">
+        <h2 id="vfe-advanced-title" className="vfe-h2 is-center">Advanced Features</h2>
+        <div className="vfe-advanced-grid">
+          {vfeAdvanced.map(([title, copy, Icon]) => <article key={title} className="vfe-advanced-card">
+            <Icon size={22} strokeWidth={2} className="text-[#0e3f9e]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="vfe-dash" aria-label="Verification Intelligence Overview dashboard">
+      <div className="container-tight vfe-dash-inner">
+        <div className="vfe-dash-art">
+          <img src={`${root}solution-crops/verification-engine-dashboard.png`} alt="VerifiCore Verification Intelligence Overview for the last 30 days: verification requests at 1.8M daily volume up 14.2% with 61K average requests, 96.5M total successful verifications and a 99.8% verification success rate, a suspicious products table listing 5 high risk items with investigate actions, a global scan locations heatmap, verification trends comparing requests and successes by week, and security analytics showing an operational system at 99.99% uptime with a platform risk score of 14 and a minimal threat level" />
+        </div>
+      </div>
+    </section>
+
+    <section className="vfe-benefits" aria-labelledby="vfe-benefits-title">
+      <div className="container-tight vfe-benefits-inner">
+        <h2 id="vfe-benefits-title" className="vfe-h2 is-center">Business Benefits</h2>
+        <div className="vfe-benefit-grid">
+          {vfeBenefits.map(([title, copy, Icon]) => <article key={title} className="vfe-benefit-card">
+            <h3><Icon size={18} strokeWidth={2} />{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="vfe-cta" aria-labelledby="vfe-cta-title">
+      <div className="container-tight vfe-cta-inner">
+        <h2 id="vfe-cta-title">Ready to Verify Every Product with Confidence?</h2>
+        <div className="vfe-cta-actions">
+          <Link href="/contact-us" data-testid="button-vfe-book-demo" className="vfe-btn vfe-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-vfe-contact-sales" className="vfe-btn vfe-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -3310,7 +4298,7 @@ function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
-    <Route path="/solutions" component={Solutions} /><Route path="/solutions/analytics-business-intelligence" component={AnalyticsBusinessIntelligence} /><Route path="/solutions/connected-packaging" component={ConnectedPackaging} /><Route path="/solutions/anti-counterfeiting" component={AntiCounterfeiting} /><Route path="/solutions/apparel-clothing" component={ApparelClothing} /><Route path="/solutions/digital-warranty" component={DigitalWarranty} /><Route path="/solutions/premium-product-authentication" component={PremiumProductAuthentication} /><Route path="/solutions/:slug" component={SolutionPage} />
+    <Route path="/solutions" component={Solutions} /><Route path="/solutions/analytics-business-intelligence" component={AnalyticsBusinessIntelligence} /><Route path="/solutions/analytics-dashboard"><Redirect to="/solutions/analytics-business-intelligence" /></Route><Route path="/solutions/analytics-dashboard-insights"><Redirect to="/solutions/analytics-business-intelligence" /></Route><Route path="/solutions/connected-packaging" component={ConnectedPackaging} /><Route path="/solutions/anti-counterfeiting" component={AntiCounterfeiting} /><Route path="/solutions/apparel-clothing" component={ApparelClothing} /><Route path="/solutions/digital-warranty" component={DigitalWarranty} /><Route path="/solutions/premium-product-authentication" component={PremiumProductAuthentication} /><Route path="/solutions/supply-chain-visibility" component={SupplyChainVisibility} /><Route path="/solutions/customer-data-platform" component={CustomerDataPlatform} /><Route path="/solutions/consumer-engagement"><Redirect to="/solutions/customer-data-platform" /></Route><Route path="/solutions/track-and-trace" component={TrackAndTrace} /><Route path="/solutions/verification-engine" component={VerificationEngine} /><Route path="/solutions/:slug" component={SolutionPage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/food-beverage" component={FoodBeverage} /><Route path="/industries/pharmaceuticals" component={Pharmaceuticals} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
     <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
