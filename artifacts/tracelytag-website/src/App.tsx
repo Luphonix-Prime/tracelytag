@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, Code, CodeXml, Cog, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, List, ListOrdered, Locate, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, Scale, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, Workflow, X, Zap, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CirclePlus, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, Code, CodeXml, Cog, Command, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Gift, Globe, Globe2, Grid2x2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, List, ListOrdered, Locate, LockKeyhole, LockKeyholeOpen, Map, MapPin, Maximize, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Repeat, Rocket, Route as RouteIcon, Scale, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Share2, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Ticket, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, Workflow, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 import { 
   Gs1CompliancePage, 
@@ -4743,6 +4743,168 @@ function Gs1StandardsCompliance() {
   </Shell>;
 }
 
+const loyCards: [string, string, LucideIcon][] = [
+  ['Loyalty Rewards', 'Instant digital incentives triggered by authentic product interactions.', Tag],
+  ['Customer Retention', 'Automated re-engagement campaigns based on scan frequency and geography.', TrendingUp],
+  ['Repeat Purchases', 'Personalized coupons and tier-based benefits that drive return customers.', RefreshCw],
+  ['Consumer Insights', 'Real-time first-party data capturing every step of the post-purchase journey.', ChartNoAxesCombined],
+];
+const loyProblems: [string, string][] = [
+  ['Low Repeat Purchase Rates', 'Customers lose connection with the brand immediately after the initial checkout.'],
+  ['High Acquisition Costs', 'Marketing spend is focused on new customers rather than nurturing high-value regulars.'],
+  ['Limited Consumer Insights', 'Third-party retailers hide customer data, leaving brands blind to their actual users.'],
+];
+const loySolution: [string, LucideIcon][] = [
+  ['Reward Points', CircleStar],
+  ['Cashback', Banknote],
+  ['Referrals', UserRoundPlus],
+  ['Membership Tiers', ChartColumn],
+  ['Personalized Offers', Megaphone],
+  ['Digital Redemption', Ticket],
+];
+const loyJourney: [string, string, LucideIcon][] = [
+  ['Consumer Scan', 'Scan product QR', ScanQrCode],
+  ['Authentication', 'Verify product origin', BadgeCheck],
+  ['Enrollment', 'Join loyalty program', UserRoundPlus],
+  ['Earn', 'Accumulate points', CirclePlus],
+  ['Redeem', 'Claim rewards', Gift],
+  ['Personalization', 'Tailored campaigns', WandSparkles],
+  ['Analytics', 'Actionable data', ChartColumnBig],
+];
+const loyFeatures: [string, string, LucideIcon][] = [
+  ['QR Based Loyalty', 'Secure, encrypted QR codes that serve as a direct portal between physical products and digital rewards.', QrCode],
+  ['Reward Engine', 'Configurable logic for points allocation, expiry rules, and multi-action reward triggers.', Cog],
+  ['Coupon Management', 'End-to-end lifecycle management of digital coupons from generation to retailer clearing.', Tag],
+  ['Referral Programs', 'Viral growth tools that incentivize your best customers to become brand ambassadors.', Share2],
+  ['Tier Membership', 'Gamified customer levels that unlock exclusive content, early access, and premium pricing.', CircleStar],
+  ['Loyalty Analytics', 'Granular dashboarding of program health, burn rates, and customer lifetime value (CLV).', ChartColumn],
+];
+const loyRoi: [string, string, LucideIcon][] = [
+  ['Increase Repeat Purchases', 'Direct incentives at the moment of product use drive the next purchase decision.', ShoppingCart],
+  ['Improve Retention', 'Deepen emotional connection with customers through consistent reward fulfillment.', Users],
+  ['Strengthen Loyalty', 'Transform transactional buyers into passionate brand advocates.', HandHeart],
+  ['Better Insights', 'Build a proprietary database of consumer behavior and preferences.', Search],
+  ['Increase CLV', 'Maximize the revenue potential of every individual customer over time.', ChartColumn],
+  ['Marketing Performance', 'Use precision data to optimize ad spend and campaign targeting.', MousePointerClick],
+];
+
+function LoyaltyPrograms() {
+  return <Shell>
+    <section className="loy-hero" aria-labelledby="loy-hero-title">
+      <div className="container-tight loy-hero-inner">
+        <div className="fade-up">
+          <p className="loy-pill">ENTERPRISE LOYALTY INTELLIGENCE</p>
+          <h1 id="loy-hero-title" className="loy-h1">Build Customer Loyalty with Every Product Scan</h1>
+          <p className="loy-hero-copy">TracelyTag helps brands reward genuine customers, increase repeat purchases, improve retention and build long-term customer relationships through secure QR-powered loyalty programs.</p>
+          <div className="loy-hero-actions">
+            <Link href="/contact-us" data-testid="button-loy-book-demo-hero" className="loy-btn loy-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-loy-explore-platform" className="loy-btn loy-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="loy-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/consumer-engagement-hero-full.png`} alt="A consumer scans the secure QR code on a TracelyTag product box with a phone, branching out to a personalized product page, an analytics dashboard, offers and promotions, product registration and customer feedback" />
+        </div>
+      </div>
+    </section>
+
+    <section className="loy-cards" aria-label="Loyalty programme capabilities">
+      <div className="container-tight loy-card-grid">
+        {loyCards.map(([title, copy, Icon]) => <article key={title} className="loy-card">
+          <Icon size={24} strokeWidth={2} className="text-[#1152d6]" />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="loy-why" aria-labelledby="loy-why-title">
+      <div className="container-tight loy-why-inner">
+        <div>
+          <h2 id="loy-why-title" className="loy-h2">Modern Brands Face Fragmented Loyalty Channels</h2>
+          <div className="loy-problem-list">
+            {loyProblems.map(([title, copy]) => <div key={title} className="loy-problem">
+              <span className="loy-problem-icon"><TriangleAlert size={17} strokeWidth={2} /></span>
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="loy-panel">
+          <h2><ShieldCheck size={22} strokeWidth={2} />Integrated TracelyTag Solution</h2>
+          <ul className="loy-panel-grid">
+            {loySolution.map(([label, Icon]) => <li key={label}><Icon size={18} strokeWidth={2} />{label}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="loy-journey" aria-labelledby="loy-journey-title">
+      <div className="container-tight loy-journey-inner">
+        <h2 id="loy-journey-title" className="loy-h2 is-center">The Seamless Loyalty Journey</h2>
+        <p className="loy-center-sub">Connecting physical products to digital rewards in 7 simple steps.</p>
+        <ol className="loy-journey-grid">
+          {loyJourney.map(([title, sub, Icon], index) => <li key={title} className="loy-journey-step">
+            <span className={`loy-journey-icon${index === loyJourney.length - 1 ? ' is-last' : ''}`}><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{sub}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="loy-features" aria-labelledby="loy-features-title">
+      <div className="container-tight loy-features-inner">
+        <h2 id="loy-features-title" className="loy-h2 is-center">Enterprise-Grade Feature Set</h2>
+        <div className="loy-feature-grid">
+          {loyFeatures.map(([title, copy, Icon]) => <article key={title} className="loy-feature-card">
+            <span className="loy-feature-icon"><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="loy-roi" aria-labelledby="loy-roi-title">
+      <div className="container-tight loy-roi-inner">
+        <h2 id="loy-roi-title" className="loy-h2 is-center">Quantifiable ROI for Your Brand</h2>
+        <div className="loy-roi-grid">
+          {loyRoi.map(([title, copy, Icon]) => <div key={title} className="loy-roi-item">
+            <span className="loy-roi-icon"><Icon size={19} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="loy-command" aria-labelledby="loy-command-title">
+      <div className="container-tight loy-command-inner">
+        <h2 id="loy-command-title" className="loy-h2 is-center">Command Center for Customer Engagement</h2>
+        <p className="loy-center-sub">Monitor real-time point issuance, campaign performance, and geographic heatmaps to stay ahead of market trends.</p>
+        <div className="loy-command-art">
+          <img src={`${root}solution-crops/consumer-engagement-dashboard.png`} alt="Consumer Engagement Intelligence dashboard: total consumer scans trending up 1.33%, active users of 5.2K daily, 32.8K weekly and 145K monthly, a 68% high engagement rate gauge, the scan to app to interact to purchase to share customer journey, campaign performance by funnel stage, and a geographic insights world map" />
+        </div>
+      </div>
+    </section>
+
+    <section className="loy-cta" aria-labelledby="loy-cta-title">
+      <div className="container-tight loy-cta-inner">
+        <h2 id="loy-cta-title">Ready to Build Long-Term Customer Loyalty?</h2>
+        <p>Join leading global brands using TracelyTag to bridge the gap between their products and their people.</p>
+        <div className="loy-cta-actions">
+          <Link href="/contact-us" data-testid="button-loy-book-demo" className="loy-btn loy-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-loy-contact-sales" className="loy-btn loy-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -4750,7 +4912,7 @@ function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     <Route path="/platform/gs1-standards-compliance" component={Gs1StandardsCompliance} />
-    <Route path="/platform/loyalty-programs"><DigitalLoyaltyPage Shell={Shell} /></Route>
+    <Route path="/platform/loyalty-programs" component={LoyaltyPrograms} />
     <Route path="/platform/product-digitalization"><ProductDigitalizationPage Shell={Shell} /></Route>
     <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
     <Route path="/platform/Refined-Product-Authentication" component={RefinedProductAuthentication} />
