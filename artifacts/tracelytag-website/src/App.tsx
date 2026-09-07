@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, CodeXml, Cog, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, ListOrdered, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, CodeXml, Cog, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, List, ListOrdered, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 import { 
   Gs1CompliancePage, 
@@ -4456,6 +4456,151 @@ function RefinedProductAuthentication() {
   </Shell>;
 }
 
+const aggrCards: [string, LucideIcon][] = [
+  ['Parent-Child Mapping', Network],
+  ['Packaging Hierarchy', Layers],
+  ['Automated Aggregation', RefreshCw],
+  ['Enterprise Traceability', BadgeCheck],
+];
+const aggrProblems = [
+  'Manual packaging hierarchy processes lead to errors',
+  'No automated parent-child relationship tracking',
+  'Difficult, time-consuming product recalls',
+  'Poor visibility into real-time warehouse inventory',
+  'Slow product tracking through the supply chain',
+  'Significant compliance and regulatory challenges',
+];
+const aggrPanelItems = ['Unit to pallet mapping', 'Parent-child hierarchy', 'Automated aggregation', 'Warehouse visibility', 'Fast product recalls', 'Enterprise scalability'];
+const aggrChain: [string, LucideIcon][] = [
+  ['Individual Product', Archive],
+  ['Bundle', Package],
+  ['Carton', ClipboardCheck],
+  ['Shipper', Box],
+  ['Pallet', Container],
+  ['Warehouse', Warehouse],
+  ['Analytics', ChartNoAxesCombined],
+];
+const aggrAdvanced: [string, string, LucideIcon][] = [
+  ['Parent-Child Mapping', 'Define complex relational data structures for every packaging layer.', Network],
+  ['Automated Aggregation', 'Trigger-based relationship building as products move through lines.', Cog],
+  ['Packaging Hierarchy', 'Multi-tier nesting support from unit level to global logistics units.', List],
+  ['Warehouse Integration', 'Seamless sync with WMS/ERP systems for real-time inventory updates.', Forklift],
+  ['Recall Support', 'Instantly identify every sub-component within a specific pallet or batch.', FileClock],
+  ['Aggregation Analytics', 'Deep insights into line efficiency and packaging utilization rates.', ChartColumn],
+];
+const aggrBenefits: [string, string, LucideIcon][] = [
+  ['Complete Product Hierarchy', 'Total transparency from raw units to shipping containers.', Waypoints],
+  ['Faster Product Recalls', 'Reduce recall windows from days to minutes with precision data.', Gauge],
+  ['Improved Warehouse Efficiency', 'Streamline pick-and-pack workflows with intelligent mapping.', Bot],
+  ['Better Inventory Visibility', 'Know exactly what is in every crate, carton, and pallet globally.', Eye],
+  ['Regulatory Compliance', 'Meet DSCSA, EU FMD, and global serialization requirements.', Gavel],
+  ['Enterprise Scalability', 'Architecture designed to handle billions of parent-child links.', TrendingUp],
+];
+
+function CasePalletAggregation() {
+  return <Shell>
+    <section className="aggr-hero" aria-labelledby="aggr-hero-title">
+      <div className="container-tight aggr-hero-inner">
+        <div className="fade-up">
+          <h1 id="aggr-hero-title" className="aggr-h1">Aggregate Every Product Across Every Packaging Level</h1>
+          <p className="aggr-hero-copy">Automatically build parent-child relationships between units, bundles, cartons, shippers and pallets to achieve complete product hierarchy and end-to-end traceability throughout the supply chain.</p>
+          <div className="aggr-hero-actions">
+            <Link href="/contact-us" data-testid="button-aggr-book-demo-hero" className="aggr-btn aggr-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-aggr-view-platform" className="aggr-btn aggr-btn-ghost">View Platform</Link>
+          </div>
+        </div>
+        <div className="aggr-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/aggregation-hero-full.png`} alt="Isometric aggregation flow: individual products are grouped into bundles, then cartons, then TracelyTag shippers, then stacked pallets carried by an autonomous transporter into an automated warehouse, with each level labelled and linked by data arrows" />
+        </div>
+      </div>
+    </section>
+
+    <section className="aggr-cards" aria-label="Aggregation capabilities">
+      <div className="container-tight aggr-card-grid">
+        {aggrCards.map(([label, Icon]) => <div key={label} className="aggr-card">
+          <Icon size={22} strokeWidth={2} />
+          <p>{label}</p>
+        </div>)}
+      </div>
+    </section>
+
+    <section className="aggr-why" aria-labelledby="aggr-why-title">
+      <div className="container-tight aggr-why-inner">
+        <div>
+          <h2 id="aggr-why-title" className="aggr-h2">Why Aggregation Matters</h2>
+          <ul className="aggr-problem-list">
+            {aggrProblems.map(item => <li key={item}><X size={18} strokeWidth={2.5} />{item}</li>)}
+          </ul>
+        </div>
+        <div className="aggr-panel">
+          <h2>Smart Product Aggregation</h2>
+          <ul className="aggr-panel-grid">
+            {aggrPanelItems.map(item => <li key={item}><CircleCheck size={19} strokeWidth={2} />{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="aggr-chain" aria-label="Packaging aggregation chain">
+      <div className="container-tight aggr-chain-inner">
+        <ol className="aggr-chain-grid">
+          {aggrChain.map(([label, Icon], index) => <li key={label} className={`aggr-chain-step${index === aggrChain.length - 1 ? ' is-last' : ''}`}>
+            <span className="aggr-chain-icon"><Icon size={22} strokeWidth={2} /></span>
+            <h3>{label}</h3>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="aggr-advanced" aria-labelledby="aggr-advanced-title">
+      <div className="container-tight aggr-advanced-inner">
+        <h2 id="aggr-advanced-title" className="aggr-h2">Advanced Features</h2>
+        <div className="aggr-advanced-grid">
+          {aggrAdvanced.map(([title, copy, Icon]) => <article key={title} className="aggr-advanced-card">
+            <Icon size={22} strokeWidth={2} className="text-[#0e3f9e]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="aggr-benefits" aria-labelledby="aggr-benefits-title">
+      <div className="container-tight aggr-benefits-inner">
+        <h2 id="aggr-benefits-title" className="aggr-h2 is-center">Business Benefits</h2>
+        <div className="aggr-benefit-grid">
+          {aggrBenefits.map(([title, copy, Icon]) => <div key={title} className="aggr-benefit">
+            <span className="aggr-benefit-icon"><Icon size={18} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="aggr-dash" aria-label="Aggregation Intelligence Control Center">
+      <div className="container-tight aggr-dash-inner">
+        <div className="aggr-dash-art">
+          <img src={`${root}solution-crops/aggregation-control-center.png`} alt="Aggregation Intelligence Control Center with Live Sync: Active, a sidebar for Dashboard, Aggregation Jobs, Packaging Hierarchy, Relationships, Pallet Status, Warehouse Mapping and Analytics, and a wall display showing aggregation job progress bars, a packaging hierarchy tree of nested cartons, pallet status cards with location and temperature, warehouse mapping and aggregation analytics for efficiency and throughput" />
+        </div>
+      </div>
+    </section>
+
+    <section className="aggr-cta" aria-labelledby="aggr-cta-title">
+      <div className="container-tight aggr-cta-inner">
+        <h2 id="aggr-cta-title">Ready to Build Intelligent Product Hierarchies?</h2>
+        <p>Join industry leaders using our platform to secure their supply chains and achieve total product visibility.</p>
+        <div className="aggr-cta-actions">
+          <Link href="/contact-us" data-testid="button-aggr-book-demo" className="aggr-btn aggr-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-aggr-contact-sales" className="aggr-btn aggr-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -4467,7 +4612,7 @@ function Router() {
     <Route path="/platform/product-digitalization"><ProductDigitalizationPage Shell={Shell} /></Route>
     <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
     <Route path="/platform/Refined-Product-Authentication" component={RefinedProductAuthentication} />
-    <Route path="/platform/case-pallet-aggregation"><AggregationPage Shell={Shell} /></Route>
+    <Route path="/platform/case-pallet-aggregation" component={CasePalletAggregation} />
     <Route path="/platform/mobile-verification"><MobileVerificationPage Shell={Shell} /></Route>
     <Route path="/platform/brand-protection"><SupplyChainIntegrityPage Shell={Shell} /></Route>
     <Route path="/solutions/supply-chain-visibility"><SupplyChainIntegrityPage Shell={Shell} /></Route>
