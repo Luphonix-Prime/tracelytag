@@ -2,7 +2,7 @@
 
 Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS block appended to `src/index.css`. All copy is transcribed verbatim from the source mockup in `public/reference/img/` — nothing shortened or reworded. Images were extracted from the mockups at 2× into `public/reference/img/*-crops/` unless noted.
 
-**20 pages total.**
+**21 pages total.**
 
 ## Core
 
@@ -46,6 +46,14 @@ Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS
 **Digital Warranty image note:** its mockup has no artwork — both image slots render as empty placeholder rectangles in the source PNG, and the pre-existing `digital-warranty-hero.png` crop is that blank placeholder. The two slots reuse existing repo assets instead: `about-hero-diagram.png` (hero) and `about-dashboard-monitor.png` (Powerful Control Center).
 
 **Premium Product Authentication image note:** only the Counterfeit Challenge illustration renders in its mockup (extracted as `product-authentication-counterfeit-map.png`); the hero and Enterprise Authentication Intelligence slots are blank placeholders, as is the pre-existing `premium-product-authentication-hero.png` crop. Those two reuse `anti-counterfeiting-hero-full.png` and `anti-counterfeiting-dashboard.png`.
+
+## Platform
+
+| Route | Component | CSS prefix | Images (`solution-crops/`) |
+| --- | --- | --- | --- |
+| `/platform/Refined-Product-Authentication` | `RefinedProductAuthentication` | `.rpa-` | see note below |
+
+**Refined Product Authentication note:** built from `platefoam/Refined Product Authentication Solution.png`, whose copy is word-for-word identical to the Premium Product Authentication v2 mockup already implemented at `/solutions/premium-product-authentication`. The only structural difference is the workflow, which uses STEP 01–STEP 06 eyebrow labels here instead of numbered circles. Its own image slots are the same blank placeholders as v2 (hero and Enterprise Authentication Intelligence), and its Counterfeit Challenge illustration has the mockup's overflowing page heading baked into the artwork, so all three slots reuse the existing crops: `anti-counterfeiting-hero-full.png`, `product-authentication-counterfeit-map.png` and `anti-counterfeiting-dashboard.png`.
 
 ## Notes
 

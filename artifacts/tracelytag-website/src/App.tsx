@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, CloudDownload, CloudUpload, CodeXml, Cog, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, ListOrdered, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, WandSparkles, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, CodeXml, Cog, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, ListOrdered, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 import { 
   Gs1CompliancePage, 
@@ -4300,6 +4300,161 @@ function VerificationEngine() {
   </Shell>;
 }
 
+const rpaPillars: [string, LucideIcon][] = [
+  ['Secure Digital Identity', Fingerprint],
+  ['Instant Verification', Gauge],
+  ['Consumer Trust', Heart],
+  ['Brand Protection', Shield],
+];
+const rpaRisks: [string, string, LucideIcon][] = [
+  ['Revenue Loss', 'Untracked counterfeit sales directly impact your bottom line and market share.', TrendingDown],
+  ['Brand Damage', 'Low-quality replicas tarnish brand prestige and consumer perception.', Frown],
+  ['Supply Chain Risk', 'Unauthorized leaks and grey market activities disrupt distribution channels.', TriangleAlert],
+  ['Liability Exposure', 'Safety risks from fakes can lead to legal challenges and regulatory fines.', Gavel],
+];
+const rpaWorkflow: [string, string, LucideIcon][] = [
+  ['Generate QR', 'Unique encrypted codes for each item.', QrCode],
+  ['Print on Product', 'Seamless integration into packaging lines.', Printer],
+  ['Consumer Scan', 'No app required, works via mobile browser.', ScanLine],
+  ['Verification Engine', 'Cloud-based cryptographic check.', CodeXml],
+  ['Result', 'Real-time "Authentic" or "Suspicious" alert.', CircleCheck],
+  ['Analytics', 'Data captured on dashboard instantly.', ChartNoAxesCombined],
+];
+const rpaFeatures: [string, string, LucideIcon][] = [
+  ['Secure QR Generation', 'High-density secure identifiers that are impossible to duplicate or reverse-engineer, using proprietary cryptographic layers.', LockKeyhole],
+  ['Unique Product Identity', 'Serialize every individual unit with its own digital twin for granular end-to-end tracking and lifecycle management.', Database],
+  ['Mobile Verification', 'Branded web experience that connects consumers directly with your official brand story without requiring third-party apps.', Smartphone],
+  ['Verification Engine', 'Global low-latency API infrastructure capable of handling millions of concurrent scans with sub-second response times.', Waypoints],
+  ['Authentication Analytics', 'Geospatial heatmaps showing where your products are being verified globally, helping identify suspicious patterns.', ChartColumnBig],
+  ['GS1 Ready Support', 'Full compliance with international standards for digital link and supply chain data exchange (EPCIS/GS1).', Box],
+];
+const rpaValue: [string, string][] = [
+  ['Protect Revenue', 'Recover lost sales by shutting down illicit distribution channels and grey market activities.'],
+  ['Consumer Trust', 'Prove authenticity instantly at the point of sale to build lasting brand loyalty and preference.'],
+  ['Reduce Fakes', 'De-incentivize counterfeiters with robust, uncopiable technology that makes fakes easy to spot.'],
+  ['Real-Time Insights', 'See scan data as it happens anywhere in the world, enabling agile supply chain responses.'],
+  ['Global Scalability', 'Deploy across millions of units without performance degradation, supported by industrial SLAs.'],
+  ['Enterprise Security', 'SOC2 compliant data handling and cryptographic key management for mission-critical reliability.'],
+];
+
+function RefinedProductAuthentication() {
+  return <Shell>
+    <section className="rpa-hero" aria-labelledby="rpa-hero-title">
+      <div className="container-tight rpa-hero-inner">
+        <div className="fade-up">
+          <p className="rpa-pill"><BadgeCheck size={14} strokeWidth={2.2} />ENTERPRISE GRADE SECURITY</p>
+          <h1 id="rpa-hero-title" className="rpa-h1">Product Authentication</h1>
+          <p className="rpa-hero-copy">Protect every product with a secure digital identity that enables instant authentication, strengthens consumer trust, and helps combat counterfeit products across the supply chain.</p>
+          <div className="rpa-hero-actions">
+            <Link href="/contact-us" data-testid="button-rpa-book-demo-hero" className="rpa-btn rpa-btn-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-rpa-talk-expert" className="rpa-btn rpa-btn-ghost">Talk to an Expert</Link>
+          </div>
+        </div>
+        <div className="rpa-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/anti-counterfeiting-hero-full.png`} alt="Product authentication in practice: a shopper scans the secure QR code on a genuine TracelyTag product to verify it through the cloud verification engine and brand protection shield, while real-time analytics flag a counterfeit package on the adjacent shelf" />
+        </div>
+      </div>
+    </section>
+
+    <section className="rpa-pillars" aria-label="Product authentication pillars">
+      <div className="container-tight rpa-pillar-grid">
+        {rpaPillars.map(([label, Icon]) => <div key={label} className="rpa-pillar">
+          <span className="rpa-pillar-icon"><Icon size={20} strokeWidth={2} /></span>
+          <p>{label}</p>
+        </div>)}
+      </div>
+    </section>
+
+    <section className="rpa-challenge" aria-labelledby="rpa-challenge-title">
+      <div className="container-tight rpa-challenge-inner">
+        <h2 id="rpa-challenge-title" className="rpa-challenge-title">The Counterfeit Challenge</h2>
+        <p className="rpa-challenge-copy">Counterfeiting costs global brands billions annually. Traditional security measures are no longer enough to protect your reputation and revenue.</p>
+        <div className="rpa-challenge-body">
+          <div className="rpa-challenge-art">
+            <img src={`${root}solution-crops/product-authentication-counterfeit-map.png`} alt="Isometric world map of a compromised supply chain: goods move from manufacturing through logistics, warehouse, distributor and Retailer A, while red alerts mark broken trust, financial loss, unauthorized branch shipments and counterfeit goods entering the channel" />
+          </div>
+          <div className="rpa-risk-grid">
+            {rpaRisks.map(([title, copy, Icon]) => <div key={title} className="rpa-risk">
+              <span className="rpa-risk-icon"><Icon size={18} strokeWidth={2} /></span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="rpa-flow" aria-labelledby="rpa-flow-title">
+      <div className="container-tight rpa-flow-inner">
+        <p className="rpa-eyebrow">WORKFLOW</p>
+        <h2 id="rpa-flow-title">How Authentication Works</h2>
+        <ol className="rpa-flow-grid">
+          {rpaWorkflow.map(([title, copy, Icon], index) => <li key={title} className="rpa-flow-step">
+            <span className="rpa-flow-icon"><Icon size={26} strokeWidth={2} /></span>
+            <p className="rpa-flow-step-label">STEP {String(index + 1).padStart(2, '0')}</p>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="rpa-features" aria-labelledby="rpa-features-title">
+      <div className="container-tight rpa-features-inner">
+        <h2 id="rpa-features-title" className="rpa-section-label">Advanced Features</h2>
+        <div className="rpa-feature-grid">
+          {rpaFeatures.map(([title, copy, Icon]) => <article key={title} className="rpa-feature-card">
+            <span className="rpa-feature-icon"><Icon size={20} strokeWidth={2} /></span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="rpa-value" aria-labelledby="rpa-value-title">
+      <div className="container-tight rpa-value-inner">
+        <div className="rpa-value-head">
+          <div>
+            <h2 id="rpa-value-title" className="rpa-section-label">Enterprise Value</h2>
+            <p className="rpa-value-copy">Beyond security, Product Authentication unlocks new levels of operational efficiency and consumer insights across your global value chain.</p>
+          </div>
+          <Link href="/contact-us" data-testid="button-rpa-roi-calculator" className="rpa-btn rpa-btn-primary rpa-roi">View ROI Calculator</Link>
+        </div>
+        <div className="rpa-value-grid">
+          {rpaValue.map(([title, copy]) => <article key={title} className="rpa-value-card">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="rpa-intel" aria-labelledby="rpa-intel-title">
+      <div className="container-tight rpa-intel-inner">
+        <h2 id="rpa-intel-title" className="rpa-section-label">Enterprise Authentication Intelligence</h2>
+        <p className="rpa-intel-copy">Monitor scan activity, detect anomalies, and manage product lifecycles through a single, powerful administrative interface designed for scale.</p>
+        <div className="rpa-intel-art">
+          <img src={`${root}solution-crops/anti-counterfeiting-dashboard.png`} alt="Authentication intelligence dashboard: 247 high-priority suspicious alerts across Asia, Europe, South America and North America; a global risk heatmap flagging Shanghai, Dubai and Mexico City; verification activity of 45.2M scans up 12% with 42.1M successful and 3.1M failed; and a recent events feed covering seizures, fake listings and law-enforcement action" />
+        </div>
+      </div>
+    </section>
+
+    <section className="rpa-cta" aria-labelledby="rpa-cta-title">
+      <div className="container-tight">
+        <div className="rpa-cta-card">
+          <h2 id="rpa-cta-title">Ready to Protect Every Product?</h2>
+          <p>Join the world's most trusted brands using TracelyTag to secure their global supply chains and empower their consumers.</p>
+          <div className="rpa-cta-actions">
+            <Link href="/contact-us" data-testid="button-rpa-book-demo" className="rpa-btn rpa-cta-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-rpa-contact-sales" className="rpa-btn rpa-cta-ghost">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -4310,6 +4465,7 @@ function Router() {
     <Route path="/platform/loyalty-programs"><DigitalLoyaltyPage Shell={Shell} /></Route>
     <Route path="/platform/product-digitalization"><ProductDigitalizationPage Shell={Shell} /></Route>
     <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
+    <Route path="/platform/Refined-Product-Authentication" component={RefinedProductAuthentication} />
     <Route path="/platform/case-pallet-aggregation"><AggregationPage Shell={Shell} /></Route>
     <Route path="/platform/mobile-verification"><MobileVerificationPage Shell={Shell} /></Route>
     <Route path="/platform/brand-protection"><SupplyChainIntegrityPage Shell={Shell} /></Route>
