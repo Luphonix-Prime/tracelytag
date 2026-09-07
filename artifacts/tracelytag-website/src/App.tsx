@@ -6,6 +6,15 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
 import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, CloudDownload, CloudUpload, CodeXml, Cog, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, ListOrdered, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, WandSparkles, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
+import { 
+  Gs1CompliancePage, 
+  DigitalLoyaltyPage, 
+  ProductDigitalizationPage, 
+  AggregationPage, 
+  MobileVerificationPage,
+  ProductAuthenticationPage,
+  SupplyChainIntegrityPage
+} from '@/pages/platform-pages';
 
 const queryClient = new QueryClient();
 const root = '/reference/img/';
@@ -4297,6 +4306,14 @@ function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product 
 function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
+    <Route path="/platform/gs1-standards-compliance"><Gs1CompliancePage Shell={Shell} /></Route>
+    <Route path="/platform/loyalty-programs"><DigitalLoyaltyPage Shell={Shell} /></Route>
+    <Route path="/platform/product-digitalization"><ProductDigitalizationPage Shell={Shell} /></Route>
+    <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
+    <Route path="/platform/case-pallet-aggregation"><AggregationPage Shell={Shell} /></Route>
+    <Route path="/platform/mobile-verification"><MobileVerificationPage Shell={Shell} /></Route>
+    <Route path="/platform/brand-protection"><SupplyChainIntegrityPage Shell={Shell} /></Route>
+    <Route path="/solutions/supply-chain-visibility"><SupplyChainIntegrityPage Shell={Shell} /></Route>
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/analytics-business-intelligence" component={AnalyticsBusinessIntelligence} /><Route path="/solutions/analytics-dashboard"><Redirect to="/solutions/analytics-business-intelligence" /></Route><Route path="/solutions/analytics-dashboard-insights"><Redirect to="/solutions/analytics-business-intelligence" /></Route><Route path="/solutions/connected-packaging" component={ConnectedPackaging} /><Route path="/solutions/anti-counterfeiting" component={AntiCounterfeiting} /><Route path="/solutions/apparel-clothing" component={ApparelClothing} /><Route path="/solutions/digital-warranty" component={DigitalWarranty} /><Route path="/solutions/premium-product-authentication" component={PremiumProductAuthentication} /><Route path="/solutions/supply-chain-visibility" component={SupplyChainVisibility} /><Route path="/solutions/customer-data-platform" component={CustomerDataPlatform} /><Route path="/solutions/consumer-engagement"><Redirect to="/solutions/customer-data-platform" /></Route><Route path="/solutions/track-and-trace" component={TrackAndTrace} /><Route path="/solutions/verification-engine" component={VerificationEngine} /><Route path="/solutions/:slug" component={SolutionPage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/food-beverage" component={FoodBeverage} /><Route path="/industries/pharmaceuticals" component={Pharmaceuticals} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
