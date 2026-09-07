@@ -99,8 +99,7 @@
 .nav-link { position: relative; color: hsl(var(--muted-foreground)); transition: color .2s ease; }
 .nav-link:hover, .nav-link.active { color: hsl(var(--primary)); }
 .nav-link.active:after { content:""; position:absolute; height:2px; background:hsl(var(--primary)); left:0; right:0; bottom:-20px; }
-.mega-menu { position:absolute; top: calc(100% + 18px); left:50%; transform:translateX(-50%) translateY(-6px); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease; background:white; border:1px solid hsl(var(--border)); border-radius:14px; box-shadow:0 18px 45px rgba(22,68,129,.14); }
-.nav-group:hover .mega-menu, .nav-group:focus-within .mega-menu, .mega-menu.open { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.mega-menu { background:white; border:1px solid hsl(var(--border)); border-radius:14px; box-shadow:0 18px 45px rgba(22,68,129,.14); }
 .menu-item { transition: background .18s ease, transform .18s ease; }
 .menu-item:hover { background: hsl(210 56% 97%); transform: translateX(2px); }
 .hero-grid { background-image: linear-gradient(hsl(214 24% 91% / .52) 1px, transparent 1px), linear-gradient(90deg, hsl(214 24% 91% / .52) 1px, transparent 1px); background-size: 40px 40px; }

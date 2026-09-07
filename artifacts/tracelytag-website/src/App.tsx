@@ -60,29 +60,143 @@ function Brand() {
   return <Link href="/" data-testid="link-brand" className="flex items-center gap-2.5 shrink-0"><img src="/tracelytag-logo.png" alt="TracelyTag Logo" className="h-8 w-8 object-contain shrink-0" /><span className="display text-[19px] font-extrabold tracking-[-.05em] text-[#123a78]">TracelyTag</span></Link>;
 }
 
-function Dropdown({ label, children, active }: { label: string; children: ReactNode; active?: boolean }) {
-  const [open, setOpen] = useState(false);
-  return <div className="nav-group relative flex items-center">
-    <button onClick={() => setOpen(!open)} data-testid={`button-open-${label.toLowerCase()}`} className={`nav-link flex items-center gap-1.5 py-5 text-[12px] font-semibold ${active ? 'active' : ''}`}>{label}<ChevronDown size={13} strokeWidth={1.8} /></button>
-    <div className={`mega-menu ${open ? 'open' : ''}`}>{children}</div>
-  </div>;
+function Dropdown({ 
+  label, 
+  children, 
+  active, 
+  isOpen, 
+  onOpen, 
+  onClose,
+  align = "center"
+}: { 
+  label: string; 
+  children: ReactNode; 
+  active?: boolean; 
+  isOpen: boolean; 
+  onOpen: () => void; 
+  onClose: () => void;
+  align?: "left" | "center" | "right";
+}) {
+  return (
+    <div 
+      className="relative flex items-center"
+      onMouseEnter={onOpen}
+    >
+      <button 
+        onClick={() => (isOpen ? onClose() : onOpen())} 
+        data-testid={`button-open-${label.toLowerCase()}`} 
+        className={`nav-link flex items-center gap-1.5 py-5 text-[12px] font-semibold transition-colors ${active || isOpen ? 'text-[#064aa0]' : ''}`}
+      >
+        {label}
+        <ChevronDown size={13} strokeWidth={1.8} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#064aa0]' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <div 
+          className={`absolute top-full z-50 pt-2 transition-all duration-200 ${
+            align === "left" ? "left-0" : align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
+          }`}
+        >
+          <div className="mega-menu rounded-xl p-3">
+            {children}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function Header() {
   const [mobile, setMobile] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [location] = useLocation();
-  return <header className="site-header">
+
+  const handleClose = () => setActiveDropdown(null);
+
+  return <header className="site-header relative z-40 bg-white/95 backdrop-blur-md border-b border-[#e2e8f0]">
     <div className="container-tight flex h-[70px] items-center justify-between gap-5">
       <Brand />
-      <nav className="hidden lg:flex items-center gap-6">
-        <Link href="/about-us" data-testid="link-about-us" className={`nav-link text-[12px] font-semibold py-5 ${location === '/about-us' ? 'active' : ''}`}>About Us</Link>
-        <Link href="/why-tracelytag" data-testid="link-why-tracelytag" className={`nav-link text-[12px] font-semibold py-5 ${location === '/why-tracelytag' ? 'active' : ''}`}>Why TracelyTag</Link>
-        <Dropdown label="Platform" active={location.startsWith('/platform')}><div className="grid w-[470px] grid-cols-2 gap-1 p-3">{platformItems.map(([name, href, Icon]) => <Link key={href} href={href} data-testid={`link-platform-${href.split('/').pop()}`} className="menu-item flex items-center gap-3 rounded-lg px-3 py-3"><span className="grid size-8 place-items-center rounded-md bg-[#edf5ff] text-[#0753a4]"><Icon size={16} strokeWidth={1.7} /></span><span className="text-[12px] font-semibold text-[#15345e]">{name}</span></Link>)}</div></Dropdown>
-        <Dropdown label="Solutions" active={location.startsWith('/solutions')}><div className="grid w-[530px] grid-cols-2 gap-1 p-3">{solutionItems.map(([name, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`link-solution-${slug}`} className="menu-item rounded-lg px-3 py-3 text-[12px] font-semibold text-[#15345e]">{name}</Link>)}</div></Dropdown>
-        <Link href="/hardware-integration" data-testid="link-hardware-integration" className={`nav-link text-[12px] font-semibold py-5 ${location === '/hardware-integration' ? 'active' : ''}`}>Hardware Integration</Link>
-        <Dropdown label="Industries" active={location.startsWith('/industries')}><div className="w-[310px] p-3">{industryItems.map(([name, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`link-industry-${slug}`} className="menu-item flex items-center gap-3 rounded-lg px-3 py-2.5"><span className="text-[#0753a4]"><Icon size={16} strokeWidth={1.7} /></span><span className="text-[12px] font-semibold text-[#15345e]">{name}</span></Link>)}</div></Dropdown>
-        <Link href="/contact-us" data-testid="link-contact-us" className="rounded-[4px] bg-[#064aa0] px-4 py-2.5 text-[12px] font-bold text-white transition hover:bg-[#053b81]">Contact Us</Link>
-        <Link href="/login" data-testid="link-login" className="nav-link text-[12px] font-semibold">Login</Link>
+      <nav className="hidden lg:flex items-center gap-6" onMouseLeave={handleClose}>
+        <Link href="/about-us" onClick={handleClose} data-testid="link-about-us" className={`nav-link text-[12px] font-semibold py-5 ${location === '/about-us' ? 'active' : ''}`}>About Us</Link>
+        <Link href="/why-tracelytag" onClick={handleClose} data-testid="link-why-tracelytag" className={`nav-link text-[12px] font-semibold py-5 ${location === '/why-tracelytag' ? 'active' : ''}`}>Why TracelyTag</Link>
+        
+        <Dropdown 
+          label="Platform" 
+          active={location.startsWith('/platform')}
+          isOpen={activeDropdown === 'Platform'}
+          onOpen={() => setActiveDropdown('Platform')}
+          onClose={handleClose}
+          align="left"
+        >
+          <div className="grid w-[470px] grid-cols-2 gap-1 p-1">
+            {platformItems.map(([name, href, Icon]) => (
+              <Link 
+                key={href} 
+                href={href} 
+                onClick={handleClose}
+                data-testid={`link-platform-${href.split('/').pop()}`} 
+                className="menu-item flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-[#edf5ff] transition-colors"
+              >
+                <span className="grid size-8 place-items-center rounded-md bg-[#edf5ff] text-[#0753a4] shrink-0">
+                  <Icon size={16} strokeWidth={1.7} />
+                </span>
+                <span className="text-[12px] font-semibold text-[#15345e]">{name}</span>
+              </Link>
+            ))}
+          </div>
+        </Dropdown>
+
+        <Dropdown 
+          label="Solutions" 
+          active={location.startsWith('/solutions')}
+          isOpen={activeDropdown === 'Solutions'}
+          onOpen={() => setActiveDropdown('Solutions')}
+          onClose={handleClose}
+          align="center"
+        >
+          <div className="grid w-[510px] grid-cols-2 gap-1 p-1">
+            {solutionItems.map(([name, slug]) => (
+              <Link 
+                key={slug} 
+                href={`/solutions/${slug}`} 
+                onClick={handleClose}
+                data-testid={`link-solution-${slug}`} 
+                className="menu-item rounded-lg px-3 py-2.5 text-[12px] font-semibold text-[#15345e] hover:bg-[#edf5ff] transition-colors"
+              >
+                {name}
+              </Link>
+            ))}
+          </div>
+        </Dropdown>
+
+        <Link href="/hardware-integration" onClick={handleClose} data-testid="link-hardware-integration" className={`nav-link text-[12px] font-semibold py-5 ${location === '/hardware-integration' ? 'active' : ''}`}>Hardware Integration</Link>
+
+        <Dropdown 
+          label="Industries" 
+          active={location.startsWith('/industries')}
+          isOpen={activeDropdown === 'Industries'}
+          onOpen={() => setActiveDropdown('Industries')}
+          onClose={handleClose}
+          align="right"
+        >
+          <div className="w-[300px] p-1">
+            {industryItems.map(([name, slug, Icon]) => (
+              <Link 
+                key={slug} 
+                href={`/industries/${slug}`} 
+                onClick={handleClose}
+                data-testid={`link-industry-${slug}`} 
+                className="menu-item flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-[#edf5ff] transition-colors"
+              >
+                <span className="text-[#0753a4] shrink-0"><Icon size={16} strokeWidth={1.7} /></span>
+                <span className="text-[12px] font-semibold text-[#15345e]">{name}</span>
+              </Link>
+            ))}
+          </div>
+        </Dropdown>
+
+        <Link href="/contact-us" onClick={handleClose} data-testid="link-contact-us" className="rounded-[4px] bg-[#064aa0] px-4 py-2.5 text-[12px] font-bold text-white transition hover:bg-[#053b81]">Contact Us</Link>
+        <Link href="/login" onClick={handleClose} data-testid="link-login" className="nav-link text-[12px] font-semibold">Login</Link>
       </nav>
       <button data-testid="button-toggle-mobile-nav" className="lg:hidden rounded border border-[#d8e2ee] p-2 text-[#064aa0]" onClick={() => setMobile(!mobile)} aria-label="Toggle navigation">{mobile ? <X size={20} /> : <Menu size={20} />}</button>
     </div>
