@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CirclePlus, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, Code, CodeXml, Cog, Command, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Gift, Globe, Globe2, Grid2x2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, List, ListOrdered, Locate, LockKeyhole, LockKeyholeOpen, Map, MapPin, Maximize, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Repeat, Rocket, Route as RouteIcon, Scale, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Share2, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Ticket, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, Workflow, X, Zap, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CirclePlus, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, Code, CodeXml, Cog, Command, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, FileUser, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Gift, Globe, Globe2, Grid2x2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, Link2, List, ListOrdered, Locate, LockKeyhole, LockKeyholeOpen, Map, MapPin, Maximize, Megaphone, Menu, MessageSquare, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PartyPopper, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Repeat, Rocket, Route as RouteIcon, Scale, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Send, Server, Shapes, Share2, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Ticket, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, Workflow, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 import { 
   Gs1CompliancePage, 
@@ -5050,6 +5050,218 @@ function MobileVerification() {
   </Shell>;
 }
 
+const pdgCards: [string, string, LucideIcon][] = [
+  ['Digital Product Identity', 'Uniquely identify every unit with tamper-proof digital credentials.', Fingerprint],
+  ['Connected Products', 'Bridge the gap between physical goods and digital ecosystems.', Link2],
+  ['Digital Product Passport', 'Store complete product lifecycle and sustainability data securely.', FileUser],
+  ['Lifecycle Intelligence', 'Gather actionable data from manufacture to end-of-life.', ChartNoAxesCombined],
+];
+const pdgProblems = [
+  'Physical products have no digital identity',
+  'No direct consumer interaction',
+  'Limited lifecycle visibility',
+  'Manual product information management',
+  'Weak customer engagement',
+  'Disconnected post-purchase experience',
+];
+const pdgProblemDetail: [string, string][] = [
+  ['Physical products have no digital identity', 'Products remain silent once they leave the manufacturing floor.'],
+  ['No direct consumer interaction', 'Lack of a direct channel to engage and retain end-users post-purchase.'],
+  ['Limited lifecycle visibility', 'No tracking of secondary markets, repairs, or end-of-life recycling.'],
+  ['Manual product information', 'Inefficient paper trails for warranties and manuals.'],
+];
+const pdgConnected = ['Secure Digital Identity', 'Product Passport', 'Digital Experiences', 'Consumer Engagement', 'Product Lifecycle', 'Business Intelligence'];
+const pdgJourney: [string, string, LucideIcon][] = [
+  ['Product Created', 'STEP 01', Factory],
+  ['Digital Identity Generated', 'STEP 02', ScanQrCode],
+  ['QR Applied', 'STEP 03', Send],
+  ['Consumer Scan', 'STEP 04', QrCode],
+  ['Connected Experience', 'STEP 05', Sparkles],
+  ['Analytics', 'STEP 06', ChartColumn],
+  ['Continuous Product Lifecycle', 'STEP 07', RefreshCw],
+];
+const pdgFeaturesA: [string, string][] = [
+  ['Digital Product Identity', 'Encrypt product DNA into verifiable digital tokens accessible via mobile.'],
+  ['Product Passport', 'Trace material origins and manufacturing processes for regulatory compliance.'],
+  ['Connected Experiences', 'Deliver dynamic mobile content tailored to the specific product unit and location.'],
+  ['Lifecycle Tracking', 'Monitor product ownership and maintenance history throughout its entire life.'],
+  ['Consumer Interaction', 'Enable instant chat, feedback, and support directly through the product scan.'],
+  ['Digital Product Analytics', 'Visualize interaction heatmaps and engagement metrics in real-time.'],
+];
+const pdgFeaturesB: [string, string, LucideIcon][] = [
+  ['Digital Product Identity', 'Create unique, encrypted digital identifiers for every physical unit in your inventory.', IdCard],
+  ['Product Passport', 'Store complete product specifications, sustainability data, and certification details digitally.', ClipboardList],
+  ['Connected Experiences', 'Trigger web-based AR, exclusive content, or loyalty rewards instantly upon scanning.', PartyPopper],
+  ['Lifecycle Tracking', 'Monitor product movement and ownership changes throughout its entire usable life.', History],
+  ['Consumer Interaction', 'Build two-way communication channels for feedback, support, and personalized marketing.', MessageSquare],
+  ['Digital Product Analytics', 'Gain real-time insights into scan locations, user behavior, and engagement patterns.', ScanSearch],
+];
+const pdgBenefitsA: [string, string, LucideIcon][] = [
+  ['Connected Products', 'Unlock new digital services and revenue streams from physical hardware.', CircleStar],
+  ['Higher Consumer Trust', 'Prove authenticity and sustainability with immutable data.', BadgeCheck],
+  ['Better Product Visibility', 'Eliminate blind spots in the post-purchase product journey.', Eye],
+  ['Improved Customer Experience', 'Provide instant access to manuals, warranties, and support.', Smile],
+  ['Lifecycle Intelligence', 'Optimize circular economy initiatives with granular usage data.', BrainCog],
+  ['Future-Ready Products', 'Adopt digital standards like GS1 Digital Link effortlessly.', Rocket],
+];
+const pdgBenefitsB: [string, string, LucideIcon][] = [
+  ['Connected Products', 'Bridge the gap between your physical inventory and digital ERP/CRM systems seamlessly.', Link2],
+  ['Higher Consumer Trust', 'Provide undeniable proof of authenticity and transparent product sourcing information.', BadgeCheck],
+  ['Better Product Visibility', 'Identify gray market diversions and monitor supply chain efficiency in real-time.', Eye],
+  ['Improved Customer Experience', 'Deliver instant digital value through smartphones without needing dedicated apps.', Smile],
+  ['Lifecycle Intelligence', 'Understand how products are used and disposed of to improve future design and circularity.', BrainCog],
+  ['Future-Ready Products', 'Stay compliant with emerging digital passport regulations and sustainability requirements.', RefreshCw],
+];
+
+function ProductDigitalization() {
+  return <Shell>
+    <section className="pdg-hero" aria-labelledby="pdg-hero-title">
+      <div className="container-tight pdg-hero-inner">
+        <div className="fade-up">
+          <h1 id="pdg-hero-title" className="pdg-h1">Digitize Every Product with a Secure Digital Identity</h1>
+          <p className="pdg-hero-copy">Transform every physical product into a connected digital asset. Enable authentication, product information, consumer engagement, digital warranty, loyalty, analytics and complete lifecycle visibility through one secure digital identity.</p>
+          <div className="pdg-hero-actions">
+            <Link href="/contact-us" data-testid="button-pdg-book-demo-hero" className="pdg-btn pdg-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-pdg-explore-platform" className="pdg-btn pdg-btn-ghost">Explore Platform</Link>
+          </div>
+        </div>
+        <div className="pdg-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/product-digitalization-hero-full.png`} alt="Product Digitalization Solution diagram: a TracelyTag product box carrying a secure QR code is scanned by a phone, generating a secure digital identity and digital product passport that fan out to consumer engagement, warranty, loyalty and analytics" />
+        </div>
+      </div>
+    </section>
+
+    <section className="pdg-cards" aria-label="Product digitalization capabilities">
+      <div className="container-tight pdg-card-grid">
+        {pdgCards.map(([title, copy, Icon]) => <article key={title} className="pdg-card">
+          <span className="pdg-card-icon"><Icon size={20} strokeWidth={2} /></span>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="pdg-why" aria-labelledby="pdg-why-title">
+      <div className="container-tight pdg-why-inner">
+        <div>
+          <h2 id="pdg-why-title" className="pdg-h2">Why Product Digitalization?</h2>
+          <p className="pdg-why-sub">Unlocking the full potential of your products through secure digital twins.</p>
+          <ul className="pdg-problem-list">
+            {pdgProblems.map(item => <li key={item}><CircleX size={17} strokeWidth={2} />{item}</li>)}
+          </ul>
+          <div className="pdg-problem-cards">
+            {pdgProblemDetail.map(([title, copy]) => <div key={title} className="pdg-problem-card">
+              <CircleAlert size={18} strokeWidth={2} />
+              <div>
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+            </div>)}
+          </div>
+        </div>
+        <div className="pdg-panel">
+          <h2>Connected Digital Products</h2>
+          <ul className="pdg-panel-grid">
+            {pdgConnected.map(item => <li key={item}><CircleCheck size={19} strokeWidth={2} />{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="pdg-journey" aria-labelledby="pdg-journey-title">
+      <div className="container-tight pdg-journey-inner">
+        <h2 id="pdg-journey-title" className="pdg-h2 is-center">The Connected Journey</h2>
+        <ol className="pdg-journey-grid">
+          {pdgJourney.map(([title, step, Icon], index) => <li key={title} className="pdg-journey-step">
+            <span className="pdg-journey-num">{index + 1}</span>
+            <p className="pdg-journey-label">{step}</p>
+            <h3>{title}</h3>
+            <span className="pdg-journey-icon"><Icon size={17} strokeWidth={2} /></span>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="pdg-features" aria-labelledby="pdg-features-title">
+      <div className="container-tight pdg-features-inner">
+        <h2 id="pdg-features-title" className="pdg-h2 is-center">Advanced Features</h2>
+        <span className="pdg-rule" />
+        <div className="pdg-feature-grid">
+          {pdgFeaturesA.map(([title, copy]) => <article key={title} className="pdg-feature-card">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="pdg-features-b" aria-labelledby="pdg-features-b-title">
+      <div className="container-tight pdg-features-inner">
+        <h2 id="pdg-features-b-title" className="pdg-h2 is-center">Advanced Digitalization Features</h2>
+        <p className="pdg-center-sub">A complete suite of tools to manage and monetize your product's digital life.</p>
+        <div className="pdg-feature-grid">
+          {pdgFeaturesB.map(([title, copy, Icon]) => <article key={title} className="pdg-feature-card is-icon">
+            <Icon size={22} strokeWidth={2} className="text-[#0e3f9e]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="pdg-benefits" aria-labelledby="pdg-benefits-title">
+      <div className="container-tight pdg-benefits-inner">
+        <h2 id="pdg-benefits-title" className="pdg-h2 is-center">Business Benefits</h2>
+        <span className="pdg-rule" />
+        <div className="pdg-benefit-grid">
+          {pdgBenefitsA.map(([title, copy, Icon]) => <div key={title} className="pdg-benefit">
+            <span className="pdg-benefit-icon"><Icon size={18} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="pdg-value" aria-labelledby="pdg-value-title">
+      <div className="container-tight pdg-benefits-inner">
+        <h2 id="pdg-value-title" className="pdg-h2 is-center">Business Value</h2>
+        <div className="pdg-benefit-grid">
+          {pdgBenefitsB.map(([title, copy, Icon]) => <div key={title} className="pdg-benefit">
+            <span className="pdg-benefit-icon"><Icon size={18} strokeWidth={2} /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="pdg-control" aria-labelledby="pdg-control-title">
+      <div className="container-tight pdg-control-inner">
+        <h2 id="pdg-control-title" className="pdg-control-title">Digitalization Control Center</h2>
+        <p className="pdg-center-sub">A comprehensive enterprise dashboard to manage your global product fleet.</p>
+        <div className="pdg-control-art">
+          <img src={`${root}solution-crops/product-digitalization-control-center.png`} alt="Digitalization Control Center giving a global overview of the digitized product ecosystem with live analytics: a wall display showing Product Digitalization Intelligence with 45,210 digital products up 12% year to date, a lifecycle events rail from creation through manufactured, shipped and sold to recycled, real-time consumer scan activity for the last 24 hours, a product passport detailing an Industrial Sensor X5 in recycled aluminium at 1.2 kg CO2e, engagement metrics of a 28% interaction rate and 2m 15s average session, and business intelligence ROI and market-reach trend charts" />
+        </div>
+      </div>
+    </section>
+
+    <section className="pdg-cta" aria-labelledby="pdg-cta-title">
+      <div className="container-tight pdg-cta-inner">
+        <h2 id="pdg-cta-title">Ready to Digitize Every Product?</h2>
+        <div className="pdg-cta-actions">
+          <Link href="/contact-us" data-testid="button-pdg-book-demo" className="pdg-btn pdg-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-pdg-contact-sales" className="pdg-btn pdg-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -5058,7 +5270,7 @@ function Router() {
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
     <Route path="/platform/gs1-standards-compliance" component={Gs1StandardsCompliance} />
     <Route path="/platform/loyalty-programs" component={LoyaltyPrograms} />
-    <Route path="/platform/product-digitalization"><ProductDigitalizationPage Shell={Shell} /></Route>
+    <Route path="/platform/product-digitalization" component={ProductDigitalization} />
     <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
     <Route path="/platform/Refined-Product-Authentication" component={RefinedProductAuthentication} />
     <Route path="/platform/case-pallet-aggregation" component={CasePalletAggregation} />
