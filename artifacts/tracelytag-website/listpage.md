@@ -2,7 +2,7 @@
 
 Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS block appended to `src/index.css`. All copy is transcribed verbatim from the source mockup in `public/reference/img/` — nothing shortened or reworded. Images were extracted from the mockups at 2× into `public/reference/img/*-crops/` unless noted.
 
-**22 pages total.**
+**23 pages total.**
 
 ## Core
 
@@ -52,6 +52,7 @@ Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS
 | Route | Component | CSS prefix | Images (`solution-crops/`) |
 | --- | --- | --- | --- |
 | `/platform/case-pallet-aggregation` | `CasePalletAggregation` | `.aggr-` | `aggregation-hero-full.png`, `aggregation-control-center.png` |
+| `/platform/gs1-standards-compliance` | `Gs1StandardsCompliance` | `.gs1-` | `gs1-compliance-hero-full.png`, `gs1-compliance-dashboard.png` |
 | `/platform/Refined-Product-Authentication` | `RefinedProductAuthentication` | `.rpa-` | see note below |
 
 **Refined Product Authentication note:** built from `platefoam/Refined Product Authentication Solution.png`, whose copy is word-for-word identical to the Premium Product Authentication v2 mockup already implemented at `/solutions/premium-product-authentication`. The only structural difference is the workflow, which uses STEP 01–STEP 06 eyebrow labels here instead of numbered circles. Its own image slots are the same blank placeholders as v2 (hero and Enterprise Authentication Intelligence), and its Counterfeit Challenge illustration has the mockup's overflowing page heading baked into the artwork, so all three slots reuse the existing crops: `anti-counterfeiting-hero-full.png`, `product-authentication-counterfeit-map.png` and `anti-counterfeiting-dashboard.png`.

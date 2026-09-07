@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
-import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, CodeXml, Cog, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, List, ListOrdered, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, X, Zap, type LucideIcon } from 'lucide-react';
+import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, Code, CodeXml, Cog, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Globe, Globe2, Grid2x2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, List, ListOrdered, Locate, LockKeyhole, LockKeyholeOpen, Map, MapPin, Megaphone, Menu, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Rocket, Route as RouteIcon, Scale, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Server, Shapes, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, Workflow, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 import { 
   Gs1CompliancePage, 
@@ -4601,13 +4601,155 @@ function CasePalletAggregation() {
   </Shell>;
 }
 
+const gs1Cards: [string, string, LucideIcon][] = [
+  ['GS1 Standards', 'Native alignment with GS1-128 and EPCIS specifications.', Award],
+  ['GTIN & SSCC', 'Unified management for item and logistical unit identification.', Barcode],
+  ['GS1 DataMatrix', 'High-density 2D barcodes for granular product data.', QrCode],
+  ['Global Compliance', 'Adhere to regional regulatory mandates automatically.', ShieldCheck],
+];
+const gs1Why: [string, string][] = [
+  ['Global Interoperability', 'Ensure your products are recognized by every retailer and distributor worldwide through common standards.'],
+  ['Regulatory Compliance', 'Meet stringent FDA, EU, and regional traceability laws with automated documentation workflows.'],
+  ['Standardized Identification', 'Eliminate ambiguity in your product catalog with unique, globally unique identification numbers.'],
+  ['Supply Chain Visibility', 'Gain real-time insights into the location and status of every serialized unit in your network.'],
+];
+const gs1Support = ['GTIN Management', 'SSCC Generation', 'GS1 DataMatrix Printing', 'Serialization Support', 'Global Standards Validation', 'Enterprise Integration (API)'];
+const gs1Workflow = ['Create Product', 'Assign GTIN', 'Generate Serial Number', 'Create GS1 DataMatrix', 'Package & Aggregate', 'Verify', 'Track & Trace'];
+const gs1Features: [string, string, LucideIcon][] = [
+  ['GTIN Management', 'Centralized repository for all Global Trade Item Numbers with automated uniqueness validation.', Archive],
+  ['SSCC Support', 'Dynamic generation of Serial Shipping Container Codes for pallet and case aggregation.', PackageCheck],
+  ['GS1 DataMatrix', 'Engineered for high-speed printing and industrial scanning environments.', Grid2x2],
+  ['Serialization', 'Mass serialization capabilities capable of handling millions of unique identifiers per minute.', Menu],
+  ['Aggregation', 'Hierarchical parent-child linking from individual unit to master pallet.', Network],
+  ['Compliance Analytics', 'Real-time dashboards monitoring scan rates and regulatory readiness scores.', ChartColumnBig],
+];
+const gs1Benefits: [string, string, LucideIcon][] = [
+  ['Global Compliance', 'Automatic adherence to over 40+ national pharmaceutical and food safety regulations.', Globe],
+  ['Supply Chain Standardization', 'Unified data language reduces friction between manufacturers, wholesalers, and providers.', SlidersVertical],
+  ['Faster Integration', 'Rapid onboarding for trading partners with standard GS1 electronic message support.', Gauge],
+  ['Regulatory Readiness', 'Be audit-ready 24/7 with comprehensive digital audit trails and EPCIS event logs.', ClipboardCheck],
+  ['Enterprise Scalability', 'Cloud-native architecture that grows with your production volume without performance lag.', TrendingUp],
+  ['Improved Traceability', 'Locate specific batches or units in seconds to mitigate risk and handle recalls efficiently.', Crosshair],
+];
+
+function Gs1StandardsCompliance() {
+  return <Shell>
+    <section className="gs1-hero" aria-labelledby="gs1-hero-title">
+      <div className="container-tight gs1-hero-inner">
+        <div className="fade-up">
+          <p className="gs1-pill"><span className="gs1-pill-dot" />ENTERPRISE SOLUTION</p>
+          <h1 id="gs1-hero-title" className="gs1-h1">Build GS1-Compliant Product Identification at Enterprise Scale</h1>
+          <p className="gs1-hero-copy">Implement global GS1 standards for product identification, serialization and traceability. Support GTIN, SSCC, GS1 DataMatrix and standardized product data across your supply chain.</p>
+          <div className="gs1-hero-actions">
+            <Link href="/contact-us" data-testid="button-gs1-book-demo-hero" className="gs1-btn gs1-btn-primary">Book a Demo</Link>
+            <Link href="/platform" data-testid="button-gs1-view-platform" className="gs1-btn gs1-btn-ghost">View Platform</Link>
+          </div>
+        </div>
+        <div className="gs1-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/gs1-compliance-hero-full.png`} alt="TracelyTag GS1 compliance flow: a manufacturing line assigns GTINs, automated serialization servers generate unique IDs, an industrial printer applies GS1 DataMatrix codes to serialized units, and pallets are labelled through SSCC aggregation, all routed through the centralized TracelyTag GS1 verification platform" />
+        </div>
+      </div>
+    </section>
+
+    <section className="gs1-cards" aria-label="GS1 compliance capabilities">
+      <div className="container-tight gs1-card-grid">
+        {gs1Cards.map(([title, copy, Icon]) => <article key={title} className="gs1-card">
+          <Icon size={24} strokeWidth={2} className="text-[#0e3f9e]" />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="gs1-why" aria-labelledby="gs1-why-title">
+      <div className="container-tight gs1-why-inner">
+        <div>
+          <h2 id="gs1-why-title" className="gs1-h2">Why GS1 Compliance Matters</h2>
+          <div className="gs1-why-grid">
+            {gs1Why.map(([title, copy]) => <div key={title} className="gs1-why-item">
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>)}
+          </div>
+        </div>
+        <div className="gs1-panel">
+          <h2>Enterprise GS1 Support</h2>
+          <ul className="gs1-panel-list">
+            {gs1Support.map(item => <li key={item}><CircleCheck size={19} strokeWidth={2} />{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="gs1-flow" aria-labelledby="gs1-flow-title">
+      <div className="container-tight gs1-flow-inner">
+        <h2 id="gs1-flow-title" className="gs1-h2 is-center">The Serialization Workflow</h2>
+        <ol className="gs1-flow-grid">
+          {gs1Workflow.map((label, index) => <li key={label} className="gs1-flow-step">
+            <span className="gs1-flow-num">{index + 1}</span>
+            <h3>{label}</h3>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="gs1-features" aria-labelledby="gs1-features-title">
+      <div className="container-tight gs1-features-inner">
+        <h2 id="gs1-features-title" className="gs1-h2">Advanced Compliance Features</h2>
+        <div className="gs1-feature-grid">
+          {gs1Features.map(([title, copy, Icon]) => <article key={title} className="gs1-feature-card">
+            <Icon size={22} strokeWidth={2} className="text-[#0e3f9e]" />
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="gs1-dash" aria-labelledby="gs1-dash-title">
+      <div className="container-tight gs1-dash-inner">
+        <div className="gs1-dash-head">
+          <div>
+            <h2 id="gs1-dash-title" className="gs1-h2">GS1 Compliance Intelligence</h2>
+            <p className="gs1-dash-sub">Unified dashboard for global serialization monitoring.</p>
+          </div>
+          <Link href="/contact-us" data-testid="button-gs1-open-dashboard" className="gs1-btn gs1-btn-primary gs1-dash-cta">Open Dashboard</Link>
+        </div>
+        <div className="gs1-dash-art">
+          <img src={`${root}solution-crops/gs1-compliance-dashboard.png`} alt="GS1 Compliance Intelligence dashboard on a desktop monitor with Dashboard, GTIN Registry, SSCC Management, Serialization, Code Gen and Analytics tabs: a 94% healthy GS1 compliance score gauge, serialization status for batches at 85%, 42% and 100% complete, code generation throughput of 12,000 codes per minute, a GTIN registry table of active Premium Widget entries, SSCC management cards showing units in transit to EU hubs, and a compliance analytics regional readiness world map with EU, NA and APAC readiness callouts" />
+        </div>
+      </div>
+    </section>
+
+    <section className="gs1-benefits" aria-label="GS1 compliance business benefits">
+      <div className="container-tight gs1-benefit-grid">
+        {gs1Benefits.map(([title, copy, Icon]) => <div key={title} className="gs1-benefit">
+          <h3><Icon size={19} strokeWidth={2} />{title}</h3>
+          <p>{copy}</p>
+        </div>)}
+      </div>
+    </section>
+
+    <section className="gs1-cta" aria-labelledby="gs1-cta-title">
+      <div className="container-tight gs1-cta-inner">
+        <h2 id="gs1-cta-title">Ready to Implement GS1 Standards?</h2>
+        <p>Join hundreds of global manufacturers who rely on TracelyTag for their serialization and GS1 compliance needs.</p>
+        <div className="gs1-cta-actions">
+          <Link href="/contact-us" data-testid="button-gs1-book-demo" className="gs1-btn gs1-cta-primary">Book a Demo</Link>
+          <Link href="/contact-us" data-testid="button-gs1-contact-sales" className="gs1-btn gs1-cta-ghost">Contact Sales</Link>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
 function Router() {
   return <ErrorBoundary resetKey={useLocation()[0]}><Switch>
     <Route path="/" component={Home} /><Route path="/about-us" component={About} /><Route path="/why-tracelytag" component={Why} /><Route path="/platform" component={Platform} />
-    <Route path="/platform/gs1-standards-compliance"><Gs1CompliancePage Shell={Shell} /></Route>
+    <Route path="/platform/gs1-standards-compliance" component={Gs1StandardsCompliance} />
     <Route path="/platform/loyalty-programs"><DigitalLoyaltyPage Shell={Shell} /></Route>
     <Route path="/platform/product-digitalization"><ProductDigitalizationPage Shell={Shell} /></Route>
     <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
