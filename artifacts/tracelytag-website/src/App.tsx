@@ -4905,6 +4905,151 @@ function LoyaltyPrograms() {
   </Shell>;
 }
 
+const mvfCards: [string, string, LucideIcon][] = [
+  ['Instant Verification', 'Sub-second authentication results delivered globally.', Zap],
+  ['Mobile Experience', 'Intuitive, app-free verification via standard web browsers.', Smartphone],
+  ['Consumer Trust', 'Build brand loyalty through verifiable transparency.', ShieldCheck],
+  ['Connected Products', 'Bridge the physical and digital product journey.', Waypoints],
+];
+const mvfPanelItems = ['Secure QR Scan', 'Instant Authentication', 'Product Information', 'Digital Warranty', 'Loyalty Integration', 'Verification Analytics'];
+const mvfWorkflow: [string, string][] = [
+  ['Scan Product', 'User scans the unique secure QR code on the physical product package using a mobile device.'],
+  ['Verify QR', 'The platform validates the integrity and uniqueness of the GS1 digital link or secure identifier.'],
+  ['Authenticate Product', 'Proprietary algorithms check for counterfeit signatures or unauthorized duplication of the identifier.'],
+  ['Display Product Information', 'Rich product data, manufacturing details, and origin information are instantly presented to the user.'],
+  ['Consumer Engagement', 'Activation of value-added services such as digital warranties, loyalty points, or recycling instructions.'],
+  ['Analytics Recorded', 'The scan event, location (opt-in), and verification status are securely logged for enterprise analysis.'],
+  ['Business Intelligence', 'Real-time alerts and trends are delivered to management dashboards for strategic decision making.'],
+];
+const mvfFeatures: [string, string, LucideIcon][] = [
+  ['QR Scanning', 'Advanced scanning technology compatible with all smartphone cameras without third-party apps.', QrCode],
+  ['Authentication', 'Cryptographic verification layers that identify genuine products and highlight potential fraud.', ShieldCheck],
+  ['Product Information', 'Dynamic content delivery system showing specifications, usage guides, and compliance data.', Info],
+  ['Digital Services', 'Easily integrate warranty registration, service requests, and brand-authorized digital touchpoints.', Grip],
+  ['Consumer Engagement', 'Build direct relationships through personalized content based on the verified product instance.', Users],
+  ['Verification Analytics', 'Deep insights into scan locations, user behaviors, and regional authentication trends.', ScanSearch],
+];
+const mvfBenefits: [string, string, LucideIcon][] = [
+  ['Increase Consumer Trust', 'Establish a transparent link between the physical item and its digital heritage.', TrendingUp],
+  ['Instant Verification', 'Eliminate manual checks with lightning-fast automated mobile authentication.', Gauge],
+  ['Reduce Counterfeits', 'Detect and deter illicit trade through real-time global monitoring and alerts.', Shield],
+  ['Improve Customer Experience', 'Provide immediate value and peace of mind at the critical moment of scan.', Smile],
+  ['Real-Time Insights', 'Leverage scan data to optimize supply chains and marketing strategies.', ChartNoAxesCombined],
+  ['Enterprise Scalability', 'Deploy across millions of products with centralized management and security.', Sparkles],
+];
+
+function MobileVerification() {
+  return <Shell>
+    <section className="mvf-hero" aria-labelledby="mvf-hero-title">
+      <div className="container-tight mvf-hero-inner">
+        <div className="fade-up">
+          <p className="mvf-pill">MOBILE VERIFICATION ENGINE</p>
+          <h1 id="mvf-hero-title" className="mvf-h1">Verify Every Product Instantly with Mobile Verification</h1>
+          <p className="mvf-hero-copy">Empower consumers, distributors, retailers and field teams to instantly verify product authenticity using a secure mobile verification experience. Every scan delivers trusted product information, authentication results and connected digital services.</p>
+          <div className="mvf-hero-actions">
+            <Link href="/contact-us" data-testid="button-mvf-enable-verification" className="mvf-btn mvf-btn-primary">Enable Verification</Link>
+            <Link href="/platform" data-testid="button-mvf-view-demo" className="mvf-btn mvf-btn-ghost">View Demo</Link>
+          </div>
+        </div>
+        <div className="mvf-hero-art fade-up delay-1">
+          <img src={`${root}solution-crops/verification-engine-hero-full.png`} alt="TracelyTag mobile verification flow: a secure QR code and mobile scan feed a cloud verification engine backed by a product authenticity database with data encryption, real-time verification and a traceability chain, returning a Genuine Product result on a phone while a suspicious product raises a tampered or counterfeit alert" />
+        </div>
+      </div>
+    </section>
+
+    <section className="mvf-cards" aria-label="Mobile verification capabilities">
+      <div className="container-tight mvf-card-grid">
+        {mvfCards.map(([title, copy, Icon]) => <article key={title} className="mvf-card">
+          <Icon size={24} strokeWidth={2} className="text-[#0e3f9e]" />
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="mvf-enterprise" aria-labelledby="mvf-enterprise-title">
+      <div className="container-tight">
+        <div className="mvf-enterprise-card">
+          <div>
+            <h2 id="mvf-enterprise-title">Enterprise Mobile Verification</h2>
+            <p className="mvf-enterprise-copy">Our enterprise-grade platform provides the infrastructure needed for global scale verification, ensuring high availability and tamper-proof security across all markets.</p>
+            <ul className="mvf-enterprise-grid">
+              {mvfPanelItems.map(item => <li key={item}><CircleCheck size={19} strokeWidth={2} />{item}</li>)}
+            </ul>
+          </div>
+          <div className="mvf-uptime">
+            <QrCode size={54} strokeWidth={1.8} />
+            <p>99.99% AUTHENTICATION UPTIME</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="mvf-flow" aria-labelledby="mvf-flow-title">
+      <div className="container-tight mvf-flow-inner">
+        <h2 id="mvf-flow-title" className="mvf-h2 is-center">The Verification Workflow</h2>
+        <span className="mvf-rule" />
+        <ol className="mvf-flow-list">
+          {mvfWorkflow.map(([title, copy], index) => <li key={title} className="mvf-flow-step">
+            <span className="mvf-flow-num">{index + 1}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </div>
+          </li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section className="mvf-features" aria-label="Mobile verification feature set">
+      <div className="container-tight mvf-feature-grid">
+        {mvfFeatures.map(([title, copy, Icon]) => <article key={title} className="mvf-feature-card">
+          <span className="mvf-feature-icon"><Icon size={20} strokeWidth={2} /></span>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="mvf-benefits" aria-labelledby="mvf-benefits-title">
+      <div className="container-tight mvf-benefits-inner">
+        <h2 id="mvf-benefits-title" className="mvf-h2 is-center">Enterprise Business Benefits</h2>
+        <span className="mvf-rule" />
+        <div className="mvf-benefit-grid">
+          {mvfBenefits.map(([title, copy, Icon]) => <div key={title} className="mvf-benefit">
+            <h3><Icon size={19} strokeWidth={2} />{title}</h3>
+            <p>{copy}</p>
+          </div>)}
+        </div>
+      </div>
+    </section>
+
+    <section className="mvf-intel" aria-labelledby="mvf-intel-title">
+      <div className="container-tight mvf-intel-inner">
+        <h2 id="mvf-intel-title" className="mvf-intel-title">Actionable Intelligence</h2>
+        <p className="mvf-intel-sub">Monitor your global verification network from a single, high-fidelity command center.</p>
+        <div className="mvf-intel-art">
+          <span className="mvf-intel-dots"><i /><i /><i /></span>
+          <img src={`${root}solution-crops/verification-engine-dashboard.png`} alt="VerifiCore Verification Intelligence Overview for the last 30 days: verification requests at 1.8M daily volume up 14.2% with 61K average requests, 96.5M total successful verifications and a 99.8% verification success rate, a suspicious products table listing 5 high risk items with investigate actions, a global scan locations heatmap, verification trends comparing requests and successes by week, and security analytics showing an operational system at 99.99% uptime with a platform risk score of 14 and a minimal threat level" />
+        </div>
+      </div>
+    </section>
+
+    <section className="mvf-cta" aria-labelledby="mvf-cta-title">
+      <div className="container-tight">
+        <div className="mvf-cta-card">
+          <h2 id="mvf-cta-title">Ready to Enable Instant Product Verification?</h2>
+          <p>Join leading global brands securing their supply chains and engaging consumers with TracelyTag's Mobile Verification solution.</p>
+          <div className="mvf-cta-actions">
+            <Link href="/contact-us" data-testid="button-mvf-book-demo" className="mvf-btn mvf-cta-primary">Book a Demo</Link>
+            <Link href="/contact-us" data-testid="button-mvf-contact-sales" className="mvf-btn mvf-cta-ghost">Contact Sales</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </Shell>;
+}
+
 function Solutions() { return <Shell><Hero eyebrow="SOLUTIONS" title="Solutions for Every Product Journey" copy="Connect your product, your supply chain, and your customer experience with TracelyTag." image="why-hero-diagram.png" alt="TracelyTag solutions ecosystem" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{solutionItems.map(([t, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`card-solution-${slug}`} className="card-line rounded border bg-white p-6"><Sparkles size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore solution <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 function Industries() { return <Shell><Hero eyebrow="INDUSTRIES" title="Product Intelligence for Every Industry" copy="TracelyTag connects products, people, and performance across the world's most demanding industries." image="about-hero-diagram.png" alt="Connected industry traceability" /><section className="container-tight grid gap-4 py-12 md:grid-cols-3">{industryItems.map(([t, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`card-industry-${slug}`} className="card-line rounded border bg-white p-6"><Icon size={18} className="mb-8 text-[#0753a4]" /><h3 className="text-[13px] font-bold text-[#20324b]">{t}</h3><span className="mt-8 inline-flex items-center gap-2 text-[10px] font-bold text-[#0753a4]">Explore industry <ArrowRight size={13}/></span></Link>)}</section></Shell>; }
 
@@ -4917,7 +5062,7 @@ function Router() {
     <Route path="/platform/product-authentication"><ProductAuthenticationPage Shell={Shell} /></Route>
     <Route path="/platform/Refined-Product-Authentication" component={RefinedProductAuthentication} />
     <Route path="/platform/case-pallet-aggregation" component={CasePalletAggregation} />
-    <Route path="/platform/mobile-verification"><MobileVerificationPage Shell={Shell} /></Route>
+    <Route path="/platform/mobile-verification" component={MobileVerification} />
     <Route path="/platform/brand-protection"><SupplyChainIntegrityPage Shell={Shell} /></Route>
     <Route path="/solutions/supply-chain-visibility"><SupplyChainIntegrityPage Shell={Shell} /></Route>
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
