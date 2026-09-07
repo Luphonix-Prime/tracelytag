@@ -22,6 +22,7 @@ const root = '/reference/img/';
 const platformItems = [
   ['Product Digitalization', '/platform/product-digitalization', QrCode],
   ['Product Authentication', '/platform/product-authentication', ShieldCheck],
+  ['Refined Product Authentication', '/platform/Refined-Product-Authentication', BadgeCheck],
   ['Case & Pallet Aggregation', '/platform/case-pallet-aggregation', Boxes],
   ['GS1 Standards Compliance', '/platform/gs1-standards-compliance', Check],
   ['Loyalty Programs', '/platform/loyalty-programs', Users],
