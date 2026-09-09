@@ -2,7 +2,7 @@
 
 Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS block appended to `src/index.css`. All copy is transcribed verbatim from the source mockup in `public/reference/img/` — nothing shortened or reworded. Images were extracted from the mockups at 2× into `public/reference/img/*-crops/` unless noted.
 
-**20 pages total.**
+**26 pages total.**
 
 ## Core
 
@@ -46,6 +46,25 @@ Every page below is a dedicated component in `src/App.tsx` with a namespaced CSS
 **Digital Warranty image note:** its mockup has no artwork — both image slots render as empty placeholder rectangles in the source PNG, and the pre-existing `digital-warranty-hero.png` crop is that blank placeholder. The two slots reuse existing repo assets instead: `about-hero-diagram.png` (hero) and `about-dashboard-monitor.png` (Powerful Control Center).
 
 **Premium Product Authentication image note:** only the Counterfeit Challenge illustration renders in its mockup (extracted as `product-authentication-counterfeit-map.png`); the hero and Enterprise Authentication Intelligence slots are blank placeholders, as is the pre-existing `premium-product-authentication-hero.png` crop. Those two reuse `anti-counterfeiting-hero-full.png` and `anti-counterfeiting-dashboard.png`.
+
+## Platform
+
+| Route | Component | CSS prefix | Images (`solution-crops/`) |
+| --- | --- | --- | --- |
+| `/platform/case-pallet-aggregation` | `CasePalletAggregation` | `.aggr-` | `aggregation-hero-full.png`, `aggregation-control-center.png` |
+| `/platform/gs1-standards-compliance` | `Gs1StandardsCompliance` | `.gs1-` | `gs1-compliance-hero-full.png`, `gs1-compliance-dashboard.png` |
+| `/platform/loyalty-programs` | `LoyaltyPrograms` | `.loy-` | see note below |
+| `/platform/mobile-verification` | `MobileVerification` | `.mvf-` | see note below |
+| `/platform/product-digitalization` | `ProductDigitalization` | `.pdg-` | `product-digitalization-hero-full.png`, `product-digitalization-control-center.png` |
+| `/platform/Refined-Product-Authentication` | `RefinedProductAuthentication` | `.rpa-` | see note below |
+
+**Refined Product Authentication note:** built from `platefoam/Refined Product Authentication Solution.png`, whose copy is word-for-word identical to the Premium Product Authentication v2 mockup already implemented at `/solutions/premium-product-authentication`. The only structural difference is the workflow, which uses STEP 01–STEP 06 eyebrow labels here instead of numbered circles. Its own image slots are the same blank placeholders as v2 (hero and Enterprise Authentication Intelligence), and its Counterfeit Challenge illustration has the mockup's overflowing page heading baked into the artwork, so all three slots reuse the existing crops: `anti-counterfeiting-hero-full.png`, `product-authentication-counterfeit-map.png` and `anti-counterfeiting-dashboard.png`.
+
+**Product Digitalization merge note:** this page merges both mockup variants — `Product Digitalization Solution - UI Standardization.png` and its `(1)` sibling — with nothing dropped. The base variant supplies the 4 described capability cards, the six bare Why bullets, the 7-step STEP 01-07 journey, Advanced Features and Business Benefits; the second supplies the Why subtitle, four described problem cards, The Connected Journey heading, Advanced Digitalization Features and Business Value, all of which carry different copy and are rendered alongside rather than deduplicated. Only the second variant has artwork, so both its crops are used here.
+
+**Mobile Verification image note:** its mockup ships no artwork either — the hero slot is an empty rounded bar and the Actionable Intelligence slot is empty browser chrome. The two slots reuse `verification-engine-hero-full.png` and `verification-engine-dashboard.png`, whose subject matter (QR scan into a cloud verification engine, and a verification intelligence console) matches this page's copy.
+
+**Loyalty Programs image note:** its mockup ships no artwork — both image slots (hero and Command Center for Customer Engagement) render as empty rounded placeholder bars in the source PNG. The two slots reuse the closest existing crops instead: `consumer-engagement-hero-full.png` (a consumer scanning a product QR out to offers, registration and feedback) and `consumer-engagement-dashboard.png` (scan volume, engagement rate, campaign performance and a geographic heatmap).
 
 ## Notes
 
