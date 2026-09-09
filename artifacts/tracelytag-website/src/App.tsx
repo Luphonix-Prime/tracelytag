@@ -6,6 +6,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Link, Redirect, useLocation, useParams, Router as WouterRouter } from 'wouter';
 import { Archive, ArrowRight, ArrowRightLeft, Asterisk, Award, BadgeCheck, Ban, Banknote, BarChart3, Barcode, BellRing, Book, BookOpen, Bot, BotMessageSquare, Box, Boxes, Brackets, BrainCog, BriefcaseMedical, Building2, Calculator, ChartColumn, ChartColumnBig, ChartLine, ChartNoAxesCombined, ChartPie, ChartScatter, Check, CheckCheck, ChevronDown, ChevronRight, CircleAlert, CircleCheck, CirclePlus, CircleQuestionMark, CircleStar, CircleUserRound, CircleX, ClipboardCheck, ClipboardList, ClipboardPaste, Cloud, CloudDownload, CloudUpload, Code, CodeXml, Cog, Command, Container, Cpu, Crosshair, Database, Download, DropletOff, Eye, EyeOff, Factory, FileCheck, FileClock, FileText, FileUser, Fingerprint, Forklift, Frown, Gauge, Gavel, Gem, Gift, Globe, Globe2, Grid2x2, Grid2x2Plus, Grip, HandHeart, Handshake, Hash, Headset, Heart, History, Icon, IdCard, Info, Layers, LayoutPanelTop, LayoutTemplate, Leaf, Link2, List, ListOrdered, Locate, LockKeyhole, LockKeyholeOpen, Map, MapPin, Maximize, Megaphone, Menu, MessageSquare, MessageSquarePlus, MessageSquareText, MessagesSquare, Microscope, Monitor, MonitorSmartphone, MousePointerClick, Network, OctagonAlert, Package, PackageCheck, PanelsTopLeft, PanelTop, PartyPopper, PencilLine, PiggyBank, Pill, Pointer, Printer, Puzzle, QrCode, Radar, RefreshCw, Repeat, Rocket, Route as RouteIcon, Scale, Scan, ScanBarcode, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, SearchCheck, Send, Server, Shapes, Share2, Shield, ShieldAlert, ShieldCheck, ShieldEllipsis, ShieldPlus, ShieldUser, Shirt, ShoppingBasket, ShoppingCart, Shuffle, SlidersVertical, Smartphone, SmartphoneCharging, Smile, Sparkles, SquareActivity, SquareCheckBig, SquarePen, SquareTerminal, Star, Store, TabletSmartphone, Tag, ThumbsUp, Ticket, Tractor, TrendingDown, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, User, UserCheck, UserRoundCheck, UserRoundCog, UserRoundPlus, UserRoundX, Users, UserSearch, UsersRound, Utensils, View, WandSparkles, Warehouse, Waypoints, Workflow, X, Zap, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
+import { TextHoverEffect, FooterBackgroundGradient } from '@/components/ui/text-hover-effect';
 import { 
   Gs1CompliancePage, 
   DigitalLoyaltyPage, 
@@ -29,19 +30,23 @@ const platformItems = [
   ['Mobile Verification', '/platform/mobile-verification', ScanLine],
 ] as const;
 const solutionItems = [
-  ['Analytics & Business Intelligence', 'analytics-business-intelligence'],
-  ['Anti-Counterfeiting Solution', 'anti-counterfeiting'],
-  ['Apparel & Clothing Industry', 'apparel-clothing'],
-  ['Connected Packaging Solution', 'connected-packaging'],
-  ['Customer Data Platform', 'customer-data-platform'],
-  ['Digital Warranty Solution', 'digital-warranty'],
-  ['Premium Product Authentication', 'premium-product-authentication'],
-  ['Product Authentication Solution', 'product-authentication'],
-  ['QR Code Generation & Serialization', 'qr-code-generation-serialization'],
-  ['Marketing Automation', 'marketing-automation'],
-  ['Supply Chain Visibility Solution', 'supply-chain-visibility'],
-  ['Track & Trace Solution', 'track-and-trace'],
-  ['Verification Engine', 'verification-engine'],
+
+  ['Analytics & Business Intelligence', 'analytics-business-intelligence', BarChart3],
+  ['Analytics Dashboard', 'analytics-dashboard', LayoutPanelTop],
+  ['Analytics Dashboard Insights', 'analytics-dashboard-insights', TrendingUp],
+  ['Anti-Counterfeiting Solution', 'anti-counterfeiting', ShieldAlert],
+  ['Apparel & Clothing Industry', 'apparel-clothing', Sparkles],
+  ['Connected Packaging Solution', 'connected-packaging', Package],
+  ['Consumer Engagement Solution', 'consumer-engagement', Users],
+  ['Customer Data Platform', 'customer-data-platform', Network],
+  ['Digital Warranty Solution', 'digital-warranty', Award],
+  ['Premium Product Authentication', 'premium-product-authentication', BadgeCheck],
+  ['Product Authentication Solution', 'product-authentication', ShieldCheck],
+  ['QR Code Generation & Serialization', 'qr-code-generation-serialization', QrCode],
+  ['Marketing Automation', 'marketing-automation', Megaphone],
+  ['Supply Chain Visibility Solution', 'supply-chain-visibility', Truck],
+  ['Track & Trace Solution', 'track-and-trace', RouteIcon],
+  ['Verification Engine', 'verification-engine', ScanSearch],
 ] as const;
 const industryItems = [
   ['Agriculture & AgTech', 'agriculture-agtech', Factory],
@@ -54,39 +59,153 @@ const industryItems = [
 ] as const;
 
 function Brand() {
-  return <Link href="/" data-testid="link-brand" className="flex items-center gap-2.5 shrink-0"><span className="brand-mark"><span /></span><span className="display text-[18px] font-extrabold tracking-[-.06em] text-[#123a78]">TracelyTag</span></Link>;
+  return <Link href="/" data-testid="link-brand" className="flex items-center gap-2.5 shrink-0"><img src="/tracelytag-logo.png" alt="TracelyTag Logo" className="h-8 w-8 object-contain shrink-0" /><span className="display text-[19px] font-extrabold tracking-[-.05em] text-[#123a78]">TracelyTag</span></Link>;
 }
 
-function Dropdown({ label, children, active }: { label: string; children: ReactNode; active?: boolean }) {
-  const [open, setOpen] = useState(false);
-  return <div className="nav-group relative flex items-center">
-    <button onClick={() => setOpen(!open)} data-testid={`button-open-${label.toLowerCase()}`} className={`nav-link flex items-center gap-1.5 py-5 text-[12px] font-semibold ${active ? 'active' : ''}`}>{label}<ChevronDown size={13} strokeWidth={1.8} /></button>
-    <div className={`mega-menu ${open ? 'open' : ''}`}>{children}</div>
-  </div>;
+function Dropdown({ 
+  label, 
+  children, 
+  active, 
+  isOpen, 
+  onOpen, 
+  onClose,
+  align = "center"
+}: { 
+  label: string; 
+  children: ReactNode; 
+  active?: boolean; 
+  isOpen: boolean; 
+  onOpen: () => void; 
+  onClose: () => void;
+  align?: "left" | "center" | "right";
+}) {
+  return (
+    <div 
+      className="relative flex items-center"
+      onMouseEnter={onOpen}
+    >
+      <button 
+        onClick={() => (isOpen ? onClose() : onOpen())} 
+        data-testid={`button-open-${label.toLowerCase()}`} 
+        className={`nav-link flex items-center gap-1.5 py-5 text-[12px] font-semibold transition-colors ${active || isOpen ? 'text-[#064aa0]' : ''}`}
+      >
+        {label}
+        <ChevronDown size={13} strokeWidth={1.8} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#064aa0]' : ''}`} />
+      </button>
+
+      {isOpen && (
+        <div 
+          className={`absolute top-full z-50 pt-2 transition-all duration-200 ${
+            align === "left" ? "left-0" : align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
+          }`}
+        >
+          <div className="mega-menu rounded-xl p-3">
+            {children}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function Header() {
   const [mobile, setMobile] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [location] = useLocation();
-  return <header className="site-header">
+
+  const handleClose = () => setActiveDropdown(null);
+
+  return <header className="site-header relative z-40 bg-white/95 backdrop-blur-md border-b border-[#e2e8f0]">
     <div className="container-tight flex h-[70px] items-center justify-between gap-5">
       <Brand />
-      <nav className="hidden lg:flex items-center gap-6">
-        <Link href="/about-us" data-testid="link-about-us" className={`nav-link text-[12px] font-semibold py-5 ${location === '/about-us' ? 'active' : ''}`}>About Us</Link>
-        <Link href="/why-tracelytag" data-testid="link-why-tracelytag" className={`nav-link text-[12px] font-semibold py-5 ${location === '/why-tracelytag' ? 'active' : ''}`}>Why TracelyTag</Link>
-        <Dropdown label="Platform" active={location.startsWith('/platform')}><div className="grid w-[470px] grid-cols-2 gap-1 p-3">{platformItems.map(([name, href, Icon]) => <Link key={href} href={href} data-testid={`link-platform-${href.split('/').pop()}`} className="menu-item flex items-center gap-3 rounded-lg px-3 py-3"><span className="grid size-8 place-items-center rounded-md bg-[#edf5ff] text-[#0753a4]"><Icon size={16} strokeWidth={1.7} /></span><span className="text-[12px] font-semibold text-[#15345e]">{name}</span></Link>)}</div></Dropdown>
-        <Dropdown label="Solutions" active={location.startsWith('/solutions')}><div className="grid w-[530px] grid-cols-2 gap-1 p-3">{solutionItems.map(([name, slug]) => <Link key={slug} href={`/solutions/${slug}`} data-testid={`link-solution-${slug}`} className="menu-item rounded-lg px-3 py-3 text-[12px] font-semibold text-[#15345e]">{name}</Link>)}</div></Dropdown>
-        <Link href="/hardware-integration" data-testid="link-hardware-integration" className={`nav-link text-[12px] font-semibold py-5 ${location === '/hardware-integration' ? 'active' : ''}`}>Hardware Integration</Link>
-        <Dropdown label="Industries" active={location.startsWith('/industries')}><div className="w-[310px] p-3">{industryItems.map(([name, slug, Icon]) => <Link key={slug} href={`/industries/${slug}`} data-testid={`link-industry-${slug}`} className="menu-item flex items-center gap-3 rounded-lg px-3 py-2.5"><span className="text-[#0753a4]"><Icon size={16} strokeWidth={1.7} /></span><span className="text-[12px] font-semibold text-[#15345e]">{name}</span></Link>)}</div></Dropdown>
-        <Link href="/contact-us" data-testid="link-contact-us" className="rounded-[4px] bg-[#064aa0] px-4 py-2.5 text-[12px] font-bold text-white transition hover:bg-[#053b81]">Contact Us</Link>
-        <Link href="/login" data-testid="link-login" className="nav-link text-[12px] font-semibold">Login</Link>
+      <nav className="hidden lg:flex items-center gap-6" onMouseLeave={handleClose}>
+        <Link href="/about-us" onClick={handleClose} data-testid="link-about-us" className={`nav-link text-[12px] font-semibold py-5 ${location === '/about-us' ? 'active' : ''}`}>About Us</Link>
+        <Link href="/why-tracelytag" onClick={handleClose} data-testid="link-why-tracelytag" className={`nav-link text-[12px] font-semibold py-5 ${location === '/why-tracelytag' ? 'active' : ''}`}>Why TracelyTag</Link>
+        
+        <Dropdown 
+          label="Platform" 
+          active={location.startsWith('/platform')}
+          isOpen={activeDropdown === 'Platform'}
+          onOpen={() => setActiveDropdown('Platform')}
+          onClose={handleClose}
+          align="left"
+        >
+          <div className="grid w-[470px] grid-cols-2 gap-1 p-1">
+            {platformItems.map(([name, href, Icon]) => (
+              <Link 
+                key={href} 
+                href={href} 
+                onClick={handleClose}
+                data-testid={`link-platform-${href.split('/').pop()}`} 
+                className="menu-item flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-[#edf5ff] transition-colors"
+              >
+                <span className="grid size-8 place-items-center rounded-md bg-[#edf5ff] text-[#0753a4] shrink-0">
+                  <Icon size={16} strokeWidth={1.7} />
+                </span>
+                <span className="text-[12px] font-semibold text-[#15345e]">{name}</span>
+              </Link>
+            ))}
+          </div>
+        </Dropdown>
+
+        <Dropdown 
+          label="Solutions" 
+          active={location.startsWith('/solutions')}
+          isOpen={activeDropdown === 'Solutions'}
+          onOpen={() => setActiveDropdown('Solutions')}
+          onClose={handleClose}
+          align="center"
+        >
+          <div className="grid w-[540px] grid-cols-2 gap-1 p-1">
+            {solutionItems.map(([name, slug, Icon]) => (
+              <Link 
+                key={slug} 
+                href={`/solutions/${slug}`} 
+                onClick={handleClose}
+                data-testid={`link-solution-${slug}`} 
+                className="menu-item flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-[#edf5ff] transition-colors"
+              >
+                <span className="text-[#0753a4] shrink-0"><Icon size={16} strokeWidth={1.7} /></span>
+                <span className="text-[12px] font-semibold text-[#15345e]">{name}</span>
+              </Link>
+            ))}
+          </div>
+        </Dropdown>
+
+        <Link href="/hardware-integration" onClick={handleClose} data-testid="link-hardware-integration" className={`nav-link text-[12px] font-semibold py-5 ${location === '/hardware-integration' ? 'active' : ''}`}>Hardware Integration</Link>
+
+        <Dropdown 
+          label="Industries" 
+          active={location.startsWith('/industries')}
+          isOpen={activeDropdown === 'Industries'}
+          onOpen={() => setActiveDropdown('Industries')}
+          onClose={handleClose}
+          align="right"
+        >
+          <div className="w-[300px] p-1">
+            {industryItems.map(([name, slug, Icon]) => (
+              <Link 
+                key={slug} 
+                href={`/industries/${slug}`} 
+                onClick={handleClose}
+                data-testid={`link-industry-${slug}`} 
+                className="menu-item flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-[#edf5ff] transition-colors"
+              >
+                <span className="text-[#0753a4] shrink-0"><Icon size={16} strokeWidth={1.7} /></span>
+                <span className="text-[12px] font-semibold text-[#15345e]">{name}</span>
+              </Link>
+            ))}
+          </div>
+        </Dropdown>
+
+        <Link href="/contact-us" onClick={handleClose} data-testid="link-contact-us" className="rounded-[4px] bg-[#064aa0] px-4 py-2.5 text-[12px] font-bold text-white transition hover:bg-[#053b81]">Contact Us</Link>
       </nav>
       <button data-testid="button-toggle-mobile-nav" className="lg:hidden rounded border border-[#d8e2ee] p-2 text-[#064aa0]" onClick={() => setMobile(!mobile)} aria-label="Toggle navigation">{mobile ? <X size={20} /> : <Menu size={20} />}</button>
     </div>
     {mobile && <div className="lg:hidden border-t border-[#e2e8f0] bg-white px-4 pb-5">
       <div className="mx-auto flex max-w-[640px] flex-col gap-1 pt-3">
         {[
-          ['/about-us', 'About Us'], ['/why-tracelytag', 'Why TracelyTag'], ['/platform', 'Platform'], ['/solutions', 'Solutions'], ['/hardware-integration', 'Hardware Integration'], ['/industries', 'Industries'], ['/contact-us', 'Contact Us'], ['/login', 'Login'],
+          ['/about-us', 'About Us'], ['/why-tracelytag', 'Why TracelyTag'], ['/platform', 'Platform'], ['/solutions', 'Solutions'], ['/hardware-integration', 'Hardware Integration'], ['/industries', 'Industries'], ['/contact-us', 'Contact Us'],
         ].map(([href, label]) => <Link onClick={() => setMobile(false)} key={href} href={href} data-testid={`mobile-link-${label.toLowerCase().replaceAll(' ', '-')}`} className="rounded px-3 py-3 text-sm font-semibold text-[#15345e] hover:bg-[#f1f6fb]">{label}</Link>)}
       </div>
     </div>}
@@ -94,12 +213,64 @@ function Header() {
 }
 
 function Footer() {
-  return <footer className="mt-20 border-t border-[#dfe5eb] bg-[#f0f1f4]">
-    <div className="container-tight grid gap-10 py-10 md:grid-cols-[1.35fr_1fr_1fr_1fr]">
-      <div><Brand /><p className="mt-4 max-w-[260px] text-[11px] leading-5 text-[#606c79]">Building the secure infrastructure for the next generation of digital manufacturing and product authenticity.</p><p className="mt-7 text-[10px] text-[#7a8490]">© 2024 Industrial Integrity Systems. All rights reserved.</p></div>
-      <div><p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#15345e]">Resources</p><div className="space-y-3 text-[11px] text-[#68717d]"><Link href="/about-us" data-testid="footer-link-about">About Us</Link><Link href="/platform" data-testid="footer-link-platform">Platform</Link><Link href="/contact-us" data-testid="footer-link-contact">Contact Us</Link></div></div>
-      <div><p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#15345e]">Industries</p><div className="space-y-3 text-[11px] text-[#68717d]"><Link href="/industries" data-testid="footer-link-industries">Industries</Link><Link href="/solutions" data-testid="footer-link-solutions">Solutions</Link><Link href="/hardware-integration" data-testid="footer-link-hardware">Hardware Integration</Link></div></div>
-      <div><p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#15345e]">Legal</p><div className="space-y-3 text-[11px] text-[#68717d]"><span>Legal Compliance</span><span>Privacy Policy</span><span>Terms Status</span></div></div>
+  return <footer className="relative mt-20 overflow-hidden border-t border-[#dce3ec] bg-[#f4f6f9] py-12 text-[#526071]">
+    <FooterBackgroundGradient />
+    
+    <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30 md:opacity-40 px-4 md:px-8 max-w-full overflow-hidden">
+      <TextHoverEffect text="TRACELYTAG" />
+    </div>
+
+    <div className="container-tight relative z-10">
+      <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="space-y-4">
+          <Brand />
+          <p className="max-w-[280px] text-[12px] leading-relaxed text-[#606e7e]">Building the secure infrastructure for the next generation of digital manufacturing, serialization, and product authenticity.</p>
+          <div className="pt-1 flex items-center gap-4 text-[11px] text-[#064aa0] font-semibold">
+            <span className="flex items-center gap-1.5"><ShieldCheck size={14} /> GS1 Ready</span>
+            <span className="flex items-center gap-1.5"><LockKeyhole size={14} /> ISO 27001</span>
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#15345e]">Platform</p>
+          <div className="flex flex-col gap-2.5 text-[12px]">
+            <Link href="/platform/product-digitalization" data-testid="footer-link-digitalization" className="transition-colors hover:text-[#064aa0]">Product Digitalization</Link>
+            <Link href="/platform/product-authentication" data-testid="footer-link-authentication" className="transition-colors hover:text-[#064aa0]">Product Authentication</Link>
+            <Link href="/platform/case-pallet-aggregation" data-testid="footer-link-aggregation" className="transition-colors hover:text-[#064aa0]">Case & Pallet Aggregation</Link>
+            <Link href="/platform/gs1-standards-compliance" data-testid="footer-link-gs1" className="transition-colors hover:text-[#064aa0]">GS1 Compliance</Link>
+            <Link href="/platform/mobile-verification" data-testid="footer-link-mobile" className="transition-colors hover:text-[#064aa0]">Mobile Verification</Link>
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#15345e]">Solutions</p>
+          <div className="flex flex-col gap-2.5 text-[12px]">
+            <Link href="/solutions" data-testid="footer-link-solutions" className="transition-colors hover:text-[#064aa0]">All Solutions</Link>
+            <Link href="/hardware-integration" data-testid="footer-link-hardware" className="transition-colors hover:text-[#064aa0]">Hardware Integration</Link>
+            <Link href="/industries" data-testid="footer-link-industries" className="transition-colors hover:text-[#064aa0]">Industries Overview</Link>
+            <Link href="/industries/pharmaceuticals" data-testid="footer-link-pharma" className="transition-colors hover:text-[#064aa0]">Pharmaceuticals</Link>
+            <Link href="/industries/food-beverage" data-testid="footer-link-food" className="transition-colors hover:text-[#064aa0]">Food & Beverage</Link>
+          </div>
+        </div>
+
+        <div>
+          <p className="mb-4 text-[11px] font-bold uppercase tracking-wider text-[#15345e]">Company</p>
+          <div className="flex flex-col gap-2.5 text-[12px]">
+            <Link href="/about-us" data-testid="footer-link-about" className="transition-colors hover:text-[#064aa0]">About Us</Link>
+            <Link href="/why-tracelytag" data-testid="footer-link-why" className="transition-colors hover:text-[#064aa0]">Why TracelyTag</Link>
+            <Link href="/contact-us" data-testid="footer-link-contact" className="transition-colors hover:text-[#064aa0]">Contact Us</Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-14 pt-6 border-t border-[#e1e7f0] flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[11px] text-[#717d8d]">
+        <p>© 2026 TracelyTag / Industrial Integrity Systems. All rights reserved.</p>
+        <div className="flex flex-wrap items-center gap-6">
+          <span className="cursor-pointer hover:text-[#15345e]">Privacy Policy</span>
+          <span className="cursor-pointer hover:text-[#15345e]">Terms of Service</span>
+          <span className="cursor-pointer hover:text-[#15345e]">Security & Compliance</span>
+        </div>
+      </div>
     </div>
   </footer>;
 }
@@ -624,7 +795,7 @@ function Hardware() { return <Shell><Hero eyebrow="CONNECTED PRODUCTION" title="
 
 function Contact() { const [sent, setSent] = useState(false); return <Shell><section className="hero-grid"><div className="container-tight grid items-center gap-10 py-16 md:grid-cols-2 md:py-24"><div><p className="eyebrow mb-4">LET'S TALK</p><h1 className="display text-[42px] font-extrabold leading-[1.02] text-[#123a78] md:text-[56px]">Let's Build Smarter, Connected Products Together</h1><p className="mt-6 text-[13px] leading-6 text-[#596575]">Whether you're looking to protect your products, improve supply chain visibility or create connected consumer experiences, our team is ready to help.</p></div><img src={`${root}contact-overview-banner.png`} alt="Enterprise solutions" className="hidden w-full md:block" /></div></section><section className="container-tight grid gap-5 py-10 md:grid-cols-4">{[['Book a Demo','See how connected products work for you.'],['Talk to Sales','Discuss enterprise pricing and integration.'],['Technical Support','Get help with your existing platform.'],['Business Consultation','Strategic advice for large-scale initiatives.']].map(([t,c]) => <div key={t} className="card-line border bg-white p-5"><Network size={17} className="mb-4 text-[#0753a4]" /><h3 className="text-[12px] font-bold text-[#253750]">{t}</h3><p className="my-2 text-[10px] leading-4 text-[#697586]">{c}</p><button onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })} data-testid={`button-contact-${t.toLowerCase().replaceAll(' ','-')}`} className="text-[9px] font-bold text-[#0753a4]">GET STARTED</button></div>)}</section><section className="bg-[#f1f3f6] py-14"><div className="container-tight grid gap-10 md:grid-cols-2"><div className="rounded bg-[#064aa0] p-7 text-white"><h2 className="display text-[24px] font-bold">How We Can Help</h2><div className="mt-7 space-y-3 text-[11px] text-white/80">{['Product Demonstrations','Solution Consultation','Enterprise Deployments','Technical Discussions','Partnership Opportunities','Customer Success'].map(x => <p key={x}><ArrowRight size={13} className="mr-2 inline" />{x}</p>)}</div></div><form id="contact-form" onSubmit={e => {e.preventDefault();setSent(true)}} className="rounded border bg-white p-7"><p className="eyebrow">CONTACT US</p><h2 className="display mt-2 text-[28px] font-bold">Start a conversation.</h2>{sent ? <div className="mt-8 rounded bg-[#eff8f3] p-5 text-sm text-[#205f42]">Thank you. Your message has been sent.</div> : <><div className="mt-6 grid gap-4 sm:grid-cols-2">{['First Name','Last Name','Business Email','Company'].map(label => <label key={label} className="text-[10px] font-bold text-[#4f5f72]">{label}<input required data-testid={`input-${label.toLowerCase().replaceAll(' ','-')}`} className="mt-2 block w-full rounded border border-[#d5dfe9] px-3 py-3 text-xs font-normal outline-none focus:border-[#0753a4]" /></label>)}</div><label className="mt-4 block text-[10px] font-bold text-[#4f5f72]">How can we help?<textarea required data-testid="input-message" className="mt-2 block min-h-28 w-full rounded border border-[#d5dfe9] px-3 py-3 text-xs font-normal outline-none focus:border-[#0753a4]" /></label><button data-testid="button-submit-contact" className="mt-5 rounded bg-[#064aa0] px-5 py-3 text-[11px] font-bold text-white">Submit Request</button></>}</form></div></section><CTA title="Ready to Start Your Digital Product Journey?" copy="Our team is ready to help you take the next step." /></Shell>; }
 
-function Login() { return <Shell><section className="hero-grid flex min-h-[650px] items-center justify-center px-5 py-16"><div className="w-full max-w-[420px] rounded border bg-white p-8 shadow-[0_14px_35px_rgba(22,68,129,.08)]"><Brand /><p className="eyebrow mt-12">WELCOME BACK</p><h1 className="display mt-3 text-[34px] font-bold">Login</h1><p className="mt-2 text-[12px] text-[#697586]">Access your TracelyTag platform.</p><form className="mt-8 space-y-4" onSubmit={e => e.preventDefault()}><label className="block text-[10px] font-bold text-[#4f5f72]">Email<input type="email" required data-testid="input-login-email" className="mt-2 block w-full rounded border px-3 py-3 text-sm font-normal" /></label><label className="block text-[10px] font-bold text-[#4f5f72]">Password<input type="password" required data-testid="input-login-password" className="mt-2 block w-full rounded border px-3 py-3 text-sm font-normal" /></label><button data-testid="button-login" className="w-full rounded bg-[#064aa0] py-3 text-[11px] font-bold text-white">Login</button></form></div></section></Shell>; }
+
 
 const genericMap: Record<string, {title:string; image:string; eyebrow:string}> = {
   'product-digitalization': { title:'Product Digitalization', image:'about-hero-diagram.png', eyebrow:'PLATFORM' },
@@ -5280,7 +5451,7 @@ function Router() {
     {platformItems.map(([, href]) => <Route key={href} path={href}><GenericPage type="platform" /></Route>)}
     <Route path="/solutions" component={Solutions} /><Route path="/solutions/analytics-business-intelligence" component={AnalyticsBusinessIntelligence} /><Route path="/solutions/analytics-dashboard"><Redirect to="/solutions/analytics-business-intelligence" /></Route><Route path="/solutions/analytics-dashboard-insights"><Redirect to="/solutions/analytics-business-intelligence" /></Route><Route path="/solutions/connected-packaging" component={ConnectedPackaging} /><Route path="/solutions/anti-counterfeiting" component={AntiCounterfeiting} /><Route path="/solutions/apparel-clothing" component={ApparelClothing} /><Route path="/solutions/digital-warranty" component={DigitalWarranty} /><Route path="/solutions/premium-product-authentication" component={PremiumProductAuthentication} /><Route path="/solutions/supply-chain-visibility" component={SupplyChainVisibility} /><Route path="/solutions/customer-data-platform" component={CustomerDataPlatform} /><Route path="/solutions/consumer-engagement"><Redirect to="/solutions/customer-data-platform" /></Route><Route path="/solutions/track-and-trace" component={TrackAndTrace} /><Route path="/solutions/verification-engine" component={VerificationEngine} /><Route path="/solutions/:slug" component={SolutionPage} />
     <Route path="/hardware-integration" component={Hardware} /><Route path="/industries" component={Industries} /><Route path="/industries/agriculture-agtech" component={AgricultureAgTech} /><Route path="/industries/apparel-fashion" component={ApparelFashion} /><Route path="/industries/cosmetics-beauty" component={CosmeticsBeauty} /><Route path="/industries/fmcg-consumer-goods" component={FmcgConsumerGoods} /><Route path="/industries/food-beverage" component={FoodBeverage} /><Route path="/industries/pharmaceuticals" component={Pharmaceuticals} /><Route path="/industries/electronics-high-tech" component={ElectronicsHighTech} /><Route path="/industries/:slug" component={IndustryPage} />
-    <Route path="/contact-us" component={Contact} /><Route path="/login" component={Login} /><Route component={NotFound} />
+    <Route path="/contact-us" component={Contact} /><Route component={NotFound} />
   </Switch></ErrorBoundary>;
 }
 function App() { return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}><Router /></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>; }
