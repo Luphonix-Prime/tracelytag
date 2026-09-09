@@ -7,6 +7,7 @@ import { Route, Switch, Link, useLocation, useParams, Router as WouterRouter } f
 import { Archive, ArrowRight, Award, BadgeCheck, Ban, BarChart3, BotMessageSquare, Boxes, BriefcaseMedical, Building2, ChartColumn, ChartNoAxesCombined, Check, ChevronDown, CircleCheck, CircleStar, ClipboardCheck, ClipboardList, ClipboardPaste, Crosshair, DropletOff, Eye, EyeOff, Factory, FileText, Fingerprint, Gavel, Globe, Globe2, HandHeart, Handshake, Hash, Heart, History, IdCard, Info, Layers, LayoutPanelTop, Leaf, LockKeyhole, Megaphone, Menu, MessagesSquare, Monitor, MonitorSmartphone, Network, OctagonAlert, Package, PackageCheck, Printer, QrCode, Radar, Rocket, Route as RouteIcon, ScanEye, ScanLine, ScanQrCode, ScanSearch, Search, Shield, ShieldAlert, ShieldCheck, ShieldPlus, ShieldUser, SlidersVertical, Smartphone, SmartphoneCharging, Sparkles, SquareCheckBig, Store, Tag, TrendingUp, TriangleAlert, Truck, Undo2, Unlink, UserCheck, UserRoundX, Users, UserSearch, Warehouse, Waypoints, X, type LucideIcon } from 'lucide-react';
 import NotFound from '@/pages/not-found';
 import { TextHoverEffect, FooterBackgroundGradient } from '@/components/ui/text-hover-effect';
+import { WorldMap } from '@/components/ui/world-map';
 import { 
   Gs1CompliancePage, 
   DigitalLoyaltyPage, 
@@ -353,7 +354,7 @@ function About() {
           </div>
         </div>
         <div className="abt-hero-art fade-up delay-1">
-          <img src={`${root}about-hero-diagram.png`} alt="TracelyTag connected ecosystem: smart manufacturing plant, secure QR code generation, product authentication checkpoints, centralized enterprise analytics dashboard, global track and trace, and consumer engagement via mobile scans" />
+          <img src={`${root}about-hero-diagram-new.jpg`} alt="TracelyTag connected ecosystem: smart manufacturing, global supply chain network, secure cloud servers, global logistics, and retail consumer mobile verification" className="rounded-lg shadow-md" />
         </div>
       </div>
     </section>
@@ -379,7 +380,7 @@ function About() {
           </div>
         </div>
         <div className="abt-mission">
-          <h2>Our Mission</h2>
+          <h2 className="text-white">Our Mission</h2>
           <div className="abt-mission-grid">
             {aboutMission.map(([title, copy, Icon]) => <div key={title} className="abt-mission-item">
               <Icon size={22} strokeWidth={1.9} />
@@ -430,7 +431,31 @@ function About() {
           </div>
         </div>
         <div className="abt-layer-art">
-          <img src={`${root}about-dashboard-monitor.png`} alt="TracelyTag Enterprise Analytics Dashboard showing connected products at 12.5M total global count, authentication activity with live pulse, supply chain visibility, consumer engagement, business intelligence and platform health" />
+          <WorldMap 
+            lineColor="#0753a4"
+            dots={[
+              {
+                start: { lat: 37.7749, lng: -122.4194, label: "San Francisco" },
+                end: { lat: 51.5074, lng: -0.1278, label: "London" },
+              },
+              {
+                start: { lat: 51.5074, lng: -0.1278, label: "London" },
+                end: { lat: 25.2048, lng: 55.2708, label: "Dubai" },
+              },
+              {
+                start: { lat: 25.2048, lng: 55.2708, label: "Dubai" },
+                end: { lat: 1.3521, lng: 103.8198, label: "Singapore" },
+              },
+              {
+                start: { lat: 31.2304, lng: 121.4737, label: "Shanghai" },
+                end: { lat: 35.6762, lng: 139.6503, label: "Tokyo" },
+              },
+              {
+                start: { lat: 40.7128, lng: -74.006, label: "New York" },
+                end: { lat: 48.8566, lng: 2.3522, label: "Paris" },
+              },
+            ]}
+          />
         </div>
       </div>
     </section>
@@ -450,7 +475,7 @@ function About() {
   </Shell>;
 }
 
-function Why() { return <Shell><Hero eyebrow="THE TRACELYTAG DIFFERENCE" title="Why Leading Manufacturers Choose TracelyTag" copy="The product intelligence platform built for the complexity of modern manufacturing, supply chains, and consumer engagement." image="why-hero-diagram.png" alt="Why TracelyTag connected ecosystem diagram" /><FeatureCards items={[['Enterprise Platform','A complete operating system for connected products.',Network],['Scalable Infrastructure','Built to grow with your products, markets, and teams.',Boxes],['Global Digital Identity','A trusted digital identity for every product.',Globe2],['Actionable Intelligence','Insights that help you make better decisions, faster.',BarChart3]]} /><BlueBand title="Built For Modern Manufacturers" items={['Enterprise Platform','Global Infrastructure','Real-Time Data','Secure by Design']} /><section className="container-tight py-16 text-center"><p className="eyebrow mb-4">THE TRACELYTAG DIFFERENCE</p><h2 className="display mx-auto max-w-[500px] text-[34px] font-bold text-[#172536]">Six pillars of enterprise authentication</h2><div className="mt-8 grid gap-4 md:grid-cols-3">{[['Product Platform','A complete platform for your connected product ecosystem.'],['Authentication','Secure every product with a trusted digital identity.'],['Track & Trace','Follow every product, from source to consumer.'],['Connected Products','Create meaningful product experiences.'],['Advanced Analytics','Turn product data into business intelligence.'],['Enterprise Integrations','Connect your existing systems with ease.']].map(([t,c]) => <div key={t} className="card-line rounded border bg-white p-5 text-left"><ShieldCheck size={17} className="mb-5 text-[#0753a4]" /><h3 className="text-[12px] font-bold">{t}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{c}</p></div>)}</div></section><MonitorSection image="why-dashboard-monitor.png" title="Real-Time Operational Intelligence" /><CTA title="Ready to Transform Your Product Ecosystem?" copy="Build trusted, connected products with TracelyTag." /></Shell>; }
+function Why() { return <Shell><Hero eyebrow="THE TRACELYTAG DIFFERENCE" title="Why Leading Manufacturers Choose TracelyTag" copy="The product intelligence platform built for the complexity of modern manufacturing, supply chains, and consumer engagement." image="why-hero-diagram-new.jpg" alt="Why TracelyTag connected ecosystem diagram" /><FeatureCards items={[['Enterprise Platform','A complete operating system for connected products.',Network],['Scalable Infrastructure','Built to grow with your products, markets, and teams.',Boxes],['Global Digital Identity','A trusted digital identity for every product.',Globe2],['Actionable Intelligence','Insights that help you make better decisions, faster.',BarChart3]]} /><BlueBand title="Built For Modern Manufacturers" items={['Enterprise Platform','Global Infrastructure','Real-Time Data','Secure by Design']} /><section className="container-tight py-16 text-center"><p className="eyebrow mb-4">THE TRACELYTAG DIFFERENCE</p><h2 className="display mx-auto max-w-[500px] text-[34px] font-bold text-[#172536]">Six pillars of enterprise authentication</h2><div className="mt-8 grid gap-4 md:grid-cols-3">{[['Product Platform','A complete platform for your connected product ecosystem.'],['Authentication','Secure every product with a trusted digital identity.'],['Track & Trace','Follow every product, from source to consumer.'],['Connected Products','Create meaningful product experiences.'],['Advanced Analytics','Turn product data into business intelligence.'],['Enterprise Integrations','Connect your existing systems with ease.']].map(([t,c]) => <div key={t} className="card-line rounded border bg-white p-5 text-left"><ShieldCheck size={17} className="mb-5 text-[#0753a4]" /><h3 className="text-[12px] font-bold">{t}</h3><p className="mt-2 text-[10px] leading-4 text-[#6a7480]">{c}</p></div>)}</div></section><MonitorSection image="why-dashboard-monitor.png" title="Real-Time Operational Intelligence" /><CTA title="Ready to Transform Your Product Ecosystem?" copy="Build trusted, connected products with TracelyTag." /></Shell>; }
 
 function Hardware() { return <Shell><Hero eyebrow="CONNECTED PRODUCTION" title="Connect Your Production Line with Intelligent Hardware Integration" copy="Seamlessly integrate printers, scanners, cameras, PLCs, and sensors into one connected production ecosystem. Achieve real-time visibility, operational precision, and complete product traceability." image="hardware-hero-diagram.png" alt="Connected production line hardware integration" cta="Get Started" /><FeatureCards items={[['Industrial Automation','Connect your hardware to your digital product platform.',Factory],['Production Line Integration','Bring every line into one connected view.',Network],['Real-Time Verification','Verify product identity at the point of production.',ScanLine],['Enterprise Hardware','Scale production insight across your operations.',Boxes]]} /><BlueBand title="Production Line Integration Suite" items={['Connect Equipment','Manage Production Lines','Real-Time Monitoring','Capture Data']} /><section className="container-tight py-16"><div className="text-center"><p className="eyebrow mb-3">END-TO-END VISIBILITY</p><h2 className="display text-[32px] font-bold">Hardware Workflow</h2><p className="mt-3 text-[11px] text-[#687382]">From the first product movement through final verification.</p></div><div className="mt-10 grid gap-3 md:grid-cols-6">{['Production Start','Raw Material','Production','Quality Control','Pack & Label','Aggregation'].map((x,i) => <div key={x} className="relative text-center"><div className="mx-auto grid size-9 place-items-center rounded-full bg-[#e6f1ff] text-[#0753a4]"><span className="text-[11px] font-bold">{i+1}</span></div><p className="mt-3 text-[10px] font-semibold text-[#334761]">{x}</p></div>)}</div></section><MonitorSection image="hardware-dashboard-monitor.png" title="Control at Your Fingertips" /><CTA title="Ready to Connect Your Production Line?" copy="Connect your production line to a complete product intelligence platform." /></Shell>; }
 

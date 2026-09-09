@@ -843,7 +843,7 @@
 .abt-stat:last-child { border-bottom: 0; }
 .abt-stat svg { flex-shrink: 0; color: #0a3d8f; }
 .abt-mission { border-radius: 10px; background: #0a4aa0; padding: clamp(1.75rem, 3vw, 2.6rem); color: #fff; box-shadow: 0 16px 38px rgb(10 74 160 / .18); }
-.abt-mission h2 { font-family: var(--app-font-serif); font-size: clamp(18px, 1.85vw, 22px); font-weight: 700; letter-spacing: -.02em; }
+.abt-mission h2 { color: #ffffff; font-family: var(--app-font-serif); font-size: clamp(18px, 1.85vw, 22px); font-weight: 700; letter-spacing: -.02em; }
 .abt-mission-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 2rem; margin-top: 2.2rem; }
 .abt-mission-item h3 { margin-top: 1rem; color: #fff; font-size: 15px; font-weight: 600; }
 .abt-mission-item p { margin-top: .65rem; color: rgb(255 255 255 / .82); font-size: 13px; line-height: 1.65; }
